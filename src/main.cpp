@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <box2d/box2d.h>
 
 int main()
 {
@@ -19,5 +20,7 @@ int main()
                 break;
             }
         }
+
+        b2World world(b2Vec2(1,1));
     }
 }
