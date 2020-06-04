@@ -23,7 +23,6 @@ if(APPLE)
 
 	set (SFML_STATIC_LIBRARIES FALSE)
 	set (SFML_DIR "/usr/local/Cellar/sfml/2.5.1")
-	# set (BOX2D_DIR "${CMAKE_SOURCE_DIR}/Box2d/src")
 
 	find_package (SFML 2.5 COMPONENTS graphics REQUIRED)
 
@@ -40,10 +39,11 @@ if(APPLE)
 
 	add_executable (IncredibleMachine WIN32 "")
 
+	add_subdirectory (Box2D/include)
+	add_subdirectory (Box2D/src)
 	add_subdirectory (include)
 	add_subdirectory (src)
 	add_subdirectory (resources)
-	add_subdirectory (box2ds)
 
 	set (SFML_STATIC_LIBRARIES TRUE)
 	set (SFML_DIR "C:/SFML/SFML-2.5.1/lib/cmake/SFML")

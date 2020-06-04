@@ -3,6 +3,7 @@
 
 int main()
 {
+    b2World world(b2Vec2(0,-9.81);
    
     auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
 
@@ -21,6 +22,5 @@ int main()
             }
         }
 
-        b2World world(b2Vec2(1,1));
     }
 }
