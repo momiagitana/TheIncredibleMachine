@@ -3,7 +3,9 @@
 
 int main()
 {
-    b2World world(b2Vec2(0,-9.81);
+    sf::CircleShape();
+    
+    b2World world(b2Vec2(0,-9.81));
    
     auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
 
@@ -12,6 +14,7 @@ int main()
         window.clear();
         window.display();
 
+        
         if (auto event = sf::Event{}; window.waitEvent(event))
         {
             switch (event.type)
