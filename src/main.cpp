@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-
+//change this to controller
 int main()
 {
     auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
