@@ -14,22 +14,24 @@ if(APPLE)
 
 	add_executable (IncredibleMachine MACOSX_BUNDLE "")
 
+	add_subdirectory (Box2D/include)
+	add_subdirectory (Box2D/src)
 	add_subdirectory (include)
 	add_subdirectory (src)
 	add_subdirectory (resources)
-	add_subdirectory (/Box2D/src)
 
 
 	set (SFML_STATIC_LIBRARIES FALSE)
 	set (SFML_DIR "/usr/local/Cellar/sfml/2.5.1")
-	# set (BOX2D_DIR "${CMAKE_SOURCE_DIR}/box2ds")
+	# set (BOX2D_DIR "${CMAKE_SOURCE_DIR}/Box2d/src")
 
 	find_package (SFML 2.5 COMPONENTS graphics REQUIRED)
 
 	set_target_properties ( PROPERTIES MAP_IMPORTED_CONFIG_RELWITHDEBINFO RELEASE)
 
 	target_link_libraries (IncredibleMachine sfml-graphics)
-	target_link_libraries (box2d)
+	target_link_libraries (IncredibleMachine box2d)
+
  endif()
 
 
