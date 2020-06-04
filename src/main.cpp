@@ -2,7 +2,8 @@
 
 int main()
 {
-    auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
+    changes new shit
+    
 
     while (window.isOpen())
     {

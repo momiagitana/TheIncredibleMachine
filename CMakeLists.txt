@@ -49,3 +49,5 @@ if(APPLE)
 	target_link_libraries (IncredibleMachine sfml-graphics sfml-main)
 
  endif()
+
+ #ifdef __APPLE__
