@@ -5,7 +5,17 @@ GameObj::GameObj(const sf::Vector2f& topLeft, const sf::Vector2f& size, sf::Text
 {
 }
 
+void GameObj::draw (sf::RenderWindow& win)
+{
+	updateLoc();
+	BaseImg::draw(win);
+}
 
+void GameObj::updateLoc()
+{
+	auto pos = m_body.getPosition();
+	BaseImg::setLocation(sf::Vector2f(pos.x,pos.y));
+}
 
 // bool GameObj::checkCollision(const sf::FloatRect& floatRect) const
 // {

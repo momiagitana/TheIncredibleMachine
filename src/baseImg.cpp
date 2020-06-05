@@ -36,10 +36,10 @@ void BaseImg::setColor(sf::Color color)
 	m_sprite.setColor(color);
 }
 
-// void BaseImg::setSize(sf::Vector2f size)
-// {
-// 	m_sprite.scale((size.x / m_sprite.getGlobalBounds().width), (size.y / m_sprite.getGlobalBounds().height));
-// }
+void BaseImg::setSize(sf::Vector2f size)
+{
+	m_sprite.scale((size.x / m_sprite.getGlobalBounds().width), (size.y / m_sprite.getGlobalBounds().height));
+}
 
 // void BaseImg::updateTexture(sf::IntRect newRect)
 // {

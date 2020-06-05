@@ -8,11 +8,10 @@ class PhyisicsObj
 private:
 
 
-    std::unique_ptr<b2Body> m_body;
-    std::unique_ptr<b2BodyDef> m_bodyDef;
-    std::unique_ptr<b2Fixture> m_fixture;
+    b2Body* m_body;
+    b2BodyDef* m_bodyDef;
+    b2Fixture* m_fixture;
 
-    //sf::Color m_color;
    
 public:
 
@@ -20,6 +19,7 @@ public:
     ~PhyisicsObj();
 
     b2Vec2 getPosition() const { return  m_body->GetPosition(); }
+    float getAngle() const { return m_body->GetAngle();}
     //b2Fixture* getFixture() const { return m_fixture; }
 
  
