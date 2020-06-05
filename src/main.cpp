@@ -3,40 +3,67 @@
 #include <PhyisicsObj.h>
 #include <vector>
 
+
+
+
+
+
 int main()
-{
+{   
 
-    std::vector<PhyisicsObj> boxes;
-
-    auto world = std::make_unique<b2World>(b2Vec2(0,-9.81));
+    auto world = std::make_unique<b2World>(b2Vec2(0,9.81));
 
     b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(0.0f,-10.0f);
-    b2Body* body = world->CreateBody(&groundBodyDef);
-    b2PolygonShape boxShape;
-    boxShape.SetAsBox(50.0f,10.0f);
-    body->CreateFixture(&boxShape, 0.0f); //0 density coz its static
+    groundBodyDef.position.Set(0.0f, 300.0f);
+    b2Body* groundBody = world->CreateBody(&groundBodyDef);
+    b2PolygonShape groundBox;
+    groundBox.SetAsBox(50.0f, 10.0f);
+    groundBody->CreateFixture(&groundBox, 0.0f);
 
-    PhyisicsObj box;
-    box.init(world.get(), sf::Vector2f(0.0f,14.0f), sf::Vector2f(15.0f,15.0f));
-    boxes.push_back(box);
+    sf::RectangleShape ground;
+    ground.setFillColor(sf::Color::Blue);
+    ground.setSize(sf::Vector2f(250.0f,1.0f));
+    b2Vec2 groundPosition = groundBody->GetPosition();
+    float groundAngle = groundBody->GetAngle();
+    ground.setPosition(groundPosition.x, groundPosition.y);
+    ground.setRotation(groundAngle);
+    
 
+
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.position.Set(50.0f, 70.0f);
+    b2Body* body = world->CreateBody(&bodyDef);
+    b2PolygonShape dynamicBox;
+    dynamicBox.SetAsBox(1.0f, 1.0f);
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0.3f; 
+    body->CreateFixture(&fixtureDef);
 
     sf::RectangleShape rect;
-    rect.setPosition(sf::Vector2f(box.getBody()->GetPosition().x, box.getBody()->GetPosition().y));
     rect.setFillColor(sf::Color::White);
     rect.setSize(sf::Vector2f(20.0f,20.0f));
 
-    auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
+    auto window = sf::RenderWindow(sf::VideoMode(600, 600), "Example");
 
     while (window.isOpen())
     {
+        world->Step(timeStep, velocityIterations, positionIterations);
+        b2Vec2 position = body->GetPosition();
+        float angle = body->GetAngle();
+        rect.setPosition(position.x, position.y);
+        rect.setRotation(angle);
         window.clear();
         window.draw(rect);
+        window.draw(ground);
         window.display();
 
+
         
-        if (auto event = sf::Event{}; window.waitEvent(event))
+		sf::Event event;
+		while (window.pollEvent(event))
         {
             switch (event.type)
             {
@@ -48,3 +75,4 @@ int main()
 
     }
 }
+
