@@ -1,13 +1,14 @@
 #include <SFML/Graphics.hpp>
+#include "testingAnimation.h"
 
 int main()
 {
     auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
 
+    TestingAnimation t;
+
     while (window.isOpen())
     {
-        window.clear();
-        window.display();
 
         if (auto event = sf::Event{}; window.waitEvent(event))
         {
@@ -15,6 +16,9 @@ int main()
             {
             case sf::Event::Closed:
                 window.close();
+                break;
+            case sf::Event::KeyPressed:
+                t.drawAnimation(window);
                 break;
             }
         }
