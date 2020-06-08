@@ -1,22 +1,11 @@
-#include <SFML/Graphics.hpp>
-//change this to controller
+
+#include "OverallController.h"
+
 int main()
 {
-    auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
+	srand((int)time(NULL));
+	OverallController game;
+	game.run();
 
-    while (window.isOpen())
-    {
-        window.clear();
-        window.display();
-
-        if (auto event = sf::Event{}; window.waitEvent(event))
-        {
-            switch (event.type)
-            {
-            case sf::Event::Closed:
-                window.close();
-                break;
-            }
-        }
-    }
+	EXIT_SUCCESS;
 }
