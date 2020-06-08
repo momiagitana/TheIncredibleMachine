@@ -4,7 +4,6 @@
 #include "Board.h"
 #include "Level.h"
 #include "FileHandler.h"
-#include "Digger.h"
 
 class LevelManager
 {
@@ -24,7 +23,6 @@ private:
 	Board m_board;
 	std::vector<Level> m_levels;
 	bool m_sholdWeMove = false;
-	unsigned int m_diggerLives = DIGGER_LIVES;
 	unsigned m_numOfLevel = 0;
 	unsigned m_score = 0;
 	

@@ -1,7 +1,7 @@
 #include "OverallController.h"
 
 
-OverallController::OverallController() :m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SONIC")
+OverallController::OverallController() :m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine")
 {
 	loadTextures();
 	m_menu.settexturs(m_menuTextures,m_font, m_window);
@@ -28,7 +28,7 @@ void OverallController::run()
 
 	void OverallController::loadTextures()
 	{
-		m_gameTextures.resize(NUM_OF_TEXTURE);
+		/*m_gameTextures.resize(NUM_OF_TEXTURE);
 		m_gameTextures[O_DIGGER].loadFromFile("digger.png");
 		m_gameTextures[O_DUMB_MONSTER].loadFromFile("dumbMonster.png");
 		m_gameTextures[O_SMART_MONSTER].loadFromFile("smartMonster.png");
@@ -45,7 +45,7 @@ void OverallController::run()
 		m_menuTextures.resize(NUM_OF_BUTTONS + 1);
 		m_menuTextures[M_BACKGROUND].loadFromFile("menu.png");
 		m_menuTextures[M_EXIT_BUTTON].loadFromFile("exitButton.png");
-		m_menuTextures[M_START_BUTTON].loadFromFile("startButton.png");
+		m_menuTextures[M_START_BUTTON].loadFromFile("startButton.png");*/
 
 		m_font.loadFromFile("C:/Windows/Fonts/cambriab.ttf");
 	}

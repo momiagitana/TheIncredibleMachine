@@ -83,25 +83,12 @@ void LevelManager::start(sf::RenderWindow& window, const std::vector<sf::Texture
 
 bool LevelManager::whyIsDead(const std::vector<sf::Texture>& gameTextures)
 {
-	if (m_diggerLives == 0)
-	{
-		return false;
-	}
-
-	if ((m_board.getDiggerStones() <= 0) || m_board.getTime() == 0)
-	{
-		m_board.setBoard(m_levels[m_numOfLevel], gameTextures);
-		m_gameclock.restart();
-		while (m_gameclock.getElapsedTime().asSeconds() < 0.5) {}
-		return true;
-	}
-	else
-	{
+	
 		m_board.resetLoc();
 		m_gameclock.restart();
 		while (m_gameclock.getElapsedTime().asSeconds() < 0.5) {}
 		return true;
-	}
+	
 	return false;
 }
 
@@ -161,9 +148,7 @@ void LevelManager::setTexts(sf::Font& font)
 void LevelManager::setDatalBarInfo()
 {
 	std::string str;
-	str = "LIVES : ";
-	str.append(std::to_string(m_diggerLives));
-	m_texts[LIVES].setString(str);
+	
 	str = "TIME LEFT : ";
 	if (m_board.getTime() == -1)
 	{
@@ -178,9 +163,6 @@ void LevelManager::setDatalBarInfo()
 	str = "SCORE : ";
 	str.append(std::to_string(m_score));
 	m_texts[SCORE].setString(str);
-	str = "STONES LEFT : ";
-	str.append(std::to_string(m_board.getDiggerStones()));
-	m_texts[STONES_TO_EAT].setString(str);
 	str = "LEVEL : ";
 	str.append(std::to_string(m_numOfLevel + 1));
 	m_texts[LEVEL].setString(str);
@@ -202,18 +184,6 @@ void LevelManager::updateStats()
 			}
 			m_gameclock.restart();
 		}
-	}
-	if (m_board.isDiamondEaten())
-	{
-		m_score += 15;
-	}
-	if (m_board.shouldWeAddScore())
-	{
-		m_score += 10;
-	}
-	if (m_board.shouldWeAddTime())
-	{
-		m_board.setTime(m_board.getTime() + 20);
 	}
 }
 
@@ -249,7 +219,7 @@ void LevelManager::InitializeData()
 {
 	m_numOfLevel = 0;
 	m_score = 0;
-	m_diggerLives = DIGGER_LIVES;
+
 }
 
 void LevelManager::levelCompleted(sf::RenderWindow& window)
