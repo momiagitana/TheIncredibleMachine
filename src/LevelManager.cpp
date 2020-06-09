@@ -7,19 +7,14 @@ LevelManager::LevelManager() {}
 void LevelManager::start(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures)
 {
 	InitializeData();
-	m_board.setBoard(m_levels[m_numOfLevel], gameTextures);
+	//m_board.setBoard(m_levels[m_numOfLevel], gameTextures);
 	updateStats();
 
-	sf::Music music;
-
-	music.openFromFile("sonic_for_game.ogg");
-
-	music.play();
 	while (window.isOpen())
 	{
-		updateStats();
-		shouldWeStartMove();
-		auto deltaTime = m_moveClock.restart();
+		//updateStats();
+		
+		
 		window.clear();
 
 		draw(window);
@@ -40,61 +35,14 @@ void LevelManager::start(sf::RenderWindow& window, const std::vector<sf::Texture
 			}
 			}
 		}
-		if (m_sholdWeMove)
-		{
-			if (m_board.levelFinished())
-			{
-				m_score += 20;
-				m_numOfLevel++;
-
-				if (m_numOfLevel < m_levels.size())
-				{
-					window.display();
-					levelCompleted(window);
-					goToNextLevel(gameTextures);
-				}
-				else
-				{
-					m_score += m_diggerLives * 150;
-					win(window, gameTextures);
-					InitializeData();
-					m_sholdWeMove = false;
-					return;//you win	
-				}
-			}
-
-			if (m_board.isDiggerDead())
-			{
-				m_sholdWeMove = false;
-				m_diggerLives--;
-				if (!whyIsDead(gameTextures))
-				{
-					gameOver(window, gameTextures);
-					return;
-				}
-				m_board.setDiggerAlive(false);
-			}
-			m_board.MoveObjects(deltaTime);
-			setDatalBarInfo();
-
-		}
+		
 	}
 }
 
-bool LevelManager::whyIsDead(const std::vector<sf::Texture>& gameTextures)
-{
-	
-		m_board.resetLoc();
-		m_gameclock.restart();
-		while (m_gameclock.getElapsedTime().asSeconds() < 0.5) {}
-		return true;
-	
-	return false;
-}
 
 void LevelManager::draw(sf::RenderWindow& window)
 {
-	m_board.drowBoard(window);
+	//m_board.drowBoard(window);
 	for (int i = 0; i < m_texts.size(); ++i)
 	{
 		window.draw(m_texts[i]);
@@ -106,11 +54,11 @@ void LevelManager::readLevels()
 {
 	FileHandler file(FILE_NAME);
 
-	while (!file.ifEndOfFile())
+	/*while (!file.ifEndOfFile())
 	{
 		Level level = file.readLevelFromFile();
 		m_levels.push_back(level);
-	}
+	}*/
 }
 
 void LevelManager::setTexts(sf::Font& font)
@@ -170,49 +118,13 @@ void LevelManager::setDatalBarInfo()
 
 void LevelManager::updateStats()
 {
-	if (m_board.getTime() != -1)
-	{
-		if (m_gameclock.getElapsedTime().asSeconds() > 1)
-		{
-			if (m_board.getTime() == 0)
-			{
-				m_board.setDiggerAlive(true);
-			}
-			else
-			{
-				m_board.setTime(m_board.getTime() - 1);
-			}
-			m_gameclock.restart();
-		}
-	}
-}
-
-void LevelManager::shouldWeStartMove()
-{
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	{
-		m_sholdWeMove = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	{
-		m_sholdWeMove = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	{
-		m_sholdWeMove = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	{
-		m_sholdWeMove = true;
-	}
-
+	
 }
 
 void LevelManager::goToNextLevel(const std::vector<sf::Texture>& gameTextures)
 {
-	m_sholdWeMove = false;
-	m_board.setBoard(m_levels[m_numOfLevel], gameTextures);
+	
+	//m_board.setBoard(m_levels[m_numOfLevel], gameTextures);
 }
 
 void LevelManager::InitializeData()
@@ -232,24 +144,10 @@ void LevelManager::levelCompleted(sf::RenderWindow& window)
 
 void LevelManager::gameOver(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures)const
 {
-	sf::Clock clock;
-	sf::Sprite sprite;
-	sprite.setTexture(gameTextures[O_GAME_OVER]);
-	sprite.scale((WINDOW_WIDTH / sprite.getGlobalBounds().width), (WINDOW_HEIGHT / sprite.getGlobalBounds().height));
-	window.clear();
-	window.draw(sprite);
-	window.display();
-	while (clock.getElapsedTime().asSeconds() < 3) {}
+	
 }
 
 void LevelManager::win(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures) const
 {
-	sf::Clock clock;
-	sf::Sprite sprite;
-	sprite.setTexture(gameTextures[O_WIN]);
-	sprite.scale((WINDOW_WIDTH / sprite.getGlobalBounds().width), (WINDOW_HEIGHT / sprite.getGlobalBounds().height));
-	window.clear();
-	window.draw(sprite);
-	window.display();
-	while (clock.getElapsedTime().asSeconds() < 3) {}
+	
 }

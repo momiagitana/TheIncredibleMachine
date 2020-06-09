@@ -2,3 +2,4 @@
 .vscode/*
 build/*
 /out/build/x64-Debug
+/out/build/x64-Debug (default)
