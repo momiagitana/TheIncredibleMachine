@@ -4,25 +4,23 @@
 OverallController::OverallController() :m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine")
 {
 	loadTextures();
-	m_menu.settexturs(m_menuTextures,m_font, m_window);
+	//m_menu.settexturs(m_menuTextures,m_font, m_window);
 }
 
 void OverallController::run()
 {
-	m_levelManager.readLevels();
+	//m_levelManager.readLevels();
 	m_levelManager.setTexts(m_font);
 
 	while (m_window.isOpen()) {
-		m_menu.runstart(m_window);
+		//m_menu.runstart(m_window);
 
-		if (m_menu.shouldStartplaying())
-		{
+		
 			m_levelManager.start(m_window, m_gameTextures);
-		}
-		else
-		{
-			m_window.close();
-		}
+		
+		
+			
+		
 	}
 }
 

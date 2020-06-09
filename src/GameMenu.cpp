@@ -23,11 +23,7 @@ void GameMenu::settexturs(const std::vector<sf::Texture>& textures, const sf::Fo
 
 void GameMenu::runstart(sf::RenderWindow& window)
 {
-	sf::Music music;
 
-	music.openFromFile("Sonic_X_main_menu.ogg");
-
-	music.play();
 	while (window.isOpen())
 	{
 		window.clear();
@@ -38,7 +34,7 @@ void GameMenu::runstart(sf::RenderWindow& window)
 			switch (event.type)
 			{
 			case sf::Event::Closed:
-				music.stop();
+				
 				window.close();
 				break;
 			case sf::Event::KeyPressed:
@@ -56,15 +52,13 @@ void GameMenu::runstart(sf::RenderWindow& window)
 				}
 				if (m_sprits[M_EXIT_BUTTON].getGlobalBounds().contains(location))
 				{
-					music.stop();
-					//m_mainSound.stop();
+					
 					m_StartPlaying = false;
 					return;
 				}
 				if (m_sprits[M_START_BUTTON].getGlobalBounds().contains(location))
 				{
-					//m_mainSound.stop();
-					music.stop();
+					
 					m_StartPlaying = true;
 					return;
 				}

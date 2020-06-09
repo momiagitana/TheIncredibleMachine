@@ -18,20 +18,18 @@ private:
 
 	std::vector< sf::Text> m_texts;
 	sf::Text m_levelCompleted;
-	sf::Clock m_moveClock;
 	sf::Clock m_gameclock;
 	Board m_board;
 	std::vector<Level> m_levels;
-	bool m_sholdWeMove = false;
 	unsigned m_numOfLevel = 0;
 	unsigned m_score = 0;
 	
 
 	void setDatalBarInfo();
 	void updateStats();
-	bool whyIsDead(const std::vector<sf::Texture>& gameTextures);
+	
 	void draw(sf::RenderWindow& window);
-	void shouldWeStartMove();
+	
 	void goToNextLevel(const std::vector<sf::Texture>& gameTextures);
 	void InitializeData();
 	void levelCompleted(sf::RenderWindow& window);
