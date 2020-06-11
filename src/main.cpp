@@ -1,10 +1,11 @@
 
 #include "OverallController.h"
+#include <SFML/Graphics.hpp>
+#include <box2d/box2d.h>
 
 int main()
 {
-	//david was here
-	srand((int)time(NULL));
+
 	OverallController game;
 	game.run();
 
