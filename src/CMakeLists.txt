@@ -1,1 +1,13 @@
-﻿target_sources (IncredibleMachine PRIVATE "main.cpp")
+﻿target_sources (IncredibleMachine PRIVATE "main.cpp"
+										  "Board.cpp"
+										  "OverallController.cpp"
+										  "BaseObject.cpp"
+										  "GameMenu.cpp"
+										  "Level.cpp"
+										  "LevelController.cpp"
+										  "FileHandler.cpp"
+										  "Ball.cpp"
+										  "BaseBall.cpp"
+										  "Basketball.cpp"
+										  "BrickWall.cpp"
+										  "Surface.cpp")

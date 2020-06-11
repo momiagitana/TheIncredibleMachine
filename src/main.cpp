@@ -1,26 +1,13 @@
+
+#include "OverallController.h"
 #include <SFML/Graphics.hpp>
 #include <box2d/box2d.h>
 
 int main()
 {
-    b2World world(b2Vec2(0,-9.81);
-   
-    auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
 
-    while (window.isOpen())
-    {
-        window.clear();
-        window.display();
+	OverallController game;
+	game.run();
 
-        if (auto event = sf::Event{}; window.waitEvent(event))
-        {
-            switch (event.type)
-            {
-            case sf::Event::Closed:
-                window.close();
-                break;
-            }
-        }
-
-    }
+	EXIT_SUCCESS;
 }
