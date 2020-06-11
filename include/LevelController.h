@@ -5,11 +5,11 @@
 #include "Level.h"
 #include "FileHandler.h"
 
-class LevelManager
+class LevelController
 {
 public:
 
-	LevelManager();
+	LevelController();
 	void start(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures);
 	void readLevels();
 	void setTexts(sf::Font& font);

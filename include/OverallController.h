@@ -5,7 +5,7 @@
 #include "Globals.h"
 #include "GameMenu.h"
 #include "FileHandler.h"
-#include "LevelManager.h"
+#include "LevelController.h"
 
 
 
@@ -19,7 +19,7 @@ public:
 private:
 
 	sf::RenderWindow m_window;
-	LevelManager m_levelManager;
+	LevelController m_levelController;
 	GameMenu m_menu;
 	std::vector<sf::Texture> m_gameTextures;
 	std::vector<sf::Texture> m_menuTextures;

@@ -1,10 +1,10 @@
-#include "LevelManager.h"
+#include "LevelController.h"
 
 #include <iostream>
 
-LevelManager::LevelManager() {}
+LevelController::LevelController() {}
 
-void LevelManager::start(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures)
+void LevelController::start(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures)
 {
 	InitializeData();
 	//m_board.setBoard(m_levels[m_numOfLevel], gameTextures);
@@ -40,7 +40,7 @@ void LevelManager::start(sf::RenderWindow& window, const std::vector<sf::Texture
 }
 
 
-void LevelManager::draw(sf::RenderWindow& window)
+void LevelController::draw(sf::RenderWindow& window)
 {
 	//m_board.drowBoard(window);
 	for (int i = 0; i < m_texts.size(); ++i)
@@ -50,7 +50,7 @@ void LevelManager::draw(sf::RenderWindow& window)
 }
 
 
-void LevelManager::readLevels()
+void LevelController::readLevels()
 {
 	FileHandler file(FILE_NAME);
 
@@ -61,7 +61,7 @@ void LevelManager::readLevels()
 	}*/
 }
 
-void LevelManager::setTexts(sf::Font& font)
+void LevelController::setTexts(sf::Font& font)
 {
 	sf::Text text;
 	text.setFont(font);
@@ -93,7 +93,7 @@ void LevelManager::setTexts(sf::Font& font)
 	m_levelCompleted.setPosition(sf::Vector2f(150.f, (float)(WINDOW_HEIGHT / 2) + -20));
 }
 
-void LevelManager::setDatalBarInfo()
+void LevelController::setDatalBarInfo()
 {
 	std::string str;
 	
@@ -116,25 +116,25 @@ void LevelManager::setDatalBarInfo()
 	m_texts[LEVEL].setString(str);
 }
 
-void LevelManager::updateStats()
+void LevelController::updateStats()
 {
 	
 }
 
-void LevelManager::goToNextLevel(const std::vector<sf::Texture>& gameTextures)
+void LevelController::goToNextLevel(const std::vector<sf::Texture>& gameTextures)
 {
 	
 	//m_board.setBoard(m_levels[m_numOfLevel], gameTextures);
 }
 
-void LevelManager::InitializeData()
+void LevelController::InitializeData()
 {
 	m_numOfLevel = 0;
 	m_score = 0;
 
 }
 
-void LevelManager::levelCompleted(sf::RenderWindow& window)
+void LevelController::levelCompleted(sf::RenderWindow& window)
 {
 	sf::Clock clock;
 	window.draw(m_levelCompleted);
@@ -142,12 +142,12 @@ void LevelManager::levelCompleted(sf::RenderWindow& window)
 	while (clock.getElapsedTime().asSeconds() < 1) {}
 }
 
-void LevelManager::gameOver(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures)const
+void LevelController::gameOver(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures)const
 {
 	
 }
 
-void LevelManager::win(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures) const
+void LevelController::win(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures) const
 {
 	
 }
