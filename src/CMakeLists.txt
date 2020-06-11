@@ -4,5 +4,10 @@
 										  "BaseObject.cpp"
 										  "GameMenu.cpp"
 										  "Level.cpp"
-										  "LevelManager.cpp"
-										  "FileHandler.cpp")
+										  "LevelController.cpp"
+										  "FileHandler.cpp"
+										  "Ball.cpp"
+										  "BaseBall.cpp"
+										  "Basketball.cpp"
+										  "BrickWall.cpp"
+										  "Surface.cpp")
