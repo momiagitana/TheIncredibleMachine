@@ -32,39 +32,6 @@ int main()
 
    
 
-    while (window.isOpen())
-    {
-        window.clear(sf::Color::Transparent);
-
-        m_world->Step(TIMESTEP, VELITER, POSITER);
-
-        for(auto& obj : m_objects)
-            obj.draw(window);
-
-        window.display();
-
-
-        
-		sf::Event event;
-		while (window.pollEvent(event))
-        {
-            switch (event.type)
-            {
-            case sf::Event::Closed:
-                window.close();
-                break;
-            case sf::Event::MouseButtonReleased:
-
-                auto mouseLoc = window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
-                if (event.mouseButton.button == sf::Mouse::Left)
-                    m_objects.push_back(BaseBall(mouseLoc, (*m_world.get())));
-                if (event.mouseButton.button == sf::Mouse::Right)
-                    m_objects.push_back(BasketBall(mouseLoc, (*m_world.get())));
-               
-            }
-        }
-
-    }
 
 
 //=======

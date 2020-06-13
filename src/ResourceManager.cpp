@@ -40,7 +40,7 @@ ResourceManager::ResourceManager()
 	// loadTexture("flooringVertical.png", Texture::flooringVertical);
 	
 
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/balloonPopping.png", Texture::balloonPopping);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/balloonPopping.png", Texture::balloon);
 	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/basketBall.png", Texture::basketBall);
 	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/baseBall.png", Texture::baseBall);
 	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bowlingBall.png", Texture::bowlingBall);

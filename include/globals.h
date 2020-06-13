@@ -8,6 +8,19 @@ enum Menu_t
 	M_START_BUTTON
 };
 
+enum GameObject_t
+{
+	balloon,
+	basketBall,
+	baseBall,
+	bowlingBall,
+	conveyor,
+	flooringHorizontal,
+	flooringVertical,
+	none
+
+};
+
 enum Toolbardata_t
 {
 	TIME,

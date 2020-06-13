@@ -1,39 +1,29 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <vector>
 #include "Board.h"
 #include "Level.h"
+#include "Toolbar.h"
+#include "globals.h"
 
 
 class LevelController
 {
 public:
 
-	LevelController();
-	// void start(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures);
-	// void readLevels();
-	// void setTexts(sf::Font& font);
+	LevelController(const Level&, b2World& world);
+
+	void run();
+
 
 private:
 
-	// std::vector< sf::Text> m_texts;
-	// sf::Text m_levelCompleted;
-	// sf::Clock m_gameclock;
-	// Board m_board;
+	Board m_board;
+	sf::RenderWindow& m_window;
+	b2World& m_world;
+	GameObject_t m_selected;
+	//Toolbar m_toolbar;
 
 
-	// unsigned m_score = 0;
-	
-
-	// void setDatalBarInfo();
-	// void updateStats();
-	
-	// void draw(sf::RenderWindow& window);
-	
-	// void goToNextLevel(const std::vector<sf::Texture>& gameTextures);
-	// void InitializeData();
-	// void levelCompleted(sf::RenderWindow& window);
-	// void gameOver(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures)const;
-	// void win(sf::RenderWindow& window, const std::vector<sf::Texture>& gameTextures)const;
-	
 };

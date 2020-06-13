@@ -14,7 +14,7 @@ class ResourceManager
 public:
 	enum class Texture 
 	{
-		balloonPopping,
+		balloon,
 		basketBall,
 		baseBall,
 		bowlingBall,

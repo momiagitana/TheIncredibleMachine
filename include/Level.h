@@ -1,23 +1,31 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <string>
+#include <vector>
+#include "globals.h"
+
+using boardPair 	 = std::pair<GameObject_t, sf::Vector2f>;
+using toolbarPair 	 = std::pair<GameObject_t, int>;
+
+using boardObjects   = std::vector<boardPair>;
+using toolbarObjects = std::vector<toolbarPair>;
 
 class Level
 {
 public:
+	Level();
 
-	Level(std::vector<std::string>,int,int,int,int);
-	char getCell(int, int) const;
-	int getRows()const;
-	int getCols() const; 
-	int getStones() const;
-	int getTime() const;
+	void addBoardObj   (GameObject_t, sf::Vector2f);
+	void addToolbarObj (GameObject_t, int);
+
+	boardPair 	getFromBoard(int i) 	const { return m_initial[i]; }
+	toolbarPair getFromToolbar(int i) 	const { return m_toolbar[i]; }
+	
+	int getBoardSize() 	const { return m_initial.size(); }
+	int getToolSize() 	const { return m_toolbar.size(); }
 
 private:
 
-	int m_rows;
-	int m_cols;
-	int m_stones;
-	int m_time;
-	std::vector<std::string> m_level;
+	boardObjects   m_initial;
+	toolbarObjects m_toolbar;
+
 };

@@ -4,8 +4,13 @@
 #include <memory>
 #include <SFML/Graphics.hpp>
 #include "globals.h"
-
+#include "GameObj.h"
 #include "Level.h"
+#include "Balloon.h"
+#include "BaseBall.h"
+#include "BasketBall.h"
+//#include "BowlingBall.h"
+
 
 
 
@@ -13,23 +18,19 @@ class Board
 {
 public:
 
-	Board();
-	void setBoard(const Level& level);
-	void drowBoard(sf::RenderWindow& window);
+	Board(const Level& level, b2World& world);
+	void setBoard(const Level& level, b2World& world);
+	void draw(sf::RenderWindow& window);
 	//void resetLoc();
-	
-	int getTime()const;
-	void setTime(int levelTime);
 
-	//void handleCollisions(BaseObject& baseobject);
-	bool levelFinished();
-	void MoveObjects(sf::Time deltaTime);
-	
+
+	//bool levelFinished();
+	//void MoveObjects(sf::Time deltaTime);
 
 private:
 
 
 	sf::Sprite m_levelBackground;
-	//void InitializeData();
+	std::vector <std::unique_ptr<GameObj>> m_objects;
 	
 };
