@@ -9,6 +9,12 @@
 										  "BaseObject.cpp"
 										  "GameMenu.cpp"
 										  "Level.cpp"
+
+										  "LevelManager.cpp"
+										  "FileHandler.cpp"
+										  "Toolbar.cpp"
+										  "Resources.cpp"
+
 										  "LevelController.cpp"
 										  "FileHandler.cpp"
 										  "Ball.cpp"

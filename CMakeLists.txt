@@ -37,7 +37,7 @@ if(APPLE)
 
  if(WIN32)
 
-	add_executable (IncredibleMachine WIN32 "")
+	add_executable (IncredibleMachine  "")
 
 	add_subdirectory (Box2D/include)
 	add_subdirectory (Box2D/src)
