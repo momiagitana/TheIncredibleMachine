@@ -5,4 +5,6 @@
 										  "GameMenu.cpp"
 										  "Level.cpp"
 										  "LevelManager.cpp"
-										  "FileHandler.cpp")
+										  "FileHandler.cpp"
+										  "Toolbar.cpp"
+										  "Resources.cpp")

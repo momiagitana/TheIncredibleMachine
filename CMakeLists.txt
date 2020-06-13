@@ -33,7 +33,7 @@ if(APPLE)
 
  if(WIN32)
 
-	add_executable (IncredibleMachine WIN32 "")
+	add_executable (IncredibleMachine  "")
 
 	add_subdirectory (include)
 	add_subdirectory (src)
