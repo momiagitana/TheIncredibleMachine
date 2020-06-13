@@ -8,10 +8,16 @@ using std::cout;
 
 OverallController::OverallController() :m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine")
 {
+
+	//m_menu.settexturs(m_menuTextures,m_font, m_window);
+	//m_levelManager.readLevels();
+	//m_levelManager.setTexts(m_font);
+
 }
 
 void OverallController::run()
 {
+
 	
 	Toolbar t(WINDOW_WIDTH, WINDOW_HEIGHT);
 
@@ -78,9 +84,12 @@ void OverallController::run()
 		}
 	}
 
+	}
+}
+
+
 }
 }
 
 
 
-	

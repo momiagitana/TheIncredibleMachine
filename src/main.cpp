@@ -1,16 +1,16 @@
 #include "OverallController.h"
+
 #include "Toolbar.h"
 #include "Globals.h"
 #include <iostream>
 using std::cout;
 
+#include <SFML/Graphics.hpp>
+#include <box2d/box2d.h>
+
 int main()
 {
-	
-	try
-	{
-	//david was here
-	srand((int)time(NULL));
+
 	OverallController game;
 	game.run();
 
