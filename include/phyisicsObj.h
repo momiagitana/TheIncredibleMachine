@@ -7,20 +7,18 @@ class PhyisicsObj
 {
 private:
 
+    b2Body*         m_body;
 
-    b2Body* m_body;
-    b2BodyDef* m_bodyDef;
-    b2Fixture* m_fixture;
-
-   
 public:
 
-    PhyisicsObj(b2World* world, const sf::Vector2f& position, const sf::Vector2f& dimensions, bool dynamic);
+    PhyisicsObj(b2World &world, const sf::Vector2f& position, const sf::Vector2f& dimensions, bool dynamic);
     ~PhyisicsObj();
 
     b2Vec2 getPosition() const { return  m_body->GetPosition(); }
     float getAngle() const { return m_body->GetAngle();}
-    //b2Fixture* getFixture() const { return m_fixture; }
 
- 
+
+	float PPM = 64.f;
+    float MPP = 0.015625f;
+
 };
