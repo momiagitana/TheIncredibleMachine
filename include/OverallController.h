@@ -21,9 +21,5 @@ private:
 	sf::RenderWindow m_window;
 	LevelController m_levelController;
 	GameMenu m_menu;
-	std::vector<sf::Texture> m_gameTextures;
-	std::vector<sf::Texture> m_menuTextures;
-	sf::Font m_font;
 
-	void loadTextures();
 };

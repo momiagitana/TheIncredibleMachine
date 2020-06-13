@@ -39,8 +39,8 @@ enum Toolbardata_t
 
 const unsigned NUM_OF_TEXTURE = 12;
 const unsigned NUM_OF_BUTTONS = 2;
-const unsigned WINDOW_HEIGHT = 700;
-const unsigned WINDOW_WIDTH = 1000;
+const unsigned WINDOW_HEIGHT = 600;
+const unsigned WINDOW_WIDTH = 600;
 const unsigned DATA_BAR_SPACE = 80;
 const unsigned DIGGER_LIVES = 3;
 const unsigned TOOLBAR_SPACE = 80;
@@ -58,3 +58,36 @@ const std::string FILE_NAME = "Board.txt";
 const unsigned DIGGER_SIZE = 40;
 const unsigned SPACE_BETWEEN_DIGGER = 8;
 const unsigned DIGGER_BORDER = 10;
+
+const unsigned TOOLBAR_OBJ_X = 530;
+
+const unsigned FIRST_TOOLBAR_OBJ_Y = 120;
+const unsigned SECOND_TOOLBAR_OBJ_Y = 200;
+const unsigned THIRD_TOOLBAR_OBJ_Y = 280;
+
+const unsigned obj_size = 40;
+
+const int NUM_OF_TOOLBAR_OBJ = 7;
+
+enum gameTexture
+{
+	T_OBJ_Basketball,
+	T_OBJ_Bowling,
+	T_OBJ_Arrows,
+	T_OBJ_Propeties,
+	T_OBJ_Worker,
+	T_OBJ_Engine,
+	T_OBJ_invalid
+};
+
+
+enum class figure
+{
+	Basketball,
+	Bowling,
+	Arrows,
+	Propeties,
+	Worker,
+	Engine,
+	invalid
+};

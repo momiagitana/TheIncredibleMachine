@@ -1,47 +1,95 @@
 #include "OverallController.h"
+#include "Toolbar.h"
+#include <iostream>
+#include "Resources.h"
+
+using std::cout;
 
 
 OverallController::OverallController() :m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine")
 {
-	loadTextures();
+
 	//m_menu.settexturs(m_menuTextures,m_font, m_window);
 	//m_levelManager.readLevels();
 	//m_levelManager.setTexts(m_font);
+
 }
 
 void OverallController::run()
 {
-	while (m_window.isOpen()) {
-		//m_menu.runstart(m_window);
 
-		m_levelController.start(m_window, m_gameTextures);
+	
+	Toolbar t(WINDOW_WIDTH, WINDOW_HEIGHT);
 
+	t.setLevelObjects( figure::Basketball,2,
+					   figure::Bowling,6,
+						figure::Engine,18);
+
+
+	while (m_window.isOpen())
+	{
+		auto pos = sf::Mouse::getPosition(m_window);
+
+		sf::Event e;
+
+		t.setStringbar();
+
+		m_window.clear();
+		t.draw(m_window);
+		m_window.display();
+
+		if (m_window.pollEvent(e))
+		{
+			switch (e.type)
+			{
+			case sf::Event::Closed:
+				m_window.close();
+				break;
+		
+
+			case sf::Event::MouseButtonPressed:
+			{
+				const auto location = m_window.mapPixelToCoords({ e.mouseButton.x, e.mouseButton.y });
+				switch (e.key.code)
+				{
+				case sf::Mouse::Left:
+					figure temp = t.toolbarclick(location);
+					t.light(location);
+					if (temp == figure::Basketball)
+					{
+						cout << "BasketBall\n";
+					}
+					if (temp == figure::Bowling)
+					{
+						cout << "BowlingBall\n";
+					}
+					if (temp == figure::Arrows)
+					{
+						cout << "Arows\n";
+					}
+					if (temp == figure::Engine)
+					{
+						cout << "Engine\n";
+					}
+				}
+				break;
+			}
+
+			case sf::Event::MouseButtonReleased:
+			{
+				t.unlight(sf::Vector2f(pos.x, pos.y));
+				break;
+			}
+
+		}
+	}
 
 	}
 }
 
-void OverallController::loadTextures()
-{
-	/*m_gameTextures.resize(NUM_OF_TEXTURE);
-	m_gameTextures[O_DIGGER].loadFromFile("digger.png");
-	m_gameTextures[O_DUMB_MONSTER].loadFromFile("dumbMonster.png");
-	m_gameTextures[O_SMART_MONSTER].loadFromFile("smartMonster.png");
-	m_gameTextures[O_DIAMOND].loadFromFile("diamond.png");
-	m_gameTextures[O_STONE].loadFromFile("stone.png");
-	m_gameTextures[O_WALL].loadFromFile("wall.png");
-	m_gameTextures[O_EXTRA_TIME_GIFT].loadFromFile("extraTime.png");
-	m_gameTextures[O_EXTRA_SCORE_GIFT].loadFromFile("extraScore.png");
-	m_gameTextures[O_EXTRA_STONES_GIFT].loadFromFile("extraStones.png");
-	m_gameTextures[O_LEVEL_BACKROUND].loadFromFile("levelBackground.png");
-	m_gameTextures[O_GAME_OVER].loadFromFile("gameOver.png");
-	m_gameTextures[O_WIN].loadFromFile("win.png");
 
-	m_menuTextures.resize(NUM_OF_BUTTONS + 1);
-	m_menuTextures[M_BACKGROUND].loadFromFile("menu.png");
-	m_menuTextures[M_EXIT_BUTTON].loadFromFile("exitButton.png");
-	m_menuTextures[M_START_BUTTON].loadFromFile("startButton.png");*/
-
-	m_font.loadFromFile("C:/Windows/Fonts/cambriab.ttf");
 }
+}
+
 
 
