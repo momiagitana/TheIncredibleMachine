@@ -2,10 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Board.h"
-#include "Globals.h"
+#include "globals.h"
 #include "GameMenu.h"
 #include "FileHandler.h"
-#include "LevelController.h"
 
 
 
@@ -19,7 +18,7 @@ public:
 private:
 
 	sf::RenderWindow m_window;
-	LevelController m_levelController;
+	//LevelController m_levelController;
 	GameMenu m_menu;
 
 };

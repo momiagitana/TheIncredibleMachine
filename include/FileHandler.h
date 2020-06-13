@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Board.h"
-#include "Globals.h"
+#include "globals.h"
 #include "Level.h"
 
 class FileHandler

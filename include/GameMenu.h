@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "Globals.h"
+#include "globals.h"
 
 class GameMenu
 {

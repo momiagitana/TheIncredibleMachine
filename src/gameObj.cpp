@@ -1,7 +1,7 @@
-#include "gameObj.h"
+#include "GameObj.h"
 
 GameObj::GameObj(const sf::Vector2f& center, const sf::Vector2f& size, sf::Texture* texture, bool dynamic, b2World &world)
-	:BaseImg(center, size, texture), m_phyBody(world, center, size, dynamic) //change to center
+	:BaseImg(center, size, texture), m_phyObj(world, center, size, dynamic)
 {
 }
 
@@ -13,25 +13,7 @@ void GameObj::draw (sf::RenderWindow& win)
 
 void GameObj::updateLoc()
 {
-	auto pos = m_phyBody.getPosition();
+	auto pos = m_phyObj.getPosition();
 	BaseImg::setLocation(sf::Vector2f(pos.x,pos.y));
-	BaseImg::setRotation(m_phyBody.getAngle());
+	BaseImg::setRotation(m_phyObj.getAngle());
 }
-
-// sf::Vector2f GameObj::metToPix(b2Vec2 pos)
-// {
-
-// 	return  sf::Vector2f(metToPix(pos.x), metToPix(pos.y));
-
-// }
-
-// float GameObj::metToPix(float met)
-// {
-//     return met / scaling;
-// }
-
-// bool GameObj::checkCollision(const sf::FloatRect& floatRect) const
-// {
-// 	//return true;
-// 	return getGlobalBounds().intersects(floatRect);
-// }

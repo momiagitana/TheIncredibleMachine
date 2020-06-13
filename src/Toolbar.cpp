@@ -1,7 +1,7 @@
 #include "Toolbar.h"
 #include <iostream>
-#include "BaseObject.h"
 #include "Resources.h"
+#include "globals.h"
 
 const int testSize = 16;
 
@@ -14,12 +14,10 @@ Toolbar::Toolbar(double x, double y)
 }
 
 
-void Toolbar::setButton(figure button, int numofapperienses, std::shared_ptr<BaseObject> obj)
+void Toolbar::setButton(figure button, int amount)
 {
-	m_toolbarMap.insert(std::pair<figure, std::pair<int, std::shared_ptr<BaseObject>>>
-		(button, std::pair<int, std::shared_ptr<BaseObject>>(numofapperienses, obj)));
+	m_toolbarMap.insert(std::pair<figure, int>(amount,int));
 }
-
 
 figure Toolbar::toolbarclick(sf::Vector2f loc)
 {
@@ -47,7 +45,7 @@ void Toolbar::draw(sf::RenderWindow& window)
 	}
 }
 
-void Toolbar::setbuttonfillcolor(figure figure, sf::Color color)
+void Toolbar::setButtonFillColor(figure figure, sf::Color color)
 {
 	if (m_toolbarMap.find(figure) != m_toolbarMap.end())
 	{
@@ -55,13 +53,13 @@ void Toolbar::setbuttonfillcolor(figure figure, sf::Color color)
 	}
 }
 
-void Toolbar::setbuttonorigin(figure figure, sf::Vector2f origin)
-{
-	if (m_toolbarMap.find(figure) != m_toolbarMap.end())
-	{
-		m_toolbarMap.at(figure).second->setorigin(origin);
-	}
-}
+// void Toolbar::setbuttonorigin(figure figure, sf::Vector2f origin)
+// {
+// 	if (m_toolbarMap.find(figure) != m_toolbarMap.end())
+// 	{
+// 		m_toolbarMap.at(figure).second->setorigin(origin);
+// 	}
+// }
 
 void Toolbar::setbuttonIntRect(figure figure, sf::IntRect value)
 {

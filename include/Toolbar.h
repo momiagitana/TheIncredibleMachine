@@ -1,8 +1,7 @@
 #pragma once
 #include <map>
 #include <SFML/Graphics.hpp>
-#include "BaseObject.h"
-#include "Globals.h"
+#include "globals.h"
 #include <string>
 #include <sstream>
 using std::ostringstream;
@@ -11,11 +10,11 @@ class Toolbar
 {
 public:
 	Toolbar(double windowsizeX, double windowsizeY);
-	void setButton(figure button, int num,std::shared_ptr<BaseObject> obj);
+	void setButton(figure button, int amount);
 	figure toolbarclick(sf::Vector2f loc);
 	void draw(sf::RenderWindow& window);
-	void setbuttonfillcolor(figure figure,sf::Color color);
-	void setbuttonorigin(figure figure, sf::Vector2f origin);
+	void setButtonFillColor(figure figure,sf::Color color);
+	//void setbuttonorigin(figure figure, sf::Vector2f origin);
 	void setbuttonIntRect(figure figure,sf::IntRect value);
 	void light(sf::Vector2f location);
 	void unlight(sf::Vector2f location);
@@ -31,7 +30,7 @@ public:
 private:
 	void setDefalutToolbar(double x, double y);
 	void setstrings();
-	std::map<figure,std::pair<int,std::shared_ptr<BaseObject>>> m_toolbarMap;
+	std::map<figure, int> m_toolbarMap;
 	std::shared_ptr<BaseObject> m_net;
 	sf::RectangleShape m_rec;
 	std::ostringstream m_stringBar;

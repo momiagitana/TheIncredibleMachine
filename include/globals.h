@@ -1,35 +1,59 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <box2d/box2d.h>
+#include <string>
+
+enum Menu_t
+{
+	M_BACKGROUND,
+	M_EXIT_BUTTON,
+	M_START_BUTTON
+};
+
+enum Toolbardata_t
+{
+	TIME,
+	SCORE,
+	LEVEL
+};
+
+const std::string FILE_NAME = "Board.txt";
+
+const unsigned TOOLBAR_OBJ_X = 530;
+
+const unsigned FIRST_TOOLBAR_OBJ_Y = 120;
+const unsigned SECOND_TOOLBAR_OBJ_Y = 200;
+const unsigned THIRD_TOOLBAR_OBJ_Y = 280;
 
 
-// float scaling = 100;
+const int WINDOW_WIDTH = 800;
+const int WINDOW_HEIGHT = 600;
 
-// float pixToMet(float pix)
-// {
-//     return pix * scaling;
-// }
+const unsigned obj_size = 40;
 
-// float metToPix(float met)
-// {
-//     return met / scaling;
-// }
+const float TIMESTEP = 1.0f / 60.0f;
+const int VELITER = 10;
+const int POSITER = 10;
 
-// sf::Vector2f metersToPixels(float xMeters, float yMeters)
-// {
-//     return  sf::Vector2f(metToPix(xMeters), metToPix(yMeters));    
-// }
-// sf::Vector2f metersToPixels(b2Vec2 meters)
-// {
-//     return  sf::Vector2f(metToPix(meters.x), metToPix(meters.y));
-// }
+const int NUM_OF_TOOLBAR_OBJ = 7;
 
-// b2Vec2 pixelsToMeters(float xPixels, float yPixels)
-// {
-//     return  b2Vec2(pixToMet(xPixels), pixToMet(yPixels));    
-// }
-// b2Vec2 pixelsToMeters(sf::Vector2f pixels)
-// {
-//     return  b2Vec2(pixToMet(pixels.x), pixToMet(pixels.y));    
-// }
+enum gameTexture
+{
+	T_OBJ_Basketball,
+	T_OBJ_Bowling,
+	T_OBJ_Arrows,
+	T_OBJ_Propeties,
+	T_OBJ_Worker,
+	T_OBJ_Engine,
+	T_OBJ_invalid
+};
 
+
+enum class figure
+{
+	Basketball,
+	Bowling,
+	Arrows,
+	Propeties,
+	Worker,
+	Engine,
+	invalid
+};

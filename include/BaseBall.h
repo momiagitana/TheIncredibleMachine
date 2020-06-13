@@ -5,7 +5,7 @@
 class BaseBall : public Ball
 {
 public:
-	BaseBall ();
+	BaseBall (const sf::Vector2f& center, b2World &world);
 	
 
 private:

@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <box2d/box2d.h>
 
-class PhyisicsObj
+class PhysicsObj
 {
 private:
 
@@ -11,8 +11,8 @@ private:
 
 public:
 
-    PhyisicsObj(b2World &world, const sf::Vector2f& position, const sf::Vector2f& dimensions, bool dynamic);
-    ~PhyisicsObj();
+    PhysicsObj(b2World &world, const sf::Vector2f& position, const sf::Vector2f& dimensions, bool dynamic);
+    ~PhysicsObj();
 
     b2Vec2 getPosition() const { return  m_body->GetPosition(); }
     float getAngle() const { return m_body->GetAngle();}

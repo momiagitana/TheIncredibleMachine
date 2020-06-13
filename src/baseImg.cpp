@@ -1,4 +1,4 @@
-#include "baseImg.h"
+#include "BaseImg.h"
 
 
 BaseImg::BaseImg(sf::Vector2f center, sf::Vector2f size, sf::Texture* texture)

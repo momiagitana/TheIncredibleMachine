@@ -1,7 +1,7 @@
-#include <PhyisicsObj.h>
+#include <PhysicsObj.h>
 
 
-PhyisicsObj::PhyisicsObj(b2World &world, const sf::Vector2f& center, const sf::Vector2f& size, bool dynamic)// float restitution)//, sf::Color color) 
+PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vector2f& size, bool dynamic)// float restitution)//, sf::Color color) 
 {
   
 
@@ -30,6 +30,6 @@ PhyisicsObj::PhyisicsObj(b2World &world, const sf::Vector2f& center, const sf::V
 
 }
 
-PhyisicsObj::~PhyisicsObj()
+PhysicsObj::~PhysicsObj()
 {
 }

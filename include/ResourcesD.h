@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Globals.h"
+#include "globals.h"
 #include <fstream>
 #include <sstream>
-#include<iostream>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 

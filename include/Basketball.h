@@ -2,11 +2,10 @@
 #include"Ball.h"
 
 
-class Basketball : public Ball
+class BasketBall : public Ball
 {
 public:
-	Basketball();
-
+	BasketBall(const sf::Vector2f& center, b2World &world);
 
 private:
 
