@@ -1,3 +1,5 @@
+
+#include "OverallController.h"
 #include <SFML/Graphics.hpp>
 #include <box2d/box2d.h>
 #include <vector>
@@ -13,6 +15,7 @@ int32 positionIterations = 2;
 
 
 int main()
+
 {   
     sf::Texture windmill;
     windmill.loadFromFile("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/wind.png");
@@ -74,5 +77,14 @@ int main()
         }
 
     }
+
+
+//=======
+
+
+	OverallController game;
+	game.run();
+
+	EXIT_SUCCESS;
 }
 

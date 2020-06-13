@@ -1,4 +1,19 @@
 ﻿target_sources (IncredibleMachine PRIVATE "main.cpp"
+
                                           "phyisicsObj.cpp"
                                           "baseImg.cpp"
-                                          "gameObj.cpp")
+                                          "gameObj.cpp"
+
+										  "Board.cpp"
+										  "OverallController.cpp"
+										  "BaseObject.cpp"
+										  "GameMenu.cpp"
+										  "Level.cpp"
+										  "LevelController.cpp"
+										  "FileHandler.cpp"
+										  "Ball.cpp"
+										  "BaseBall.cpp"
+										  "Basketball.cpp"
+										  "BrickWall.cpp"
+										  "Surface.cpp")
+
