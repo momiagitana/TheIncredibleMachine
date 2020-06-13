@@ -20,6 +20,7 @@ public:
 private:
 
 	PhysicsObj m_phyObj;
+	bool m_movable; //add variable to constructor
 	
 	void updateLoc();
 
