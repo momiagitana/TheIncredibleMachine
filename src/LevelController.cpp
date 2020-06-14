@@ -3,7 +3,7 @@
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world) m_window(win) m_toolbar(lvl)
+	:m_board(lvl, world) m_window(win) m_toolbar(lvl)//ask yechezkel if better to send the vector
 {
 }
 
