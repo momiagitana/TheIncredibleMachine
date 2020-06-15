@@ -31,7 +31,7 @@ private:
 	sf::RenderWindow& m_window;
 	b2World& m_world;
 	GameObject_t m_selected;
-	Toolbar m_toolbar;
+	//Toolbar m_toolbar;
 
 	bool m_notFinished = true;
 	BaseImg m_currObj;
@@ -41,6 +41,7 @@ private:
 	conditionsActs m_actConditions;
 
 	bool tryRunning();
+	bool checkIfLevelFinished() const {return false;}
 
 
 

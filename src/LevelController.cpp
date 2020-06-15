@@ -1,9 +1,9 @@
 #include "LevelController.h"
-
+#include "ResourceManager.h"
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world) m_window(win) m_toolbar(lvl) m_locConditons(lvl.getLocConditions()) m_actConditions(lvl.getActConditions()) //ask yechezkel if better to send the vector
+	:m_board(lvl, world), m_window(win), m_world(world), /*m_toolbar(lvl)*/ m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()), m_currObj(sf::Vector2f(0.f,0.f), sf::Vector2f(20.f,20.f), ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
 {
 }
 
@@ -15,7 +15,7 @@ void LevelController::run()
 		drawAll();
 
 		m_board.draw(m_window);
-		m_toolbar.draw(m_window);
+		//m_toolbar.draw(m_window);
 
     m_window.display();
 
@@ -37,12 +37,12 @@ void LevelController::run()
 
 				if (clickOnToolbar(mouseLoc))
 				{
-					m_selected = m_toolbar.toolbarclick(mouseLoc);
+					//m_selected = m_toolbar.toolbarclick(mouseLoc);
 					updateMouseImg(mouseLoc);
 
 					if(m_selected == play)//needs to be inside the if ontop??
 					{
-						if(m_board.tryRunning())//apply gravitiy check if game was won
+						if(tryRunning())//apply gravitiy check if game was won
 							setlevelStatus(false);//leave the while and next level
 						else
 							m_board.resetObjectsPossitions();//from before gravity
@@ -56,7 +56,7 @@ void LevelController::run()
 					{
 						if(m_board.tryToAdd(mouseLoc, m_selected)) //returns true if managed added obj
 						{
-							m_toolbar.decreaseObjCount(m_selected);
+							//m_toolbar.decreaseObjCount(m_selected);
 							m_selected = none;
 						}
 					}
@@ -90,7 +90,7 @@ void LevelController::updateMouseLoc(const sf::Vector2f loc)
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
 {
-	return m_toolbar.clickedOnMe(mouseLoc);
+	return false; //m_toolbar.clickedOnMe(mouseLoc);
 }
 
 bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
@@ -113,10 +113,10 @@ void LevelController::drawAll()
 	m_window.clear(sf::Color::Transparent);
 
 	m_board.draw(m_window);
-	m_toolbar.draw(m_window);
+	//m_toolbar.draw(m_window);
 	m_currObj.draw(m_window);
 
-  m_window.display();
+  	m_window.display();
 }
 
 bool LevelController::tryRunning()
@@ -142,7 +142,7 @@ bool LevelController::tryRunning()
         m_world.Step(TIMESTEP, VELITER, POSITER);
 
 		m_board.draw(m_window);
-		m_toolbar.draw(m_window);
+		//m_toolbar.draw(m_window);
 
         // Render window
         m_window.display();

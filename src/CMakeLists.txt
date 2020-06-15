@@ -10,6 +10,7 @@
 										  "BasketBall.cpp"
 										  "BrickWall.cpp"
 										  "Surface.cpp"
+										  "Resizable.cpp"
 										  
 										  "Board.cpp"
 										  "OverallController.cpp"

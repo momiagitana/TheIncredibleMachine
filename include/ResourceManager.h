@@ -13,16 +13,6 @@ makes sure they wont be loaded more then once
 class ResourceManager
 {
 public:
-	// enum class Texture 
-	// {
-	// 	balloon,
-	// 	basketBall,
-	// 	baseBall,
-	// 	bowlingBall,
-	// 	conveyor,
-	// 	flooringHorizontal,
-	// 	flooringVertical
-	// };
 
 	enum class Font
 	{
