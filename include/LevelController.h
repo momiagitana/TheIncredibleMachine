@@ -24,7 +24,9 @@ private:
 	b2World& m_world;
 	GameObject_t m_selected;
 	Toolbar m_toolbar;
-
+	
+	conditionsLocs m_locConditons;
+	conditionsActs m_actConditions;
 
 	bool tryRunning();
 

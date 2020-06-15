@@ -3,7 +3,7 @@
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world) m_window(win) m_toolbar(lvl)//ask yechezkel if better to send the vector
+	:m_board(lvl, world) m_window(win) m_toolbar(lvl) m_locConditons(lvl.getLocConditions()) m_actConditions(lvl.getActConditions()) //ask yechezkel if better to send the vector
 {
 }
 
@@ -67,7 +67,7 @@ bool LevelController::tryRunning()
     {
 		if(stepCounter == 10)//change 10 to const
 		{
-			if(checkIfLevelFinished())
+			if(checkIfLevelFinished()) //we check every 10 step
 				return true;
 			else
 				stepCounter = 0;

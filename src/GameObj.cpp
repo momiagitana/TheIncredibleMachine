@@ -4,7 +4,8 @@ GameObj::GameObj(const sf::Vector2f& center, const sf::Vector2f& size, sf::Textu
 	:BaseImg(center, size, texture), m_phyObj(world, center, size, dynamic), m_movable(movable)
 {
 	static int ID = 0;
-	I
+	m_ID = ID;
+	ID ++;
 }
 
 void GameObj::draw (sf::RenderWindow& win)
