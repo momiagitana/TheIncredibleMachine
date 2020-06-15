@@ -33,7 +33,7 @@ private:
 	GameObject_t m_selected;
 	//Toolbar m_toolbar;
 
-	bool m_notFinished = true;
+	bool m_finished = false;
 	BaseImg m_currObj;
 
 	

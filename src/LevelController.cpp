@@ -10,19 +10,13 @@ LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWin
 void LevelController::run()
 {
 	
-    while (m_window.isOpen())
+    while (m_window.isOpen() && !m_finished)
     {
 		drawAll();
 
-		m_board.draw(m_window);
-		//m_toolbar.draw(m_window);
-
-    m_window.display();
-
-
 		sf::Event event;
 
-		while (m_window.pollEvent(event) && !levelStatus())// level status might have to be on the outer while
+		while (m_window.pollEvent(event) && !m_finished)// level status might have to be on the outer while
         {
             switch (event.type)
             {
@@ -33,6 +27,8 @@ void LevelController::run()
 
             case sf::Event::MouseButtonReleased:
 			{
+				if (event.mouseButton.button == sf::Mouse::Right)
+					tryRunning();
 
                 auto mouseLoc = m_window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
 
@@ -44,7 +40,7 @@ void LevelController::run()
 					if(m_selected == play)//needs to be inside the if ontop??
 					{
 						if(tryRunning())//apply gravitiy check if game was won
-							setlevelStatus(false);//leave the while and next level
+							m_finished = true;//leave the while and next level
 						else
 							m_board.resetObjectsPossitions();//from before gravity
 					}
@@ -102,12 +98,12 @@ bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
 
 bool LevelController::levelStatus()
 {
-	return m_notFinished;
+	return m_finished;
 }
 
 bool LevelController::setlevelStatus(const bool status)
 {
-	m_notFinished = status;
+	m_finished = status;
 }
 
 void LevelController::drawAll()

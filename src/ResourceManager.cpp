@@ -32,7 +32,7 @@ ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
 	// loadTexture("balloonPopping.png", Texture::balloonPopping);
-	// loadTexture("basketBall.png", Texture::basketBall);
+	//loadTexture("basketBall.png", GameObject_t::basketBall);
 	// loadTexture("baseBall.png", Texture::baseBall);
 	// loadTexture("bowlingBall.png", Texture::bowlingBall);
 	// loadTexture("conveyor.png", Texture::conveyor);
@@ -41,13 +41,13 @@ ResourceManager::ResourceManager()
 	
 
 
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/balloonPopping.png", GameObject_t::balloon);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/basketBall.png", GameObject_t::basketBall);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/baseBall.png", GameObject_t::baseBall);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bowlingBall.png", GameObject_t::bowlingBall);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/conveyor.png", GameObject_t::conveyor);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bricks.png", GameObject_t::brickWallH);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bricksV.png", GameObject_t::brickWallV);
+	loadTexture("build/balloonPopping.png", GameObject_t::balloon);
+	loadTexture("build/basketBall.png", GameObject_t::basketBall);
+	loadTexture("build/baseBall.png", GameObject_t::baseBall);
+	loadTexture("build/bowlingBall.png", GameObject_t::bowlingBall);
+	loadTexture("build/conveyor.png", GameObject_t::conveyor);
+	loadTexture("build/bricks.png", GameObject_t::brickWallH);
+	loadTexture("build/bricksV.png", GameObject_t::brickWallV);
 
 	
 
