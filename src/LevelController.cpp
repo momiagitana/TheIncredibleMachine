@@ -30,7 +30,7 @@ void LevelController::run()
                 break;
             case sf::Event::MouseButtonReleased:
 
-                auto mouseLoc = window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
+                auto mouseLoc = m_window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
 				if (clickOnToolbar(mouseLoc))
 					;//m_selection = m_toolbar.handleClick(moseLoc);
 				
@@ -56,5 +56,53 @@ void LevelController::run()
 
     }
 
+
+}
+
+bool LevelController::tryRunning()
+{
+	int stepCounter = 0;
+
+	while (m_window.isOpen())
+    {
+		if(stepCounter == 10)//change 10 to const
+		{
+			if(checkIfLevelFinished())
+				return true;
+			else
+				stepCounter = 0;
+		}
+		else
+			stepCounter++;		
+
+      	// Update window
+        m_window.clear(sf::Color::Transparent);
+
+        // Update world Box2D
+        m_world.Step(TIMESTEP, VELITER, POSITER);
+
+		m_board.draw(m_window);
+		m_toolbar.draw(m_window);
+
+        // Render window
+        m_window.display();
+
+		sf::Event event;
+		while (m_window.pollEvent(event))
+        {
+            switch (event.type)
+            {
+            case sf::Event::Closed:
+                m_window.close();
+                break;
+            case sf::Event::MouseButtonReleased:
+
+                if (event.mouseButton.button == sf::Mouse::Right)
+					return false;
+
+			}
+        }
+
+    }
 
 }

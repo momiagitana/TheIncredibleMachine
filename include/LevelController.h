@@ -23,7 +23,10 @@ private:
 	sf::RenderWindow& m_window;
 	b2World& m_world;
 	GameObject_t m_selected;
-	//Toolbar m_toolbar;
+	Toolbar m_toolbar;
+
+
+	bool tryRunning();
 
 
 };
