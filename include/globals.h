@@ -8,19 +8,6 @@ enum Menu_t
 	M_START_BUTTON
 };
 
-enum GameObject_t
-{
-	balloon,
-	basketBall,
-	baseBall,
-	bowlingBall,
-	conveyor,
-	flooringHorizontal,
-	flooringVertical,
-	play,
-	none
-
-};
 
 enum Toolbardata_t
 {
@@ -43,9 +30,25 @@ const int WINDOW_HEIGHT = 600;
 
 const unsigned obj_size = 40;
 
+
+enum GameObject_t
+{
+	balloon,
+	basketBall,
+	baseBall,
+	bowlingBall,
+	conveyor,
+	flooringHorizontal,
+	flooringVertical,
+	play,
+	none
+
+};
+
 const float TIMESTEP = 1.0f / 60.0f;
 const int VELITER = 10;
 const int POSITER = 10;
+
 
 const bool DYNAMIC = true;
 const bool STATIC = false;

@@ -37,13 +37,23 @@ void Board::draw(sf::RenderWindow& window)
 }
 
 
-bool Board::levelFinished()
-{
+// bool Board::levelFinished()
+// {
 
-	return false;
+// 	return false;
+// }
+
+// void Board::MoveObjects(sf::Time deltaTime)
+// {
+
+// }
+
+bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj)
+{
+	return true;
 }
 
-void Board::MoveObjects(sf::Time deltaTime)
+GameObject_t Board::handleClick(sf::Vector2f mouseLoc)
 {
 
 }

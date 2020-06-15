@@ -11,7 +11,7 @@ class Toolbar
 public:
 	Toolbar(double windowsizeX, double windowsizeY);
 	void setButton(figure button, int amount);
-	figure toolbarclick(sf::Vector2f loc);
+	GameObject_t toolbarclick(sf::Vector2f loc);
 	void draw(sf::RenderWindow& window);
 	void setButtonFillColor(figure figure,sf::Color color);
 	//void setbuttonorigin(figure figure, sf::Vector2f origin);
