@@ -32,8 +32,16 @@ private:
 	b2World& m_world;
 	GameObject_t m_selected;
 	Toolbar m_toolbar;
+
 	bool m_notFinished = true;
 	BaseImg m_currObj;
+
+	
+	conditionsLocs m_locConditons;
+	conditionsActs m_actConditions;
+
+	bool tryRunning();
+
 
 
 };

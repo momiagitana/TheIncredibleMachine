@@ -3,14 +3,17 @@
 
 Level::Level()
 {
+	addToolbarObj(basketBall,3);
+	addToolbarObj(baseBall,2);
+	
+	addBoardObj(baseBall,sf::Vector2f(100.f,100.f)); //id 0
+	addBoardObj(baseBall,sf::Vector2f(150.f,150.f)); //id 1
+	addBoardObj(baseBall,sf::Vector2f(200.f,200.f));
+	addBoardObj(basketBall,sf::Vector2f(100.f,300.f));
+	addBoardObj(balloon, sf::Vector2f(300, 200)); //id = 4
 
-	m_toolbar.push_back(std::pair(basketBall,3));
-	m_toolbar.push_back(std::pair(baseBall,2));
-
-	m_initial.push_back(std::pair(baseBall,sf::Vector2f(100.f,100.f)));
-	m_initial.push_back(std::pair(baseBall,sf::Vector2f(150.f,150.f)));
-	m_initial.push_back(std::pair(baseBall,sf::Vector2f(200.f,200.f)));
-	m_initial.push_back(std::pair(conveyor,sf::Vector2f(100.f,300.f)));
+	addCondLoc (0, sf::Vector2f(200,200), sf::Vector2f(100,100)); //object id=0 has to be inside the square with pos 200,200 and size 100,100
+	addCondAct (4); //balloon with id 4 has to be ON
 
 }
 

@@ -3,7 +3,7 @@
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world), m_window(win), m_toolbar(lvl)//ask yechezkel if better to send the vector
+	:m_board(lvl, world) m_window(win) m_toolbar(lvl) m_locConditons(lvl.getLocConditions()) m_actConditions(lvl.getActConditions()) //ask yechezkel if better to send the vector
 {
 }
 
@@ -13,6 +13,12 @@ void LevelController::run()
     while (m_window.isOpen())
     {
 		drawAll();
+
+		m_board.draw(m_window);
+		m_toolbar.draw(m_window);
+
+    m_window.display();
+
 
 		sf::Event event;
 
@@ -71,6 +77,7 @@ void LevelController::run()
 
 }
 
+
 void LevelController::updateMouseImg(const sf::Vector2f loc)
 {
 	m_currObj = BaseImg(loc, sf::Vector2f(30.f,50.f), ResourceManager::instance().getTexture(m_selected));
@@ -109,6 +116,54 @@ void LevelController::drawAll()
 	m_toolbar.draw(m_window);
 	m_currObj.draw(m_window);
 
-    m_window.display();
+  m_window.display();
+}
+
+bool LevelController::tryRunning()
+{
+	int stepCounter = 0;
+
+	while (m_window.isOpen())
+    {
+		if(stepCounter == 10)//change 10 to const
+		{
+			if(checkIfLevelFinished()) //we check every 10 step
+				return true;
+			else
+				stepCounter = 0;
+		}
+		else
+			stepCounter++;		
+
+      	// Update window
+        m_window.clear(sf::Color::Transparent);
+
+        // Update world Box2D
+        m_world.Step(TIMESTEP, VELITER, POSITER);
+
+		m_board.draw(m_window);
+		m_toolbar.draw(m_window);
+
+        // Render window
+        m_window.display();
+
+		sf::Event event;
+		while (m_window.pollEvent(event))
+        {
+            switch (event.type)
+            {
+            case sf::Event::Closed:
+                m_window.close();
+                break;
+            case sf::Event::MouseButtonReleased:
+
+                if (event.mouseButton.button == sf::Mouse::Right)
+					return false;
+
+			      }
+        }
+
+    }
+
 
 }
