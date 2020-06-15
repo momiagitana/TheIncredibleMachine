@@ -4,7 +4,6 @@
 PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vector2f& size, bool dynamic)// float restitution)//, sf::Color color) 
 {
   
-
 	b2PolygonShape polygonShape;
     b2FixtureDef fixtureDef;
     b2BodyDef bodyDef;
@@ -25,7 +24,6 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vec
     fixtureDef.density	= 0.7f;
 
     m_body->CreateFixture(&fixtureDef);
-
 
 
 }

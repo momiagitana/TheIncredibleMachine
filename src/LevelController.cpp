@@ -20,7 +20,6 @@ void LevelController::run()
         m_window.display();
 
 
-        
 		sf::Event event;
 		while (m_window.pollEvent(event))
         {

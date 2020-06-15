@@ -6,8 +6,6 @@
 #include "PhysicsObj.h"
 
 
-
-
 class GameObj : public BaseImg
 {
 public:
@@ -26,4 +24,3 @@ private:
 
 	
 };
-
