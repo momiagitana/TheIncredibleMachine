@@ -1,15 +1,14 @@
-#include "OverallController.h"
-#include "GameObj.h"
 
-#include "globals.h"
-#include <iostream>
-using std::cout;
+//#include "globals.h"
+//#include <iostream>
+//using std::cout;
 
 #include <SFML/Graphics.hpp>
 #include <box2d/box2d.h>
-#include <vector>
-#include "BaseBall.h"
-#include "BasketBall.h"
+//#include <vector>
+
+#include "LevelController.h"
+//#include "Level.h"
 
 int main()
 {   
@@ -30,11 +29,11 @@ int main()
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Collision Shapes", sf::Style::Default, settings);
     window.setFramerateLimit(60);
 
-   
+    Level lvl;
+    LevelController lvlCtrl(lvl, (*m_world.get()), window);
 
+    lvlCtrl.run();
 
-
-//=======
 
 
 	// OverallController game;

@@ -16,6 +16,7 @@
 										  "OverallController.cpp"
 										  "GameMenu.cpp"
 										  "Level.cpp"
+										  "LevelController.cpp"
 										  "FileHandler.cpp"
 										
 										  "ResourceManager.cpp"

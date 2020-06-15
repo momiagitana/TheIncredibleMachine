@@ -32,6 +32,7 @@ void LevelController::run()
                 break;
 
             case sf::Event::MouseButtonReleased:
+			{
 
                 auto mouseLoc = m_window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
 
@@ -64,9 +65,10 @@ void LevelController::run()
 						m_selected = m_board.handleClick(mouseLoc);//tries to grabb and object flip it or delete it..
 				}
 				break;
+			}
 
 			case sf::Event::MouseMoved:
-				auto mouseLocation = sf::Mouse::getPosition(m_window);
+				auto mouseLoc = m_window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
 				updateMouseLoc(mouseLoc);
 			break;
 			}

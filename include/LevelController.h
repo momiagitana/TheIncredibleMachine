@@ -4,8 +4,8 @@
 #include <vector>
 #include "Board.h"
 #include "Level.h"
-#include "Toolbar.h"
-#include "globals.h"
+//#include "Toolbar.h"
+//#include "globals.h"
 
 
 class LevelController
