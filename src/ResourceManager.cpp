@@ -36,8 +36,8 @@ ResourceManager::ResourceManager()
 	// loadTexture("baseBall.png", Texture::baseBall);
 	// loadTexture("bowlingBall.png", Texture::bowlingBall);
 	// loadTexture("conveyor.png", Texture::conveyor);
-	// loadTexture("flooringHorizontal.png", Texture::flooringHorizontal);
-	// loadTexture("flooringVertical.png", Texture::flooringVertical);
+	// loadTexture("bricks.png", Texture::brickWallH);
+	// loadTexture("bricksV.png", Texture::brickWallV);
 	
 
 	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/balloonPopping.png", Texture::balloon);
@@ -45,8 +45,8 @@ ResourceManager::ResourceManager()
 	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/baseBall.png", Texture::baseBall);
 	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bowlingBall.png", Texture::bowlingBall);
 	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/conveyor.png", Texture::conveyor);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/flooringHorizontal.png", Texture::flooringHorizontal);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/flooringVertical.png", Texture::flooringVertical);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bricks.png", Texture::brickWallH);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bricksV.png", Texture::brickWallV);
 	
 
 	//---------- font ---win-------

@@ -47,27 +47,10 @@ const float TIMESTEP = 1.0f / 60.0f;
 const int VELITER = 10;
 const int POSITER = 10;
 
-const int NUM_OF_TOOLBAR_OBJ = 7;
+const bool DYNAMIC = true;
+const bool STATIC = false;
+const bool MOVABLE = true;
+const bool UNMOVABLE = false;
 
-enum gameTexture
-{
-	T_OBJ_Basketball,
-	T_OBJ_Bowling,
-	T_OBJ_Arrows,
-	T_OBJ_Propeties,
-	T_OBJ_Worker,
-	T_OBJ_Engine,
-	T_OBJ_invalid
-};
-
-
-enum class figure
-{
-	Basketball,
-	Bowling,
-	Arrows,
-	Propeties,
-	Worker,
-	Engine,
-	invalid
-};
+const int FLOORING_UNIT = 16; //pixels
+const int FLOORING_MARGIN = 1; //pix

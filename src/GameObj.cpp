@@ -1,8 +1,11 @@
 #include "GameObj.h"
 
-GameObj::GameObj(const sf::Vector2f& center, const sf::Vector2f& size, sf::Texture* texture, bool dynamic, b2World &world)
-	:BaseImg(center, size, texture), m_phyObj(world, center, size, dynamic)
+GameObj::GameObj(const sf::Vector2f& center, const sf::Vector2f& size, sf::Texture* texture, bool dynamic, bool movable, b2World &world)
+	:BaseImg(center, size, texture), m_phyObj(world, center, size, dynamic), m_movable(movable)
 {
+	static int ID = 0;
+	m_ID = ID;
+	ID ++;
 }
 
 void GameObj::draw (sf::RenderWindow& win)

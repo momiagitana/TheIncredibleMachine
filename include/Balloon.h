@@ -6,7 +6,7 @@
 class Balloon : public GameObj
 {
 public:
-	Balloon(const sf::Vector2f& center, b2World &world);
+	Balloon(const sf::Vector2f& center, bool movable, b2World &world);
 	
 private:
 	

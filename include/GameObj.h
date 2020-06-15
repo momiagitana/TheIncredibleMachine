@@ -10,7 +10,7 @@ class GameObj : public BaseImg
 {
 public:
 
-	GameObj(const sf::Vector2f& center, const sf::Vector2f& size, sf::Texture* texture, bool dynamic, b2World &world);
+	GameObj(const sf::Vector2f& center, const sf::Vector2f& size, sf::Texture* texture, bool dynamic, bool movable, b2World &world);
 
 	void draw (sf::RenderWindow&);
 
@@ -18,7 +18,8 @@ public:
 private:
 
 	PhysicsObj m_phyObj;
-	bool m_movable; //add variable to constructor
+	bool m_movable;
+	int m_ID;
 	
 	void updateLoc();
 
