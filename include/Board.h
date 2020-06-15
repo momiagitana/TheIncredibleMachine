@@ -21,6 +21,8 @@ public:
 	Board(const Level& level, b2World& world);
 	void setBoard(const Level& level, b2World& world);
 	void draw(sf::RenderWindow& window);
+	bool tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj);
+	GameObject_t handleClick(sf::Vector2f mouseLoc);
 	//void resetLoc();
 
 

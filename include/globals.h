@@ -80,6 +80,19 @@ enum gameTexture
 	T_OBJ_invalid
 };
 
+enum GameObject_t
+{
+	balloon,
+	basketBall,
+	baseBall,
+	bowlingBall,
+	conveyor,
+	flooringHorizontal,
+	flooringVertical,
+	play,
+	none
+
+};
 
 enum class figure
 {

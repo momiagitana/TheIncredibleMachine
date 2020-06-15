@@ -19,7 +19,7 @@ void Toolbar::setButton(figure button, int amount)
 	m_toolbarMap.insert(std::pair<figure, int>(amount,int));
 }
 
-figure Toolbar::toolbarclick(sf::Vector2f loc)
+GameObject_t Toolbar::toolbarclick(sf::Vector2f loc)
 {
 
 	for (auto it = m_toolbarMap.begin(); it != m_toolbarMap.end(); it++)
@@ -30,7 +30,7 @@ figure Toolbar::toolbarclick(sf::Vector2f loc)
 		}
 	}
 	
-	return figure::invalid;
+	return figure::invalid;//change for gameObject
 }
 
 void Toolbar::draw(sf::RenderWindow& window)

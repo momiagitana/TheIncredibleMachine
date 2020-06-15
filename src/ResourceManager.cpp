@@ -9,7 +9,7 @@ ResourceManager& ResourceManager::instance()
 }
 
 
-sf::Texture* ResourceManager::getTexture(Texture name)
+sf::Texture* ResourceManager::getTexture(GameObject_t name)
 {
 	return &(m_textures[name]);
 }
@@ -40,13 +40,13 @@ ResourceManager::ResourceManager()
 	// loadTexture("flooringVertical.png", Texture::flooringVertical);
 	
 
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/balloonPopping.png", Texture::balloon);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/basketBall.png", Texture::basketBall);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/baseBall.png", Texture::baseBall);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bowlingBall.png", Texture::bowlingBall);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/conveyor.png", Texture::conveyor);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/flooringHorizontal.png", Texture::flooringHorizontal);
-	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/flooringVertical.png", Texture::flooringVertical);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/balloonPopping.png", GameObject_t::balloon);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/basketBall.png", GameObject_t::basketBall);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/baseBall.png", GameObject_t::baseBall);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/bowlingBall.png", GameObject_t::bowlingBall);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/conveyor.png", GameObject_t::conveyor);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/flooringHorizontal.png", GameObject_t::flooringHorizontal);
+	loadTexture("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/flooringVertical.png", GameObject_t::flooringVertical);
 	
 
 	//---------- font ---win-------
@@ -65,11 +65,13 @@ ResourceManager::ResourceManager()
 
 }
 
-void ResourceManager::loadTexture(std::string path, Texture name)
+void ResourceManager::loadTexture(std::string path, GameObject_t name)
 {
 	sf::Texture temp;
 	temp.loadFromFile(path);
-	m_textures[name] = temp;
+	m_textures[name] = temp; // why cant it be m_textures[name].loadFromFile(path);
+
+	
 }
 
 void ResourceManager::loadFont(std::string path, Font name)
