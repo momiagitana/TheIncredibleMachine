@@ -1,5 +1,5 @@
 #include "BaseImg.h"
-
+#include <iostream>
 
 BaseImg::BaseImg(sf::Vector2f center, sf::Vector2f size, sf::Texture* texture)
 {
@@ -45,6 +45,14 @@ void BaseImg::setSize(sf::Vector2f size)
 {
 	m_sprite.scale((size.x / m_sprite.getGlobalBounds().width), (size.y / m_sprite.getGlobalBounds().height));
 }
+
+void BaseImg::setposition(sf::Vector2f loc)
+{
+	m_sprite.setPosition(loc);
+	std::cout << "newloc = (" << loc.x << " , " << loc.y << ")\n";
+}
+
+
 
 sf::Vector2f BaseImg::getSize() const
 {

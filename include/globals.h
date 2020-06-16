@@ -31,9 +31,13 @@ enum GameObject_t
 	brickWallH,
 	brickWallV,
 	play,
+	worker,
+	arrows,
 	none
 
 };
+
+
 
 const float TIMESTEP = 1.0f / 60.0f;
 const int VELITER = 10;

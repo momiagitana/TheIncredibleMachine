@@ -16,6 +16,7 @@ public:
 
     b2Vec2 getPosition() const { return  m_body->GetPosition(); }
     float getAngle() const { return m_body->GetAngle();}
+    void setPosition(sf::Vector2f);
 
 
 	float PPM = 64.f;

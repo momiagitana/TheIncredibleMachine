@@ -1,16 +1,36 @@
 #include "Button.h"
 #include "Globals.h"
 
-Button::Button(ResourceManager::ToolBarobj_t obj, int num_of_apperances)
-	:BaseImg(sf::Vector2f(obj_size,obj_size),
-		   sf::Vector2f(0,0),
-		ResourceManager::instance().getToolBartexture(obj))
-	,m_obj(obj),
-	m_apperces_Counter(num_of_apperances)
+
+Button::Button(GameObject_t obj, int apearCounter)
+	:BaseImg(sf::Vector2f(obj_size,obj_size),sf::Vector2f(30,30),ResourceManager::instance().getTexture(obj)),
+	m_obj(obj),
+	m_apearCounter(apearCounter)
 {
 }
 
-ResourceManager::ToolBarobj_t Button::clickedOnMe(sf::Vector2f loc)
+GameObject_t Button::clicked(sf::Vector2f loc)
 {
-	return ResourceManager::ToolBarobj_t();
+	return GameObject_t();
 }
+
+int Button::getNumOfApeariences()
+{
+	return m_apearCounter;
+}
+
+void Button::DecreaseNumOfApeariences()
+{
+	m_apearCounter--;
+}
+
+void Button::IncreaseNumOfApeariences()
+{
+	m_apearCounter++;
+}
+
+GameObject_t Button::getobj()
+{
+	return m_obj;
+}
+

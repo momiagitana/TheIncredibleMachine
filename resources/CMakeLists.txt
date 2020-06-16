@@ -6,6 +6,8 @@ configure_file ("conveyor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("flooringHorizontal.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("flooringVertical.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("worker.jpg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("arrows.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 if (WIN32)

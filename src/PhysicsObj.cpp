@@ -31,3 +31,10 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vec
 PhysicsObj::~PhysicsObj()
 {
 }
+
+
+void PhysicsObj::setPosition(sf::Vector2f pos)
+{
+    m_body->SetTransform(b2Vec2(pos.x * MPP, pos.y * MPP), 0.f);
+    m_body->SetLinearVelocity(b2Vec2(0, 0));
+}

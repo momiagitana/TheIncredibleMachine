@@ -14,12 +14,14 @@ public:
 
 	void draw (sf::RenderWindow&);
 
+	void setInitialLoc();
 
 private:
 
 	PhysicsObj m_phyObj;
 	bool m_movable;
 	int m_ID;
+	sf::Vector2f m_initialLoc;
 	
 	void updateLoc();
 

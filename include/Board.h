@@ -23,7 +23,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	bool tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj);
 	GameObject_t handleClick(sf::Vector2f mouseLoc);
-	void resetObjectsPossitions() {}
+	void resetObjectsPositions();
 	bool tryToAdd(sf::Vector2f loc, GameObject_t) { return true; }
 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
 
