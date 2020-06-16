@@ -1,183 +1,83 @@
 #include "Toolbar.h"
-#include <iostream>
-#include "Resources.h"
-#include "globals.h"
-
-const int testSize = 16;
 
 
-Toolbar::Toolbar(double x, double y)
+Toolbar::Toolbar(std::vector<std::pair<GameObject_t,int>> v)
+ :m_DATA(v),m_Idxloc(0),m_rec()
 {
-
-	setDefalutToolbar(WINDOW_WIDTH,WINDOW_HEIGHT);
-	setstrings();
+    setDefalutToolbar();
+    for (auto i : m_DATA)
+    {
+        setButton(i);
+    }
 }
 
-
-void Toolbar::setButton(figure button, int amount)
+void Toolbar::setButton(std::pair<GameObject_t, int> p)
 {
-	m_toolbarMap.insert(std::pair<figure, int>(amount,int));
+    m_toolbar.emplace_back(std::make_shared<Button>(p.first, p.second))
+        ->setposition(sf::Vector2f(WINDOW_WIDTH-50, 0+100+m_Idxloc*80));
+    setIdxLoc();
 }
 
-GameObject_t Toolbar::toolbarclick(sf::Vector2f loc)
-{
-
-	for (auto it = m_toolbarMap.begin(); it != m_toolbarMap.end(); it++)
-	{
-		if (it->second.second->getGlobalBounds().contains(loc.x, loc.y))
-		{
-			return it->first;
-		}
-	}
-	
-	return figure::invalid;//change for gameObject
-}
 
 void Toolbar::draw(sf::RenderWindow& window)
 {
-	window.draw(m_rec);
-	window.draw(m_TextBar1);
-	window.draw(m_TextBar2);
-	window.draw(m_TextBar3);
-	for (auto it = m_toolbarMap.begin(); it != m_toolbarMap.end(); it++)
-	{
-		it->second.second->draw(window);
-	}
+    window.draw(m_rec);
+    for (auto& i : m_toolbar)
+    {
+        i->draw(window);
+    }
 }
 
-void Toolbar::setButtonFillColor(figure figure, sf::Color color)
+void Toolbar::setIdxLoc()
 {
-	if (m_toolbarMap.find(figure) != m_toolbarMap.end())
-	{
-		m_toolbarMap.at(figure).second->setfillcolor(color);
-	}
+    m_Idxloc++;
+    if (m_Idxloc == 5)
+    {
+        m_Idxloc = 0;
+    }
 }
 
-// void Toolbar::setbuttonorigin(figure figure, sf::Vector2f origin)
-// {
-// 	if (m_toolbarMap.find(figure) != m_toolbarMap.end())
-// 	{
-// 		m_toolbarMap.at(figure).second->setorigin(origin);
-// 	}
-// }
-
-void Toolbar::setbuttonIntRect(figure figure, sf::IntRect value)
+bool Toolbar::clickedOnMe(sf::Vector2f loc)
 {
-	if (m_toolbarMap.find(figure) != m_toolbarMap.end())
-	{
-		m_toolbarMap.at(figure).second->setIntRect(value);
-	}
+ 
+    for (auto& i : m_toolbar)
+    {
+        if (i->getGlobalBounds().contains(loc))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
-void Toolbar::light(sf::Vector2f location)
+GameObject_t Toolbar::toolbarClick(sf::Vector2f loc)
 {
-	for (auto it = m_toolbarMap.begin(); it != m_toolbarMap.end(); it++)
-	{
-		if (it->second.second->getGlobalBounds().contains(location))
-		{
-			it->second.second->setfillcolor(sf::Color(255, 255, 255, 120));
-			
-		}
-	}
-
+    for (auto i : m_toolbar)
+    {
+        if (i->getGlobalBounds().contains(loc))
+        {
+            return i->getobj();
+        }
+    }
 }
 
-void Toolbar::unlight(sf::Vector2f location)
+void Toolbar::setDefalutToolbar()
 {
-	for (auto it = m_toolbarMap.begin(); it != m_toolbarMap.end(); it++)
-	{
-		if (it->second.second->getGlobalBounds().contains(location))
-			it->second.second->setfillcolor(sf::Color(255,255,255,255));
-	}
-}
+    m_toolbar.emplace_back(std::make_shared<Button>(GameObject_t::worker, 0))
+        ->setposition(sf::Vector2f(WINDOW_WIDTH, 0));
+    m_toolbar.at(0)->setSize(sf::Vector2f(100, 50));
+    setIdxLoc();
 
+    m_toolbar.emplace_back(std::make_shared<Button>(GameObject_t::arrows, 0))
+        ->setposition(sf::Vector2f(WINDOW_WIDTH,50));
+    m_toolbar.at(1)->setSize(sf::Vector2f(100, 50));
+    setIdxLoc();
+    
 
-void Toolbar::setLevelObjects(figure first, int firstNumofapp,  
-							  figure second,int secondNumofapp,	
-							  figure third, int thirdNumofapp)
-{
-	m_firstObjCurrApp = firstNumofapp;
-	m_secondObjCurrApp= secondNumofapp;
-	m_thirdObjCurrApp = thirdNumofapp;
-
-	setButton(first, firstNumofapp, std::make_shared<BaseObject>
-		(Resources::instance().getRequestedTexture(first), sf::Vector2f(TOOLBAR_OBJ_X, FIRST_TOOLBAR_OBJ_Y), sf::Vector2f(obj_size, obj_size)));
-	setbuttonorigin(first, sf::Vector2f(obj_size / 2, obj_size / 2));
-
-	setButton(second, secondNumofapp, std::make_shared<BaseObject>
-		(Resources::instance().getRequestedTexture(second), sf::Vector2f(TOOLBAR_OBJ_X, SECOND_TOOLBAR_OBJ_Y), sf::Vector2f(obj_size, obj_size)));
-	setbuttonorigin(second, sf::Vector2f(obj_size / 2, obj_size / 2));
-
-	setButton(third, secondNumofapp, std::make_shared<BaseObject>
-		(Resources::instance().getRequestedTexture(third), sf::Vector2f(TOOLBAR_OBJ_X, THIRD_TOOLBAR_OBJ_Y), sf::Vector2f(obj_size, obj_size)));
-	setbuttonorigin(third, sf::Vector2f(obj_size / 2, obj_size / 2));
-}
-
-void Toolbar::setStringbar()
-{
-	m_stringBar.str("");
-	m_stringBar << m_firstObjCurrApp;
-	m_TextBar1.setString(m_stringBar.str());
-	m_stringBar.clear();
-	m_stringBar.str("");
-	m_stringBar << m_secondObjCurrApp;
-	m_TextBar2.setString(m_stringBar.str());
-	m_stringBar.clear();
-	m_stringBar.str("");
-	m_stringBar << m_thirdObjCurrApp;
-	m_TextBar3.setString(m_stringBar.str());
-}
-
-void Toolbar::setDefalutToolbar(double x, double y)
-{
-	setButton(figure::Worker, 0, std::make_shared<BaseObject>
-		(Resources::instance().getWorkerTexture(), sf::Vector2f(x - 100, 0), sf::Vector2f(100, 50)));
-
-	setButton(figure::Arrows, 5, std::make_shared<BaseObject>
-		(Resources::instance().getArrowsTexture(), sf::Vector2f(x - 100, y - 550), sf::Vector2f(100, 50)));
-
-	m_rec.setSize(sf::Vector2f(100, 300));
-	m_rec.setPosition(500, 100);
-	m_rec.setFillColor(sf::Color(sf::Color::White));
-	m_rec.setOutlineColor(sf::Color::Yellow);
-	m_rec.setOutlineThickness(-2);
-}
-
-void Toolbar::setstrings()
-{
-	m_TextBar1.setStyle(sf::Text::Bold);
-	m_TextBar1.setCharacterSize(testSize);
-	m_TextBar1.setPosition(TOOLBAR_OBJ_X + obj_size / 2, FIRST_TOOLBAR_OBJ_Y + obj_size + 5);
-	m_TextBar1.setFont(Resources::instance().getfont());
-	m_TextBar1.setFillColor(sf::Color::Red);
-	m_TextBar1.setString(m_stringBar.str());
-
-	m_TextBar2.setStyle(sf::Text::Bold);
-	m_TextBar2.setCharacterSize(testSize);
-	m_TextBar2.setPosition(TOOLBAR_OBJ_X + obj_size / 2, SECOND_TOOLBAR_OBJ_Y + obj_size + 5);
-	m_TextBar2.setFont(Resources::instance().getfont());
-	m_TextBar2.setFillColor(sf::Color::Red);
-	m_TextBar2.setString(m_stringBar.str());
-
-	m_TextBar3.setStyle(sf::Text::Bold);
-	m_TextBar3.setCharacterSize(testSize);
-	m_TextBar3.setPosition(TOOLBAR_OBJ_X + obj_size / 2, THIRD_TOOLBAR_OBJ_Y + obj_size + 5);
-	m_TextBar3.setFont(Resources::instance().getfont());
-	m_TextBar3.setFillColor(sf::Color::Red);
-	m_TextBar3.setString(m_stringBar.str());
+    m_rec.setSize(sf::Vector2f(100, 400));
+    m_rec.setPosition(WINDOW_WIDTH-100, 100);
+    m_rec.setFillColor(sf::Color(sf::Color::White));
+    m_rec.setOutlineColor(sf::Color::Yellow);
+    m_rec.setOutlineThickness(-2);
 
 }
-
-void Toolbar::setLevelObjects(figure first, int firstNumofapp, figure second, int secondNumofapp)
-{
-	setButton(first, firstNumofapp, std::make_shared<BaseObject>
-		(Resources::instance().getRequestedTexture(first), sf::Vector2f(TOOLBAR_OBJ_X, FIRST_TOOLBAR_OBJ_Y), sf::Vector2f(obj_size, obj_size)));
-	setbuttonorigin(first, sf::Vector2f(obj_size / 2, obj_size / 2));
-
-	setButton(second, secondNumofapp, std::make_shared<BaseObject>
-		(Resources::instance().getRequestedTexture(second), sf::Vector2f(TOOLBAR_OBJ_X, SECOND_TOOLBAR_OBJ_Y), sf::Vector2f(obj_size, obj_size)));
-	setbuttonorigin(second, sf::Vector2f(obj_size / 2, obj_size / 2));
-}
-
-
-
