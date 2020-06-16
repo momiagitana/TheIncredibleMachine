@@ -15,13 +15,13 @@ void Board::setBoard(const Level& level, b2World& world)
 		{
 			case balloon:
 				m_objects.push_back(std::make_unique<Balloon>(level.getFromBoard(i).second, UNMOVABLE, world));
-
+				break;
 			case basketBall:
 				m_objects.push_back(std::make_unique<BasketBall>(level.getFromBoard(i).second, UNMOVABLE, world));
-	
+				break;
 			case baseBall:
 				m_objects.push_back(std::make_unique<BaseBall>(level.getFromBoard(i).second, UNMOVABLE, world));
-
+				break;
 			// case bowlingBall:
 			// case conveyor:
 
@@ -58,5 +58,10 @@ GameObject_t Board::handleClick(sf::Vector2f mouseLoc)
 	return none;
 }
 
+void Board::resetObjectsPositions()
+{
+	for (auto &obj : m_objects)
+		obj->setInitialLoc();
+}
 
 
