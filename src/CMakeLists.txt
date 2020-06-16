@@ -3,6 +3,7 @@
                                           "PhysicsObj.cpp"
                                           "BaseImg.cpp"
 										  "GameObj.cpp"
+										  "Button.cpp"
 
 										  "Balloon.cpp"
 										  "Ball.cpp"

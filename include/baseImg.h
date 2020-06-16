@@ -1,8 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-//#include <globals.h>
-
+#include <globals.h>
+#include "ResourceManager.h"
 
 class BaseImg
 {

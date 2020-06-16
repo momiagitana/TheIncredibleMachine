@@ -33,7 +33,7 @@ public:
 	void run(); ///test
 
 private:
-	
+
 	ResourceManager(); //private ctor for singleton
 	void loadTexture(std::string path, GameObject_t name);
 	void loadFont(std::string path, Font name);
@@ -43,4 +43,3 @@ private:
 	std::unordered_map<Font, sf::Font> m_fonts;
 	std::unordered_map<Sound, sf::SoundBuffer> m_sounds;
 };
-

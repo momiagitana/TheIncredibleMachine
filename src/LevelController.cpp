@@ -104,6 +104,7 @@ bool LevelController::levelStatus()
 bool LevelController::setlevelStatus(const bool status)
 {
 	m_finished = status;
+	return m_finished;
 }
 
 void LevelController::drawAll()

@@ -1,46 +1,31 @@
 #pragma once
-#include <map>
-#include <SFML/Graphics.hpp>
+#include "Button.h"
 #include "globals.h"
+#include "ResourceManager.h"
 #include <string>
 #include <sstream>
+#include <map>
+#include <SFML/Graphics.hpp>
+
 using std::ostringstream;
+
+using toolbarPair = std::pair<ResourceManager::ToolBarobj_t, int>;
+using toolbarObjects = std::vector<toolbarPair>;
 
 class Toolbar
 {
 public:
-	Toolbar(double windowsizeX, double windowsizeY);
-	void setButton(figure button, int amount);
-	GameObject_t toolbarclick(sf::Vector2f loc);
+	Toolbar(toolbarObjects v);
+	void setButton(toolbarPair p);
 	void draw(sf::RenderWindow& window);
-	void setButtonFillColor(figure figure,sf::Color color);
-	//void setbuttonorigin(figure figure, sf::Vector2f origin);
-	void setbuttonIntRect(figure figure,sf::IntRect value);
-	void light(sf::Vector2f location);
-	void unlight(sf::Vector2f location);
-	void setLevelObjects(figure first, int firstNumofapp,
-						 figure second, int secondNumofapp);
-	void setLevelObjects(figure first, int firstNumofapp,
-						 figure second, int secondNumofapp,
-						 figure third, int  thirdNumofapp);
-
-	void setStringbar();
-
-	
+	void setIdxLoc();
+	bool clickedOnMe(sf::Vector2f loc);
+	ResourceManager::ToolBarobj_t toolbarClick(sf::Vector2f loc);
 private:
-	void setDefalutToolbar(double x, double y);
-	void setstrings();
-	std::map<figure, int> m_toolbarMap;
-	std::shared_ptr<BaseObject> m_net;
+	void setDefalutToolbar();
+	toolbarObjects m_DATA;
 	sf::RectangleShape m_rec;
-	std::ostringstream m_stringBar;
+	std::vector<std::shared_ptr<Button>> m_toolbar;
+	int m_Idxloc;
 
-
-	sf::Text m_TextBar1;
-	sf::Text m_TextBar2;
-	sf::Text m_TextBar3;
-
-	int m_firstObjCurrApp;
-	int m_secondObjCurrApp;
-	int m_thirdObjCurrApp;
 };

@@ -55,7 +55,7 @@ bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj)
 
 GameObject_t Board::handleClick(sf::Vector2f mouseLoc)
 {
-
+	return none;
 }
 
 
