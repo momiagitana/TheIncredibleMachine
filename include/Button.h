@@ -8,10 +8,13 @@
 class Button : public BaseImg
 {
 public:
-	Button(ResourceManager::ToolBarobj_t obj, int num_of_apperances);
-	ResourceManager::ToolBarobj_t clickedOnMe(sf::Vector2f loc);
+	Button(GameObject_t obj, int apearCounter);
+	GameObject_t clicked(sf::Vector2f loc);
+	int getNumOfApeariences();
+	void DecreaseNumOfApeariences();
+	void IncreaseNumOfApeariences();
 
 private:
-	ResourceManager::ToolBarobj_t m_obj;
-	int m_apperces_Counter;
+	GameObject_t m_obj;
+	int m_apearCounter;
 };

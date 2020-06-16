@@ -14,10 +14,6 @@ sf::Texture* ResourceManager::getTexture(GameObject_t name)
 	return &(m_textures[name]);
 }
 
-sf::Texture* ResourceManager::getToolbarTexture(GameObject_t obj)
-{
-	return &(m_toolbarTexture[obj]);
-}
 
 
 sf::Font& ResourceManager::getFont(Font name)

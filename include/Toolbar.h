@@ -6,10 +6,11 @@
 #include <sstream>
 #include <map>
 #include <SFML/Graphics.hpp>
+#include "globals.h"
 
 using std::ostringstream;
 
-using toolbarPair = std::pair<ResourceManager::ToolBarobj_t, int>;
+using toolbarPair = std::pair<GameObject_t, int>;
 using toolbarObjects = std::vector<toolbarPair>;
 
 class Toolbar
