@@ -62,6 +62,7 @@ void Board::resetObjectsPositions()
 {
 	for (auto &obj : m_objects)
 		obj->setInitialLoc();
+		
 }
 
 

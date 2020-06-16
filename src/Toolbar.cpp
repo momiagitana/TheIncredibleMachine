@@ -13,8 +13,7 @@ Toolbar::Toolbar(std::vector<std::pair<GameObject_t,int>> v)
 
 void Toolbar::setButton(std::pair<GameObject_t, int> p)
 {
-    m_toolbar.emplace_back(std::make_shared<Button>(p.first, p.second))
-        ->setposition(sf::Vector2f(WINDOW_WIDTH-50, 0+100+m_Idxloc*80));
+    m_toolbar.emplace_back(std::make_shared<Button>(p.first, p.second))->setposition(sf::Vector2f(WINDOW_WIDTH-50, 0+100+m_Idxloc*80));
     setIdxLoc();
 }
 
@@ -63,8 +62,7 @@ GameObject_t Toolbar::toolbarClick(sf::Vector2f loc)
 
 void Toolbar::setDefalutToolbar()
 {
-    m_toolbar.emplace_back(std::make_shared<Button>(GameObject_t::worker, 0))
-        ->setposition(sf::Vector2f(WINDOW_WIDTH, 0));
+    m_toolbar.emplace_back(std::make_shared<Button>(GameObject_t::play, 0))->setposition(sf::Vector2f(WINDOW_WIDTH-50, 0+25));
     m_toolbar.at(0)->setSize(sf::Vector2f(100, 50));
     setIdxLoc();
 

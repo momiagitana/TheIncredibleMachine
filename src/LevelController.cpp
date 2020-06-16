@@ -3,7 +3,7 @@
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world), m_window(win), m_world(world), /*m_toolbar(lvl)*/ m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()), m_currObj(sf::Vector2f(0.f,0.f), sf::Vector2f(20.f,20.f), ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
+	:m_board(lvl, world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()), m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()), m_currObj(sf::Vector2f(0.f,0.f), sf::Vector2f(20.f,20.f), ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
 {
 }
 
@@ -39,7 +39,7 @@ void LevelController::run()
 
 				if (clickOnToolbar(mouseLoc))
 				{
-					//m_selected = m_toolbar.toolbarclick(mouseLoc);
+					m_selected = m_toolbar.toolbarClick(mouseLoc);
 					updateMouseImg(mouseLoc);
 
 					if(m_selected == play)//needs to be inside the if ontop??
@@ -58,7 +58,7 @@ void LevelController::run()
 					{
 						if(m_board.tryToAdd(mouseLoc, m_selected)) //returns true if managed added obj
 						{
-							//m_toolbar.decreaseObjCount(m_selected);
+//							m_toolbar.decreaseObjCount(m_selected);
 							m_selected = none;
 						}
 					}
@@ -93,7 +93,7 @@ void LevelController::updateMouseLoc(const sf::Vector2f loc)
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
 {
-	return false; //m_toolbar.clickedOnMe(mouseLoc);
+	return m_toolbar.clickedOnMe(mouseLoc);
 }
 
 bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
@@ -117,7 +117,7 @@ void LevelController::drawAll()
 	m_window.clear(sf::Color::Transparent);
 
 	m_board.draw(m_window);
-	//m_toolbar.draw(m_window);
+	m_toolbar.draw(m_window);
 	m_currObj.draw(m_window);
 
   	m_window.display();

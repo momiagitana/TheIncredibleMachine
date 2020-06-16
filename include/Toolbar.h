@@ -19,6 +19,7 @@ public:
 	void setIdxLoc();
 	bool clickedOnMe(sf::Vector2f loc);
 	GameObject_t toolbarClick(sf::Vector2f loc);
+	
 private:
 	void setDefalutToolbar();
 	std::vector<std::pair<GameObject_t,int>> m_DATA;
