@@ -3,7 +3,7 @@
 
 
 Button::Button(GameObject_t obj, int apearCounter)
-	:BaseImg(sf::Vector2f(obj_size,obj_size),sf::Vector2f(0,0),ResourceManager::instance().getTexture(obj)),
+	:BaseImg(sf::Vector2f(obj_size,obj_size),sf::Vector2f(30,30),ResourceManager::instance().getTexture(obj)),
 	m_obj(obj),
 	m_apearCounter(apearCounter)
 {
@@ -28,3 +28,9 @@ void Button::IncreaseNumOfApeariences()
 {
 	m_apearCounter++;
 }
+
+GameObject_t Button::getobj()
+{
+	return m_obj;
+}
+

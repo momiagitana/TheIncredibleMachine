@@ -33,12 +33,14 @@ ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
 	 loadTexture("balloonPopping.png", GameObject_t::balloon);
-	loadTexture("basketBall.png", GameObject_t::basketBall);
+	 loadTexture("basketBall.png", GameObject_t::basketBall);
 	 loadTexture("baseBall.png", GameObject_t::baseBall);
 	 loadTexture("bowlingBall.png", GameObject_t::bowlingBall);
 	 loadTexture("conveyor.png", GameObject_t::conveyor);
 	 loadTexture("bricks.png", GameObject_t::brickWallH);
 	 loadTexture("bricksV.png", GameObject_t::brickWallV);
+	 loadTexture("worker.jpg", GameObject_t::worker);
+	 loadTexture("arrows.png", GameObject_t::arrows);
 	
 
 

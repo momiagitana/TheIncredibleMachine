@@ -13,6 +13,7 @@ public:
 	int getNumOfApeariences();
 	void DecreaseNumOfApeariences();
 	void IncreaseNumOfApeariences();
+	virtual GameObject_t getobj();
 
 private:
 	GameObject_t m_obj;
