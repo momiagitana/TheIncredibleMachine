@@ -28,7 +28,12 @@ void LevelController::run()
             case sf::Event::MouseButtonReleased:
 			{
 				if (event.mouseButton.button == sf::Mouse::Right)
-					tryRunning();
+				{
+					if(tryRunning())//apply gravitiy check if game was won
+						m_finished = true;//leave the while and next level
+					else
+						m_board.resetObjectsPositions();//from before gravity
+				}
 
                 auto mouseLoc = m_window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
 
@@ -42,12 +47,12 @@ void LevelController::run()
 						if(tryRunning())//apply gravitiy check if game was won
 							m_finished = true;//leave the while and next level
 						else
-							m_board.resetObjectsPossitions();//from before gravity
+							m_board.resetObjectsPositions();//from before gravity
 					}
 				}
 				
 
-				if(clickOnBoard(mouseLoc))
+				else if(clickOnBoard(mouseLoc))
 				{
 					if(m_selected != none)
 					{
@@ -57,7 +62,7 @@ void LevelController::run()
 							m_selected = none;
 						}
 					}
-					if(m_selected == none)
+					else //if(m_selected == none)
 						m_selected = m_board.handleClick(mouseLoc);//tries to grabb and object flip it or delete it..
 				}
 				break;
@@ -158,7 +163,7 @@ bool LevelController::tryRunning()
                 if (event.mouseButton.button == sf::Mouse::Right)
 					return false;
 
-			      }
+			}
         }
 
     }
