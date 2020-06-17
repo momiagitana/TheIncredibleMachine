@@ -6,6 +6,7 @@
 #include <sstream>
 #include <map>
 #include <SFML/Graphics.hpp>
+#include "Toolbar.h"
 
 using std::ostringstream;
 
