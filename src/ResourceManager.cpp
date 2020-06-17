@@ -32,28 +32,31 @@ sf::SoundBuffer& ResourceManager::getSound(Sound name)
 ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
-	  loadTexture("balloonPopping.png", GameObject_t::balloon);
-	  loadTexture("basketBall.png", GameObject_t::basketBall);
-	  loadTexture("baseBall.png", GameObject_t::baseBall);
-	  loadTexture("bowlingBall.png", GameObject_t::bowlingBall);
-	  loadTexture("conveyor.png", GameObject_t::conveyor);
-	  loadTexture("bricks.png", GameObject_t::brickWallH);
-	  loadTexture("bricksV.png", GameObject_t::brickWallV);
-	  loadTexture("worker.jpg", GameObject_t::play);
-	  loadTexture("arrows.png", GameObject_t::arrows);
-	  loadTexture("startButton.png", GameObject_t::start_button);
-	  loadTexture("exitButton.png", GameObject_t::exit_button);
-	  loadTexture("The_Incredible_Machine.png", GameObject_t::background);
+	//   loadTexture("balloonPopping.png", GameObject_t::balloon);
+	//   loadTexture("basketBall.png", GameObject_t::basketBall);
+	//   loadTexture("baseBall.png", GameObject_t::baseBall);
+	//   loadTexture("bowlingBall.png", GameObject_t::bowlingBall);
+	//   loadTexture("conveyor.png", GameObject_t::conveyor);
+	//   loadTexture("bricks.png", GameObject_t::brickWallH);
+	//   loadTexture("bricksV.png", GameObject_t::brickWallV);
+	//   loadTexture("worker.jpg", GameObject_t::play);
+	//   loadTexture("arrows.png", GameObject_t::arrows);
+	//   loadTexture("startButton.png", GameObject_t::start_button);
+	//   loadTexture("exitButton.png", GameObject_t::exit_button);
+	//   loadTexture("The_Incredible_Machine.png", GameObject_t::background);
 
-	//loadTexture("build/balloonPopping.png", GameObject_t::balloon);
-	//loadTexture("build/basketBall.png", GameObject_t::basketBall);
-	//loadTexture("build/baseBall.png", GameObject_t::baseBall);
-	//loadTexture("build/bowlingBall.png", GameObject_t::bowlingBall);
-	//loadTexture("build/conveyor.png", GameObject_t::conveyor);
-	//loadTexture("build/bricks.png", GameObject_t::brickWallH);
-	//loadTexture("build/bricksV.png", GameObject_t::brickWallV);
-	//loadTexture("build/worker.jpg", GameObject_t::play);
-	//loadTexture("build/arrows.png", GameObject_t::arrows);
+	loadTexture("build/balloonPopping.png", GameObject_t::balloon);
+	loadTexture("build/basketBall.png", GameObject_t::basketBall);
+	loadTexture("build/baseBall.png", GameObject_t::baseBall);
+	loadTexture("build/bowlingBall.png", GameObject_t::bowlingBall);
+	loadTexture("build/conveyor.png", GameObject_t::conveyor);
+	loadTexture("build/bricks.png", GameObject_t::brickWallH);
+	loadTexture("build/bricksV.png", GameObject_t::brickWallV);
+	loadTexture("build/worker.jpg", GameObject_t::play);
+	loadTexture("build/arrows.png", GameObject_t::arrows);
+	loadTexture("build/startButton.png", GameObject_t::start_button);
+	loadTexture("build/exitButton.png", GameObject_t::exit_button);
+	loadTexture("build/The_Incredible_Machine.png", GameObject_t::background);
 
 	//
 
