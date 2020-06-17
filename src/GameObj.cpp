@@ -28,3 +28,8 @@ void GameObj::setInitialLoc()
 	m_phyObj.setPosition(m_initialLoc);
 	updateLoc();
 }
+
+void GameObj::setGravityScale(float scale)
+{
+	m_phyObj.setGravityScale(scale);
+}
