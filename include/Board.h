@@ -9,10 +9,11 @@
 #include "Balloon.h"
 #include "BaseBall.h"
 #include "BasketBall.h"
+#include "BrickWall.h"
 //#include "BowlingBall.h"
 
 
-
+using conditionToWinLoc = std::pair<int, std::pair<sf::Vector2f, sf::Vector2f>>; 
 
 class Board
 {
@@ -26,9 +27,10 @@ public:
 	void resetObjectsPositions();
 	//bool tryToAdd(sf::Vector2f loc, GameObject_t,b2World& world);
 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
-	bool collided(GameObj* current);
+	bool collides(GameObj* current);
 	bool checkCollison(GameObj* obj2, GameObj* obj1);
-
+	void wakeEmAllUp();
+	bool isItemInLoc(conditionToWinLoc) const;
 
 	//bool levelFinished();
 	//void MoveObjects(sf::Time deltaTime);

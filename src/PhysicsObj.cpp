@@ -19,7 +19,7 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vec
     polygonShape.SetAsBox( size.x/2 * MPP, size.y/2 * MPP);
     m_fixtureDef.shape = &polygonShape;
     m_fixtureDef.friction = 1;
-    m_fixtureDef.restitution	= 0.2f;
+    m_fixtureDef.restitution	= 0.4f;
     m_fixtureDef.density	= 0.7f;
 
     m_body->CreateFixture(&m_fixtureDef);
@@ -37,6 +37,7 @@ void PhysicsObj::setPosition(sf::Vector2f pos)
     m_body->SetTransform(b2Vec2(pos.x * MPP, pos.y * MPP), 0.f);
     m_body->SetLinearVelocity(b2Vec2(0, 0));
     m_body->SetAngularVelocity(0);
+    m_body->SetAwake(true);
 }
 
 void PhysicsObj::setGravityScale(float scale)

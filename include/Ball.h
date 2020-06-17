@@ -5,7 +5,7 @@
 class Ball : public GameObj
 {
 public:
-	Ball(const sf::Vector2f& center, const sf::Vector2f& size, sf::Texture* texture, bool movable, b2World &world);
+	Ball(const sf::Vector2f& center, sf::Texture* texture, bool movable, b2World &world, GameObject_t);
 	
 private:
 	int m_radius;

@@ -4,14 +4,14 @@
 
 
 Button::Button(GameObject_t obj, int apearCounter)
-	:BaseImg(sf::Vector2f(obj_size, obj_size), sf::Vector2f(30, 30),
-		ResourceManager::instance().getTexture(obj)), m_light(false)
-	, m_obj(obj),
+	:BaseImg(sf::Vector2f(obj_size, obj_size), ResourceManager::instance().getTexture(obj)), 
+	m_light(false) , 
+	m_obj(obj),
 	m_apearCounter(0)
 {
 
 	m_apearCounter += apearCounter;
-	m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::ariel));
+	m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
 	m_text.setCharacterSize(15);
 	m_text.setPosition(0, 0);
 	m_srting.str();
@@ -27,7 +27,7 @@ GameObject_t Button::clicked(sf::Vector2f loc)
 	{
 		return getobj();
 	}
-
+	return none;
 }
 
 GameObject_t Button::getobj()
@@ -37,15 +37,15 @@ GameObject_t Button::getobj()
 
 void Button::light()
 {
-	m_light = true;
-	setColor(sf::Color(255, 255, 255, 120));
+	// m_light = true;
+	// setColor(sf::Color(255, 255, 255, 120));
 
 }
 
 void Button::unlight()
 {
-	m_light = false;
-	setColor(sf::Color(255, 255, 255, 255));
+	// m_light = false;
+	// setColor(sf::Color(255, 255, 255, 255));
 }
 
 void Button::Increase()
@@ -56,7 +56,6 @@ void Button::Increase()
 void Button::Decrease()
 {
 	m_apearCounter--;
-
 }
 
 int Button::getNumOfappear()

@@ -51,9 +51,9 @@ ResourceManager::ResourceManager()
 	loadTexture("build/baseBall.png", GameObject_t::baseBall);
 	loadTexture("build/bowlingBall.png", GameObject_t::bowlingBall);
 	loadTexture("build/conveyor.png", GameObject_t::conveyor);
-	loadTexture("build/bricks.png", GameObject_t::brickWallH);
-	loadTexture("build/bricksV.png", GameObject_t::brickWallV);
-	loadTexture("build/worker.jpg", GameObject_t::play);
+	loadTexture("build/brickH.png", GameObject_t::brickWallH);
+	loadTexture("build/brickV.png", GameObject_t::brickWallV);
+	loadTexture("build/play.png", GameObject_t::play);
 	loadTexture("build/arrows.png", GameObject_t::arrows);
 	loadTexture("build/startButton.png", GameObject_t::start_button);
 	loadTexture("build/exitButton.png", GameObject_t::exit_button);
@@ -63,7 +63,7 @@ ResourceManager::ResourceManager()
 	//
 
 	//---------- font ---win-------
-	loadFont("C:/Windows/Fonts/Arial.ttf", Font::ariel);
+	loadFont("build/kongtext.ttf", Font::kongtext);
 
 	//---------- font ----------
 	//loadFont("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/Amadeus.ttf", Font::ariel);

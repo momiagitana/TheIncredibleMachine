@@ -22,7 +22,9 @@ void Board::setBoard(const Level& level, b2World& world)
 			case baseBall:
 				m_objects.push_back(std::make_unique<BaseBall>(level.getFromBoard(i).second, UNMOVABLE, world));
 				break;
-			// case bowlingBall:
+			case brickWallH:
+				m_objects.push_back(std::make_unique<BrickWallH>(level.getFromBoard(i).second, UNMOVABLE, world));
+				break;
 			// case conveyor:
 
 		}
@@ -51,7 +53,7 @@ void Board::draw(sf::RenderWindow& window)
 bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world )
 {
 	//if(currObj != chain)??
-	GameObj* current;
+	GameObj* current = NULL;
 
 	switch (currObj)
 		{
@@ -64,14 +66,14 @@ bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world
 			case baseBall:
 				current = new BaseBall(mouseLoc,MOVABLE,world);
 				break;
-			// case bowlingBall:
-			// 	current = new BowlingBall(mouseLoc,MOVABLE,world);
-			// 	break;
+			 case brickWallH:
+			 	current = new BrickWallH(mouseLoc,MOVABLE,world);
+			 	break;
 
 		
 		}
 
-		if(!collided(current))
+		if(!collides(current)  && current)
 		{
 			m_objects.push_back(std::unique_ptr<GameObj>(current));
 			return true;
@@ -90,7 +92,7 @@ bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world
 }
 
 
-bool Board::collided(GameObj* current)
+bool Board::collides(GameObj* current)
 {
 	for(auto& i : m_objects)
 	{
@@ -115,14 +117,33 @@ bool Board::checkCollison(GameObj* obj2, GameObj* obj1)
 
 GameObject_t Board::handleClick(sf::Vector2f mouseLoc)
 {
-	return none;
+	GameObject_t type = none;
+	for (auto i = 0; i<m_objects.size(); i++)
+		if(m_objects[i]->getGlobalBounds().contains(mouseLoc) && m_objects[i]->isMovable())
+		{
+			type = m_objects[i]->getType();
+			m_objects.erase(m_objects.begin()+i);
+		}
+	return type;
 }
 
 void Board::resetObjectsPositions()
 {
 	for (auto &obj : m_objects)
 		obj->setInitialLoc();
-		
 }
 
 
+
+bool Board::isItemInLoc(conditionToWinLoc cond) const
+{
+	sf::RectangleShape rect(cond.second.first);
+	rect.setPosition(cond.second.second);
+
+	for(auto &obj : m_objects)
+		if (obj->getID() == cond.first)
+			if(obj->getGlobalBounds().intersects(rect.getGlobalBounds()))
+				return true;
+	
+	return false;
+}

@@ -8,7 +8,7 @@ class BaseImg
 {
 public:
 
-	BaseImg(sf::Vector2f, sf::Vector2f, sf::Texture*);
+	BaseImg(sf::Vector2f, sf::Texture*);
 
 	sf::FloatRect getGlobalBounds() const;
 
@@ -21,7 +21,7 @@ public:
 
 	void setColor(sf::Color);
 
-	void setSize(sf::Vector2f);
+	void setSize(sf::Vector2u);
 	virtual void setposition(sf::Vector2f loc);
 	
 	void updateTexture(sf::IntRect newRect);

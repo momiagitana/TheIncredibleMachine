@@ -16,7 +16,7 @@ public:
 
 	enum class Font
 	{
-		ariel
+		kongtext
 	};
 
 	enum class Sound

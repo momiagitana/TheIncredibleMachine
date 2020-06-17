@@ -1,12 +1,12 @@
 #include "BaseImg.h"
 #include <iostream>
 
-BaseImg::BaseImg(sf::Vector2f center, sf::Vector2f size, sf::Texture* texture)
+BaseImg::BaseImg(sf::Vector2f center, sf::Texture* texture)
 {
 
 	m_sprite.setTexture(*texture);
 	m_sprite.setOrigin((*texture).getSize().x/2, (*texture).getSize().y/2);
-	setSize(size);
+	setSize(texture->getSize());
 	//setLocation(center);
 }
 
@@ -41,7 +41,7 @@ void BaseImg::setColor(sf::Color color)
 	m_sprite.setColor(color);
 }
 
-void BaseImg::setSize(sf::Vector2f size)
+void BaseImg::setSize(sf::Vector2u size)
 {
 	m_sprite.scale((size.x / m_sprite.getGlobalBounds().width), (size.y / m_sprite.getGlobalBounds().height));
 }

@@ -15,8 +15,7 @@ Toolbar::Toolbar(std::vector<std::pair<GameObject_t, int>> v)
 
 void Toolbar::setButton(std::pair<GameObject_t, int> p)
 {
-    m_toolbar.insert(std::pair<GameObject_t, std::shared_ptr<Button>>
-        (p.first, std::make_shared<Button>(p.first, p.second)));
+    m_toolbar.insert(std::pair<GameObject_t, std::shared_ptr<Button>>(p.first, std::make_shared<Button>(p.first, p.second)));
     m_toolbar.at(p.first)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, m_Idxloc * 60));
     m_toolbar.at(p.first)->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, m_Idxloc * 60 + 20));
     m_toolbar.at(p.first)->setTextColor(sf::Color::Blue);
@@ -27,8 +26,6 @@ void Toolbar::setButton(std::pair<GameObject_t, int> p)
 
 void Toolbar::draw(sf::RenderWindow& window)
 {
-
-
     window.draw(m_rec);
 
     for (auto& i : m_toolbar)
@@ -191,7 +188,7 @@ void Toolbar::setplayButton()
     m_toolbar.insert(std::pair<GameObject_t, std::shared_ptr<Button>>
         (GameObject_t::play, std::make_shared<Button>(GameObject_t::play, 0)));
     m_toolbar.at(GameObject_t::play)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 0 + 25));
-    m_toolbar.at(GameObject_t::play)->setSize(sf::Vector2f(100, 50));
+    m_toolbar.at(GameObject_t::play)->setSize(sf::Vector2u(100, 50));
 }
 
 void Toolbar::setplayArrowsButton()
@@ -199,14 +196,26 @@ void Toolbar::setplayArrowsButton()
     m_toolbar.insert(std::pair<GameObject_t, std::shared_ptr<Button>>
         (GameObject_t::arrows, std::make_shared<Button>(GameObject_t::arrows, 0)));
     m_toolbar.at(GameObject_t::arrows)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 50 + 25));
-    m_toolbar.at(GameObject_t::arrows)->setSize(sf::Vector2f(100, 50));
+    m_toolbar.at(GameObject_t::arrows)->setSize(sf::Vector2u(100, 50));
 }
 
 void Toolbar::setToolBaord()
 {
     m_rec.setSize(sf::Vector2f(100, 400));
     m_rec.setPosition(WINDOW_WIDTH - 100, 100);
-    m_rec.setFillColor(sf::Color(sf::Color::White));
-    m_rec.setOutlineColor(sf::Color::Yellow);
-    m_rec.setOutlineThickness(-2);
+    m_rec.setFillColor(sf::Color(sf::Color::Yellow));
+    m_rec.setOutlineColor(sf::Color::Red);
+    m_rec.setOutlineThickness(-4);
+}
+
+
+GameObject_t Toolbar::handleClick(sf::Vector2f loc)
+{
+    for(auto &obj : m_toolbar)
+        if (obj.second->clicked(loc))
+            if(obj.first < play)
+                return obj.first;
+    
+    return none;
+
 }

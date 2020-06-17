@@ -14,6 +14,9 @@ class Toolbar
 public:
 
 	Toolbar(std::vector<std::pair<GameObject_t, int>> v);
+	
+	GameObject_t handleClick(sf::Vector2f loc);
+	
 	void setButton(std::pair<GameObject_t, int> p);
 	void draw(sf::RenderWindow& window);
 	bool clickedOnMe(sf::Vector2f loc);
