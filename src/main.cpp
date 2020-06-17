@@ -6,8 +6,7 @@
 #include <box2d/box2d.h>
 #include <SFML/Graphics.hpp>
 //#include <vector>
-
-#include "LevelController.h"
+#include "OverallController.h"
 //#include "Level.h"
 
 #include "Toolbar.h"
@@ -52,7 +51,7 @@ int main()
  //   // m_objects.push_back(GameObj(sf::Vector2f(0.f, 300.f), sf::Vector2f(50.f, 800.f), &brickText, false, (*m_world.get())));
  //   // m_objects.push_back(GameObj(sf::Vector2f(800.f, 300.f), sf::Vector2f(50.f, 800.f), &brickText, false, (*m_world.get())));
 
-   sf::ContextSettings settings;
+ /*  sf::ContextSettings settings;
    settings.antialiasingLevel = 8;
 
    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Collision Shapes", sf::Style::Default, settings);
@@ -61,12 +60,12 @@ int main()
    Level lvl;
    LevelController lvlCtrl(lvl, (*m_world.get()), window);
 
-   lvlCtrl.run();
+   lvlCtrl.run();*/
 
 
-
-	//// OverallController game;
-	//// game.run();
+    Level lvl;
+	 OverallController game(lvl, (*m_world.get()));
+	 game.run();
 
 
 	return EXIT_SUCCESS;
