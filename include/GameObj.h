@@ -16,6 +16,8 @@ public:
 
 	void setInitialLoc();
 
+	void setGravityScale(float);
+
 private:
 
 	PhysicsObj m_phyObj;

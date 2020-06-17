@@ -8,6 +8,9 @@ configure_file ("flooringVertical.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("worker.jpg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("arrows.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("startButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("The_Incredible_Machine.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 if (WIN32)

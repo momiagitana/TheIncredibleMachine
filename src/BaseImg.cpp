@@ -58,9 +58,8 @@ sf::Vector2f BaseImg::getSize() const
 {
 	return sf::Vector2f(m_sprite.getGlobalBounds().width, m_sprite.getGlobalBounds().height); 
 }
-// void BaseImg::updateTexture(sf::IntRect newRect)
-// {
-// 	m_sprite.setTextureRect(newRect);
-// }
 
-
+void BaseImg::updateTexture(sf::IntRect newRect)
+{
+	m_sprite.setTextureRect(newRect);
+}

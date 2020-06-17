@@ -56,11 +56,13 @@ void LevelController::run()
 					m_toolbar.drope(m_selected);
 					if (m_selected != none)
 					{
-						if (m_board.tryToAdd(mouseLoc, m_selected)) //returns true if managed added obj
+						if(m_board.tryToadd(mouseLoc, m_selected, m_world)) //returns true if managed added obj
+
 						{
 							m_toolbar.drope(m_toolbar.getCurrent_at_Hold());
 							//							m_toolbar.decreaseObjCount(m_selected);
 							m_selected = none;
+							//removeMouseImage();
 						}
 					}
 					else //if(m_selected == none)
@@ -69,14 +71,15 @@ void LevelController::run()
 				break;
 			}
 			case sf::Event::MouseMoved:
-				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
+
+				auto mouseLoc = m_window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
 				updateMouseLoc(mouseLoc);
 				break;
 			}
-		}
-	}
-}
 
+        }
+    }
+}
 
 void LevelController::updateMouseImg(const sf::Vector2f loc)
 {
@@ -85,7 +88,7 @@ void LevelController::updateMouseImg(const sf::Vector2f loc)
 
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
-	m_currObj.setLocation(loc);
+	m_currObj.setposition(loc);
 }
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
@@ -159,7 +162,11 @@ bool LevelController::tryRunning()
 			case sf::Event::MouseButtonReleased:
 				if (event.mouseButton.button == sf::Mouse::Right)
 					return false;
+				break;
+			default:
+				break;
 			}
-		}
-	}
+        }
+    }
+
 }

@@ -33,6 +33,9 @@ enum GameObject_t
 	play,
 	worker,
 	arrows,
+	background,
+	exit_button,
+	start_button,
 	none
 
 };
