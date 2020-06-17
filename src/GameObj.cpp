@@ -6,6 +6,7 @@ GameObj::GameObj(const sf::Vector2f& center, const sf::Vector2f& size, sf::Textu
 	static int ID = 0;
 	m_ID = ID;
 	ID ++;
+	updateLoc();
 }
 
 void GameObj::draw (sf::RenderWindow& win)

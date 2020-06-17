@@ -62,5 +62,3 @@ sf::Vector2f BaseImg::getSize() const
 // {
 // 	m_sprite.setTextureRect(newRect);
 // }
-
-
