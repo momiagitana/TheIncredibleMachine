@@ -3,8 +3,8 @@
 using std::cout;
 
 
-Toolbar::Toolbar(std::vector<std::pair<GameObject_t,int>> v)
-   :m_DATA(v),m_Idxloc(2),m_rec()
+Toolbar::Toolbar(std::vector<std::pair<GameObject_t, int>> v)
+    :m_DATA(v), m_Idxloc(2), m_rec()
 {
     setDefalutToolbar();
     for (auto i : m_DATA)
@@ -17,11 +17,11 @@ void Toolbar::setButton(std::pair<GameObject_t, int> p)
 {
     m_toolbar.insert(std::pair<GameObject_t, std::shared_ptr<Button>>
         (p.first, std::make_shared<Button>(p.first, p.second)));
-    m_toolbar.at(p.first)->setLocation(sf::Vector2f(WINDOW_WIDTH - 50, m_Idxloc*60));
-    m_toolbar.at(p.first)->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, m_Idxloc*60+20));
+    m_toolbar.at(p.first)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, m_Idxloc * 60));
+    m_toolbar.at(p.first)->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, m_Idxloc * 60 + 20));
     m_toolbar.at(p.first)->setTextColor(sf::Color::Blue);
     m_toolbar.at(p.first)->setString();
-    setIdxLoc();   
+    setIdxLoc();
 }
 
 
@@ -48,7 +48,7 @@ void Toolbar::setIdxLoc()
 
 bool Toolbar::clickedOnMe(sf::Vector2f loc)
 {
- 
+
     for (auto& i : m_toolbar)
     {
         if (i.second->getGlobalBounds().contains(loc))
@@ -67,21 +67,21 @@ GameObject_t Toolbar::toolbarClick(sf::Vector2f loc)
         {
             if (!i.second->getlightStatus())
             {
-            i.second->Decrease();
-            if (i.second->getNumOfappear() == 0)
-            {
-                m_toolbar.erase(i.first);
+                i.second->Decrease();
+                if (i.second->getNumOfappear() == 0)
+                {
+                    m_toolbar.erase(i.first);
+                }
+                i.second->setString();
+                i.second->light();
+                return i.first;
             }
-            i.second->setString();
-            i.second->light();
-            return i.first;
-            }
-            else 
+            else
             {
-             i.second->Increase();
-             i.second->setString();
-             i.second->unlight();
-             return i.first;
+                i.second->Increase();
+                i.second->setString();
+                i.second->unlight();
+                return i.first;
             }
         }
     }
@@ -105,12 +105,12 @@ void Toolbar::take(GameObject_t obj)
         it->second->light();
         it->second->Decrease();
         it->second->setString();
-        
+
     }
 }
 
 void Toolbar::drope(GameObject_t obj)
-{  
+{
     auto it = m_toolbar.find(obj);
     if (it != m_toolbar.end())
     {
@@ -120,7 +120,7 @@ void Toolbar::drope(GameObject_t obj)
 
 
 void Toolbar::putback(GameObject_t obj)
-{  
+{
     auto it = m_toolbar.find(obj);
     if (it != m_toolbar.end())
     {
@@ -145,7 +145,7 @@ void Toolbar::add(GameObject_t obj, int num_of_apear)
     auto it = m_toolbar.find(obj);
     if (it == m_toolbar.end())
     {
-        setButton(std::pair<GameObject_t,int>(obj,num_of_apear));
+        setButton(std::pair<GameObject_t, int>(obj, num_of_apear));
         m_toolbar.at(obj)->unlight();
     }
     else
@@ -175,7 +175,7 @@ void Toolbar::lightOne(sf::Vector2f objClicked)
     for (auto& i : m_toolbar)
     {
         if (i.second->getGlobalBounds().contains(objClicked))
-            i.second->light();       
+            i.second->light();
     }
 }
 
@@ -183,14 +183,14 @@ void Toolbar::setDefalutToolbar()
 {
     setplayButton();
     setplayArrowsButton();
-    setToolBaord(); 
+    setToolBaord();
 }
 
 void Toolbar::setplayButton()
 {
     m_toolbar.insert(std::pair<GameObject_t, std::shared_ptr<Button>>
         (GameObject_t::play, std::make_shared<Button>(GameObject_t::play, 0)));
-    m_toolbar.at(GameObject_t::play)->setLocation(sf::Vector2f(WINDOW_WIDTH - 50, 0 + 25));
+    m_toolbar.at(GameObject_t::play)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 0 + 25));
     m_toolbar.at(GameObject_t::play)->setSize(sf::Vector2f(100, 50));
 }
 
@@ -198,7 +198,7 @@ void Toolbar::setplayArrowsButton()
 {
     m_toolbar.insert(std::pair<GameObject_t, std::shared_ptr<Button>>
         (GameObject_t::arrows, std::make_shared<Button>(GameObject_t::arrows, 0)));
-    m_toolbar.at(GameObject_t::arrows)->setLocation(sf::Vector2f(WINDOW_WIDTH - 50, 50 + 25));
+    m_toolbar.at(GameObject_t::arrows)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 50 + 25));
     m_toolbar.at(GameObject_t::arrows)->setSize(sf::Vector2f(100, 50));
 }
 
