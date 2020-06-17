@@ -23,6 +23,7 @@ public:
 	void updateMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
 	void drawAll();
+	//void removeMouseImage();
 
 
 private:

@@ -48,9 +48,69 @@ void Board::draw(sf::RenderWindow& window)
 
 // }
 
-bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj)
+bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world )
 {
-	return true;
+	//if(currObj != chain)??
+	GameObj* current;
+
+	switch (currObj)
+		{
+			case balloon:
+				current = new Balloon(mouseLoc,MOVABLE,world);
+				break;
+			case basketBall:
+				current = new BasketBall(mouseLoc,MOVABLE,world);
+				break;
+			case baseBall:
+				current = new BaseBall(mouseLoc,MOVABLE,world);
+				break;
+			// case bowlingBall:
+			// 	current = new BowlingBall(mouseLoc,MOVABLE,world);
+			// 	break;
+
+		
+		}
+
+		if(!collided(current))
+		{
+			m_objects.push_back(std::unique_ptr<GameObj>(current));
+			return true;
+		}
+		else  
+		{
+			delete current;
+		}
+		
+	// else
+	// {
+	// 	//addChain();
+	// }
+	
+	return false;
+}
+
+
+bool Board::collided(GameObj* current)
+{
+	for(auto& i : m_objects)
+	{
+		if(checkCollison(i.get(),current))
+		{
+			return true;
+		}
+	}
+		return false;
+}
+
+
+bool Board::checkCollison(GameObj* obj2, GameObj* obj1)
+{
+	if(obj1->getGlobalBounds().intersects(obj2->getGlobalBounds()))
+	{
+		return true;
+	}
+
+	return false;
 }
 
 GameObject_t Board::handleClick(sf::Vector2f mouseLoc)
