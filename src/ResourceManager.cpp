@@ -32,6 +32,7 @@ sf::SoundBuffer& ResourceManager::getSound(Sound name)
 ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
+
 	//   loadTexture("balloonPopping.png", GameObject_t::balloon);
 	//   loadTexture("basketBall.png", GameObject_t::basketBall);
 	//   loadTexture("baseBall.png", GameObject_t::baseBall);
@@ -57,6 +58,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/startButton.png", GameObject_t::start_button);
 	loadTexture("build/exitButton.png", GameObject_t::exit_button);
 	loadTexture("build/The_Incredible_Machine.png", GameObject_t::background);
+
 
 	//
 

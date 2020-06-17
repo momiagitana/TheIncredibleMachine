@@ -3,62 +3,64 @@
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()), m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()), m_currObj(sf::Vector2f(0.f,0.f), sf::Vector2f(20.f,20.f), ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
+	:m_board(lvl, world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
+	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
+	m_currObj(sf::Vector2f(0.f, 0.f), sf::Vector2f(20.f, 20.f),
+		ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
 {
 }
 
 void LevelController::run()
 {
-	
-    while (m_window.isOpen() && !m_finished)
-    {
+	while (m_window.isOpen() && !m_finished)
+	{
 		drawAll();
 
 		sf::Event event;
 
 		while (m_window.pollEvent(event) && !m_finished)// level status might have to be on the outer while
-        {
-            switch (event.type)
-            {
+		{
+			switch (event.type)
+			{
+			case sf::Event::Closed:
+				m_window.close();
+				break;
 
-            case sf::Event::Closed:
-                m_window.close();
-                break;
-
-            case sf::Event::MouseButtonReleased:
+			case sf::Event::MouseButtonReleased:
 			{
 				if (event.mouseButton.button == sf::Mouse::Right)
 				{
-					if(tryRunning())//apply gravitiy check if game was won
+					if (tryRunning())//apply gravitiy check if game was won
 						m_finished = true;//leave the while and next level
 					else
 						m_board.resetObjectsPositions();//from before gravity
 				}
 
-                auto mouseLoc = m_window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
+				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 
 				if (clickOnToolbar(mouseLoc))
 				{
 					m_selected = m_toolbar.toolbarClick(mouseLoc);
 					updateMouseImg(mouseLoc);
-
-					if(m_selected == play)//needs to be inside the if ontop??
+					if (m_selected == play)//needs to be inside the if ontop??
 					{
-						if(tryRunning())//apply gravitiy check if game was won
+						if (tryRunning())//apply gravitiy check if game was won
 							m_finished = true;//leave the while and next level
 						else
 							m_board.resetObjectsPositions();//from before gravity
 					}
 				}
-				
 
-				else if(clickOnBoard(mouseLoc))
+				else if (clickOnBoard(mouseLoc))
 				{
-					if(m_selected != none)
+					m_toolbar.drope(m_selected);
+					if (m_selected != none)
 					{
 						if(m_board.tryToadd(mouseLoc, m_selected, m_world)) //returns true if managed added obj
+
 						{
-//							m_toolbar.decreaseObjCount(m_selected);
+							m_toolbar.drope(m_toolbar.getCurrent_at_Hold());
+							//							m_toolbar.decreaseObjCount(m_selected);
 							m_selected = none;
 							//removeMouseImage();
 						}
@@ -68,19 +70,20 @@ void LevelController::run()
 				}
 				break;
 			}
-
 			case sf::Event::MouseMoved:
+
 				auto mouseLoc = m_window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
 				updateMouseLoc(mouseLoc);
-			break;
+				break;
 			}
+
         }
     }
 }
 
 void LevelController::updateMouseImg(const sf::Vector2f loc)
 {
-	m_currObj = BaseImg(loc, sf::Vector2f(30.f,50.f), ResourceManager::instance().getTexture(m_selected));
+	m_currObj = BaseImg(loc, sf::Vector2f(30.f, 50.f), ResourceManager::instance().getTexture(m_selected));
 }
 
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
@@ -117,7 +120,7 @@ void LevelController::drawAll()
 	m_toolbar.draw(m_window);
 	m_currObj.draw(m_window);
 
-  	m_window.display();
+	m_window.display();
 }
 
 bool LevelController::tryRunning()
@@ -125,40 +128,39 @@ bool LevelController::tryRunning()
 	int stepCounter = 0;
 
 	while (m_window.isOpen())
-    {
-		if(stepCounter == 10)//change 10 to const
+	{
+		if (stepCounter == 10)//change 10 to const
 		{
-			if(checkIfLevelFinished()) //we check every 10 step
+			if (checkIfLevelFinished()) //we check every 10 step
 				return true;
 			else
 				stepCounter = 0;
 		}
 		else
-			stepCounter++;		
+			stepCounter++;
 
-      	// Update window
-        m_window.clear(sf::Color::Transparent);
+		// Update window
+		m_window.clear(sf::Color::Transparent);
 
-        // Update world Box2D
-        m_world.Step(TIMESTEP, VELITER, POSITER);
+		// Update world Box2D
+		m_world.Step(TIMESTEP, VELITER, POSITER);
 
 		m_board.draw(m_window);
 		//m_toolbar.draw(m_window);
 
-        // Render window
-        m_window.display();
+		// Render window
+		m_window.display();
 
 		sf::Event event;
 		while (m_window.pollEvent(event))
-        {
-            switch (event.type)
-            {
-            case sf::Event::Closed:
-                m_window.close();
-                break;
-            case sf::Event::MouseButtonReleased:
-
-                if (event.mouseButton.button == sf::Mouse::Right)
+		{
+			switch (event.type)
+			{
+			case sf::Event::Closed:
+				m_window.close();
+				break;
+			case sf::Event::MouseButtonReleased:
+				if (event.mouseButton.button == sf::Mouse::Right)
 					return false;
 				break;
 			default:
@@ -166,4 +168,5 @@ bool LevelController::tryRunning()
 			}
         }
     }
+
 }
