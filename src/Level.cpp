@@ -6,7 +6,7 @@ Level::Level()
 	addToolbarObj(basketBall,3);
 	addToolbarObj(baseBall,2);
 	addToolbarObj(balloon,100);
-	//addToolbarObj(brickWallH, 4);
+	addToolbarObj(brickWallH, 4);
 	//addToolbarObj(bowlingBall,1);
 	
 	addBoardObj(baseBall,sf::Vector2f(440.f,160.f)); //id 0

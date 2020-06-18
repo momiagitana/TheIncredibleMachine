@@ -37,15 +37,15 @@ GameObject_t Button::getobj()
 
 void Button::light()
 {
-	// m_light = true;
-	// setColor(sf::Color(255, 255, 255, 120));
+	m_light = true;
+	setColor(sf::Color(255, 255, 255, 120));
 
 }
 
 void Button::unlight()
 {
-	// m_light = false;
-	// setColor(sf::Color(255, 255, 255, 255));
+	m_light = false;
+	setColor(sf::Color(255, 255, 255, 255));
 }
 
 void Button::Increase()

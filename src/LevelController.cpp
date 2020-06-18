@@ -39,7 +39,7 @@ void LevelController::run()
 
 				if (clickOnToolbar(mouseLoc))
 				{
-					 m_selected = m_toolbar.toolbarClick(mouseLoc);
+					m_selected = m_toolbar.toolbarClick(mouseLoc);
 					//m_selected = m_toolbar.handleClick(mouseLoc);
 					if (m_selected == play)//needs to be inside the if ontop??
 					{
