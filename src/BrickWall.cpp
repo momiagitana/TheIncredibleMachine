@@ -6,3 +6,12 @@ BrickWallH::BrickWallH (const sf::Vector2f& center, bool movable, b2World &world
 }
 
 
+// void BrickWallH::makeItBigger()
+// {
+//     Resizable::makeItBigger();
+// }
+
+// void BrickWallH::makeItSmaller()
+// {
+//     Resizable::makeItSmaller();
+// }

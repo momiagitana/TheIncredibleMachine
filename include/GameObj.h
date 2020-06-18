@@ -11,7 +11,7 @@ class GameObj : public BaseImg
 public:
 
 	GameObj(const sf::Vector2f& center, const sf::Vector2u& size, sf::Texture* texture, bool dynamic, bool movable, b2World &world, GameObject_t);
-
+	~GameObj(){}
 	void draw (sf::RenderWindow&);
 
 	void setInitialLoc();
@@ -23,6 +23,10 @@ public:
 	int getID() const { return m_ID; }
 
 	bool isMovable() const { return m_movable; }
+
+	void updateBodySize();
+
+	void rotateBody(float angle);
 
 private:
 

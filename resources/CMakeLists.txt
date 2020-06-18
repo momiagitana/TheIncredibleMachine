@@ -12,8 +12,9 @@ configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("startButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("The_Incredible_Machine.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("brickH.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("brickV.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bricksH.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 
 
 if (WIN32)
