@@ -17,7 +17,7 @@ public:
 	bool shouldStartplaying()const;
 
 private:
-	void setSprits(sf::RenderWindow& window);
+	void setButtons();
 	bool m_StartPlaying = false;
 	std::vector<Button> m_buttons;
 	BaseImg m_background;

@@ -28,6 +28,8 @@ public:
 
 	sf::Vector2f getSize() const;
 
+	void setIntRect(sf::IntRect);
+
 	float PPM = 64.f;
     float MPP = 0.015625f;
 

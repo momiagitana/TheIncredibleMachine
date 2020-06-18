@@ -17,7 +17,7 @@ OverallController::OverallController(const Level&level, b2World& world)
 
 void OverallController::run()
 {
-	m_menu.settexturs(m_window);
+	
 	while (m_window.isOpen()) {
 		m_menu.runstart(m_window);
 

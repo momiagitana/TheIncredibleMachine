@@ -8,23 +8,11 @@ GameMenu::GameMenu() : m_background(sf::Vector2f((float)WINDOW_WIDTH/2, (float)W
 		m_buttons.emplace_back(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 50, ((float)WINDOW_HEIGHT / 2) + 110 + (i * 10)), GameObject_t(i));
 
 	}
-
+	setButtons();
+	//m_background.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
 }
 
-void GameMenu::settexturs(sf::RenderWindow& window)
-{
 
-
-	setSprits(window);
-
-	/*m_text.setFont(ResourceManager::instance().getFont(0));
-	m_text.setString("Ariel Gabel & Itzhak Vaknin");
-	m_text.setCharacterSize(20);
-	m_text.setFillColor(sf::Color::White);
-	m_text.setStyle(sf::Text::Regular);
-	m_text.setOrigin(0, 10);
-	m_text.setPosition(120.f, (float)(WINDOW_HEIGHT / 1.10));*/
-}
 
 void GameMenu::runstart(sf::RenderWindow& window)
 {
@@ -124,17 +112,18 @@ bool GameMenu::shouldStartplaying()const
 	return m_StartPlaying;
 }
 
-void GameMenu::setSprits(sf::RenderWindow& window)
+void GameMenu::setButtons()
 {
-	m_buttons[M_RESET].setSize(sf::Vector2u(18, 31));
-	m_buttons[M_VOL_DOWN].setSize(sf::Vector2u(21, 16));
-	m_buttons[M_VOL_UP].setSize(sf::Vector2u(22, 15));
-	m_buttons[M_SOUND].setSize(sf::Vector2u(110, 28));
-
-	m_buttons[M_START_BUTTON].setSize(sf::Vector2u(22, 34));
-	m_buttons[M_START_BUTTON].setposition(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 50, ((float)WINDOW_HEIGHT / 2) + 110));
-	m_buttons[M_EXIT_BUTTON].setSize(sf::Vector2u(24,23));
-	m_buttons[M_EXIT_BUTTON].setposition(sf::Vector2f(m_buttons[M_START_BUTTON].getLocation().x, (m_buttons[M_START_BUTTON].getLocation().y + 110)));
-	m_background.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
+	m_buttons[M_RESET].setIntRect(sf::IntRect(sf::Vector2i(1,1), sf::Vector2i(18, 31)));
+	m_buttons[M_VOL_DOWN].setIntRect(sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(21, 16)));
+	m_buttons[M_VOL_UP].setIntRect(sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(22, 15)));
+	m_buttons[M_SOUND].setIntRect(sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(110, 28)));
+	//m_buttons[M_SOUND].setposition(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 100, ((float)WINDOW_HEIGHT / 2) + 110));
+	m_buttons[M_START_BUTTON].setIntRect(sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(22, 34)));
+	//m_buttons[M_START_BUTTON].setposition(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 50, ((float)WINDOW_HEIGHT / 2) + 110));
+	m_buttons[M_EXIT_BUTTON].setIntRect(sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(24,23)));
+//	m_buttons[M_EXIT_BUTTON].setposition(sf::Vector2f(m_buttons[M_START_BUTTON].getLocation().x, (m_buttons[M_START_BUTTON].getLocation().y + 110)));
+	
+	
 }
 
