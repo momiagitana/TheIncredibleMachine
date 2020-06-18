@@ -4,7 +4,7 @@
 
 
 Button::Button(const sf::Vector2f& center,GameObject_t obj)
-	:BaseImg(center, ResourceManager::instance().getTexture(obj)), 
+	:BaseImg(center, ResourceManager::instance().getTexture(obj)),
 	m_light(false) , 
 	m_obj(obj)
 {
@@ -49,5 +49,5 @@ bool Button::getlightStatus()
 void Button::draw(sf::RenderWindow& w) const
 {
 	BaseImg::draw(w);
-	w.draw(m_text);
+	
 }

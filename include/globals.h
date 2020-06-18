@@ -3,7 +3,6 @@
 
 enum Menu_t
 {
-	M_BACKGROUND,
 	M_EXIT_BUTTON,
 	M_START_BUTTON
 };

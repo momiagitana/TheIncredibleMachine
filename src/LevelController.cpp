@@ -3,7 +3,7 @@
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
+	:m_board(lvl, world), m_window(win), m_world(world), //m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
 	m_mouseImg(sf::Vector2f(-100.f, -100.f),ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
 {
@@ -39,7 +39,7 @@ void LevelController::run()
 
 				if (clickOnToolbar(mouseLoc))
 				{
-					m_selected = m_toolbar.toolbarClick(mouseLoc);
+					//m_selected = m_toolbar.toolbarClick(mouseLoc);
 					//m_selected = m_toolbar.handleClick(mouseLoc);
 					if (m_selected == play)//needs to be inside the if ontop??
 					{
@@ -53,12 +53,12 @@ void LevelController::run()
 
 				else if (clickOnBoard(mouseLoc))
 				{
-					m_toolbar.drope(m_selected);
+					//m_toolbar.drope(m_selected);
 					if (m_selected != none)
 					{
 						if(m_board.tryToadd(mouseLoc, m_selected, m_world)) //returns true if managed added obj
 						{
-							m_toolbar.drope(m_toolbar.getCurrent_at_Hold());
+							//m_toolbar.drope(m_toolbar.getCurrent_at_Hold());
 							
 							m_selected = none;
 							
@@ -95,7 +95,7 @@ void LevelController::updateMouseLoc(const sf::Vector2f loc)
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
 {
-	return m_toolbar.clickedOnMe(mouseLoc);
+	return false;// m_toolbar.clickedOnMe(mouseLoc);
 }
 
 bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
@@ -119,7 +119,7 @@ void LevelController::drawAll()
 	m_window.clear(sf::Color::Transparent);
 
 	m_board.draw(m_window);
-	m_toolbar.draw(m_window);
+	//m_toolbar.draw(m_window);
 	
 	if (m_selected < play)
 		m_mouseImg.draw(m_window);
@@ -150,7 +150,7 @@ bool LevelController::tryRunning()
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 
 		m_board.draw(m_window);
-		m_toolbar.draw(m_window);
+		//m_toolbar.draw(m_window);
 
 		// Render window
 		m_window.display();

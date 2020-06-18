@@ -1,6 +1,6 @@
 #include "ToolbarButton.h"
 
-ToolbarButton::ToolbarButton(GameObject_t obj, int numOfapp):m_apearCounter(numOfapp),Button(ResourceManager::instance().getTexture(obj)->getSize(),obj)
+ToolbarButton::ToolbarButton(GameObject_t obj, int numOfapp):m_apearCounter(numOfapp),Button(sf::Vector2f(obj_size, obj_size),obj)
 {
 	m_apearCounter += numOfapp;
 	m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));

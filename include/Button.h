@@ -9,7 +9,7 @@ class Button : public BaseImg
 {
 public:
 
-	Button(const sf::Vector2u& center,GameObject_t obj);
+	Button(const sf::Vector2f& center,GameObject_t obj);
 	GameObject_t clicked(sf::Vector2f loc);
 	virtual GameObject_t getobj();
 	void light();

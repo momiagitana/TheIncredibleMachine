@@ -16,7 +16,7 @@
 										  "Level.cpp"
 										  "LevelController.cpp"
 										  "FileHandler.cpp"
-										  "Toolbar.cpp"
+										  
 										  "ResourceManager.cpp"
 										  "ToolbarButton.cpp"
 										)

@@ -1,16 +1,20 @@
 #include "GameMenu.h"
 
-GameMenu::GameMenu() {}
-
-void GameMenu::settexturs( sf::RenderWindow& window)
+GameMenu::GameMenu() : m_background(sf::Vector2f((float)WINDOW_WIDTH, (float)WINDOW_HEIGHT), ResourceManager::instance().getTexture(background))
 {
-	for (int i = background; i < none; i++)
+	for (int i = exit_button; i < none; i++)
 	{
-		sf::Sprite sprite;
-		auto text = ResourceManager::instance().getTexture((GameObject_t(i)));
-		sprite.setTexture(*text);
-		m_sprits.push_back(sprite);
+
+		m_buttons.emplace_back(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 50, ((float)WINDOW_HEIGHT / 2) + 110 + (i * 10)), GameObject_t(i));
+
 	}
+
+}
+
+void GameMenu::settexturs(sf::RenderWindow& window)
+{
+
+
 	setSprits(window);
 
 	/*m_text.setFont(ResourceManager::instance().getFont(0));
@@ -35,7 +39,7 @@ void GameMenu::runstart(sf::RenderWindow& window)
 			switch (event.type)
 			{
 			case sf::Event::Closed:
-				
+
 				window.close();
 				break;
 			case sf::Event::KeyPressed:
@@ -51,39 +55,45 @@ void GameMenu::runstart(sf::RenderWindow& window)
 				{
 					location = window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 				}
-				if (m_sprits[M_EXIT_BUTTON].getGlobalBounds().contains(location))
+				for (auto button : m_buttons)
 				{
-					
-					m_StartPlaying = false;
-					return;
-				}
-				if (m_sprits[M_START_BUTTON].getGlobalBounds().contains(location))
-				{
-					
-					m_StartPlaying = true;
-					return;
+					switch (button.clicked(location))
+					{
+					case start_button:
+					{
+						m_StartPlaying = true;
+						return;
+					}
+					case exit_button:
+					{
+						m_StartPlaying = false;
+						return;
+					}
+
+					}
 				}
 
 				break;
 			}
 			case sf::Event::MouseMoved:
 				// Save the position of the mouse:
+
 				auto mousePos = window.mapPixelToCoords({ event.mouseMove.x, event.mouseMove.y });
-				if (m_sprits[M_START_BUTTON].getGlobalBounds().contains(mousePos))
+				for (auto button : m_buttons)
 				{
-					m_sprits[M_START_BUTTON].setColor(sf::Color(255, 255, 255, 128));
-				}
-				else
-				{
-					m_sprits[M_START_BUTTON].setColor(sf::Color::White);
-				}
-				if (m_sprits[M_EXIT_BUTTON].getGlobalBounds().contains(mousePos))
-				{
-					m_sprits[M_EXIT_BUTTON].setColor(sf::Color(255, 255, 255, 128));
-				}
-				else
-				{
-					m_sprits[M_EXIT_BUTTON].setColor(sf::Color::White);
+					switch (button.clicked(mousePos))
+					{
+					case start_button:
+					{
+						m_buttons[M_START_BUTTON].setColor(sf::Color(255, 255, 255, 128));
+					}
+					case exit_button:
+					{
+						m_buttons[M_EXIT_BUTTON].setColor(sf::Color(255, 255, 255, 128));
+					}
+					default:
+						break;
+					}
 				}
 
 			}
@@ -93,9 +103,10 @@ void GameMenu::runstart(sf::RenderWindow& window)
 
 void GameMenu::draw(sf::RenderWindow& window)
 {
-	window.draw(m_sprits[M_BACKGROUND]);
-	window.draw(m_sprits[M_START_BUTTON]);
-	window.draw(m_sprits[M_EXIT_BUTTON]);
+	m_buttons[M_START_BUTTON].draw(window);
+	m_buttons[M_EXIT_BUTTON].draw(window);
+	m_background.draw(window);
+
 	window.draw(m_text);
 }
 
@@ -106,10 +117,10 @@ bool GameMenu::shouldStartplaying()const
 
 void GameMenu::setSprits(sf::RenderWindow& window)
 {
-	m_sprits[M_START_BUTTON].setScale((100) / m_sprits[M_START_BUTTON].getLocalBounds().width, (80) / m_sprits[M_START_BUTTON].getLocalBounds().height);
-	m_sprits[M_START_BUTTON].setPosition(sf::Vector2f(((float)WINDOW_WIDTH / 2) -50, ((float)WINDOW_HEIGHT / 2) + 110));
-	m_sprits[M_EXIT_BUTTON].setScale((100) / m_sprits[M_EXIT_BUTTON].getLocalBounds().width, (80) / m_sprits[M_EXIT_BUTTON].getLocalBounds().height);
-	m_sprits[M_EXIT_BUTTON].setPosition(sf::Vector2f(m_sprits[M_START_BUTTON].getPosition().x, (m_sprits[M_START_BUTTON].getPosition().y + 110)));
-	m_sprits[M_BACKGROUND].scale((WINDOW_WIDTH / m_sprits[M_BACKGROUND].getGlobalBounds().width), (WINDOW_HEIGHT / m_sprits[M_BACKGROUND].getGlobalBounds().height));
+	m_buttons[M_START_BUTTON].setSize(sf::Vector2u(100, 80));
+	m_buttons[M_START_BUTTON].setposition(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 50, ((float)WINDOW_HEIGHT / 2) + 110));
+	m_buttons[M_EXIT_BUTTON].setSize(sf::Vector2u(100, 80));
+	m_buttons[M_EXIT_BUTTON].setposition(sf::Vector2f(m_buttons[M_START_BUTTON].getLocation().x, (m_buttons[M_START_BUTTON].getLocation().y + 110)));
+	m_background.setSize(sf::Vector2u(WINDOW_WIDTH/2, WINDOW_HEIGHT/2));
 }
 
