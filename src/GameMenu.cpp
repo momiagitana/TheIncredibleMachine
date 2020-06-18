@@ -1,6 +1,6 @@
 #include "GameMenu.h"
 
-GameMenu::GameMenu() : m_background(sf::Vector2f((float)WINDOW_WIDTH, (float)WINDOW_HEIGHT), ResourceManager::instance().getTexture(background))
+GameMenu::GameMenu() : m_background(sf::Vector2f((float)WINDOW_WIDTH/2, (float)WINDOW_HEIGHT/2), ResourceManager::instance().getTexture(background))
 {
 	for (int i = exit_button; i < none; i++)
 	{
@@ -86,13 +86,18 @@ void GameMenu::runstart(sf::RenderWindow& window)
 					case start_button:
 					{
 						m_buttons[M_START_BUTTON].setColor(sf::Color(255, 255, 255, 128));
+						break;
 					}
 					case exit_button:
 					{
 						m_buttons[M_EXIT_BUTTON].setColor(sf::Color(255, 255, 255, 128));
+						break;
 					}
 					default:
+					{
+						button.setColor(sf::Color::White);
 						break;
+					}
 					}
 				}
 
@@ -103,8 +108,12 @@ void GameMenu::runstart(sf::RenderWindow& window)
 
 void GameMenu::draw(sf::RenderWindow& window)
 {
-	m_buttons[M_START_BUTTON].draw(window);
-	m_buttons[M_EXIT_BUTTON].draw(window);
+	for (auto buttons : m_buttons)
+	{
+		buttons.draw(window);
+	}
+	/*m_buttons[M_START_BUTTON].draw(window);
+	m_buttons[M_EXIT_BUTTON].draw(window);*/
 	m_background.draw(window);
 
 	window.draw(m_text);
@@ -117,10 +126,15 @@ bool GameMenu::shouldStartplaying()const
 
 void GameMenu::setSprits(sf::RenderWindow& window)
 {
-	m_buttons[M_START_BUTTON].setSize(sf::Vector2u(100, 80));
+	m_buttons[M_RESET].setSize(sf::Vector2u(18, 31));
+	m_buttons[M_VOL_DOWN].setSize(sf::Vector2u(21, 16));
+	m_buttons[M_VOL_UP].setSize(sf::Vector2u(22, 15));
+	m_buttons[M_SOUND].setSize(sf::Vector2u(110, 28));
+
+	m_buttons[M_START_BUTTON].setSize(sf::Vector2u(22, 34));
 	m_buttons[M_START_BUTTON].setposition(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 50, ((float)WINDOW_HEIGHT / 2) + 110));
-	m_buttons[M_EXIT_BUTTON].setSize(sf::Vector2u(100, 80));
+	m_buttons[M_EXIT_BUTTON].setSize(sf::Vector2u(24,23));
 	m_buttons[M_EXIT_BUTTON].setposition(sf::Vector2f(m_buttons[M_START_BUTTON].getLocation().x, (m_buttons[M_START_BUTTON].getLocation().y + 110)));
-	m_background.setSize(sf::Vector2u(WINDOW_WIDTH/2, WINDOW_HEIGHT/2));
+	m_background.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
 }
 

@@ -4,7 +4,11 @@
 enum Menu_t
 {
 	M_EXIT_BUTTON,
-	M_START_BUTTON
+	M_START_BUTTON,
+	M_RESET,
+	M_VOL_DOWN,
+	M_VOL_UP,
+	M_SOUND
 };
 
 enum Toolbardata_t
@@ -35,6 +39,10 @@ enum GameObject_t
 	background,
 	exit_button,
 	start_button,
+	reset,
+	vol_down,
+	vol_up,
+	sound,
 	none
 
 };

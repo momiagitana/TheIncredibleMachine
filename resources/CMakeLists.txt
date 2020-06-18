@@ -14,7 +14,12 @@ configure_file ("The_Incredible_Machine.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("brickH.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("brickV.png" ${CMAKE_BINARY_DIR} COPYONLY)
-
+configure_file ("bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("down.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("playmenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sound.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("up.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 if (WIN32)
     configure_file (C:/SFML/SFML-2.5.1/bin/openal32.dll ${CMAKE_BINARY_DIR} COPYONLY)
