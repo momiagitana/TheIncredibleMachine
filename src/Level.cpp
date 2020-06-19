@@ -3,6 +3,7 @@
 
 Level::Level()
 {
+
 	//addToolbarObj(basketBall,3);
 	//addToolbarObj(baseBall,2);
 	//addToolbarObj(balloon,100);
@@ -35,6 +36,8 @@ Level::Level()
 	////addBoardObj(bowlingBall, sf::Vector2f(400, 200));
 
 	/*addCondLoc (0, sf::Vector2f(100,16), sf::Vector2f(440,0));*/ //object id=0 has to be inside the square with pos 200,200 and size 100,100
+
+	
 	//addCondAct (4); //balloon with id 4 has to be O
 }
 

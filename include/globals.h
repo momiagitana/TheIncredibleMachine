@@ -52,4 +52,7 @@ const bool UNMOVABLE = false;
 const int FLOORING_UNIT = 16; //pixels
 const int FLOORING_MARGIN = 1; //pix
 
+
 const char READ_NEXT [1] = {'-'};
+
+const float RAD_45 = 0.785398f;

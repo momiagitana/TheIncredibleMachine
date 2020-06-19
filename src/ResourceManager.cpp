@@ -59,7 +59,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/baseBall.png", GameObject_t::baseBall);
 	loadTexture("build/bowlingBall.png", GameObject_t::bowlingBall);
 	loadTexture("build/conveyor.png", GameObject_t::conveyor);
-	loadTexture("build/brickH.png", GameObject_t::brickWallH);
+	loadTexture("build/bricksH.png", GameObject_t::brickWallH);
 	loadTexture("build/brickV.png", GameObject_t::brickWallV);
 	loadTexture("build/play.png", GameObject_t::play);
 	loadTexture("build/arrows.png", GameObject_t::arrows);

@@ -5,11 +5,6 @@
 
 #include "OverallController.h"
 
-#include "Toolbar.h"
-using std::pair;
-
-using toolbarPair = std::pair<GameObject_t, int>;
-using toolbarObjects = std::vector<toolbarPair>;
 
 int main()
 {   

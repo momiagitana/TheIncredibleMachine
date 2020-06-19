@@ -22,7 +22,6 @@ void GameObj::updateLoc()
 	BaseImg::setRotation(m_phyObj.getAngle());
 }
 
-
 void GameObj::setInitialLoc()
 {
 	m_phyObj.setPosition(m_initialLoc);
@@ -37,4 +36,15 @@ void GameObj::setGravityScale(float scale)
 GameObject_t GameObj::getType() const
 {
 	return m_type;
+}
+
+void GameObj::updateBodySize()
+{
+	m_phyObj.setSize(BaseImg::getSize());
+}
+
+void GameObj::rotateBody(float angle)
+{
+	m_phyObj.setAngle(angle);
+	BaseImg::setRotation(m_phyObj.getAngle());
 }
