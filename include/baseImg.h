@@ -8,7 +8,7 @@ class BaseImg
 {
 public:
 
-	BaseImg(sf::Vector2f, sf::Vector2f, sf::Texture*);
+	BaseImg(sf::Vector2f, sf::Texture*);
 
 	sf::FloatRect getGlobalBounds() const;
 
@@ -21,12 +21,13 @@ public:
 
 	void setColor(sf::Color);
 
-	void setSize(sf::Vector2f);
-	virtual void setposition(sf::Vector2f loc);
+	void setSize(sf::Vector2u);
 	
-	void updateTexture(sf::IntRect newRect);
+	void setposition(sf::Vector2f loc);
 
 	sf::Vector2f getSize() const;
+
+	void setIntRect(sf::IntRect);
 
 	float PPM = 64.f;
     float MPP = 0.015625f;

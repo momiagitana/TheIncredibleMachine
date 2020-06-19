@@ -16,7 +16,7 @@ public:
 
 	enum class Font
 	{
-		ariel
+		kongtext
 	};
 
 	enum class Sound
@@ -30,7 +30,7 @@ public:
 	sf::Texture* getTexture(GameObject_t name);
 	sf::Font& getFont(Font name);
 	sf::SoundBuffer& getSound(Sound name);
-	void run(); ///test
+	std::string& getLevelPath();
 
 private:
 
@@ -42,4 +42,5 @@ private:
 	std::unordered_map<GameObject_t, sf::Texture> m_textures;
 	std::unordered_map<Font, sf::Font> m_fonts;
 	std::unordered_map<Sound, sf::SoundBuffer> m_sounds;
+	std::string m_path;
 };

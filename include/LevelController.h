@@ -23,6 +23,7 @@ public:
 	void updateMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
 	void drawAll();
+	//void removeMouseImage();
 
 
 private:
@@ -30,19 +31,16 @@ private:
 	Board m_board;
 	sf::RenderWindow& m_window;
 	b2World& m_world;
-	GameObject_t m_selected;
+	GameObject_t m_selected = none;
 	Toolbar m_toolbar;
 
 	bool m_finished = false;
-	BaseImg m_currObj;
+	BaseImg m_mouseImg;
 
-	
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
 
 	bool tryRunning();
-	bool checkIfLevelFinished() const {return false;}
-
-
+	bool checkIfLevelFinished() const;
 
 };

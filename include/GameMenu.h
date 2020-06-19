@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+
+#include "ResourceManager.h"
 #include "globals.h"
 
 class GameMenu
@@ -9,7 +11,7 @@ public:
 
 	GameMenu();
 	void runstart(sf::RenderWindow& window);
-	void settexturs(const std::vector<sf::Texture>& textures, const sf::Font& font, sf::RenderWindow&);
+	void settexturs( sf::RenderWindow&);
 	void draw(sf::RenderWindow& window);
 	bool shouldStartplaying()const;
 

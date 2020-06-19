@@ -1,0 +1,25 @@
+balloon 150 250
+balloon 100 200
+basketBall 150 200
+basketBall 150 340
+brickWallH 300 350
+-
+basketBall 5
+balloon 6
+brickWallH 10
+-
+1 100 16 440 0
+-
+1
+-
+
+brickWallH 300 350
+bowlingBall 100 100
+-
+basketBall 9
+bowlingBall 10
+-
+1 100 16 440 0
+-
+1
+-

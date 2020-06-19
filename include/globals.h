@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 
 enum Menu_t
 {
@@ -33,10 +32,11 @@ enum GameObject_t
 	play,
 	worker,
 	arrows,
+	background,
+	exit_button,
+	start_button,
 	none
-
 };
-
 
 
 const float TIMESTEP = 1.0f / 60.0f;
@@ -51,3 +51,8 @@ const bool UNMOVABLE = false;
 
 const int FLOORING_UNIT = 16; //pixels
 const int FLOORING_MARGIN = 1; //pix
+
+
+const char READ_NEXT [1] = {'-'};
+
+const float RAD_45 = 0.785398f;

@@ -5,8 +5,7 @@
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
 	:m_board(lvl, world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
-	m_currObj(sf::Vector2f(0.f, 0.f), sf::Vector2f(20.f, 20.f),
-		ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
+	m_mouseImg(sf::Vector2f(-100.f, -100.f),ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
 {
 }
 
@@ -28,13 +27,13 @@ void LevelController::run()
 
 			case sf::Event::MouseButtonReleased:
 			{
-				if (event.mouseButton.button == sf::Mouse::Right)
-				{
-					if (tryRunning())//apply gravitiy check if game was won
-						m_finished = true;//leave the while and next level
-					else
-						m_board.resetObjectsPositions();//from before gravity
-				}
+				// if (event.mouseButton.button == sf::Mouse::Right)
+				// {
+				// 	if (tryRunning())//apply gravitiy check if game was won
+				// 		m_finished = true;//leave the while and next level
+				// 	else
+				// 		m_board.resetObjectsPositions();//from before gravity
+				// }
 
 				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 
@@ -48,6 +47,7 @@ void LevelController::run()
 							m_finished = true;//leave the while and next level
 						else
 							m_board.resetObjectsPositions();//from before gravity
+						m_selected = none;
 					}
 				}
 
@@ -56,11 +56,17 @@ void LevelController::run()
 					
 					if (m_selected != none)
 					{
-						if (m_board.tryToAdd(mouseLoc, m_selected)) //returns true if managed added obj
+						if(m_board.tryToadd(mouseLoc, m_selected, m_world)) //returns true if managed added obj
 						{
+<<<<<<< HEAD
 							
 							//							m_toolbar.decreaseObjCount(m_selected);
+=======
+							m_toolbar.drope(m_toolbar.getCurrent_at_Hold());
+							
+>>>>>>> master
 							m_selected = none;
+							
 						}
 					}
 					else //if(m_selected == none)
@@ -69,23 +75,27 @@ void LevelController::run()
 				break;
 			}
 			case sf::Event::MouseMoved:
-				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
+
+				auto mouseLoc = m_window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
+				updateMouseImg(mouseLoc);
 				updateMouseLoc(mouseLoc);
 				break;
 			}
-		}
-	}
-}
 
+        }
+    }
+}
 
 void LevelController::updateMouseImg(const sf::Vector2f loc)
 {
-	m_currObj = BaseImg(loc, sf::Vector2f(30.f, 50.f), ResourceManager::instance().getTexture(m_selected));
+	sf::Texture *texture = ResourceManager::instance().getTexture(m_selected);
+	auto size = texture->getSize();
+	m_mouseImg = BaseImg(loc, texture);
 }
 
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
-	m_currObj.setLocation(loc);
+	m_mouseImg.setposition(loc);
 }
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
@@ -115,7 +125,9 @@ void LevelController::drawAll()
 
 	m_board.draw(m_window);
 	m_toolbar.draw(m_window);
-	m_currObj.draw(m_window);
+	
+	if (m_selected < play)
+		m_mouseImg.draw(m_window);
 
 	m_window.display();
 }
@@ -126,7 +138,7 @@ bool LevelController::tryRunning()
 
 	while (m_window.isOpen())
 	{
-		if (stepCounter == 10)//change 10 to const
+		if (stepCounter == 2)//change 10 to const
 		{
 			if (checkIfLevelFinished()) //we check every 10 step
 				return true;
@@ -143,7 +155,7 @@ bool LevelController::tryRunning()
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 
 		m_board.draw(m_window);
-		//m_toolbar.draw(m_window);
+		m_toolbar.draw(m_window);
 
 		// Render window
 		m_window.display();
@@ -159,7 +171,22 @@ bool LevelController::tryRunning()
 			case sf::Event::MouseButtonReleased:
 				if (event.mouseButton.button == sf::Mouse::Right)
 					return false;
+				break;
+			default:
+				break;
 			}
-		}
+        }
+    }
+
+}
+
+bool LevelController::checkIfLevelFinished() const
+{
+
+	for(auto i = 0; i < m_locConditons.size(); i++)
+	{
+		if (!m_board.isItemInLoc(m_locConditons[i]))
+			return false;
 	}
+	return true;
 }

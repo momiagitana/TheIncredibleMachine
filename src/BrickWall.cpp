@@ -1,8 +1,17 @@
 #include "BrickWall.h"
 
-BrickWallH::BrickWallH (const sf::Vector2f& center, bool movable, int which, b2World &world)
-    :Resizable(center,sf::Vector2f(25.f,25.f),ResourceManager::instance().getTexture(brickWallH), which, movable, world)
+BrickWallH::BrickWallH (const sf::Vector2f& center, bool movable, b2World &world)
+    :Resizable(center,ResourceManager::instance().getTexture(brickWallH)->getSize(),ResourceManager::instance().getTexture(brickWallH), movable, world, brickWallH)
 {
 }
 
 
+// void BrickWallH::makeItBigger()
+// {
+//     Resizable::makeItBigger();
+// }
+
+// void BrickWallH::makeItSmaller()
+// {
+//     Resizable::makeItSmaller();
+// }
