@@ -1,15 +1,15 @@
 #include "OverallController.h"
-
 #include <iostream>
 #include "ResourceManager.h"
 
-using std::cout;
 
 
 OverallController::OverallController(const Level&level, b2World& world) 
-	:m_world(world), m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine", sf::Style::Default), m_levelController(level, world, m_window)
+	:m_world(world), m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine", sf::Style::Default),
+	 m_levelController(level, world, m_window)
 {
-	
+	FileHandler file(ResourceManager::instance().getLevelPath());
+	m_levels = file.readLevels();
 	m_window.setFramerateLimit(60);
 	// readlevels();
 
@@ -23,7 +23,12 @@ void OverallController::run()
 
 		if (m_menu.shouldStartplaying())
 		{
-			m_levelController.run();
+			// ---------- test --------
+			auto levelcontroler = LevelController(m_levels[0], m_world, m_window);
+			levelcontroler.run();
+			// -------------------------
+
+			/*m_levelController.run();*/
 		}
 		else
 		{

@@ -2,11 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "globals.h"
+ 
 
 using boardPair 	 = std::pair<GameObject_t, sf::Vector2f>;
 using toolbarPair 	 = std::pair<GameObject_t, int>;
 
-using conditionToWinLoc = std::pair<int, std::pair<sf::Vector2f, sf::Vector2f>>; //id of object that needs to be in the square with sqLoc, sqSize
+using conditionToWinLoc = std::pair<int, std::pair<sf::Vector2f, sf::Vector2f>>; //id of object that needs to be in the square with sqSize, sqLoc
 using conditionToWinAct = int;	//id that needs to be on
 
 using boardObjects   = std::vector<boardPair>;

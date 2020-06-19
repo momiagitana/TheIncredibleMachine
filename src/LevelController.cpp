@@ -40,7 +40,7 @@ void LevelController::run()
 				if (clickOnToolbar(mouseLoc))
 				{
 					m_selected = m_toolbar.toolbarClick(mouseLoc);
-					//m_selected = m_toolbar.handleClick(mouseLoc);
+					m_selected = m_toolbar.handleClick(mouseLoc);
 					if (m_selected == play)//needs to be inside the if ontop??
 					{
 						if (tryRunning())//apply gravitiy check if game was won
@@ -177,7 +177,7 @@ bool LevelController::tryRunning()
 
 bool LevelController::checkIfLevelFinished() const
 {
-	sf::RectangleShape rect;
+
 	for(auto i = 0; i < m_locConditons.size(); i++)
 	{
 		if (!m_board.isItemInLoc(m_locConditons[i]))

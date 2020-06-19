@@ -14,6 +14,7 @@ configure_file ("The_Incredible_Machine.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("brickH.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("brickV.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 if (WIN32)

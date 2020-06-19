@@ -41,6 +41,7 @@ private:
 	void setplayButton();
 	void setplayArrowsButton();
 	void setToolBaord();
+
 	std::vector<std::pair<GameObject_t, int>> m_DATA;
 	sf::RectangleShape m_rec;
 	std::map<GameObject_t, std::shared_ptr<Button>> m_toolbar;
