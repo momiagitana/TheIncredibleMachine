@@ -3,20 +3,22 @@
 #include <sstream>
 #include "Button.h"
 using std::ostringstream;
+
 class ToolbarButton : public Button
 {
 public:
+
 	ToolbarButton(GameObject_t obj,int);
-	void Increase();
-	void Decrease();
-	int getNumOfappear();
+	void increase();
+	void decrease();
+	int getAmount();
 	void setString();
-	void setTextpos(sf::Vector2f pos);
-	void clearString();
-	void setTextColor(sf::Color color);
+	void setPosition(sf::Vector2f pos);
 	void draw(sf::RenderWindow&) const;
+
 private:
-	int m_apearCounter;
-	ostringstream m_srting;
+
+	int m_amount;
+
 	sf::Text m_text;
 };

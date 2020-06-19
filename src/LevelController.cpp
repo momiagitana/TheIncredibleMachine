@@ -3,7 +3,7 @@
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world), m_window(win), m_world(world), //m_toolbar(lvl.getToolbarObjs()),
+	:m_board(lvl, world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
 	m_mouseImg(sf::Vector2f(-100.f, -100.f),ResourceManager::instance().getTexture(baseBall))//ask yechezkel if better to send the vector
 {
@@ -34,7 +34,7 @@ void LevelController::run()
 				{
 					if(m_selected == none)
 					{
-						m_selected = m_toolbar.handelclick(mouseLoc);
+						m_selected = m_toolbar.handleClick(mouseLoc);
 						updateMouseImg(mouseLoc);
 						if (m_selected == play)//needs to be inside the if ontop??
 						{
@@ -88,7 +88,7 @@ void LevelController::updateMouseImg(const sf::Vector2f loc)
 
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
-	m_mouseImg.setposition(loc);
+	m_mouseImg.setPosition(loc);
 }
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
@@ -117,7 +117,7 @@ void LevelController::drawAll()
 	m_window.clear(sf::Color::Transparent);
 
 	m_board.draw(m_window);
-	//m_toolbar.draw(m_window);
+	m_toolbar.draw(m_window);
 	
 	if (m_selected < play)
 		m_mouseImg.draw(m_window);

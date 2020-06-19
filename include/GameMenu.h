@@ -5,7 +5,7 @@
 #include "ResourceManager.h"
 #include "globals.h"
 #include "Button.h"
-#include "baseImg.h"
+
 class GameMenu
 {
 public:
@@ -23,3 +23,5 @@ private:
 	BaseImg m_background;
 	sf::Text m_text;
 };
+
+sf::IntRect getIntRectOfMenuIcon(int i);

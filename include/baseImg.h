@@ -23,7 +23,7 @@ public:
 
 	void setSize(sf::Vector2u);
 	
-	void setposition(sf::Vector2f loc);
+	void setPosition(sf::Vector2f loc);
 
 	sf::Vector2f getSize() const;
 

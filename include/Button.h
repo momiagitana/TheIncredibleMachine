@@ -10,18 +10,15 @@ class Button : public BaseImg
 public:
 
 	Button(const sf::Vector2f& center,GameObject_t obj);
-	GameObject_t clicked(sf::Vector2f loc);
-	virtual GameObject_t getobj();
+	bool clicked(sf::Vector2f loc);
+	GameObject_t getObj();
 	void light();
 	void unlight();
 	bool getlightStatus();//?
 	void draw(sf::RenderWindow&) const;
 	
-
 private:
 	GameObject_t m_obj;
-	
 	bool m_light;
-	
-	
+
 };

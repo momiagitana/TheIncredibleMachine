@@ -1,46 +1,23 @@
 #include "Toolbar.h"
 
-
-//  --- constractor---
-
-//  gets toolbarObjects davavector
-//  Builds play button and arrows play 
-//  Builds buttons out of toolbarObjects davavector
-
-//each Button has counter wich is sf::text object
-
-Toolbar::Toolbar(toolbarObjects davavector)
+Toolbar::Toolbar(toolbarObjects objs)
 	:m_indxPosAdjust(1),
-	m_play(std::make_unique<Button>(GameObject_t::play,0)),
-	m_arrows(std::make_unique<Button>(GameObject_t::arrows,0))
+	m_play(std::make_unique<Button>(sf::Vector2f(WINDOW_WIDTH-50,25), GameObject_t::play)),
+	m_arrows(std::make_unique<Button>(sf::Vector2f(WINDOW_WIDTH-50,50 + 25), GameObject_t::arrows))
 {
-	for (auto& pair : davavector)
-	{
-		m_toolbar.insert(std::make_pair(pair.first,std::make_unique<Button>(pair.first,pair.second)));
-		m_toolbar.at(pair.first)->setposition(sf::Vector2f(WINDOW_WIDTH-50,100 + m_indxPosAdjust*80));
-        m_toolbar.at(pair.first)->setTextpos(sf::Vector2f(WINDOW_WIDTH-50,100 +  m_indxPosAdjust*80+15));
-        m_toolbar.at(pair.first)->setTextColor(sf::Color::Blue);
-        m_toolbar.at(pair.first)->setString();
-	    m_indxPosAdjust++;
-	}
+	for (auto& pair : objs)
+		add(pair.first, pair.second);
+
 	setbar();
-	setplayButton();
-	setarrowsButton();
+	setPlayButton();
+	setArrowsButton();
 }
-
-
-// clickedOnME
-// will go threw all toolbar object
-//includes:     m_play Button, m_arrows Button, and all boardButtons vector
-// return true if mouse location hits any one of them
-// if not     returns false
-
 
 bool Toolbar::clickedOnMe(sf::Vector2f loc) const
 {
 	if (m_play->getGlobalBounds().contains(loc) 
 		|| m_arrows->getGlobalBounds().contains(loc) 
-		|| m_Bar.getGlobalBounds().contains(loc))
+		|| m_bar.getGlobalBounds().contains(loc))
 	{
 		return true;
 	}
@@ -48,131 +25,89 @@ bool Toolbar::clickedOnMe(sf::Vector2f loc) const
 }
 
 
-//handelclick
-
-// return the object hits by mouse locations
-// return Gamobject::none if not
-
-GameObject_t Toolbar::handelclick(sf::Vector2f loc)
+GameObject_t Toolbar::handleClick(sf::Vector2f loc)
 {
+	GameObject_t type = none;
 	if (m_play->getGlobalBounds().contains(loc))
 	{
-		return GameObject_t::play;
+		type = play;
 	}
 
 	for (auto& button : m_toolbar)
 	{
-		if (button.second->getGlobalBounds().contains(loc))
+		if (button.clicked(loc))
 		{	
-			Delete(button.first);
-		    return button.first;
+			type = button.getObj();
+			deleteObj(type);
 		}
 	}
 
-	return GameObject_t::none;
+	return type;
 }
-
-
-//add
-
-//if pair requested is not in map allreay  wil Constracts a new button with pair data
-// if pair allready there will just increases counter by one
 
 void Toolbar::add(GameObject_t obj, int amount)
 {
-
-	auto it = m_toolbar.find(obj);
-	if (it == m_toolbar.end())
+	bool found = false;
+	for (auto &each : m_toolbar)
 	{
-		m_toolbar.insert(std::make_pair(obj,std::make_unique<Button>(obj, amount)));
-		m_toolbar.at(obj)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_indxPosAdjust*80));
-		m_toolbar.at(obj)->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_indxPosAdjust*80+15));
-		m_toolbar.at(obj)->setTextColor(sf::Color::Blue);
-		m_toolbar.at(obj)->setString();
-		m_indxPosAdjust++;
+		if(each.getObj() == obj)
+		{
+			each.increase();
+			found = true;
+		}
 	}
-	else
-		m_toolbar.at(obj)->Increase();
+	if (!found)
+		m_toolbar.push_back(ToolbarButton(obj, amount));
+	
 }
 
-
-// Delete
-// will Deacrese object counter by one
-// if obj counter == 0  will earase from vector
-void Toolbar::Delete(const GameObject_t& obj)
+void Toolbar::deleteObj(const GameObject_t& obj)
 {
-	auto it = m_toolbar.find(obj);
-	if (it != m_toolbar.end())
+	for (auto i = 0; i < m_toolbar.size(); i++)
 	{
-		m_toolbar.at(obj)->Decrease();
-		if (m_toolbar.at(obj)->getNumOfappear() == 0)
+		if (m_toolbar[i].getObj() == obj)
 		{
-			m_toolbar.erase(obj);
-			m_indxPosAdjust--;
-
+			m_toolbar[i].decrease();
+			if(!m_toolbar[i].getAmount())
+			{
+				m_toolbar.erase(m_toolbar.begin() + i);
+			}
 		}
 	}
 }
 
-
-// draw all toolbar objects on requested window
-//includes:   play button, arrows butoon, and all boardoOjects Buttons
-
 void Toolbar::draw(sf::RenderWindow& window) 
 {	
-	locationAddjuste();
-	window.draw(m_Bar);
+	window.draw(m_bar);
 	m_play->draw(window);
 	m_arrows->draw(window);
 	
-
-	for (auto& button : m_toolbar)
+	for (auto i = 0; i < m_toolbar.size(); i++)
 	{
-		button.second->setString();
-		button.second->draw(window);
+		m_toolbar[i].setPosition(sf::Vector2f(WINDOW_WIDTH - 50, 150 + i * 80));
+		m_toolbar[i].draw(window);
 	}
 
 }
-
-void Toolbar::locationAddjuste()
-{
-	m_indxPosAdjust = 1;
-	for (auto i = m_toolbar.begin(); i!=m_toolbar.end(); i++)
-	{
-		i->second->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 100+m_indxPosAdjust * 80));
-		i->second->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_indxPosAdjust * 80 + 15));
-		i->second->setTextColor(sf::Color::Blue);
-		i->second->setString();
-		m_indxPosAdjust++;
-	}
-}
-
-
-//seting the rectangle bar
 
 void Toolbar::setbar()
 {
-	m_Bar.setSize(sf::Vector2f(100, 400));
-	m_Bar.setPosition(WINDOW_WIDTH - 100, 100);
-	m_Bar.setFillColor(sf::Color(sf::Color::White));
-	m_Bar.setOutlineColor(sf::Color::Yellow);
-	m_Bar.setOutlineThickness(-2);
+	m_bar.setSize(sf::Vector2f(100, 400));
+	m_bar.setPosition(WINDOW_WIDTH - 100, 100);
+	m_bar.setFillColor(sf::Color(sf::Color::White));
+	m_bar.setOutlineColor(sf::Color::Yellow);
+	m_bar.setOutlineThickness(-2);
 }
 
-//seting the play button
-void Toolbar::setplayButton()
+void Toolbar::setPlayButton()
 {
-	m_play->setposition(sf::Vector2f(WINDOW_WIDTH-50,25));
+	m_play->setPosition(sf::Vector2f(WINDOW_WIDTH-50,25));
 	m_play->setSize(sf::Vector2u(100,50));
 }
 
-//seting the arrows button
-void Toolbar::setarrowsButton()
+void Toolbar::setArrowsButton()
 {
-	m_arrows->setposition(sf::Vector2f(WINDOW_WIDTH-50,50 + 25));
+	m_arrows->setPosition(sf::Vector2f(WINDOW_WIDTH-50,50 + 25));
 	m_arrows->setSize(sf::Vector2u(100,50));
 }
-
-
-
 

@@ -6,35 +6,19 @@
 Button::Button(const sf::Vector2f& center,GameObject_t obj)
 	:BaseImg(center, ResourceManager::instance().getTexture(obj)),
 	m_light(false) , 
-
 	m_obj(obj)
 {
-	
-
-//	m_obj(obj),
-//	m_apearCounter(apearCounter)
-
-	//m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
-	//m_text.setCharacterSize(15);
-	//m_text.setPosition(0, 0);
-	//m_srting.str();
-	//m_srting << m_apearCounter;
-	//m_text.setColor(sf::Color::Black);
-	//m_text.setString(m_srting.str());
-
-
 }
 
-GameObject_t Button::clicked(sf::Vector2f loc)
+bool Button::clicked(sf::Vector2f loc)
 {
 	if (getGlobalBounds().contains(loc))
-	{
-		return getobj();
-	}
-	return none;
+		return true;
+		
+	return false;
 }
 
-GameObject_t Button::getobj()
+GameObject_t Button::getObj()
 {
 	return m_obj;
 }
