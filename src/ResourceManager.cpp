@@ -27,26 +27,34 @@ sf::SoundBuffer& ResourceManager::getSound(Sound name)
 	return m_sounds[name];
 }
 
+std::string& ResourceManager::getLevelPath()
+{
+
+	return m_path;
+
+	//for mac
+}
+
 
 //CTOR
 ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
 
-	//   loadTexture("balloonPopping.png", GameObject_t::balloon);
-	//   loadTexture("basketBall.png", GameObject_t::basketBall);
-	//   loadTexture("baseBall.png", GameObject_t::baseBall);
-	//   loadTexture("bowlingBall.png", GameObject_t::bowlingBall);
-	//   loadTexture("conveyor.png", GameObject_t::conveyor);
-	//   loadTexture("bricks.png", GameObject_t::brickWallH);
-	//   loadTexture("bricksV.png", GameObject_t::brickWallV);
-	//   loadTexture("worker.jpg", GameObject_t::play);
-	//   loadTexture("arrows.png", GameObject_t::arrows);
-	//   loadTexture("startButton.png", GameObject_t::start_button);
-	//   loadTexture("exitButton.png", GameObject_t::exit_button);
-	//   loadTexture("The_Incredible_Machine.png", GameObject_t::background);
+	   loadTexture("balloonPopping.png", GameObject_t::balloon);
+	   loadTexture("basketBall.png", GameObject_t::basketBall);
+	   loadTexture("baseBall.png", GameObject_t::baseBall);
+	   loadTexture("bowlingBall.png", GameObject_t::bowlingBall);
+	   loadTexture("conveyor.png", GameObject_t::conveyor);
+	   loadTexture("brickH.png", GameObject_t::brickWallH);
+	   loadTexture("brickV.png", GameObject_t::brickWallV);
+	   loadTexture("play.png", GameObject_t::play);
+	   loadTexture("arrows.png", GameObject_t::arrows);
+	   loadTexture("startButton.png", GameObject_t::start_button);
+	   loadTexture("exitButton.png", GameObject_t::exit_button);
+	   loadTexture("The_Incredible_Machine.png", GameObject_t::background);
 
-	loadTexture("build/balloonPopping.png", GameObject_t::balloon);
+	/*loadTexture("build/balloonPopping.png", GameObject_t::balloon);
 	loadTexture("build/basketBall.png", GameObject_t::basketBall);
 	loadTexture("build/baseBall.png", GameObject_t::baseBall);
 	loadTexture("build/bowlingBall.png", GameObject_t::bowlingBall);
@@ -57,13 +65,14 @@ ResourceManager::ResourceManager()
 	loadTexture("build/arrows.png", GameObject_t::arrows);
 	loadTexture("build/startButton.png", GameObject_t::start_button);
 	loadTexture("build/exitButton.png", GameObject_t::exit_button);
-	loadTexture("build/The_Incredible_Machine.png", GameObject_t::background);
+	loadTexture("build/The_Incredible_Machine.png", GameObject_t::background);*/
 
 
 	//
 
 	//---------- font ---win-------
-	loadFont("build/kongtext.ttf", Font::kongtext);
+	loadFont("kongtext.ttf", Font::kongtext);
+	//loadFont("build/kongtext.ttf", Font::kongtext);
 
 	//---------- font ----------
 	//loadFont("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/Amadeus.ttf", Font::ariel);
@@ -76,6 +85,8 @@ ResourceManager::ResourceManager()
 	//loadSound("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/menu.ogg", Sound::menu);
 	//loadSound("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/background.ogg", Sound::background);
 
+	 m_path = "levels.txt";
+	 //std::string path = "build/levels.txt";
 }
 
 void ResourceManager::loadTexture(std::string path, GameObject_t name)
@@ -83,8 +94,6 @@ void ResourceManager::loadTexture(std::string path, GameObject_t name)
 	sf::Texture temp;
 	temp.loadFromFile(path);
 	m_textures[name] = temp; // why cant it be m_textures[name].loadFromFile(path);
-
-	
 }
 
 void ResourceManager::loadFont(std::string path, Font name)

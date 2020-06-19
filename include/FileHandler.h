@@ -3,9 +3,9 @@
 #include <fstream>
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "Board.h"
 #include "globals.h"
 #include "Level.h"
+
 
 class FileHandler
 {
@@ -13,12 +13,12 @@ public:
 
 	FileHandler(const std::string&);
 	~FileHandler();
-	Level readLevelFromFile();
-	bool ifEndOfFile();
+	std::vector<Level> readLevels();
 
 private:
 
-	bool endOfFile = false;
+	Level getlevel();
+	GameObject_t strToEnum(const std::string& str);
 	std::fstream m_file;
 };
 

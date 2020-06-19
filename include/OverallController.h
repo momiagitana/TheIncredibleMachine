@@ -25,5 +25,4 @@ private:
 	std::vector<Level> m_levels;
 	b2World& m_world;
 	GameMenu m_menu;
-
 };

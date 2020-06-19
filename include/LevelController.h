@@ -37,13 +37,10 @@ private:
 	bool m_finished = false;
 	BaseImg m_mouseImg;
 
-	
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
 
 	bool tryRunning();
 	bool checkIfLevelFinished() const;
-
-
 
 };

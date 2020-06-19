@@ -213,7 +213,7 @@ GameObject_t Toolbar::handleClick(sf::Vector2f loc)
 {
     for(auto &obj : m_toolbar)
         if (obj.second->clicked(loc))
-            if(obj.first < play)
+            if(obj.first <= play)
                 return obj.first;
     
     return none;
