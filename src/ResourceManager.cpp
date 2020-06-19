@@ -68,12 +68,10 @@ ResourceManager::ResourceManager()
 	loadTexture("build/The_Incredible_Machine.png", GameObject_t::background);
 
 
-	//
 
 	//---------- font ---win-------
 	// loadFont("kongtext.ttf", Font::kongtext);
 	loadFont("build/kongtext.ttf", Font::kongtext);
-
 
 	//---------- sound ----------
 	//  loadSound("menu.ogg", Sound::menu);

@@ -3,7 +3,6 @@
 
 BaseImg::BaseImg(sf::Vector2f center, sf::Texture* texture)
 {
-
 	m_sprite.setTexture(*texture);
 	m_sprite.setOrigin((*texture).getSize().x/2, (*texture).getSize().y/2);
 	setSize(texture->getSize());

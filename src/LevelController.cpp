@@ -39,8 +39,8 @@ void LevelController::run()
 
 				if (clickOnToolbar(mouseLoc))
 				{
-					m_selected = m_toolbar.toolbarClick(mouseLoc);
-					m_selected = m_toolbar.handleClick(mouseLoc);
+					m_selected = m_toolbar.handelclick(mouseLoc);
+					updateMouseImg(mouseLoc);
 					if (m_selected == play)//needs to be inside the if ontop??
 					{
 						if (tryRunning())//apply gravitiy check if game was won
@@ -53,13 +53,18 @@ void LevelController::run()
 
 				else if (clickOnBoard(mouseLoc))
 				{
-					m_toolbar.drope(m_selected);
+					
 					if (m_selected != none)
 					{
 						if(m_board.tryToadd(mouseLoc, m_selected, m_world)) //returns true if managed added obj
 						{
+<<<<<<< HEAD
+							
+							//							m_toolbar.decreaseObjCount(m_selected);
+=======
 							m_toolbar.drope(m_toolbar.getCurrent_at_Hold());
 							
+>>>>>>> master
 							m_selected = none;
 							
 						}
