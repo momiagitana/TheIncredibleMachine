@@ -26,7 +26,7 @@ Level FileHandler::getlevel()
 	while (PartOflevel <= 4)
 	{
 		std::getline(m_file, line);
-		if (line == READ_NEXT)
+		if (line == "-") //fix const
 		{
 			PartOflevel++;
 			continue;
