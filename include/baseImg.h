@@ -22,9 +22,8 @@ public:
 	void setColor(sf::Color);
 
 	void setSize(sf::Vector2u);
-	virtual void setposition(sf::Vector2f loc);
 	
-	void updateTexture(sf::IntRect newRect);
+	void setposition(sf::Vector2f loc);
 
 	sf::Vector2f getSize() const;
 

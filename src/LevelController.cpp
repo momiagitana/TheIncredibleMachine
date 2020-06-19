@@ -27,41 +27,39 @@ void LevelController::run()
 
 			case sf::Event::MouseButtonReleased:
 			{
-				// if (event.mouseButton.button == sf::Mouse::Right)
-				// {
-				// 	if (tryRunning())//apply gravitiy check if game was won
-				// 		m_finished = true;//leave the while and next level
-				// 	else
-				// 		m_board.resetObjectsPositions();//from before gravity
-				// }
-
+	
 				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 
 				if (clickOnToolbar(mouseLoc))
 				{
-					//m_selected = m_toolbar.toolbarClick(mouseLoc);
-					//m_selected = m_toolbar.handleClick(mouseLoc);
-					if (m_selected == play)//needs to be inside the if ontop??
+					if(m_selected == none)
 					{
-						if (tryRunning())//apply gravitiy check if game was won
-							m_finished = true;//leave the while and next level
-						else
-							m_board.resetObjectsPositions();//from before gravity
+						m_selected = m_toolbar.handelclick(mouseLoc);
+						updateMouseImg(mouseLoc);
+						if (m_selected == play)//needs to be inside the if ontop??
+						{
+							if (tryRunning())//apply gravitiy check if game was won
+								m_finished = true;//leave the while and next level
+							else
+								m_board.resetObjectsPositions();//from before gravity
+							m_selected = none;
+						}
+					}
+					else
+
+					{
+						m_toolbar.add(m_selected);
 						m_selected = none;
 					}
 				}
 
 				else if (clickOnBoard(mouseLoc))
 				{
-					//m_toolbar.drope(m_selected);
 					if (m_selected != none)
 					{
 						if(m_board.tryToadd(mouseLoc, m_selected, m_world)) //returns true if managed added obj
 						{
-							//m_toolbar.drope(m_toolbar.getCurrent_at_Hold());
-							
 							m_selected = none;
-							
 						}
 					}
 					else //if(m_selected == none)
@@ -95,7 +93,7 @@ void LevelController::updateMouseLoc(const sf::Vector2f loc)
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
 {
-	return false;// m_toolbar.clickedOnMe(mouseLoc);
+	return m_toolbar.clickedOnMe(mouseLoc);
 }
 
 bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
@@ -150,7 +148,7 @@ bool LevelController::tryRunning()
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 
 		m_board.draw(m_window);
-		//m_toolbar.draw(m_window);
+		m_toolbar.draw(m_window);
 
 		// Render window
 		m_window.display();
@@ -177,7 +175,7 @@ bool LevelController::tryRunning()
 
 bool LevelController::checkIfLevelFinished() const
 {
-	sf::RectangleShape rect;
+
 	for(auto i = 0; i < m_locConditons.size(); i++)
 	{
 		if (!m_board.isItemInLoc(m_locConditons[i]))

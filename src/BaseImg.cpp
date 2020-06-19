@@ -3,7 +3,6 @@
 
 BaseImg::BaseImg(sf::Vector2f center, sf::Texture* texture)
 {
-
 	m_sprite.setTexture(*texture);
 	m_sprite.setOrigin((*texture).getSize().x / 2, (*texture).getSize().y / 2);
 	setSize(texture->getSize());
@@ -49,7 +48,7 @@ void BaseImg::setSize(sf::Vector2u size)
 void BaseImg::setposition(sf::Vector2f loc)
 {
 	m_sprite.setPosition(loc);
-	std::cout << "newloc = (" << loc.x << " , " << loc.y << ")\n";
+	std::cout << loc.x << " " << loc.y << std::endl;
 }
 
 
@@ -59,13 +58,8 @@ sf::Vector2f BaseImg::getSize() const
 	return sf::Vector2f(m_sprite.getGlobalBounds().width, m_sprite.getGlobalBounds().height);
 }
 
-void BaseImg::updateTexture(sf::IntRect newRect)
-{
-	m_sprite.setTextureRect(newRect);
-}
-
 void BaseImg::setIntRect(sf::IntRect newRect)
 {
 	m_sprite.setTextureRect(newRect);
-	m_sprite.setOrigin(getSize().x / 2, getSize().y / 2);
+	m_sprite.setOrigin(getSize().x/2, getSize().y/2);
 }

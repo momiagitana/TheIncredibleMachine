@@ -6,9 +6,22 @@
 Button::Button(const sf::Vector2f& center,GameObject_t obj)
 	:BaseImg(center, ResourceManager::instance().getTexture(obj)),
 	m_light(false) , 
+
 	m_obj(obj)
 {
 	
+
+//	m_obj(obj),
+//	m_apearCounter(apearCounter)
+
+	//m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
+	//m_text.setCharacterSize(15);
+	//m_text.setPosition(0, 0);
+	//m_srting.str();
+	//m_srting << m_apearCounter;
+	//m_text.setColor(sf::Color::Black);
+	//m_text.setString(m_srting.str());
+
 
 }
 
@@ -44,7 +57,6 @@ bool Button::getlightStatus()
 {
 	return m_light;
 }
-
 
 void Button::draw(sf::RenderWindow& w) const
 {
