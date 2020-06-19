@@ -61,7 +61,6 @@ sf::Vector2f BaseImg::getSize() const
 
 void BaseImg::setIntRect(sf::IntRect newRect)
 {
-	auto loc = m_sprite.getPosition();
 	m_sprite.setTextureRect(newRect);
 	m_sprite.setOrigin(getSize().x/2, getSize().y/2);
 }
