@@ -12,6 +12,14 @@ configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("startButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("The_Incredible_Machine.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
+
+configure_file ("bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("down.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("playmenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sound.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("up.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 configure_file ("levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bricksH.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

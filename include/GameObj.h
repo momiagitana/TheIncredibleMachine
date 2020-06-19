@@ -2,16 +2,19 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "BaseImg.h"
+#include "Button.h"
 #include "PhysicsObj.h"
 
 
-class GameObj : public BaseImg
+class GameObj : public Button
 {
 public:
 
-	GameObj(const sf::Vector2f& center, const sf::Vector2u& size, sf::Texture* texture, bool dynamic, bool movable, b2World &world, GameObject_t);
+
+	GameObj(const sf::Vector2f& center, const sf::Vector2u& size, bool dynamic, bool movable, b2World &world, GameObject_t);
+
 	~GameObj(){}
+
 	void draw (sf::RenderWindow&);
 
 	void setInitialLoc();

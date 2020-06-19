@@ -4,7 +4,7 @@
 #include <vector>
 #include "Board.h"
 #include "Level.h"
-#include "Toolbar.h"
+//#include "Toolbar.h"
 //#include "globals.h"
 
 
@@ -32,7 +32,7 @@ private:
 	sf::RenderWindow& m_window;
 	b2World& m_world;
 	GameObject_t m_selected = none;
-	Toolbar m_toolbar;
+	//Toolbar m_toolbar;
 
 	bool m_finished = false;
 	BaseImg m_mouseImg;
