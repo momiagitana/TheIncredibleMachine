@@ -7,10 +7,8 @@ Button::Button(GameObject_t obj, int apearCounter)
 	:BaseImg(sf::Vector2f(obj_size, obj_size), ResourceManager::instance().getTexture(obj)), 
 	m_light(false) , 
 	m_obj(obj),
-	m_apearCounter(0)
+	m_apearCounter(apearCounter)
 {
-
-	m_apearCounter += apearCounter;
 	m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
 	m_text.setCharacterSize(15);
 	m_text.setPosition(0, 0);

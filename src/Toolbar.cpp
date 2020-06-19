@@ -10,18 +10,18 @@
 //each Button has counter wich is sf::text object
 
 Toolbar::Toolbar(toolbarObjects davavector)
-	:m_IdxPosAddjustue(1),
+	:m_indxPosAdjust(1),
 	m_play(std::make_unique<Button>(GameObject_t::play,0)),
 	m_arrows(std::make_unique<Button>(GameObject_t::arrows,0))
 {
 	for (auto& pair : davavector)
 	{
 		m_toolbar.insert(std::make_pair(pair.first,std::make_unique<Button>(pair.first,pair.second)));
-		m_toolbar.at(pair.first)->setposition(sf::Vector2f(WINDOW_WIDTH-50,100 + m_IdxPosAddjustue*80));
-        m_toolbar.at(pair.first)->setTextpos(sf::Vector2f(WINDOW_WIDTH-50,100 +  m_IdxPosAddjustue*80+15));
+		m_toolbar.at(pair.first)->setposition(sf::Vector2f(WINDOW_WIDTH-50,100 + m_indxPosAdjust*80));
+        m_toolbar.at(pair.first)->setTextpos(sf::Vector2f(WINDOW_WIDTH-50,100 +  m_indxPosAdjust*80+15));
         m_toolbar.at(pair.first)->setTextColor(sf::Color::Blue);
         m_toolbar.at(pair.first)->setString();
-	    m_IdxPosAddjustue++;
+	    m_indxPosAdjust++;
 	}
 	setbar();
 	setplayButton();
@@ -55,24 +55,21 @@ bool Toolbar::clickedOnMe(sf::Vector2f loc) const
 
 GameObject_t Toolbar::handelclick(sf::Vector2f loc)
 {
-
 	if (m_play->getGlobalBounds().contains(loc))
 	{
 		return GameObject_t::play;
 	}
 
-	if (m_arrows->getGlobalBounds().contains(loc))
-	{
-		return GameObject_t::none;
-	}
-
 	for (auto& button : m_toolbar)
 	{
 		if (button.second->getGlobalBounds().contains(loc))
-		{
+		{	
+			Delete(button.first);
 		    return button.first;
 		}
 	}
+
+	return GameObject_t::none;
 }
 
 
@@ -81,29 +78,27 @@ GameObject_t Toolbar::handelclick(sf::Vector2f loc)
 //if pair requested is not in map allreay  wil Constracts a new button with pair data
 // if pair allready there will just increases counter by one
 
-void Toolbar::add(const toolbarPair& pair)
+void Toolbar::add(GameObject_t obj, int amount)
 {
 
-	auto it = m_toolbar.find(pair.first);
+	auto it = m_toolbar.find(obj);
 	if (it == m_toolbar.end())
 	{
-		m_toolbar.insert(std::make_pair(pair.first,std::make_unique<Button>(pair.first,pair.second)));
-		m_toolbar.at(pair.first)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_IdxPosAddjustue*80));
-		m_toolbar.at(pair.first)->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_IdxPosAddjustue*80+15));
-		m_toolbar.at(pair.first)->setTextColor(sf::Color::Blue);
-		m_toolbar.at(pair.first)->setString();
-		m_IdxPosAddjustue++;
+		m_toolbar.insert(std::make_pair(obj,std::make_unique<Button>(obj, amount)));
+		m_toolbar.at(obj)->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_indxPosAdjust*80));
+		m_toolbar.at(obj)->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_indxPosAdjust*80+15));
+		m_toolbar.at(obj)->setTextColor(sf::Color::Blue);
+		m_toolbar.at(obj)->setString();
+		m_indxPosAdjust++;
 	}
 	else
-		m_toolbar.at(pair.first)->Increase();
+		m_toolbar.at(obj)->Increase();
 }
-
 
 
 // Delete
 // will Deacrese object counter by one
 // if obj counter == 0  will earase from vector
-
 void Toolbar::Delete(const GameObject_t& obj)
 {
 	auto it = m_toolbar.find(obj);
@@ -113,17 +108,14 @@ void Toolbar::Delete(const GameObject_t& obj)
 		if (m_toolbar.at(obj)->getNumOfappear() == 0)
 		{
 			m_toolbar.erase(obj);
-			m_IdxPosAddjustue--;
+			m_indxPosAdjust--;
 
 		}
 	}
-		
-
 }
 
 
 // draw all toolbar objects on requested window
-
 //includes:   play button, arrows butoon, and all boardoOjects Buttons
 
 void Toolbar::draw(sf::RenderWindow& window) 
@@ -144,14 +136,14 @@ void Toolbar::draw(sf::RenderWindow& window)
 
 void Toolbar::locationAddjuste()
 {
-	m_IdxPosAddjustue = 1;
+	m_indxPosAdjust = 1;
 	for (auto i = m_toolbar.begin(); i!=m_toolbar.end(); i++)
 	{
-		i->second->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 100+m_IdxPosAddjustue * 80));
-		i->second->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_IdxPosAddjustue * 80 + 15));
+		i->second->setposition(sf::Vector2f(WINDOW_WIDTH - 50, 100+m_indxPosAdjust * 80));
+		i->second->setTextpos(sf::Vector2f(WINDOW_WIDTH - 50, 100 + m_indxPosAdjust * 80 + 15));
 		i->second->setTextColor(sf::Color::Blue);
 		i->second->setString();
-		m_IdxPosAddjustue++;
+		m_indxPosAdjust++;
 	}
 }
 
@@ -171,14 +163,14 @@ void Toolbar::setbar()
 void Toolbar::setplayButton()
 {
 	m_play->setposition(sf::Vector2f(WINDOW_WIDTH-50,25));
-	m_play->setSize(sf::Vector2f(100,50));
+	m_play->setSize(sf::Vector2u(100,50));
 }
 
 //seting the arrows button
 void Toolbar::setarrowsButton()
 {
 	m_arrows->setposition(sf::Vector2f(WINDOW_WIDTH-50,50 + 25));
-	m_arrows->setSize(sf::Vector2f(100,50));
+	m_arrows->setSize(sf::Vector2u(100,50));
 }
 
 

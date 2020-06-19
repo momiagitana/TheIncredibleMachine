@@ -15,7 +15,7 @@ public:
 	Toolbar(toolbarObjects davavector);
 	bool clickedOnMe(sf::Vector2f loc) const;
 	GameObject_t handelclick(sf::Vector2f loc);
-	void add(const toolbarPair& pair);
+	void add(GameObject_t obj, int amount = 1);
 	void Delete(const GameObject_t&obj);
 	void draw(sf::RenderWindow& window);
 
@@ -25,9 +25,8 @@ private:
 	void setbar();
 	void setplayButton();
 	void setarrowsButton();
-    toolbarObjects m_DATA;
 	toolbar m_toolbar;
-	int m_IdxPosAddjustue;
+	int m_indxPosAdjust;
 	sf::RectangleShape m_Bar;
 
 	std::unique_ptr<Button> m_play;

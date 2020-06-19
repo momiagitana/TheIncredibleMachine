@@ -1,8 +1,4 @@
 balloon 150 250
-balloon 100 200
-basketBall 150 200
-basketBall 150 340
-brickWallH 300 350
 -
 basketBall 5
 balloon 6
