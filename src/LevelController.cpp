@@ -40,7 +40,7 @@ void LevelController::run()
 
 				if (clickOnToolbar(mouseLoc))
 				{
-					m_selected = m_toolbar.toolbarClick(mouseLoc);
+					m_selected = m_toolbar.handelclick(mouseLoc);
 					updateMouseImg(mouseLoc);
 					if (m_selected == play)//needs to be inside the if ontop??
 					{
@@ -53,12 +53,12 @@ void LevelController::run()
 
 				else if (clickOnBoard(mouseLoc))
 				{
-					m_toolbar.drope(m_selected);
+					
 					if (m_selected != none)
 					{
 						if (m_board.tryToAdd(mouseLoc, m_selected)) //returns true if managed added obj
 						{
-							m_toolbar.drope(m_toolbar.getCurrent_at_Hold());
+							
 							//							m_toolbar.decreaseObjCount(m_selected);
 							m_selected = none;
 						}

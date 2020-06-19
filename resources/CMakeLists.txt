@@ -1,6 +1,6 @@
 ﻿configure_file ("balloonPopping.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bowlingBall.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("basketBall.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("basketball.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("baseBall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("conveyor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("flooringHorizontal.png" ${CMAKE_BINARY_DIR} COPYONLY)

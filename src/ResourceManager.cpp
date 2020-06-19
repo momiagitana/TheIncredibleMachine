@@ -33,7 +33,7 @@ ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
 	  loadTexture("balloonPopping.png", GameObject_t::balloon);
-	  loadTexture("basketBall.png", GameObject_t::basketBall);
+	  loadTexture("basketball.png", GameObject_t::basketBall);
 	  loadTexture("baseBall.png", GameObject_t::baseBall);
 	  loadTexture("bowlingBall.png", GameObject_t::bowlingBall);
 	  loadTexture("conveyor.png", GameObject_t::conveyor);
@@ -42,7 +42,6 @@ ResourceManager::ResourceManager()
 	  loadTexture("worker.jpg", GameObject_t::play);
 	  loadTexture("arrows.png", GameObject_t::arrows);
 	
-
 
 	//loadTexture("build/balloonPopping.png", GameObject_t::balloon);
 	//loadTexture("build/basketBall.png", GameObject_t::basketBall);
@@ -54,7 +53,6 @@ ResourceManager::ResourceManager()
 	//loadTexture("build/worker.jpg", GameObject_t::play);
 	//loadTexture("build/arrows.png", GameObject_t::arrows);
 
-	//
 
 	//---------- font ---win-------
 	loadFont("C:/Windows/Fonts/Arial.ttf", Font::ariel);
@@ -62,7 +60,6 @@ ResourceManager::ResourceManager()
 	//---------- font ----------
 	//loadFont("/Users/arielzingman/OOP2/EX5TheIncredibleMachine/TheIncredibleMachine/resources/Amadeus.ttf", Font::ariel);
 	
-
 	//---------- sound ----------
 	 loadSound("menu.ogg", Sound::menu);
 	 loadSound("background.ogg", Sound::background);

@@ -3,7 +3,6 @@
 
 BaseImg::BaseImg(sf::Vector2f center, sf::Vector2f size, sf::Texture* texture)
 {
-
 	m_sprite.setTexture(*texture);
 	m_sprite.setOrigin((*texture).getSize().x/2, (*texture).getSize().y/2);
 	setSize(size);
@@ -49,7 +48,7 @@ void BaseImg::setSize(sf::Vector2f size)
 void BaseImg::setposition(sf::Vector2f loc)
 {
 	m_sprite.setPosition(loc);
-	std::cout << "newloc = (" << loc.x << " , " << loc.y << ")\n";
+
 }
 
 

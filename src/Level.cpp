@@ -3,7 +3,7 @@
 
 Level::Level()
 {
-	addToolbarObj(basketBall,3);
+	addToolbarObj(basketBall,8);
 	addToolbarObj(baseBall,2);
 	addToolbarObj(balloon,1);
 	addToolbarObj(bowlingBall,1);
