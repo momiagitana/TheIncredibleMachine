@@ -18,5 +18,5 @@
 										  "FileHandler.cpp"
 										  "Toolbar.cpp"
 										  "ResourceManager.cpp"
-										)
+										  "Collisions.cpp")
 

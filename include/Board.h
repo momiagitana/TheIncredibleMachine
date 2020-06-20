@@ -10,6 +10,7 @@
 #include "BaseBall.h"
 #include "BasketBall.h"
 #include "BrickWall.h"
+#include "Collisions.h"
 //#include "BowlingBall.h"
 
 
@@ -40,5 +41,7 @@ private:
 
 	sf::Sprite m_levelBackground;
 	std::vector <std::unique_ptr<GameObj>> m_objects;
+
+	Collisions m_collision;
 	
 };

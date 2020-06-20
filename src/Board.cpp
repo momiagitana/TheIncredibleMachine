@@ -101,12 +101,22 @@ bool Board::collides(GameObj* current)
 			return true;
 		}
 	}
-		return false;
+	return false;
+
+
+
+	// m_collision.for_each_pair(m_objects.begin(), m_objects.end(), [](auto& a, auto& b) 
+	// {
+	// 	m_collision.pro
+	// });
+	
+
 }
 
 
 bool Board::checkCollison(GameObj* obj2, GameObj* obj1)
 {
+	
 	if(obj1->getGlobalBounds().intersects(obj2->getGlobalBounds()))
 	{
 		return true;
