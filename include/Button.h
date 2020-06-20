@@ -9,25 +9,16 @@ class Button : public BaseImg
 {
 public:
 
-	Button(GameObject_t obj, int apearCounter);
-	GameObject_t clicked(sf::Vector2f loc);
-	virtual GameObject_t getobj();
+	Button(const sf::Vector2f& center,GameObject_t obj);
+	bool clicked(sf::Vector2f loc);
+	GameObject_t getObj();
 	void light();
 	void unlight();
-	void Increase();
-	void Decrease();
-	int getNumOfappear();
-	bool getlightStatus();
+	bool getlightStatus();//?
 	void draw(sf::RenderWindow&) const;
-	void setString();
-	void setTextpos(sf::Vector2f pos);
-	void clearString();
-	void setTextColor(sf::Color color);
-
+	
 private:
 	GameObject_t m_obj;
-	int m_apearCounter;
 	bool m_light;
-	ostringstream m_srting;
-	sf::Text m_text;
+
 };

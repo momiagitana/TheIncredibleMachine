@@ -15,15 +15,13 @@ class OverallController
 {
 public:
 
-	OverallController(const Level&, b2World& world);
+	OverallController(b2World& world);
 	void run();
 	
 private:
 
 	sf::RenderWindow m_window;
-	LevelController m_levelController;
 	std::vector<Level> m_levels;
 	b2World& m_world;
 	GameMenu m_menu;
-
 };

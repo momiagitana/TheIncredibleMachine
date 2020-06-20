@@ -4,6 +4,7 @@
 
 #include "ResourceManager.h"
 #include "globals.h"
+#include "Button.h"
 
 class GameMenu
 {
@@ -16,8 +17,11 @@ public:
 	bool shouldStartplaying()const;
 
 private:
-	void setSprits(sf::RenderWindow& window);
+	void setButtons();
 	bool m_StartPlaying = false;
-	std::vector<sf::Sprite> m_sprits;
+	std::vector<Button> m_buttons;
+	BaseImg m_background;
 	sf::Text m_text;
 };
+
+sf::IntRect getIntRectOfMenuIcon(int i);

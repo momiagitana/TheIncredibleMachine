@@ -22,11 +22,12 @@ public:
 	void setColor(sf::Color);
 
 	void setSize(sf::Vector2u);
-	virtual void setposition(sf::Vector2f loc);
 	
-	void updateTexture(sf::IntRect newRect);
+	void setPosition(sf::Vector2f loc);
 
 	sf::Vector2f getSize() const;
+
+	void setIntRect(sf::IntRect);
 
 	float PPM = 64.f;
     float MPP = 0.015625f;

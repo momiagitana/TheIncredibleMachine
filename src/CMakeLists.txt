@@ -19,4 +19,6 @@
 										  "Toolbar.cpp"
 										  "ResourceManager.cpp"
 										  "Collisions.cpp")
+										  "ToolbarButton.cpp"
+										)
 

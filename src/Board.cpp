@@ -73,7 +73,7 @@ bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world
 		
 		}
 
-		if(!collides(current)  && current)
+		if(current && !collides(current))
 		{
 			m_objects.push_back(std::unique_ptr<GameObj>(current));
 			return true;
@@ -96,7 +96,7 @@ bool Board::collides(GameObj* current)
 {
 	for(auto& i : m_objects)
 	{
-		if(checkCollison(i.get(),current))
+		if(checkCollison(i.get(),current) && current->getID() != i->getID())
 		{
 			return true;
 		}
@@ -128,11 +128,22 @@ bool Board::checkCollison(GameObj* obj2, GameObj* obj1)
 GameObject_t Board::handleClick(sf::Vector2f mouseLoc)
 {
 	GameObject_t type = none;
+	BrickWallH* current;
 	for (auto i = 0; i<m_objects.size(); i++)
 		if(m_objects[i]->getGlobalBounds().contains(mouseLoc) && m_objects[i]->isMovable())
 		{
 			type = m_objects[i]->getType();
 			m_objects.erase(m_objects.begin()+i);
+		}
+		else if (m_objects[i]->getGlobalBounds().contains(mouseLoc) && !m_objects[i]->isMovable())
+		{
+			current = static_cast <BrickWallH*> (m_objects[i].get());
+			if(!current->isMovable())
+			{
+				current->shiftL();
+				if(collides(current))
+					current->shiftR();
+			}
 		}
 	return type;
 }

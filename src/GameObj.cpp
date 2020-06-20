@@ -1,7 +1,7 @@
 #include "GameObj.h"
 
-GameObj::GameObj(const sf::Vector2f& center, const sf::Vector2u& size, sf::Texture* texture, bool dynamic, bool movable, b2World &world, GameObject_t type)
-	:BaseImg(center, texture), m_phyObj(world, center, sf::Vector2f(size.x,size.y), dynamic), m_movable(movable), m_initialLoc(center), m_type(type)
+GameObj::GameObj(const sf::Vector2f& center, const sf::Vector2u& size, bool dynamic, bool movable, b2World &world, GameObject_t type)
+	:Button(center, type), m_phyObj(world, center, sf::Vector2f(size.x,size.y), dynamic), m_movable(movable), m_initialLoc(center), m_type(type)
 {
 	static int ID = 0;
 	m_ID = ID;
@@ -22,7 +22,6 @@ void GameObj::updateLoc()
 	BaseImg::setRotation(m_phyObj.getAngle());
 }
 
-
 void GameObj::setInitialLoc()
 {
 	m_phyObj.setPosition(m_initialLoc);
@@ -37,4 +36,15 @@ void GameObj::setGravityScale(float scale)
 GameObject_t GameObj::getType() const
 {
 	return m_type;
+}
+
+void GameObj::updateBodySize()
+{
+	m_phyObj.setSize(BaseImg::getSize());
+}
+
+void GameObj::rotateBody(float angle)
+{
+	m_phyObj.setAngle(angle);
+	BaseImg::setRotation(m_phyObj.getAngle());
 }
