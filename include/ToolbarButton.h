@@ -8,7 +8,7 @@ class ToolbarButton : public Button
 {
 public:
 
-	ToolbarButton(GameObject_t obj,int);
+	ToolbarButton(sf::Vector2f,Type_t,int);
 	void increase();
 	void decrease();
 	int getAmount();

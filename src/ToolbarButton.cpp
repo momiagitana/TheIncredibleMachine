@@ -1,22 +1,27 @@
 #include "ToolbarButton.h"
 
-ToolbarButton::ToolbarButton(GameObject_t obj, int numOfapp)
-:m_amount(numOfapp),Button(sf::Vector2f(obj_size, obj_size),obj)
+ToolbarButton::ToolbarButton(sf::Vector2f center, Type_t objType, int numOfapp)
+:m_amount(numOfapp),
+Button(center, objType)
 {
+	//setSize(sf::Vector2u(BUTTON_OBJ_SIZE,BUTTON_OBJ_SIZE));
 	m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
 	m_text.setCharacterSize(15);
 	m_text.setColor(sf::Color::Black);
+	m_text.setString(std::to_string(m_amount));
 
 }
 
 void ToolbarButton::increase()
 {
 	m_amount++;
+	m_text.setString(std::to_string(m_amount));
 }
 
 void ToolbarButton::decrease()
 {
 	m_amount--;
+	m_text.setString(std::to_string(m_amount));
 }
 
 int ToolbarButton::getAmount()
@@ -27,8 +32,7 @@ int ToolbarButton::getAmount()
 void ToolbarButton::setPosition(sf::Vector2f pos)
 {
 	BaseImg::setPosition(pos);
-	m_text.setString(std::to_string(m_amount));
-	m_text.setPosition(sf::Vector2f(pos.x, pos.y + 20));//fix NUM_DIFF
+	m_text.setPosition(sf::Vector2f(pos.x - 10, pos.y + getSize().y/2));//fix NUM_DIFF and -10 set origin center
 }
 
 void ToolbarButton::draw(sf::RenderWindow& w) const

@@ -2,6 +2,6 @@
 
 
 BasketBall::BasketBall (const sf::Vector2f& center, bool movable, b2World &world)
-    :Ball(center,ResourceManager::instance().getTexture(basketBall)->getSize(), movable, world, basketBall)
+    :Ball(center, movable, world, basketBall)
 {
 }

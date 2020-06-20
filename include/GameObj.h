@@ -11,17 +11,15 @@ class GameObj : public Button
 public:
 
 
-	GameObj(const sf::Vector2f& center, const sf::Vector2u& size, bool dynamic, bool movable, b2World &world, GameObject_t);
+	GameObj(const sf::Vector2f&, bool, bool, b2World &, Type_t);
 
 	~GameObj(){}
 
-	void draw (sf::RenderWindow&);
+	void draw (sf::RenderWindow&, bool);
 
 	void setInitialLoc();
 
 	void setGravityScale(float);
-
-	GameObject_t getType() const;
 
 	int getID() const { return m_ID; }
 
@@ -37,7 +35,6 @@ private:
 	bool m_movable;
 	int m_ID;
 	sf::Vector2f m_initialLoc;
-	GameObject_t m_type;
 	
 	void updateLoc();
 

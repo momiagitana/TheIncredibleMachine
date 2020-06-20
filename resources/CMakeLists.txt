@@ -1,10 +1,19 @@
-configure_file ("balloonPopping.png" ${CMAKE_BINARY_DIR} COPYONLY)
+﻿configure_file ("balloon.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bowlingBall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("basketball.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("baseBall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("conveyor.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("flooringHorizontal.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("flooringVertical.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("brick.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
+configure_file ("balloonButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("bowlingButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("basketButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("baseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("conveyorButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("brickButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("arrows.png" ${CMAKE_BINARY_DIR} COPYONLY)
@@ -21,7 +30,7 @@ configure_file ("sound.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("up.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("bricksH.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 
 

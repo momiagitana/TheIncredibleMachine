@@ -79,16 +79,15 @@ std::vector<Level> FileHandler::readLevels()
 	return levels;
 }
 
-GameObject_t FileHandler::strToEnum(const std::string& str)
+Type_t FileHandler::strToEnum(const std::string& str)
 {
 	if (str == "balloon") return balloon;
 	else if (str == "basketBall") return basketBall;
 	else if (str == "baseBall") return baseBall;
 	else if (str == "bowlingBall") return bowlingBall;
 	else if (str == "conveyor") return conveyor;
-	else if (str == "brickWallH") return brickWallH;
-	else if (str == "brickWallV") return brickWallV;
-	else if (str == "worker") return worker;
+	else if (str == "brickWall") return brickWall;
+
 }
 
 

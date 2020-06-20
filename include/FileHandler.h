@@ -18,7 +18,7 @@ public:
 private:
 
 	Level getlevel();
-	GameObject_t strToEnum(const std::string& str);
+	Type_t strToEnum(const std::string& str);
 	std::fstream m_file;
 };
 

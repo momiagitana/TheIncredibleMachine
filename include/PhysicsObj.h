@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <box2d/box2d.h>
+#include "globals.h"
+#include "ResourceManager.h"
 
 class PhysicsObj
 {
@@ -13,7 +15,7 @@ private:
     
 public:
 
-    PhysicsObj(b2World &world, const sf::Vector2f& position, const sf::Vector2f& dimensions, bool dynamic);
+    PhysicsObj(b2World &, const sf::Vector2f&, bool , Type_t);
     ~PhysicsObj();
 
     b2Vec2 getPosition() const { return  m_body->GetPosition(); }

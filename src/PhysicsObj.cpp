@@ -1,7 +1,7 @@
 #include <PhysicsObj.h>
 
 
-PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vector2f& size, bool dynamic)// float restitution)//, sf::Color color) 
+PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, bool dynamic, Type_t type)
 {
     b2BodyDef bodyDef;
 
@@ -11,10 +11,11 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vec
 		bodyDef.type = b2_staticBody;
 
     
-    bodyDef.position.Set(center.x * MPP, center.y * MPP);
+    bodyDef.position.Set(position.x * MPP, position.y * MPP);
     m_body = world.CreateBody(&bodyDef);
 
 	b2PolygonShape polygonShape;
+    auto size = ResourceManager::instance().getTexture(type)->getSize();
     polygonShape.SetAsBox( size.x/2 * MPP, size.y/2 * MPP);
     m_fixtureDef.shape = &polygonShape;
     m_fixtureDef.friction = 1;
@@ -42,17 +43,13 @@ void PhysicsObj::setPosition(sf::Vector2f pos)
 
 void PhysicsObj::setGravityScale(float scale)
 {
-    // m_fixtureDef.density = mass; //this fixture is attached to body below
-    // m_body->ResetMassData();
     m_body->SetGravityScale(scale);
-
 }
 
 void PhysicsObj::setSize(sf::Vector2f size)
 {
     m_body->DestroyFixture(m_fixture);
 
-  
     b2PolygonShape polygonShape;
     polygonShape.SetAsBox( size.x/2 * MPP, size.y/2 * MPP);
     m_fixtureDef.shape = &polygonShape;

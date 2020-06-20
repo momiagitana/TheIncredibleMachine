@@ -2,10 +2,10 @@
 #include"Resizable.h"
 
 
-class BrickWallH : public Resizable
+class BrickWall : public Resizable
 {
 public:
-	BrickWallH (const sf::Vector2f& center, bool movable, b2World &world);
+	BrickWall (const sf::Vector2f& center, bool movable, b2World &world);
 	
 	//void makeItGrow();
 private:

@@ -1,21 +1,8 @@
 #pragma once
 
-enum Menu_t
-{
-	exitButton,
-	startButton,
-	resetButton,
-	soundButton
-};
 
 const int MENU_BUTTONS_INT_RECT [4][2]=  {{24, 23}, {22, 34}, {18, 31}, {110,28}};
 
-enum Toolbardata_t
-{
-	TIME,
-	SCORE,
-	LEVEL
-};
 
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -23,24 +10,30 @@ const int WINDOW_HEIGHT = 600;
 const unsigned obj_size = 40;
 
 
-enum GameObject_t
+enum Type_t
 {
 	balloon,
 	basketBall,
 	baseBall,
 	bowlingBall,
 	conveyor,
-	brickWallH,
-	brickWallV,
+	brickWall,
 	play,
 	worker,
 	arrows,
 	background,
-	exit_button,
-	start_button,
+	exitButton,
+	startButton,
 	reset,
 	sound,
-	none
+	none,
+
+	balloonButton = 100,
+	basketButton,
+	baseButton,
+	bowlingButton,
+	conveyorButton,
+	brickWallButton
 };
 
 
@@ -63,5 +56,28 @@ const int FLOORING_MARGIN = 1; //pix
 const char READ_NEXT [1] = {'-'};
 
 const float RAD_45 = 0.785398f;
+
+const int SCORE_TIME_H = 100;
+
+const int PLAY_BUTTON_H = 50;
+const int ARROWS_BUTTON_H = 50;
+
+const int TB_W = 100;
+const int TB_H = WINDOW_HEIGHT - SCORE_TIME_H - PLAY_BUTTON_H - ARROWS_BUTTON_H;
+const int TB_TOP = PLAY_BUTTON_H + ARROWS_BUTTON_H;
+
+const int TB_X = WINDOW_WIDTH - TB_W;
+const int TB_OBJ_X = WINDOW_WIDTH - TB_W/2;
+
+const int PLAY_Y = 0 + PLAY_BUTTON_H/2;
+const int ARROWS_Y = PLAY_BUTTON_H + ARROWS_BUTTON_H/2;
+const int BAR_Y = PLAY_BUTTON_H + ARROWS_BUTTON_H + TB_H/2;
+
+
+
+const int BUTTONS_IN_PAGE = 5;
+const int SPACING = 30;
+const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE;
+
 
 

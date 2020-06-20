@@ -1,11 +1,10 @@
 #include "Resizable.h"
 
 
-Resizable::Resizable(const sf::Vector2f& center, const sf::Vector2u& size, bool movable, b2World &world, GameObject_t type)
-    :GameObj(center, size, false, movable, world, type)
+Resizable::Resizable(const sf::Vector2f& center, bool movable, b2World &world, Type_t type)
+    :GameObj(center, false, movable, world, type)
 {
     setTexture();
-
 }
 
 void Resizable::setTexture()

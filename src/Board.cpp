@@ -22,37 +22,25 @@ void Board::setBoard(const Level& level, b2World& world)
 			case baseBall:
 				m_objects.push_back(std::make_unique<BaseBall>(level.getFromBoard(i).second, UNMOVABLE, world));
 				break;
-			case brickWallH:
-				m_objects.push_back(std::make_unique<BrickWallH>(level.getFromBoard(i).second, UNMOVABLE, world));
+			case brickWall:
+				m_objects.push_back(std::make_unique<BrickWall>(level.getFromBoard(i).second, UNMOVABLE, world));
 				break;
-			// case conveyor:
 
 		}
 	}
 }
 
 
-void Board::draw(sf::RenderWindow& window)
+void Board::draw(sf::RenderWindow& window, bool running)
 {
 	for(auto &obj : m_objects)
-		obj->draw(window);
+		obj->draw(window, running);
 }
 
 
-// bool Board::levelFinished()
-// {
-
-// 	return false;
-// }
-
-// void Board::MoveObjects(sf::Time deltaTime)
-// {
-
-// }
-
-bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world )
+bool Board::tryToAdd(sf::Vector2f mouseLoc, Type_t currObj, b2World& world )
 {
-	//if(currObj != chain)??
+
 	GameObj* current = NULL;
 
 	switch (currObj)
@@ -66,10 +54,9 @@ bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world
 			case baseBall:
 				current = new BaseBall(mouseLoc,MOVABLE,world);
 				break;
-			 case brickWallH:
-			 	current = new BrickWallH(mouseLoc,MOVABLE,world);
+			 case brickWall:
+			 	current = new BrickWall(mouseLoc,MOVABLE,world);
 			 	break;
-
 		
 		}
 
@@ -83,10 +70,6 @@ bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world
 			delete current;
 		}
 		
-	// else
-	// {
-	// 	//addChain();
-	// }
 	
 	return false;
 }
@@ -108,33 +91,31 @@ bool Board::collides(GameObj* current)
 bool Board::checkCollison(GameObj* obj2, GameObj* obj1)
 {
 	if(obj1->getGlobalBounds().intersects(obj2->getGlobalBounds()))
-	{
 		return true;
-	}
 
 	return false;
 }
 
-GameObject_t Board::handleClick(sf::Vector2f mouseLoc)
+Type_t Board::handleClick(sf::Vector2f mouseLoc)
 {
-	GameObject_t type = none;
-	BrickWallH* current;
+	Type_t type = none;
+	//BrickWall* current;
 	for (auto i = 0; i<m_objects.size(); i++)
 		if(m_objects[i]->getGlobalBounds().contains(mouseLoc) && m_objects[i]->isMovable())
 		{
 			type = m_objects[i]->getType();
 			m_objects.erase(m_objects.begin()+i);
 		}
-		else if (m_objects[i]->getGlobalBounds().contains(mouseLoc) && !m_objects[i]->isMovable())
-		{
-			current = static_cast <BrickWallH*> (m_objects[i].get());
-			if(!current->isMovable())
-			{
-				current->shiftL();
-				if(collides(current))
-					current->shiftR();
-			}
-		}
+		// else if (m_objects[i]->getGlobalBounds().contains(mouseLoc) && !m_objects[i]->isMovable())
+		// {
+		// 	current = static_cast <BrickWall*> (m_objects[i].get());
+		// 	if(!current->isMovable())
+		// 	{
+		// 		current->shiftL();
+		// 		if(collides(current))
+		// 			current->shiftR();
+		// 	}
+		// }
 	return type;
 }
 
@@ -143,7 +124,6 @@ void Board::resetObjectsPositions()
 	for (auto &obj : m_objects)
 		obj->setInitialLoc();
 }
-
 
 
 bool Board::isItemInLoc(conditionToWinLoc cond) const

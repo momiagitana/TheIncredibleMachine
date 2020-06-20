@@ -31,16 +31,17 @@ private:
 	Board m_board;
 	sf::RenderWindow& m_window;
 	b2World& m_world;
-	GameObject_t m_selected = none;
 	Toolbar m_toolbar;
 
 	bool m_finished = false;
-	BaseImg m_mouseImg;
 
+	Type_t m_selected = none;
+	BaseImg m_mouseImg;
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
 
 	bool tryRunning();
 	bool checkIfLevelFinished() const;
+	void setSelected(Type_t, const sf::Vector2f);
 
 };

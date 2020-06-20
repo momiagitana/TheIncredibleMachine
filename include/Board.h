@@ -21,11 +21,10 @@ public:
 
 	Board(const Level& level, b2World& world);
 	void setBoard(const Level& level, b2World& world);
-	void draw(sf::RenderWindow& window);
-	bool tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj,b2World& world);
-	GameObject_t handleClick(sf::Vector2f mouseLoc);
+	void draw(sf::RenderWindow& window, bool);
+	bool tryToAdd(sf::Vector2f mouseLoc, Type_t currObj,b2World& world);
+	Type_t handleClick(sf::Vector2f mouseLoc);
 	void resetObjectsPositions();
-	//bool tryToAdd(sf::Vector2f loc, GameObject_t,b2World& world);
 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
 	bool collides(GameObj* current);
 	bool checkCollison(GameObj* obj2, GameObj* obj1);

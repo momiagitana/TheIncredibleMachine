@@ -8,7 +8,7 @@ class BaseImg
 {
 public:
 
-	BaseImg(sf::Vector2f, sf::Texture*);
+	BaseImg(sf::Vector2f, Type_t);
 
 	sf::FloatRect getGlobalBounds() const;
 

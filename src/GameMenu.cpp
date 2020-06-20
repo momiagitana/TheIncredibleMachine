@@ -1,10 +1,10 @@
 #include "GameMenu.h"
 
 GameMenu::GameMenu() 
-:m_background(sf::Vector2f((float)WINDOW_WIDTH/2, (float)WINDOW_HEIGHT/2), ResourceManager::instance().getTexture(background))
+:m_background(sf::Vector2f((float)WINDOW_WIDTH/2, (float)WINDOW_HEIGHT/2), background)
 {
-	for (int i = exit_button; i < none; i++)
-		m_buttons.emplace_back(sf::Vector2f(0,0), GameObject_t(i));
+	for (int i = exitButton; i < none; i++)
+		m_buttons.emplace_back(sf::Vector2f(0,0), Type_t(i));
 	setButtons();
 
 
@@ -41,14 +41,14 @@ void GameMenu::runstart(sf::RenderWindow& window)
 				sf::Vector2f location = window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 				for (auto button : m_buttons)
 				{
-					if (button.clicked(location))
+					if (button.clickedOnMe(location))
 					{
-						if (button.getObj() == start_button)
+						if (button.getType() == startButton)
 						{
 							m_StartPlaying = true;
 							return;
 						}
-						else if (button.getObj() == exit_button)
+						else if (button.getType() == exitButton)
 						{
 							m_StartPlaying = false;
 							return;
@@ -58,8 +58,6 @@ void GameMenu::runstart(sf::RenderWindow& window)
 				break;
 			}
 			}
-	
-
 		}
 	}
 }
