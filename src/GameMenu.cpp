@@ -120,10 +120,10 @@ void GameMenu::setButtons()
 	m_buttons[M_SOUND].setIntRect(sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(110, 28)));
 	//m_buttons[M_SOUND].setposition(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 100, ((float)WINDOW_HEIGHT / 2) + 110));
 	m_buttons[M_START_BUTTON].setIntRect(sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(22, 34)));
-	//m_buttons[M_START_BUTTON].setposition(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 50, ((float)WINDOW_HEIGHT / 2) + 110));
 	m_buttons[M_EXIT_BUTTON].setIntRect(sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(24,23)));
-//	m_buttons[M_EXIT_BUTTON].setposition(sf::Vector2f(m_buttons[M_START_BUTTON].getLocation().x, (m_buttons[M_START_BUTTON].getLocation().y + 110)));
-	
-	
+	m_buttons[M_START_BUTTON].setposition(sf::Vector2f(((float)WINDOW_WIDTH / 2) - 50, ((float)WINDOW_HEIGHT/ 4) + 110));
+	m_buttons[M_EXIT_BUTTON].setposition(sf::Vector2f(m_buttons[M_START_BUTTON].getLocation().x, (m_buttons[M_START_BUTTON].getLocation().y + 110)));
+	m_buttons[M_RESET].setposition(sf::Vector2f(m_buttons[M_START_BUTTON].getLocation().x, (m_buttons[M_EXIT_BUTTON].getLocation().y + 110)));
+	m_buttons[M_SOUND].setposition(sf::Vector2f(m_buttons[M_START_BUTTON].getLocation().x, (m_buttons[M_RESET].getLocation().y + 110)));
 }
 
