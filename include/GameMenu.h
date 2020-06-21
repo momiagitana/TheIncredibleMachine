@@ -11,7 +11,7 @@ class GameMenu
 public:
 
 	GameMenu();
-	void runstart(sf::RenderWindow& window);
+	void runStart(sf::RenderWindow& window);
 	void settexturs( sf::RenderWindow&);
 	void draw(sf::RenderWindow& window);
 	bool shouldStartplaying()const;

@@ -24,8 +24,6 @@ private:
 	void add(Type_t, int);
 	void updateLocs();
 	void setBar();
-	void setPlayButton();
-	void setArrowsButton();
 
 	toolbar m_toolbar;
 	int m_page = 0;

@@ -9,7 +9,6 @@ Button(center, objType)
 	m_text.setCharacterSize(15);
 	m_text.setColor(sf::Color::Black);
 	m_text.setString(std::to_string(m_amount));
-
 }
 
 void ToolbarButton::increase()

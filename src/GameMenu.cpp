@@ -14,7 +14,7 @@ GameMenu::GameMenu()
 
 
 
-void GameMenu::runstart(sf::RenderWindow& window)
+void GameMenu::runStart(sf::RenderWindow& window)
 {
 
 	while (window.isOpen())

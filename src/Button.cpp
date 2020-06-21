@@ -20,7 +20,7 @@ bool Button::clickedOnMe(sf::Vector2f loc)
 
 Type_t Button::getType()
 {
-	return Type_t(m_type%100);
+	return Type_t(m_type%100);//fix global 
 }
 
 void Button::light()

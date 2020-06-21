@@ -1,11 +1,11 @@
 #include "Toolbar.h"
 
 Toolbar::Toolbar(toolbarObjects objs)
-	:m_play(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X,PLAY_Y), Type_t::play)),
-	 m_arrows(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X,ARROWS_Y), Type_t::arrows))
+	:m_play(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X, PLAY_Y), Type_t::play)),
+	 m_arrows(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X, ARROWS_Y), Type_t::arrows))
 {
 	for (auto& pair : objs)
-		addOrIncrease(pair.first, pair.second);
+		add(pair.first, pair.second);
 
 	setBar();
 		
@@ -33,10 +33,11 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 		type = play;
 	}
 
+	//for(auto i = BUTTONS_IN_PAGE * m_page; i < m_toolbar.size() && i < BUTTONS_IN_PAGE; i++)
 	for (auto& button : m_toolbar)
 	{
 		if (button.clickedOnMe(loc))
-		{	
+		{
 			type = button.getType();
 			deleteObj(type);
 		}
@@ -44,19 +45,19 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 	return type;
 }
 
-void Toolbar::addOrIncrease(Type_t obj, int amount)
+void Toolbar::addOrIncrease(Type_t objType, int amount)
 {
 	bool found = false;
-	for (auto &each : m_toolbar)
+	for (auto &button : m_toolbar)
 	{
-		if(each.getType() == obj)
+		if(button.getType() == objType)
 		{
-			each.increase();
+			button.increase();
 			found = true;
 		}
 	}
 	if (!found)
-		add(obj, amount);
+		add(objType, amount);
 	
 }
 
@@ -78,7 +79,6 @@ void Toolbar::deleteObj(const Type_t& obj)
 				updateLocs();
 			}
 		}
-
 }
 
 void Toolbar::draw(sf::RenderWindow& window) 
@@ -87,7 +87,7 @@ void Toolbar::draw(sf::RenderWindow& window)
 	m_play->draw(window);
 	m_arrows->draw(window);
 	
-	for (auto i = 0; i < m_toolbar.size() && i < BUTTONS_IN_PAGE; i++)
+	for (auto i = BUTTONS_IN_PAGE * m_page; i < m_toolbar.size() && i < BUTTONS_IN_PAGE; i++)
 		m_toolbar[i].draw(window);
 }
 

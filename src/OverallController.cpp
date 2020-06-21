@@ -17,7 +17,7 @@ void OverallController::run()
 {
 	
 	while (m_window.isOpen()) {
-		m_menu.runstart(m_window);
+		m_menu.runStart(m_window);
 
 		if (m_menu.shouldStartplaying())
 		{

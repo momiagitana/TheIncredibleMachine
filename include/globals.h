@@ -75,7 +75,7 @@ const int BAR_Y = PLAY_BUTTON_H + ARROWS_BUTTON_H + TB_H/2;
 
 
 
-const int BUTTONS_IN_PAGE = 5;
+const int BUTTONS_IN_PAGE = 6;
 const int SPACING = 30;
 const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE;
 
