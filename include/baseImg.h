@@ -12,9 +12,10 @@ public:
 
 	sf::FloatRect getGlobalBounds() const;
 
-	void draw(sf::RenderWindow&) const;
+	virtual void draw(sf::RenderWindow&) const;
 
-	void setLocation(sf::Vector2f);
+	//void setLocation(sf::Vector2f); fix
+
 	sf::Vector2f getLocation() const;
 
 	void setRotation(float);
@@ -29,8 +30,10 @@ public:
 
 	void setIntRect(sf::IntRect);
 
-	float PPM = 64.f;
-    float MPP = 0.015625f;
+	void setOrigin(float, float);
+
+	//float PPM = 64.f;
+    //float MPP = 0.015625f; fix
 
 private:
 

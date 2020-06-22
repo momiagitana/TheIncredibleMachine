@@ -36,6 +36,7 @@ public:
 	//void MoveObjects(sf::Time deltaTime);
 
 private:
+	void updateImgLocs();
 
 	sf::Sprite m_levelBackground;
 	std::vector <std::unique_ptr<GameObj>> m_objects;

@@ -20,13 +20,9 @@ public:
 
     b2Vec2 getPosition() const { return  m_body->GetPosition(); }
     float getAngle() const { return m_body->GetAngle();}
-    void setAngle(float angle);
+    void setAngle(int whichAngle);
     void setPosition(sf::Vector2f);
     void setGravityScale(float);
     void setSize(sf::Vector2f);
-
-
-	float PPM = 64.f;
-    float MPP = 0.015625f;
 
 };

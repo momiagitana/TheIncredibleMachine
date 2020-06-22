@@ -9,13 +9,6 @@ GameObj::GameObj(const sf::Vector2f& center, bool dynamic, bool movable, b2World
 	updateLoc();
 }
 
-void GameObj::draw (sf::RenderWindow& win, bool running)
-{
-	if (running)
-		updateLoc();
-	BaseImg::draw(win);
-}
-
 void GameObj::updateLoc()
 {
 	auto pos = m_phyObj.getPosition();
@@ -39,9 +32,9 @@ void GameObj::updateBodySize()
 	m_phyObj.setSize(BaseImg::getSize());
 }
 
-void GameObj::rotateBody(float angle)
+void GameObj::rotateBody(int whichAngle)
 {
-	m_phyObj.setAngle(angle);
+	m_phyObj.setAngle(whichAngle);
 	BaseImg::setRotation(m_phyObj.getAngle());
 }
 

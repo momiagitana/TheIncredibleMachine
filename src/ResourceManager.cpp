@@ -56,6 +56,9 @@ ResourceManager::ResourceManager()
 	loadTexture("conveyorButton.png", Type_t::conveyorButton);
 	loadTexture("brickButton.png", Type_t::brickWallButton);
 
+	loadTexture("resizeButton.png", Type_t::resizeButton);
+	loadTexture("rotateButton.png", Type_t::rotateButton);
+
 	
 	loadTexture("play.png", Type_t::play);
 	loadTexture("arrows.png", Type_t::arrows);
@@ -69,30 +72,34 @@ ResourceManager::ResourceManager()
 	 
 	//------------------- for mac -----------------------------------------
 
-	/*loadTexture("build/balloon.png", Type_t::balloon);
-	loadTexture("build/basketBall.png", Type_t::basketBall);
-	loadTexture("build/baseBall.png", Type_t::baseBall);
-	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
-	loadTexture("build/conveyor.png", Type_t::conveyor);
-	loadTexture("build/brick.png", Type_t::brickWall);
-	loadTexture("build/balloonButton.png", Type_t::balloonButton);
+	// loadTexture("build/balloon.png", Type_t::balloon);
+	// loadTexture("build/basketBall.png", Type_t::basketBall);
+	// loadTexture("build/baseBall.png", Type_t::baseBall);
+	// loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
+	// loadTexture("build/conveyor.png", Type_t::conveyor);
+	// loadTexture("build/brick.png", Type_t::brickWall);
+	// loadTexture("build/balloonButton.png", Type_t::balloonButton);
 
-	loadTexture("build/basketButton.png", Type_t::basketButton);
-	loadTexture("build/baseButton.png", Type_t::baseButton);
-	loadTexture("build/bowlingButton.png", Type_t::bowlingButton);
-	loadTexture("build/conveyorButton.png", Type_t::conveyorButton);
-	loadTexture("build/brickButton.png", Type_t::brickWallButton);
+	// loadTexture("build/basketButton.png", Type_t::basketButton);
+	// loadTexture("build/baseButton.png", Type_t::baseButton);
+	// loadTexture("build/bowlingButton.png", Type_t::bowlingButton);
+	// loadTexture("build/conveyorButton.png", Type_t::conveyorButton);
+	// loadTexture("build/brickButton.png", Type_t::brickWallButton);
 
+	
+	// loadTexture("build/resizeButton.png", Type_t::resizeButton);
+	// loadTexture("build/rotateButton.png", Type_t::rotateButton);
 
-	loadTexture("build/play.png", Type_t::play);
-	loadTexture("build/arrows.png", Type_t::arrows);
-	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
-	loadTexture("build/exit.png", Type_t::exitButton);
-	loadTexture("build/playmenu.png", Type_t::startButton);
-	loadTexture("build/bomb.png", Type_t::reset);
-	loadTexture("build/sound.png", Type_t::sound);
+	// loadTexture("build/play.png", Type_t::play);
+	// loadTexture("build/arrows.png", Type_t::arrows);
+	// loadTexture("build/The_Incredible_Machine.png", Type_t::background);
+	// loadTexture("build/exit.png", Type_t::exitButton);
+	// loadTexture("build/playmenu.png", Type_t::startButton);
+	// loadTexture("build/bomb.png", Type_t::reset);
+	// loadTexture("build/sound.png", Type_t::sound);
+	
 
-	loadTexture("build/The_Incredible_Machine.png", Type_t::background);*/
+	// loadTexture("build/The_Incredible_Machine.png", Type_t::background);
 
 	//---------- font ---win------
 	 loadFont("kongtext.ttf", Font::kongtext);

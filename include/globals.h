@@ -29,6 +29,8 @@ enum Type_t
 	reset,
 	sound,
 	none,
+	rotateButton,
+	resizeButton,
 
 	balloonButton = 100,
 	basketButton,
@@ -64,7 +66,7 @@ const int FLOORING_MARGIN = 1; //pix
 
 const char READ_NEXT [1] = {'-'};
 
-const float RAD_45 = 0.785398f;
+const float DEG_TO_RAD = 0.0174533;
 
 const int SCORE_TIME_H = 100;
 
@@ -90,3 +92,5 @@ const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE
 
 
 
+const float PPM = 64.f;
+const float MPP = 0.015625f;
