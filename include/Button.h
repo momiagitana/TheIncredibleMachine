@@ -15,7 +15,6 @@ public:
 	void light();
 	void unlight();
 	bool getlightStatus();//?
-	void draw(sf::RenderWindow&) const;
 
 	
 private:

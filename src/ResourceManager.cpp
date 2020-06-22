@@ -57,6 +57,9 @@ ResourceManager::ResourceManager()
 	loadTexture("build/brickButton.png", Type_t::brickWallButton);
 
 	
+	loadTexture("build/resizeButton.png", Type_t::resizeButton);
+	loadTexture("build/rotateButton.png", Type_t::rotateButton);
+
 	loadTexture("build/play.png", Type_t::play);
 	loadTexture("build/arrows.png", Type_t::arrows);
 	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
@@ -64,6 +67,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/playmenu.png", Type_t::startButton);
 	loadTexture("build/bomb.png", Type_t::reset);
 	loadTexture("build/sound.png", Type_t::sound);
+	
 
 	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
 

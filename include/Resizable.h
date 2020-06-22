@@ -1,23 +1,28 @@
 #pragma once
 #include "GameObj.h"
 #include "ResourceManager.h"
+#include "Button.h"
+#include "globals.h"
 
 class Resizable : public GameObj
 {
 public:
 	Resizable(const sf::Vector2f& center,  bool movable, b2World &world, Type_t);
 	
-    int getSize() const { return m_which; }
-    void setSize(int size) { m_which = size; }
-
+    int getWhichSize() const { return m_whichSize; }
+    void setWhichSize(int size) { m_whichSize = size; }
+    bool clickedOnMe(sf::Vector2f loc);
+    void draw(sf::RenderWindow&) const;
     void setTexture();
+
+private:
+	int m_whichSize = 1; //from 1 to 5
+    std::vector<Button> m_buttons;
+
     void makeItBigger();
     void makeItSmaller();
     void shiftL();
     void shiftR();
-
-private:
-	int m_which = 1; //from 1 to 5
-
+    void setButtons();
 };
 

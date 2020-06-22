@@ -101,21 +101,12 @@ Type_t Board::handleClick(sf::Vector2f mouseLoc)
 	Type_t type = none;
 	//BrickWall* current;
 	for (auto i = 0; i<m_objects.size(); i++)
-		if(m_objects[i]->getGlobalBounds().contains(mouseLoc) && m_objects[i]->isMovable())
+		if(m_objects[i]->clickedOnMe(mouseLoc) && m_objects[i]->isMovable())
 		{
 			type = m_objects[i]->getType();
 			m_objects.erase(m_objects.begin()+i);
 		}
-		// else if (m_objects[i]->getGlobalBounds().contains(mouseLoc) && !m_objects[i]->isMovable())
-		// {
-		// 	current = static_cast <BrickWall*> (m_objects[i].get());
-		// 	if(!current->isMovable())
-		// 	{
-		// 		current->shiftL();
-		// 		if(collides(current))
-		// 			current->shiftR();
-		// 	}
-		// }
+
 	return type;
 }
 

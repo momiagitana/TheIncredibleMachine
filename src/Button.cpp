@@ -33,14 +33,8 @@ void Button::unlight()
 	m_light = false;
 }
 
-
 bool Button::getlightStatus()
 {
 	return m_light;
 }
 
-void Button::draw(sf::RenderWindow& w) const
-{
-	BaseImg::draw(w);
-	
-}

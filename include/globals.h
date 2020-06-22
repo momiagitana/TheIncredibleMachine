@@ -27,6 +27,8 @@ enum Type_t
 	reset,
 	sound,
 	none,
+	rotateButton,
+	resizeButton,
 
 	balloonButton = 100,
 	basketButton,
