@@ -90,6 +90,16 @@ Type_t FileHandler::strToEnum(const std::string& str)
 
 }
 
+std::string FileHandler::enumToStr(Type_t obj)
+{
+	if (obj == balloon ) return "balloon";
+	else if (obj == basketBall ) return "basketBall";
+	else if (obj == baseBall ) return "baseBall";
+	else if (obj == bowlingBall ) return "bowlingBall";
+	else if (obj == conveyor ) return "conveyor";
+	else if (obj == brickWall ) return "brickWall";
+}
+
 
 
 

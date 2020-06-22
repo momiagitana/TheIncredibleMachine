@@ -44,3 +44,11 @@ void GameObj::rotateBody(float angle)
 	m_phyObj.setAngle(angle);
 	BaseImg::setRotation(m_phyObj.getAngle());
 }
+
+ObjInfo GameObj::getInfo()
+{
+	ObjInfo info;
+	info._loc = getLocation();
+	info._typ = getType();
+	return info;
+}

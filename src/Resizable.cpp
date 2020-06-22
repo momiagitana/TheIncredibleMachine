@@ -9,22 +9,22 @@ Resizable::Resizable(const sf::Vector2f& center, bool movable, b2World &world, T
 
 void Resizable::setTexture()
 {
-    BaseImg::setIntRect(sf::IntRect(sf::Vector2i(FLOORING_MARGIN,FLOORING_MARGIN+(FLOORING_MARGIN*2+FLOORING_UNIT)*(m_which-1)), sf::Vector2i(FLOORING_UNIT*(m_which+2), FLOORING_UNIT)));
+    BaseImg::setIntRect(sf::IntRect(sf::Vector2i(FLOORING_MARGIN,FLOORING_MARGIN+(FLOORING_MARGIN*2+FLOORING_UNIT)*(m_whichSize-1)), sf::Vector2i(FLOORING_UNIT*(m_whichSize+2), FLOORING_UNIT)));
     GameObj::updateBodySize();
 }
 
 void Resizable::makeItBigger()
 {
-    if(++m_which == 6)
-        m_which = 1;
+    if(++m_whichSize == 6)
+        m_whichSize = 1;
     setTexture();
 }
 
 void Resizable::makeItSmaller()
 {
     
-    if(--m_which == 0)
-        m_which = 5;
+    if(--m_whichSize == 0)
+        m_whichSize = 5;
     setTexture();
 
 }
@@ -38,4 +38,11 @@ void Resizable::shiftL()
 void Resizable::shiftR()
 {
     rotateBody(RAD_45);
+}
+
+ObjInfo Resizable::getInfo()
+{
+    ObjInfo info = GameObj::getInfo();
+    info.size = getWhichSize();
+    return info;
 }

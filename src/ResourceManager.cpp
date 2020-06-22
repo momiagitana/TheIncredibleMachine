@@ -42,7 +42,34 @@ ResourceManager::ResourceManager()
 	//---------- textures -------windows---
 
 
-	loadTexture("build/balloon.png", Type_t::balloon);
+	loadTexture("balloon.png", Type_t::balloon);
+	loadTexture("basketBall.png", Type_t::basketBall);
+	loadTexture("baseBall.png", Type_t::baseBall);
+	loadTexture("bowlingBall.png", Type_t::bowlingBall);
+	loadTexture("conveyor.png", Type_t::conveyor);
+	loadTexture("brick.png", Type_t::brickWall);
+	loadTexture("balloonButton.png", Type_t::balloonButton);
+
+	loadTexture("basketButton.png", Type_t::basketButton);
+	loadTexture("baseButton.png", Type_t::baseButton);
+	loadTexture("bowlingButton.png", Type_t::bowlingButton);
+	loadTexture("conveyorButton.png", Type_t::conveyorButton);
+	loadTexture("brickButton.png", Type_t::brickWallButton);
+
+	
+	loadTexture("play.png", Type_t::play);
+	loadTexture("arrows.png", Type_t::arrows);
+	loadTexture("The_Incredible_Machine.png", Type_t::background);
+	loadTexture("exit.png", Type_t::exitButton);
+	loadTexture("playmenu.png", Type_t::startButton);
+	loadTexture("bomb.png", Type_t::reset);
+	loadTexture("sound.png", Type_t::sound);
+
+	loadTexture("The_Incredible_Machine.png", Type_t::background);
+	 
+	//------------------- for mac -----------------------------------------
+
+	/*loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
 	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
@@ -56,7 +83,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/conveyorButton.png", Type_t::conveyorButton);
 	loadTexture("build/brickButton.png", Type_t::brickWallButton);
 
-	
+
 	loadTexture("build/play.png", Type_t::play);
 	loadTexture("build/arrows.png", Type_t::arrows);
 	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
@@ -65,21 +92,21 @@ ResourceManager::ResourceManager()
 	loadTexture("build/bomb.png", Type_t::reset);
 	loadTexture("build/sound.png", Type_t::sound);
 
-	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
+	loadTexture("build/The_Incredible_Machine.png", Type_t::background);*/
 
 	//---------- font ---win------
-	// loadFont("kongtext.ttf", Font::kongtext);
-	loadFont("build/kongtext.ttf", Font::kongtext);
+	 loadFont("kongtext.ttf", Font::kongtext);
+	/*loadFont("build/kongtext.ttf", Font::kongtext);*/
 
 	//---------- sound ----------
-	//  loadSound("menu.ogg", Sound::menu);
-	//  loadSound("background.ogg", Sound::background);
+	  loadSound("menu.ogg", Sound::menu);
+	  loadSound("background.ogg", Sound::background);
 
-	loadSound("build/menu.ogg", Sound::menu);
-	loadSound("build/background.ogg", Sound::background);
+	/*loadSound("build/menu.ogg", Sound::menu);
+	loadSound("build/background.ogg", Sound::background);*/
 
-	//  m_path = "levels.txt";
-		m_path = "build/levels.txt";
+	  m_path = "levels.txt";
+		/*m_path = "build/levels.txt";*/
 }
 
 void ResourceManager::loadTexture(std::string path, Type_t name)

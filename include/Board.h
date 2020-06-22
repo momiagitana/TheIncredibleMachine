@@ -28,16 +28,16 @@ public:
 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
 	bool collides(GameObj* current);
 	bool checkCollison(GameObj* obj2, GameObj* obj1);
-	void wakeEmAllUp();
+	void wakeEmAllUp(); ///???
 	bool isItemInLoc(conditionToWinLoc) const;
+	void saveLevelToFile();
 
 	//bool levelFinished();
 	//void MoveObjects(sf::Time deltaTime);
 
 private:
 
-
 	sf::Sprite m_levelBackground;
 	std::vector <std::unique_ptr<GameObj>> m_objects;
-	
+	std::vector< ObjInfo> getObjInfo();
 };

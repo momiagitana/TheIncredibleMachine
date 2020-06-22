@@ -19,6 +19,7 @@ private:
 
 	Level getlevel();
 	Type_t strToEnum(const std::string& str);
+	std::string enumToStr(Type_t);
 	std::fstream m_file;
 };
 

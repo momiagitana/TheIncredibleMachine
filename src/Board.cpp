@@ -138,3 +138,13 @@ bool Board::isItemInLoc(conditionToWinLoc cond) const
 	
 	return false;
 }
+
+
+
+std::vector<ObjInfo> Board::getObjInfo()
+{
+	auto info = std::vector<ObjInfo>();
+	for (auto& obj : m_objects)
+		info.push_back(obj->getInfo());
+	return info;
+}

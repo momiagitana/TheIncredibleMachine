@@ -10,6 +10,8 @@ const int WINDOW_HEIGHT = 600;
 const unsigned obj_size = 40;
 
 
+
+
 enum Type_t
 {
 	balloon,
@@ -36,6 +38,13 @@ enum Type_t
 	brickWallButton
 };
 
+struct ObjInfo
+{
+	Type_t _typ;
+	sf::Vector2f _loc;
+	float _angle = -1;
+	int size = -1;
+};
 
 const float TIMESTEP = 1.0f / 60.0f;
 const int VELITER = 10;
