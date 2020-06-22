@@ -44,8 +44,8 @@ struct ObjInfo
 {
 	Type_t _typ;
 	sf::Vector2f _loc;
-	float _angle = -1;
-	int size = -1;
+	int _angle = -1;
+	int _size = -1;
 };
 
 const float TIMESTEP = 1.0f / 60.0f;

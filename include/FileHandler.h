@@ -14,6 +14,7 @@ public:
 	FileHandler(const std::string&);
 	~FileHandler();
 	std::vector<Level> readLevels();
+	void saveNewLevel(const std::vector< ObjInfo>&);
 
 private:
 

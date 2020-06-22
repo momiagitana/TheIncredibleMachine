@@ -11,7 +11,7 @@ public:
 
 	Button(const sf::Vector2f& center,Type_t obj);
 	virtual bool clickedOnMe(sf::Vector2f loc);
-	Type_t getType();
+	Type_t getType()const;
 	
 private:
 	Type_t m_type;

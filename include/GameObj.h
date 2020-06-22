@@ -19,7 +19,7 @@ public:
 	int getID() const { return m_ID; }
 	bool isMovable() const { return m_movable; }
 	void updateBodySize();
-	ObjInfo getInfo(); //fix const
+	virtual ObjInfo getInfo() const; 
 	void rotateBody(int);
 	void updateLoc();
 

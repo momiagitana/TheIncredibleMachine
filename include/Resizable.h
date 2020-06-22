@@ -10,11 +10,12 @@ public:
 	Resizable(const sf::Vector2f& center,  bool movable, b2World &world, Type_t);
 	
     int getWhichSize() const { return m_whichSize; }
+    int getAngle() const { return m_whichAngle; }
     void setWhichSize(int size) { m_whichSize = size; }
     bool clickedOnMe(sf::Vector2f loc);
     void draw(sf::RenderWindow&) const;
     void setTexture();
-    ObjInfo getInfo(); //fix const
+    ObjInfo getInfo()const; //fix const
 
 private:
 	int m_whichSize = 1; //from 1 to 5

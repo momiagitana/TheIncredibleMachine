@@ -42,10 +42,11 @@ void Resizable::shiftR()
     rotateBody(m_whichAngle);
 }
 
-ObjInfo Resizable::getInfo()
+ObjInfo Resizable::getInfo() const
 {
     ObjInfo info = GameObj::getInfo();
-    info.size = getWhichSize();
+    info._size = getWhichSize();
+    info._angle = getAngle();
     return info;
 }
 

@@ -72,6 +72,7 @@ void LevelController::run()
 
         }
     }
+	m_board.saveLevelToFile();
 }
 
 void LevelController::setSelected(Type_t type, const sf::Vector2f loc)
