@@ -17,6 +17,7 @@ public:
 
 private:
 	int m_whichSize = 1; //from 1 to 5
+    int m_whichAngle = 0;
     std::vector<Button> m_buttons;
 
     void makeItBigger();

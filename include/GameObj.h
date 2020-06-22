@@ -15,8 +15,6 @@ public:
 
 	~GameObj(){}
 
-	void draw (sf::RenderWindow&, bool);
-
 	void setInitialLoc();
 
 	void setGravityScale(float);
@@ -27,7 +25,9 @@ public:
 
 	void updateBodySize();
 
-	void rotateBody(float angle);
+	void rotateBody(int);
+
+	void updateLoc();
 
 private:
 
@@ -36,7 +36,7 @@ private:
 	int m_ID;
 	sf::Vector2f m_initialLoc;
 	
-	void updateLoc();
+
 
 	
 };
