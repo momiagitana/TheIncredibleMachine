@@ -127,12 +127,14 @@ void LevelController::drawAll()
 
 bool LevelController::tryRunning()
 {
+	//m_board.testCollison(m_world);
+
 	int stepCounter = 0;
 
 	while (m_window.isOpen())
 	{
 		if (stepCounter == 2)//change 10 to const
-		{
+		{		
 			if (checkIfLevelFinished()) //we check every 10 step
 				return true;
 			else
@@ -142,7 +144,7 @@ bool LevelController::tryRunning()
 			stepCounter++;
 
 		// Update window
-		m_window.clear(sf::Color::Transparent);
+		m_window.clear(sf::Color::Transparent);		
 
 		// Update world Box2D
 		m_world.Step(TIMESTEP, VELITER, POSITER);
@@ -170,7 +172,7 @@ bool LevelController::tryRunning()
 			}
         }
     }
-
+	
 }
 
 bool LevelController::checkIfLevelFinished() const

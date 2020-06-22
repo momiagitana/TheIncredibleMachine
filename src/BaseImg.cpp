@@ -49,7 +49,7 @@ void BaseImg::setSize(sf::Vector2u size)
 void BaseImg::setPosition(sf::Vector2f loc)
 {
 	m_sprite.setPosition(loc);
-	std::cout << loc.x << " " << loc.y << std::endl;
+	//std::cout << loc.x << " " << loc.y << std::endl;
 }
 
 

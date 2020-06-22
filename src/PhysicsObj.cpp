@@ -9,8 +9,7 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vec
 		bodyDef.type = b2_dynamicBody;
 	else
 		bodyDef.type = b2_staticBody;
-
-    
+  
     bodyDef.position.Set(center.x * MPP, center.y * MPP);
     m_body = world.CreateBody(&bodyDef);
 
@@ -23,7 +22,6 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& center, const sf::Vec
 
     m_fixture = m_body->CreateFixture(&m_fixtureDef);
     
-
 }
 
 PhysicsObj::~PhysicsObj()
@@ -66,4 +64,20 @@ void PhysicsObj::setSize(sf::Vector2f size)
 void PhysicsObj::setAngle(float angle)
 {
     m_body->SetTransform( m_body->GetPosition(), m_body->GetAngle()+angle);
+}
+
+void PhysicsObj::applyForce()
+{
+    b2Vec2 force;
+    force.x = 200;
+    force.y = 200;
+    //m_body = vectorShapes.back()->getBody();
+    
+    m_body->ApplyForceToCenter(force, true);
+
+}
+
+int PhysicsObj::randomNumber(int min, int max)
+{
+    return min + rand()% (max - min + 1);
 }

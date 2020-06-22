@@ -28,10 +28,14 @@ public:
 	void resetObjectsPositions();
 	//bool tryToAdd(sf::Vector2f loc, GameObject_t,b2World& world);
 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
-	bool collides(GameObj* current);
-	bool checkCollison(GameObj* obj2, GameObj* obj1);
+	bool collides(GameObj& current);
+	bool checkCollison(GameObj& obj2, GameObj& obj1);
 	void wakeEmAllUp();
 	bool isItemInLoc(conditionToWinLoc) const;
+
+
+	void testCollison(b2World& world );
+	bool collision(GameObj& one, GameObj& two);
 
 	//bool levelFinished();
 	//void MoveObjects(sf::Time deltaTime);

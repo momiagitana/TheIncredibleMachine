@@ -13,7 +13,7 @@ public:
 
 	GameObj(const sf::Vector2f& center, const sf::Vector2u& size, bool dynamic, bool movable, b2World &world, GameObject_t);
 
-	~GameObj(){}
+	virtual ~GameObj(){}
 
 	void draw (sf::RenderWindow&);
 
@@ -30,6 +30,11 @@ public:
 	void updateBodySize();
 
 	void rotateBody(float angle);
+
+	PhysicsObj getPhysical()
+	{
+		return m_phyObj;
+	}
 
 private:
 

@@ -31,6 +31,23 @@ void Board::setBoard(const Level& level, b2World& world)
 	}
 }
 
+void Board::testCollison(b2World& world )
+{
+	GameObj* current = new BasketBall(sf::Vector2f(20,30),MOVABLE,world);
+	m_objects.push_back(std::unique_ptr<GameObj>(current));
+
+	for(auto& i : m_objects)
+	{
+		m_collision.processCollision(*current,*i.get());
+
+	}
+
+}
+
+bool Board::collision(GameObj& one, GameObj& two)
+{
+	return one.getGlobalBounds().intersects(two.getGlobalBounds());
+}
 
 void Board::draw(sf::RenderWindow& window)
 {
@@ -73,7 +90,7 @@ bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world
 		
 		}
 
-		if(current && !collides(current))
+		if(current && !collides(*current))
 		{
 			m_objects.push_back(std::unique_ptr<GameObj>(current));
 			return true;
@@ -92,11 +109,11 @@ bool Board::tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj, b2World& world
 }
 
 
-bool Board::collides(GameObj* current)
+bool Board::collides(GameObj& current)
 {
 	for(auto& i : m_objects)
 	{
-		if(checkCollison(i.get(),current) && current->getID() != i->getID())
+		if(checkCollison(*i.get(),current) && current.getID() != i->getID())
 		{
 			return true;
 		}
@@ -113,11 +130,9 @@ bool Board::collides(GameObj* current)
 
 }
 
-
-bool Board::checkCollison(GameObj* obj2, GameObj* obj1)
+bool Board::checkCollison(GameObj& obj2, GameObj& obj1)
 {
-	
-	if(obj1->getGlobalBounds().intersects(obj2->getGlobalBounds()))
+	if(obj1.getGlobalBounds().intersects(obj2.getGlobalBounds()))
 	{
 		return true;
 	}
@@ -141,7 +156,7 @@ GameObject_t Board::handleClick(sf::Vector2f mouseLoc)
 			if(!current->isMovable())
 			{
 				current->shiftL();
-				if(collides(current))
+				if(collides(*current))
 					current->shiftR();
 			}
 		}
