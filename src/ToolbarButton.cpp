@@ -8,17 +8,30 @@ Button(center, objType)
 	m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
 	m_text.setCharacterSize(15);
 	m_text.setColor(sf::Color::Black);
+	if(m_amount==-1)
+	m_text.setString("-");
+	else
 	m_text.setString(std::to_string(m_amount));
 }
 
 void ToolbarButton::increase()
 {
+	if (m_amount == -1)
+	{
+		m_text.setString("-");
+		return;
+	}
 	m_amount++;
 	m_text.setString(std::to_string(m_amount));
 }
 
 void ToolbarButton::decrease()
 {
+	if (m_amount == -1)
+	{
+	   m_text.setString("-");
+	  return;
+	}
 	m_amount--;
 	m_text.setString(std::to_string(m_amount));
 }
@@ -39,3 +52,4 @@ void ToolbarButton::draw(sf::RenderWindow& w) const
 	BaseImg::draw(w);
 	w.draw(m_text);
 }
+

@@ -13,6 +13,8 @@ configure_file ("baseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("conveyorButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("brickButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("arrowLButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("arrowRButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
