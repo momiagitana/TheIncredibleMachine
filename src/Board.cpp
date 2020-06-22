@@ -33,8 +33,17 @@ void Board::setBoard(const Level& level, b2World& world)
 
 void Board::draw(sf::RenderWindow& window, bool running)
 {
+	if (running)
+		updateImgLocs();
+
 	for(auto &obj : m_objects)
-		obj->draw(window, running);
+		obj->draw(window);
+}
+
+void Board::updateImgLocs()
+{
+	for(auto &obj : m_objects)
+		obj->updateLoc();
 }
 
 

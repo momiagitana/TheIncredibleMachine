@@ -11,6 +11,7 @@ Resizable::Resizable(const sf::Vector2f& center, bool movable, b2World &world, T
 void Resizable::setTexture()
 {
     BaseImg::setIntRect(sf::IntRect(sf::Vector2i(FLOORING_MARGIN,FLOORING_MARGIN+(FLOORING_MARGIN*2+FLOORING_UNIT)*(m_whichSize-1)), sf::Vector2i(FLOORING_UNIT*(m_whichSize+2), FLOORING_UNIT)));
+    BaseImg::setOrigin((FLOORING_UNIT*(m_whichSize+2))/2, FLOORING_UNIT/2);
     GameObj::updateBodySize();
 }
 
@@ -32,19 +33,22 @@ void Resizable::makeItSmaller()
 
 void Resizable::shiftL()
 {
-    
-    rotateBody(-RAD_45);
-
+    m_whichAngle = (m_whichAngle+1)%3;
+    rotateBody(m_whichAngle);
 }
 void Resizable::shiftR()
 {
-    rotateBody(RAD_45);
+    m_whichAngle = (m_whichAngle-1)%3;
+    rotateBody(m_whichAngle);
 }
 
 
 void Resizable::setButtons()
 {
-    m_buttons.push_back(Button(BaseImg::getLocation(), Type_t::rotateButton));
+    auto center = BaseImg::getLocation();
+    auto diff = BaseImg::getSize().x/2;
+    m_buttons.push_back(Button(sf::Vector2f(center.x+diff, center.y+FLOORING_UNIT), Type_t::rotateButton));//fix
+    m_buttons.push_back(Button(sf::Vector2f(center.x-diff, center.y+FLOORING_UNIT), Type_t::resizeButton));//fix
 }
 
 
