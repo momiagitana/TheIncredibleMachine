@@ -36,10 +36,11 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 	//for(auto i = BUTTONS_IN_PAGE * m_page; i < m_toolbar.size() && i < BUTTONS_IN_PAGE; i++)
 	for (auto& button : m_toolbar)
 	{
-		if (button.clickedOnMe(loc))
+		if (button.mouseOnMe(loc))
 		{
 			type = button.getType();
 			deleteObj(type);
+			break;
 		}
 	}
 	return type;
@@ -77,6 +78,7 @@ void Toolbar::deleteObj(const Type_t& obj)
 			{
 				m_toolbar.erase(m_toolbar.begin() + i);
 				updateLocs();
+				break;
 			}
 		}
 }

@@ -108,14 +108,40 @@ bool Board::checkCollison(GameObj* obj2, GameObj* obj1)
 Type_t Board::handleClick(sf::Vector2f mouseLoc)
 {
 	Type_t type = none;
-	//BrickWall* current;
+	Resizable *resizableObj = nullptr;
 	for (auto i = 0; i<m_objects.size(); i++)
-		if(m_objects[i]->clickedOnMe(mouseLoc) && m_objects[i]->isMovable())
+	{	
+		if (m_objects[i]->isMovable())
 		{
-			type = m_objects[i]->getType();
-			m_objects.erase(m_objects.begin()+i);
-		}
 
+			if (typeid(*(m_objects[i].get())) == typeid(BrickWall))
+			{
+				Type_t whatHappen = none;
+				resizableObj = static_cast <Resizable*> (m_objects[i].get());
+				if(resizableObj->clickedOnMe(mouseLoc, whatHappen))
+				{
+					type = m_objects[i]->getType();
+					m_objects.erase(m_objects.begin()+i);
+				}
+				else if (whatHappen != none) //means it resized or rotated
+				{
+					if (collides(resizableObj))
+					{
+						resizableObj->fixLastChange(whatHappen);
+					}
+				}
+
+				
+			}			
+				
+			else if(m_objects[i]->mouseOnMe(mouseLoc))
+			{
+				type = m_objects[i]->getType();
+				m_objects.erase(m_objects.begin()+i);
+			}
+
+		}
+	}
 	return type;
 }
 
@@ -137,4 +163,27 @@ bool Board::isItemInLoc(conditionToWinLoc cond) const
 				return true;
 	
 	return false;
+}
+
+
+void Board::checkMouseOver(sf::Vector2f loc)
+{
+	for(auto& obj : m_objects)
+	{
+		if(obj->mouseOnMe(loc))
+		{
+			if(obj->isMovable())
+			{
+				obj->setMouse(true);
+				setEveryoneElseFalse(obj->getID());
+			}
+		}
+	}
+}
+
+void Board::setEveryoneElseFalse(int except)
+{
+	for (auto &obj : m_objects)
+		if(obj->getID() != except)
+			obj->setMouse(false);
 }

@@ -29,10 +29,7 @@ sf::SoundBuffer& ResourceManager::getSound(Sound name)
 
 std::string& ResourceManager::getLevelPath()
 {
-
 	return m_path;
-
-	//for mac
 }
 
 
