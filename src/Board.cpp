@@ -48,40 +48,14 @@ void Board::updateImgLocs()
 
 bool Board::tryToAdd(sf::Vector2f mouseLoc, Type_t currObj, b2World& world )
 {
-	std::unique_ptr<GameObj> current = ObjFactory::create(currObj,mouseLoc,UNMOVABLE,world);
-	// GameObj* current = nullptr;
-	// switch (currObj)
-	// 	{
-	// 		case balloon:
-	// 			current = new Balloon(mouseLoc,MOVABLE,world);
-	// 			break;
-	// 		case basketBall:
-	// 			current = new BasketBall(mouseLoc,MOVABLE,world);
-	// 			break;
-	// 		case baseBall:
-	// 			current = new BaseBall(mouseLoc,MOVABLE,world);
-	// 			break;
-	// 		 case brickWall:
-	// 		 	current = new BrickWall(mouseLoc,MOVABLE,world);
-	// 		 	break;
-		
-	// 	}
+	std::unique_ptr<GameObj> current = ObjFactory::create(currObj,mouseLoc,MOVABLE,world);
 
-		if(current && !collides(current.get()))
-		{
-			m_objects.push_back(std::move(current));
-			return true;
-		}
-		// 	if(current && !collides(current))
-		// {
-		// 	m_objects.push_back(std::unique_ptr<GameObj>(current));
-		// 	return true;
-		// }
-		// else
-		// {
-		// 	delete current;
-		// }
-		
+	if(current && !collides(current.get()))
+	{
+		m_objects.push_back(std::move(current));
+		return true;
+	}
+
 	return false;
 }
 
@@ -95,7 +69,7 @@ bool Board::collides(GameObj* current)
 			return true;
 		}
 	}
-		return false;
+	return false;
 }
 
 
@@ -132,7 +106,6 @@ Type_t Board::handleClick(sf::Vector2f mouseLoc)
 						resizableObj->fixLastChange(whatHappen);
 					}
 				}
-
 				
 			}			
 				
