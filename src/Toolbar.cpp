@@ -36,29 +36,30 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 
 	Type_t type = none;
 
-	if (m_play->getGlobalBounds().contains(loc))
+	if (m_play->.clickedOnMe(loc))
 	{
 		type = play;
 	}
 
-	if (m_arrowLButton->getGlobalBounds().contains(loc))
+	if (m_arrowLButton->.clickedOnMe(loc))
 	{
 		if(m_page!=0)
 		m_page--;
 	}
-	if (m_arrowRButton->getGlobalBounds().contains(loc))
+	if (m_arrowRButton->.clickedOnMe(loc))
 	{
 		if(BUTTONS_IN_PAGE * (m_page + 1) < m_toolbar.size())
 		  m_page++;
 	}
 
-	
 	for (auto i = BUTTONS_IN_PAGE*m_page%BUTTONS_IN_PAGE; i < m_toolbar.size() && i < BUTTONS_IN_PAGE*(m_page+1); i++)
 	{
+
 		if (m_toolbar.at(i).clickedOnMe(loc))
 		{
 			type = m_toolbar.at(i).getType();
 			deleteObj(type);
+			break;
 		}
 	}
 	return type;
@@ -99,6 +100,7 @@ void Toolbar::deleteObj(const Type_t& obj)
 			{
 				m_toolbar.erase(m_toolbar.begin() + i);
 				updateLocs();
+				break;
 			}
 		}
 }

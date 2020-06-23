@@ -1,7 +1,9 @@
 balloon 150 250
-brickWall 100 300
 -
-basketBall -1
+basketBall 1
+balloon 6
+brickWall 10
+baseBall 2
 -
 1 100 16 440 0
 -

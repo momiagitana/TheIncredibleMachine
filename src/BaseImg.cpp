@@ -1,4 +1,4 @@
-#include "BaseImg.h"
+#include "baseImg.h"
 #include <iostream>
 
 BaseImg::BaseImg(sf::Vector2f center, Type_t objTexture)
@@ -6,7 +6,7 @@ BaseImg::BaseImg(sf::Vector2f center, Type_t objTexture)
 	sf::Texture *texture = ResourceManager::instance().getTexture(objTexture);
 	m_sprite.setTexture(*texture);
 	m_sprite.setOrigin(texture->getSize().x / 2, texture->getSize().y / 2);
-	setSize(texture->getSize());
+	//setSize(texture->getSize());
 	setPosition(center);
 }
 
@@ -25,11 +25,6 @@ void BaseImg::draw(sf::RenderWindow& window) const
 	window.draw(m_sprite);
 }
 
-void BaseImg::setLocation(sf::Vector2f center)
-{
-	m_sprite.setPosition(center.x * PPM, center.y * PPM);
-
-}
 
 sf::Vector2f BaseImg::getLocation() const
 {
@@ -52,8 +47,6 @@ void BaseImg::setPosition(sf::Vector2f loc)
 	std::cout << loc.x << " " << loc.y << std::endl;
 }
 
-
-
 sf::Vector2f BaseImg::getSize() const
 {
 	return sf::Vector2f(m_sprite.getGlobalBounds().width, m_sprite.getGlobalBounds().height);
@@ -62,5 +55,11 @@ sf::Vector2f BaseImg::getSize() const
 void BaseImg::setIntRect(sf::IntRect newRect)
 {
 	m_sprite.setTextureRect(newRect);
-	m_sprite.setOrigin(getSize().x/2, getSize().y/2);
+	
+	//m_sprite.setOrigin(getSize().x/2, getSize().y/2);
+}
+
+void BaseImg::setOrigin(float x, float y)
+{
+	m_sprite.setOrigin(x,y);
 }

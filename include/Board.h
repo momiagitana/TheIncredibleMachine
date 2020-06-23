@@ -30,11 +30,13 @@ public:
 	bool checkCollison(GameObj* obj2, GameObj* obj1);
 	void wakeEmAllUp();
 	bool isItemInLoc(conditionToWinLoc) const;
+	void checkMouseOver(sf::Vector2f loc);
+	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
 
-	//bool levelFinished();
-	//void MoveObjects(sf::Time deltaTime);
 
 private:
+	void updateImgLocs();
+	void setEveryoneElseFalse(int);
 
 
 	sf::Sprite m_levelBackground;
