@@ -10,6 +10,7 @@
 #include "BaseBall.h"
 #include "BasketBall.h"
 #include "BrickWall.h"
+#include "Conveyor.h"//fix all these
 //#include "BowlingBall.h"
 
 
@@ -37,6 +38,7 @@ public:
 private:
 	void updateImgLocs();
 	void setEveryoneElseFalse(int);
+	bool isResizable(GameObj* curr) const;
 
 
 	sf::Sprite m_levelBackground;

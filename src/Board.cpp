@@ -8,25 +8,8 @@ Board::Board(const Level& lvl, b2World& world)
 
 void Board::setBoard(const Level& level, b2World& world)
 {
-	for (auto i = 0; i < level.getBoardSize(); i++)//{
+	for (auto i = 0; i < level.getBoardSize(); i++)
 		m_objects.push_back(ObjFactory::create(level.getFromBoard(i).first,level.getFromBoard(i).second,UNMOVABLE,world));
-	// 	switch (level.getFromBoard(i).first)
-	// 	{
-	// 		case balloon:
-	// 			m_objects.push_back(ObjFactory::create(balloon,level.getFromBoard(i).second,UNMOVABLE,world));
-	// 			break;
-	// 		case basketBall:
-	// 			m_objects.push_back(ObjFactory::create(basketBall,level.getFromBoard(i).second,UNMOVABLE,world));
-	// 			break;
-	// 		case baseBall:
-	// 			m_objects.push_back(ObjFactory::create(baseBall,level.getFromBoard(i).second,UNMOVABLE,world));
-	// 			break;
-	// 		case brickWall:
-	// 			m_objects.push_back(ObjFactory::create(brickWall,level.getFromBoard(i).second,UNMOVABLE,world));
-	// 			break;
-
-	// 	}
-	// }
 }
 
 
@@ -90,7 +73,7 @@ Type_t Board::handleClick(sf::Vector2f mouseLoc)
 		if (m_objects[i]->isMovable())
 		{
 
-			if (typeid(*(m_objects[i].get())) == typeid(BrickWall))
+			if (isResizable(m_objects[i].get()))
 			{
 				Type_t whatHappen = none;
 				resizableObj = static_cast <Resizable*> (m_objects[i].get());
@@ -161,4 +144,15 @@ void Board::setEveryoneElseFalse(int except)
 	for (auto &obj : m_objects)
 		if(obj->getID() != except)
 			obj->setMouse(false);
+}
+
+bool Board::isResizable(GameObj* curr) const
+{
+	if(typeid(*(curr)) == typeid(BrickWall))
+		return true;
+	if(typeid(*(curr)) == typeid(Conveyor))
+		return true;
+
+	return false;
+
 }

@@ -46,7 +46,7 @@ void LevelController::run()
 
 					else
 					{
-						m_toolbar.addOrIncrease(m_selected,-1);
+						m_toolbar.addOrIncrease(m_selected);
 						setSelected(none, mouseLoc);
 					}
 				}
@@ -73,6 +73,10 @@ void LevelController::run()
 
         }
     }
+	
+	// while(replaySolution())
+	// 	tryRunning();
+
 }
 
 void LevelController::setSelected(Type_t type, const sf::Vector2f loc)
@@ -116,7 +120,7 @@ bool LevelController::setlevelStatus(const bool status)
 
 void LevelController::drawAll()
 {
-	m_window.clear(sf::Color::Transparent);
+	m_window.clear(sf::Color(18, 160, 159));
 
 	m_board.draw(m_window, false);//fix RUNNING
 	m_toolbar.draw(m_window);
@@ -136,7 +140,7 @@ bool LevelController::tryRunning()
 			return true;
 
 		// Update window
-		m_window.clear(sf::Color::Transparent);
+		m_window.clear(sf::Color(18, 160, 159));
 
 		// Update world Box2D
 		m_world.Step(TIMESTEP, VELITER, POSITER);

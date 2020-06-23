@@ -8,6 +8,7 @@
 										  "BaseBall.cpp"
 										  "BasketBall.cpp"
 										  "BrickWall.cpp"
+										  "Conveyor.cpp"
 										  "Resizable.cpp"
 										  "Board.cpp"
 										  "OverallController.cpp"
