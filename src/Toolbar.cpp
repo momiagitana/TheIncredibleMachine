@@ -53,7 +53,7 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 	}
 
 	
-	for (auto i = BUTTONS_IN_PAGE*m_page; i < m_toolbar.size() && i < BUTTONS_IN_PAGE*(m_page+1); i++)
+	for (auto i = BUTTONS_IN_PAGE*m_page%BUTTONS_IN_PAGE; i < m_toolbar.size() && i < BUTTONS_IN_PAGE*(m_page+1); i++)
 	{
 		if (m_toolbar.at(i).clickedOnMe(loc))
 		{
@@ -112,7 +112,7 @@ void Toolbar::draw(sf::RenderWindow& window)
 	m_arrowRButton->draw(window);
 
 	
-	for (auto i = BUTTONS_IN_PAGE*m_page; i < m_toolbar.size() && i < BUTTONS_IN_PAGE*(m_page+1); i++)
+	for (auto i = BUTTONS_IN_PAGE*m_page%BUTTONS_IN_PAGE; i < m_toolbar.size() && i < BUTTONS_IN_PAGE*(m_page+1); i++)
 	{
 		m_toolbar[i].draw(window);
 	}
