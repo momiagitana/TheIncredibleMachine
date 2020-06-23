@@ -1,5 +1,6 @@
 #pragma once
 #include"Resizable.h"
+#include "Factory.h"//fix needs to add to base class
 
 
 class BrickWall : public Resizable
@@ -9,5 +10,5 @@ public:
 	
 	//void makeItGrow();
 private:
-
+		static bool m_registerit;
 };

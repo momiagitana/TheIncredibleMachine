@@ -18,5 +18,6 @@
 										  "Toolbar.cpp"
 										  "ResourceManager.cpp"
 										  "ToolbarButton.cpp"
+										  "Factory.cpp"
 										)
 

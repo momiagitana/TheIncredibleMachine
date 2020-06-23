@@ -8,26 +8,25 @@ Board::Board(const Level& lvl, b2World& world)
 
 void Board::setBoard(const Level& level, b2World& world)
 {
+	for (auto i = 0; i < level.getBoardSize(); i++)//{
+		m_objects.push_back(ObjFactory::create(level.getFromBoard(i).first,level.getFromBoard(i).second,UNMOVABLE,world));
+	// 	switch (level.getFromBoard(i).first)
+	// 	{
+	// 		case balloon:
+	// 			m_objects.push_back(ObjFactory::create(balloon,level.getFromBoard(i).second,UNMOVABLE,world));
+	// 			break;
+	// 		case basketBall:
+	// 			m_objects.push_back(ObjFactory::create(basketBall,level.getFromBoard(i).second,UNMOVABLE,world));
+	// 			break;
+	// 		case baseBall:
+	// 			m_objects.push_back(ObjFactory::create(baseBall,level.getFromBoard(i).second,UNMOVABLE,world));
+	// 			break;
+	// 		case brickWall:
+	// 			m_objects.push_back(ObjFactory::create(brickWall,level.getFromBoard(i).second,UNMOVABLE,world));
+	// 			break;
 
-	for (auto i = 0; i < level.getBoardSize(); i++)
-	{
-		switch (level.getFromBoard(i).first)
-		{
-			case balloon:
-				m_objects.push_back(std::make_unique<Balloon>(level.getFromBoard(i).second, UNMOVABLE, world));
-				break;
-			case basketBall:
-				m_objects.push_back(std::make_unique<BasketBall>(level.getFromBoard(i).second, UNMOVABLE, world));
-				break;
-			case baseBall:
-				m_objects.push_back(std::make_unique<BaseBall>(level.getFromBoard(i).second, UNMOVABLE, world));
-				break;
-			case brickWall:
-				m_objects.push_back(std::make_unique<BrickWall>(level.getFromBoard(i).second, UNMOVABLE, world));
-				break;
-
-		}
-	}
+	// 	}
+	// }
 }
 
 
@@ -49,37 +48,40 @@ void Board::updateImgLocs()
 
 bool Board::tryToAdd(sf::Vector2f mouseLoc, Type_t currObj, b2World& world )
 {
-
-	GameObj* current = NULL;
-
-	switch (currObj)
-		{
-			case balloon:
-				current = new Balloon(mouseLoc,MOVABLE,world);
-				break;
-			case basketBall:
-				current = new BasketBall(mouseLoc,MOVABLE,world);
-				break;
-			case baseBall:
-				current = new BaseBall(mouseLoc,MOVABLE,world);
-				break;
-			 case brickWall:
-			 	current = new BrickWall(mouseLoc,MOVABLE,world);
-			 	break;
+	std::unique_ptr<GameObj> current = ObjFactory::create(currObj,mouseLoc,UNMOVABLE,world);
+	// GameObj* current = nullptr;
+	// switch (currObj)
+	// 	{
+	// 		case balloon:
+	// 			current = new Balloon(mouseLoc,MOVABLE,world);
+	// 			break;
+	// 		case basketBall:
+	// 			current = new BasketBall(mouseLoc,MOVABLE,world);
+	// 			break;
+	// 		case baseBall:
+	// 			current = new BaseBall(mouseLoc,MOVABLE,world);
+	// 			break;
+	// 		 case brickWall:
+	// 		 	current = new BrickWall(mouseLoc,MOVABLE,world);
+	// 		 	break;
 		
-		}
+	// 	}
 
-		if(current && !collides(current))
+		if(current && !collides(current.get()))
 		{
-			m_objects.push_back(std::unique_ptr<GameObj>(current));
+			m_objects.push_back(std::move(current));
 			return true;
 		}
-		else  
-		{
-			delete current;
-		}
+		// 	if(current && !collides(current))
+		// {
+		// 	m_objects.push_back(std::unique_ptr<GameObj>(current));
+		// 	return true;
+		// }
+		// else
+		// {
+		// 	delete current;
+		// }
 		
-	
 	return false;
 }
 
