@@ -3,6 +3,7 @@
 #include "ResourceManager.h"
 #include "Button.h"
 #include "globals.h"
+//#include "Board.h"
 
 class Resizable : public GameObj
 {
@@ -11,9 +12,11 @@ public:
 	
     int getWhichSize() const { return m_whichSize; }
     void setWhichSize(int size) { m_whichSize = size; }
-    bool clickedOnMe(sf::Vector2f loc);
+    bool clickedOnMe(sf::Vector2f loc, Type_t&);
     void draw(sf::RenderWindow&) const;
     void setTexture();
+    void fixLastChange(Type_t);
+    void setInitialLoc();
 
 private:
 	int m_whichSize = 1; //from 1 to 5

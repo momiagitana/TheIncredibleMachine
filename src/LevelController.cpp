@@ -88,6 +88,8 @@ void LevelController::updateMouseImg(const sf::Vector2f loc)
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
 	m_mouseImg.setPosition(loc);
+
+	m_board.checkMouseOver(loc);
 }
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
@@ -126,13 +128,11 @@ void LevelController::drawAll()
 
 bool LevelController::tryRunning()
 {
-
-
+	m_board.hideObjButtons();
 	while (m_window.isOpen())
 	{
-
 		if (checkIfLevelFinished()) //we check every 10 step
-				return true;
+			return true;
 
 		// Update window
 		m_window.clear(sf::Color::Transparent);

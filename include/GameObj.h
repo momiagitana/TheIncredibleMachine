@@ -10,12 +10,11 @@ class GameObj : public Button
 {
 public:
 
-
 	GameObj(const sf::Vector2f&, bool, bool, b2World &, Type_t);
 
 	~GameObj(){}
 
-	void setInitialLoc();
+	virtual void setInitialLoc();
 
 	void setGravityScale(float);
 
@@ -29,14 +28,15 @@ public:
 
 	void updateLoc();
 
+	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
+	bool getMouseOverMe() const { return m_mouseOnMe; }
+
 private:
 
 	PhysicsObj m_phyObj;
 	bool m_movable;
 	int m_ID;
 	sf::Vector2f m_initialLoc;
-	
-
-
+	bool m_mouseOnMe = false;
 	
 };

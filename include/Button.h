@@ -10,7 +10,7 @@ class Button : public BaseImg
 public:
 
 	Button(const sf::Vector2f& center,Type_t obj);
-	virtual bool clickedOnMe(sf::Vector2f loc);
+	virtual bool mouseOnMe(sf::Vector2f loc);
 	Type_t getType();
 	
 private:
