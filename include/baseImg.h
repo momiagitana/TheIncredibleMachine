@@ -4,6 +4,7 @@
 #include <globals.h>
 #include "ResourceManager.h"
 
+
 class BaseImg
 {
 public:
