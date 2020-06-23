@@ -15,7 +15,7 @@ using toolbarObjects = std::vector<toolbarPair>;
 
 using conditionsLocs = std::vector<conditionToWinLoc>;
 using conditionsActs = std::vector<conditionToWinAct>;
-
+ 
 class Level
 {
 public:

@@ -43,9 +43,10 @@ void LevelController::run()
 							setSelected(none, mouseLoc);
 						}
 					}
+
 					else
 					{
-						m_toolbar.addOrIncrease(m_selected);
+						m_toolbar.addOrIncrease(m_selected,-1);
 						setSelected(none, mouseLoc);
 					}
 				}
