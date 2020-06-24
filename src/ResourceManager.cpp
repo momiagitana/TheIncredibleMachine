@@ -92,7 +92,9 @@ ResourceManager::ResourceManager()
 	loadTexture("build/sound.png", Type_t::sound);
 	
 
-	 loadTexture("build/The_Incredible_Machine.png", Type_t::background);
+	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
+	loadTexture("build/frame.png", Type_t::frame);
+
 
 
 	//---------- font ---win------

@@ -4,17 +4,13 @@
 
 Toolbar::Toolbar(toolbarObjects objs)
 	:m_play(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X, PLAY_Y), Type_t::play)),
-	 m_arrowLButton(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X-obj_size/2-5, ARROWS_Y), Type_t::arrowLButton)),
-	 m_arrowRButton(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X+obj_size/2+5,ARROWS_Y), Type_t::arrowRButton))
+	 m_arrowLButton(std::make_unique<Button>(sf::Vector2f(L_ARR_X, ARROWS_Y), Type_t::arrowLButton)),
+	 m_arrowRButton(std::make_unique<Button>(sf::Vector2f(R_ARR_X, ARROWS_Y), Type_t::arrowRButton))
 {
 	for (auto& pair : objs)
 		add(pair.first, pair.second);
 
 	setBar();
-		
-	m_play->setSize(sf::Vector2u(TB_W, PLAY_BUTTON_H));
-	m_arrowLButton->setSize(sf::Vector2u(TB_W/2, ARROWS_BUTTON_H));
-	m_arrowRButton->setSize(sf::Vector2u(TB_W/2, ARROWS_BUTTON_H));
 }
 
 
@@ -33,7 +29,6 @@ bool Toolbar::clickedOnMe(sf::Vector2f loc) const
 
 Type_t Toolbar::handleClick(sf::Vector2f loc)
 {
-
 	Type_t type = none;
 
 	if (m_play->mouseOnMe(loc))
@@ -46,7 +41,7 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 		if(m_page!=0)
 			m_page--;
 		else
-			m_page = m_toolbar.size()/BUTTONS_IN_PAGE;
+			m_page = m_toolbar.size()/(BUTTONS_IN_PAGE+1);
 	}
 
 	if (m_arrowRButton->mouseOnMe(loc))
@@ -101,7 +96,7 @@ void Toolbar::deleteObj(const Type_t& obj)
 		if (m_toolbar[i].getType() == obj)
 		{
 			m_toolbar[i].decrease();
-			if(!m_toolbar[i].getAmount())
+			if(m_toolbar[i].isEmpty())
 			{
 				m_toolbar.erase(m_toolbar.begin() + i);
 				updateLocs();
@@ -139,9 +134,7 @@ void Toolbar::setBar()
 {
 	m_bar.setSize(sf::Vector2f(TB_W, TB_H));
 	m_bar.setPosition(TB_X, TB_TOP);
-	m_bar.setFillColor(sf::Color(sf::Color::White));
-	m_bar.setOutlineColor(sf::Color::Yellow);
-	m_bar.setOutlineThickness(-3);
+	m_bar.setFillColor(sf::Color(32,239,238));
 }
 
 

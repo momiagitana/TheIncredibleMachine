@@ -55,11 +55,14 @@ sf::Vector2f BaseImg::getSize() const
 void BaseImg::setIntRect(sf::IntRect newRect)
 {
 	m_sprite.setTextureRect(newRect);
-	
-	//m_sprite.setOrigin(getSize().x/2, getSize().y/2);
 }
 
 void BaseImg::setOrigin(float x, float y)
 {
 	m_sprite.setOrigin(x,y);
+}
+
+void BaseImg::setScale(float scale)
+{
+	m_sprite.setScale(sf::Vector2f(scale, scale));
 }

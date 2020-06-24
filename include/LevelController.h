@@ -22,7 +22,7 @@ public:
 	bool setlevelStatus(const bool);
 	void updateMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
-	void drawAll();
+	void drawAll(bool);
 	//void removeMouseImage();
 
 
@@ -37,6 +37,7 @@ private:
 
 	Type_t m_selected = none;
 	BaseImg m_mouseImg;
+	BaseImg m_frame;
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
 
