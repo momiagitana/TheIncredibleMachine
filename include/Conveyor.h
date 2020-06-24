@@ -3,10 +3,10 @@
 #include "Factory.h"//fix needs to add to base class
 
 
-class BrickWall : public Resizable
+class Conveyor : public Resizable
 {
 public:
-	BrickWall (const sf::Vector2f& center, bool movable, b2World &world);
+	Conveyor (const sf::Vector2f& center, bool movable, b2World &world);
 	
 private:
 	static bool m_registerit;

@@ -62,5 +62,5 @@ void PhysicsObj::setSize(sf::Vector2f size)
 
 void PhysicsObj::setAngle(int whichAngle)
 {
-    m_body->SetTransform( m_body->GetPosition(), whichAngle*60*DEG_TO_RAD);
+    m_body->SetTransform( m_body->GetPosition(), whichAngle*45*DEG_TO_RAD);
 }

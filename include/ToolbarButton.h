@@ -15,7 +15,7 @@ public:
 	void setString();
 	void setPosition(sf::Vector2f pos);
 	void draw(sf::RenderWindow&) const;
-
+	
 private:
 
 	int m_amount;

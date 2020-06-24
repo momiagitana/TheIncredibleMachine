@@ -43,6 +43,7 @@ void LevelController::run()
 							setSelected(none, mouseLoc);
 						}
 					}
+
 					else
 					{
 						m_toolbar.addOrIncrease(m_selected);
@@ -73,6 +74,10 @@ void LevelController::run()
         }
     }
 	m_board.saveLevelToFile();
+
+	// while(replaySolution())
+	// 	tryRunning();
+
 }
 
 void LevelController::setSelected(Type_t type, const sf::Vector2f loc)
@@ -89,6 +94,8 @@ void LevelController::updateMouseImg(const sf::Vector2f loc)
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
 	m_mouseImg.setPosition(loc);
+
+	m_board.checkMouseOver(loc);
 }
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
@@ -114,7 +121,7 @@ bool LevelController::setlevelStatus(const bool status)
 
 void LevelController::drawAll()
 {
-	m_window.clear(sf::Color::Transparent);
+	m_window.clear(sf::Color(18, 160, 159));
 
 	m_board.draw(m_window, false);//fix RUNNING
 	m_toolbar.draw(m_window);
@@ -127,16 +134,14 @@ void LevelController::drawAll()
 
 bool LevelController::tryRunning()
 {
-
-
+	m_board.hideObjButtons();
 	while (m_window.isOpen())
 	{
-
 		if (checkIfLevelFinished()) //we check every 10 step
-				return true;
+			return true;
 
 		// Update window
-		m_window.clear(sf::Color::Transparent);
+		m_window.clear(sf::Color(18, 160, 159));
 
 		// Update world Box2D
 		m_world.Step(TIMESTEP, VELITER, POSITER);

@@ -6,7 +6,7 @@ BaseImg::BaseImg(sf::Vector2f center, Type_t objTexture)
 	sf::Texture *texture = ResourceManager::instance().getTexture(objTexture);
 	m_sprite.setTexture(*texture);
 	m_sprite.setOrigin(texture->getSize().x / 2, texture->getSize().y / 2);
-	setSize(texture->getSize());
+	//setSize(texture->getSize());
 	setPosition(center);
 }
 

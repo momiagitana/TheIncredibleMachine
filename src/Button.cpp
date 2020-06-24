@@ -9,7 +9,7 @@ Button::Button(const sf::Vector2f& center, Type_t obj)
 {
 }
 
-bool Button::clickedOnMe(sf::Vector2f loc)
+bool Button::mouseOnMe(sf::Vector2f loc)
 {
 	if (getGlobalBounds().contains(loc))
 		return true;
