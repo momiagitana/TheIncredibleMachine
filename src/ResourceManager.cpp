@@ -50,19 +50,21 @@ ResourceManager::ResourceManager()
 	// loadTexture("bowlingButton.png", Type_t::bowlingButton);
 	// loadTexture("conveyorButton.png", Type_t::conveyorButton);
 	// loadTexture("brickButton.png", Type_t::brickWallButton);
-
-	// loadTexture("arrowLButton.png", Type_t::arrowLButton);
+	// loadTexture("resizeButton.png", Type_t::resizeButton);
+	// loadTexture("rotateButton.png", Type_t::rotateButton);
+  
+   	// loadTexture("arrowLButton.png", Type_t::arrowLButton);
 	// loadTexture("arrowRButton.png", Type_t::arrowRButton);
-	// loadTexture("play.png", Type_t::play);
 
-	// loadTexture("The_Incredible_Machine.png", Type_t::background);
+	// loadTexture("play.png", Type_t::play);
 	// loadTexture("exit.png", Type_t::exitButton);
 	// loadTexture("playmenu.png", Type_t::startButton);
 	// loadTexture("bomb.png", Type_t::reset);
 	// loadTexture("sound.png", Type_t::sound);
-
-	// loadTexture("The_Incredible_Machine.png", Type_t::background);
 	
+
+	loadTexture("The_Incredible_Machine.png", Type_t::background);
+	loadTexture("frame.png", Type_t::frame);
 
 
 	//textures for mac
