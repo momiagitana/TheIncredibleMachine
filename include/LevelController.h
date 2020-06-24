@@ -22,9 +22,11 @@ public:
 	bool setlevelStatus(const bool);
 	void updateMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
-	void drawAll();
+
 	bool replaySolution();
-	//void removeMouseImage();
+
+	void drawAll(bool);
+
 
 
 private:
@@ -38,15 +40,12 @@ private:
 
 	Type_t m_selected = none;
 	BaseImg m_mouseImg;
+	BaseImg m_frame;
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
 
 	bool tryRunning();
 	bool checkIfLevelFinished() const;
 	void setSelected(Type_t, const sf::Vector2f);
-	//next Level
-
-
-
 
 };
