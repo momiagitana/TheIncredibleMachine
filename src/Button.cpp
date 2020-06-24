@@ -7,6 +7,7 @@ Button::Button(const sf::Vector2f& center, Type_t obj)
 	:BaseImg(center, obj),
 	m_type(obj)
 {
+
 }
 
 bool Button::mouseOnMe(sf::Vector2f loc)

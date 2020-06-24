@@ -23,6 +23,7 @@ public:
 	void updateMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
 	void drawAll();
+	bool replaySolution();
 	//void removeMouseImage();
 
 
@@ -43,5 +44,9 @@ private:
 	bool tryRunning();
 	bool checkIfLevelFinished() const;
 	void setSelected(Type_t, const sf::Vector2f);
+	//next Level
+
+
+
 
 };
