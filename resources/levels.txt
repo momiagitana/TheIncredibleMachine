@@ -5,7 +5,7 @@ brickWall 3
 baseBall 7
 conveyor 2
 -
-1 100 16 440 0
+1 100 100 320 0
 -
 1
 -

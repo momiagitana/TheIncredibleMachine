@@ -17,7 +17,6 @@ enum Type_t
 	conveyor,
 	brickWall,
 	play,
-	worker,
 	arrows,
 	arrowRButton,
 	arrowLButton,
@@ -31,6 +30,10 @@ enum Type_t
 	rotateButton,
 	resizeButton,
 
+	msgRublic,
+	msgRepley,
+	msgAdvance,
+	
 	balloonButton = 100,
 	basketButton,
 	baseButton,
@@ -38,9 +41,6 @@ enum Type_t
 	conveyorButton,
 	brickWallButton,
 
-	msgRublic,
-	msgRepley,
-	msgAdvance,
 };
 
 struct ObjInfo

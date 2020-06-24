@@ -89,12 +89,18 @@ ResourceManager::ResourceManager()
 	loadTexture("build/resizeButton.png", Type_t::resizeButton);
 	loadTexture("build/rotateButton.png", Type_t::rotateButton);
  
-  loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
+  	loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
 	loadTexture("build/arrowRButton.png", Type_t::arrowRButton);
   
-   loadTexture("build/advanceButton.png", Type_t::msgAdvance);
-	 loadTexture("build/puzzleComplete.png", Type_t::msgRublic);
-	 loadTexture("build/replayButton.png", Type_t::msgRepley);
+   	loadTexture("build/advanceButton.png", Type_t::msgAdvance);
+	loadTexture("build/puzzleComplete.png", Type_t::msgRublic);
+	loadTexture("build/replayButton.png", Type_t::msgRepley);
+
+	loadTexture("build/play.png", Type_t::play);
+	loadTexture("build/exit.png", Type_t::exitButton);
+	loadTexture("build/playmenu.png", Type_t::startButton);
+	loadTexture("build/bomb.png", Type_t::reset);
+	loadTexture("build/sound.png", Type_t::sound);
 
 
 	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
