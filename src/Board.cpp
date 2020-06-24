@@ -123,6 +123,21 @@ bool Board::isItemInLoc(conditionToWinLoc cond) const
 	return false;
 }
 
+void Board::saveLevelToFile()
+{
+	auto file = FileHandler("newLevel.txt");
+	file.saveNewLevel(getObjInfo());
+}
+
+
+
+std::vector<ObjInfo> Board::getObjInfo() const
+{
+	auto info = std::vector<ObjInfo>();
+	for (auto& obj : m_objects)
+		info.push_back(obj->getInfo());
+	return info;
+}
 
 void Board::checkMouseOver(sf::Vector2f loc)
 {
@@ -156,3 +171,4 @@ bool Board::isResizable(GameObj* curr) const
 	return false;
 
 }
+

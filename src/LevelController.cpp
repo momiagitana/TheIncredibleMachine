@@ -73,7 +73,8 @@ void LevelController::run()
 
         }
     }
-	
+	m_board.saveLevelToFile();
+
 	// while(replaySolution())
 	// 	tryRunning();
 

@@ -14,18 +14,15 @@ public:
 
 	~GameObj(){}
 
+
 	virtual void setInitialLoc();
 
 	void setGravityScale(float);
-
 	int getID() const { return m_ID; }
-
 	bool isMovable() const { return m_movable; }
-
 	void updateBodySize();
-
+	virtual ObjInfo getInfo() const; 
 	void rotateBody(int);
-
 	void updateLoc();
 
 	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 

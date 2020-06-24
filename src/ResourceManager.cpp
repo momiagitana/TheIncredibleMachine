@@ -64,6 +64,7 @@ ResourceManager::ResourceManager()
 	// loadTexture("The_Incredible_Machine.png", Type_t::background);
 	
 
+
 	//textures for mac
 	loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
@@ -81,7 +82,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/resizeButton.png", Type_t::resizeButton);
 	loadTexture("build/rotateButton.png", Type_t::rotateButton);
   
-  	loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
+  loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
 	loadTexture("build/arrowRButton.png", Type_t::arrowRButton);
 
 	loadTexture("build/play.png", Type_t::play);
@@ -91,19 +92,21 @@ ResourceManager::ResourceManager()
 	loadTexture("build/sound.png", Type_t::sound);
 	
 
-	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
+	// loadTexture("build/The_Incredible_Machine.png", Type_t::background);
 
 
 	//---------- font ---win------
+
 	 //loadFont("kongtext.ttf", Font::kongtext);
 	loadFont("build/kongtext.ttf", Font::kongtext);
 
-	//---------- sound ----------
-	//  loadSound("menu.ogg", Sound::menu);
-	//  loadSound("background.ogg", Sound::background);
 
-	/*loadSound("build/menu.ogg", Sound::menu);
-	loadSound("build/background.ogg", Sound::background);*/
+	//---------- sound ----------
+// 	loadSound("menu.ogg", Sound::menu);
+// 	loadSound("background.ogg", Sound::background);
+
+	loadSound("build/menu.ogg", Sound::menu);
+	loadSound("build/background.ogg", Sound::background);
 
 	//m_path = "levels.txt";
 	m_path = "build/levels.txt";

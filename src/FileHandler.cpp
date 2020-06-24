@@ -4,7 +4,9 @@
 
 FileHandler::FileHandler(const std::string& fileName)
 {
-	m_file.open(fileName);
+	m_file.open(fileName, std::fstream::in | std::fstream::out | std::fstream::app);
+	
+
 }
 
 FileHandler::~FileHandler()
@@ -79,6 +81,27 @@ std::vector<Level> FileHandler::readLevels()
 	return levels;
 }
 
+void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
+{
+	m_file.clear();
+	std::string objTyp,
+		x_loc, y_loc,
+		size,
+		angle;
+
+	for (auto& obj : objects)
+	{
+		objTyp = enumToStr(obj._typ) + " ";
+		x_loc = std::to_string(obj._loc.x)+ " ";
+		y_loc = std::to_string(obj._loc.y) + " ";
+		size = std::to_string(obj._size) + " ";
+		angle = std::to_string(obj._angle) + "\n";
+		m_file << objTyp << x_loc << y_loc;
+		if(size != "-1" && angle != "-1")
+			m_file<< size << angle;
+	}	 
+}
+
 Type_t FileHandler::strToEnum(const std::string& str)
 {
 	if (str == "balloon") return balloon;
@@ -88,6 +111,16 @@ Type_t FileHandler::strToEnum(const std::string& str)
 	else if (str == "conveyor") return conveyor;
 	else if (str == "brickWall") return brickWall;
 
+}
+
+std::string FileHandler::enumToStr(Type_t obj)
+{
+	if (obj == balloon ) return "balloon";
+	else if (obj == basketBall ) return "basketBall";
+	else if (obj == baseBall ) return "baseBall";
+	else if (obj == bowlingBall ) return "bowlingBall";
+	else if (obj == conveyor ) return "conveyor";
+	else if (obj == brickWall ) return "brickWall";
 }
 
 
