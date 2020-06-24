@@ -22,8 +22,11 @@ public:
 	bool setlevelStatus(const bool);
 	void updateMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
+
+	bool replaySolution();
+
 	void drawAll(bool);
-	//void removeMouseImage();
+
 
 
 private:

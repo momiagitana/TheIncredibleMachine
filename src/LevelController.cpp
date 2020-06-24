@@ -70,14 +70,16 @@ void LevelController::run()
 				auto mouseLoc = m_window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
 				updateMouseLoc(mouseLoc);
 				break;
-			}
 
+				
+			}
         }
     }
+
 	m_board.saveLevelToFile();
 
-	// while(replaySolution())
-	// 	tryRunning();
+	while(replaySolution())
+		tryRunning();
 
 }
 
@@ -133,6 +135,47 @@ void LevelController::drawAll(bool running)
 		m_mouseImg.draw(m_window);
 
 	m_window.display();
+}
+
+bool LevelController::replaySolution()
+{
+	BaseImg nextLevelMesseage(sf::Vector2f(400,300),Type_t::msgRublic);
+	Button replayLevelRexuest(sf::Vector2f(350,350),Type_t::msgRepley);
+	Button advanceRequest(sf::Vector2f(460,350),Type_t::msgAdvance);
+	
+	sf::Event evnt;
+
+	nextLevelMesseage.draw(m_window);
+	advanceRequest.draw(m_window);
+	replayLevelRexuest.draw(m_window);
+	m_window.display();
+
+	while (m_window.isOpen())
+	{
+
+		while (m_window.waitEvent(evnt))
+		{
+			switch (evnt.type)
+			{
+			case sf::Event::Closed:
+				m_window.close();
+				break;
+
+			case sf::Event::MouseButtonReleased:
+				auto mouseLoc = m_window.mapPixelToCoords({ evnt.mouseButton.x, evnt.mouseButton.y });
+
+				if (advanceRequest.mouseOnMe(mouseLoc))
+				{
+					return false;
+				}
+				if (replayLevelRexuest.mouseOnMe(mouseLoc))
+				{
+					return true;
+				}
+				break;
+			}
+		}
+	}
 }
 
 bool LevelController::tryRunning()

@@ -36,7 +36,11 @@ enum Type_t
 	baseButton,
 	bowlingButton,
 	conveyorButton,
-	brickWallButton
+	brickWallButton,
+
+	msgRublic,
+	msgRepley,
+	msgAdvance,
 };
 
 struct ObjInfo
@@ -99,6 +103,20 @@ const int R_ARR_X = TB_OBJ_X + ARROWS_W/2;
 const int BAR_Y = PLAY_BUTTON_H + ARROWS_H + TB_H/2;
 
 const float BUTTON_SCALE = .9f;
+
+
+
+
+
+
+//fix 
+const int puzzleCompleteX = 400;
+const int puzzleCompleteY = 300;
+const int puzzleCompleteSIZE = 250;
+const int replayLevelRexuestX = 350;
+const int replayLevelRexuestY = 350;
+const int advanceRequestX = 460;
+const int advanceRequestY = 350;
 
 
 

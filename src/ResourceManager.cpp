@@ -36,6 +36,7 @@ std::string& ResourceManager::getLevelPath()
 //CTOR
 ResourceManager::ResourceManager()
 {
+
 	//---------- textures -------windows---
 	// loadTexture("balloon.png", Type_t::balloon);
 	// loadTexture("basketBall.png", Type_t::basketBall);
@@ -55,19 +56,23 @@ ResourceManager::ResourceManager()
   
    	// loadTexture("arrowLButton.png", Type_t::arrowLButton);
 	// loadTexture("arrowRButton.png", Type_t::arrowRButton);
+  
+//   	loadTexture("advanceButton.png", Type_t::msgAdvance);
+// 	 loadTexture("puzzleComplete.png", Type_t::msgRublic);
+// 	 loadTexture("replayButton.png", Type_t::msgRepley);
 
 	// loadTexture("play.png", Type_t::play);
 	// loadTexture("exit.png", Type_t::exitButton);
 	// loadTexture("playmenu.png", Type_t::startButton);
 	// loadTexture("bomb.png", Type_t::reset);
 	// loadTexture("sound.png", Type_t::sound);
-	
-
-	loadTexture("The_Incredible_Machine.png", Type_t::background);
-	loadTexture("frame.png", Type_t::frame);
 
 
-	//textures for mac
+// 	loadTexture("The_Incredible_Machine.png", Type_t::background);
+// 	loadTexture("frame.png", Type_t::frame);
+
+
+	////textures for mac----------
 	loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
@@ -83,34 +88,30 @@ ResourceManager::ResourceManager()
 	loadTexture("build/brickButton.png", Type_t::brickWallButton);
 	loadTexture("build/resizeButton.png", Type_t::resizeButton);
 	loadTexture("build/rotateButton.png", Type_t::rotateButton);
-  
-   	loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
+ 
+  loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
 	loadTexture("build/arrowRButton.png", Type_t::arrowRButton);
+  
+   loadTexture("build/advanceButton.png", Type_t::msgAdvance);
+	 loadTexture("build/puzzleComplete.png", Type_t::msgRublic);
+	 loadTexture("build/replayButton.png", Type_t::msgRepley);
 
-	loadTexture("build/play.png", Type_t::play);
-	loadTexture("build/exit.png", Type_t::exitButton);
-	loadTexture("build/playmenu.png", Type_t::startButton);
-	loadTexture("build/bomb.png", Type_t::reset);
-	loadTexture("build/sound.png", Type_t::sound);
-	
 
 	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
 	loadTexture("build/frame.png", Type_t::frame);
 
 
-
-	//---------- font ---win------
-
+	////---------- font ---win------
 	 //loadFont("kongtext.ttf", Font::kongtext);
 	loadFont("build/kongtext.ttf", Font::kongtext);
 
 
-	//---------- sound ----------
-// 	loadSound("menu.ogg", Sound::menu);
-// 	loadSound("background.ogg", Sound::background);
+	////---------- sound ----------
+//  	loadSound("menu.ogg", Sound::menu);
+//  	loadSound("background.ogg", Sound::background);
 
-	loadSound("build/menu.ogg", Sound::menu);
-	loadSound("build/background.ogg", Sound::background);
+	//loadSound("build/menu.ogg", Sound::menu);
+	//loadSound("build/background.ogg", Sound::background);
 
 	//m_path = "levels.txt";
 	m_path = "build/levels.txt";

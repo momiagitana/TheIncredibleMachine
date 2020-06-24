@@ -20,6 +20,10 @@ configure_file ("arrowRButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("rotateButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("resizeButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("advanceButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("puzzleComplete.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("replayButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
