@@ -82,7 +82,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/resizeButton.png", Type_t::resizeButton);
 	loadTexture("build/rotateButton.png", Type_t::rotateButton);
   
-  loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
+   	loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
 	loadTexture("build/arrowRButton.png", Type_t::arrowRButton);
 
 	loadTexture("build/play.png", Type_t::play);
@@ -92,7 +92,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/sound.png", Type_t::sound);
 	
 
-	// loadTexture("build/The_Incredible_Machine.png", Type_t::background);
+	 loadTexture("build/The_Incredible_Machine.png", Type_t::background);
 
 
 	//---------- font ---win------

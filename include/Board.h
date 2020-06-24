@@ -43,8 +43,6 @@ public:
 	void setEveryoneElseFalse(int);
 	bool isResizable(GameObj* curr) const;
 
-
-	void updateImgLocs();
 	sf::Sprite m_levelBackground;
 	std::vector <std::unique_ptr<GameObj>> m_objects;
 	std::vector< ObjInfo> getObjInfo() const;

@@ -7,7 +7,7 @@
 OverallController::OverallController(b2World& world) 
 	:m_world(world), m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine", sf::Style::Default)
 {
-	FileHandler file(ResourceManager::instance().getLevelPath());
+	FileHandler file(ResourceManager::instance().getLevelPath(), true);//fix OPEN
 	m_levels = file.readLevels();          
 	m_window.setFramerateLimit(60);
 

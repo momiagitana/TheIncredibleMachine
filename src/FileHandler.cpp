@@ -2,11 +2,13 @@
 #include "FileHandler.h"
 #include <sstream>
 
-FileHandler::FileHandler(const std::string& fileName)
+FileHandler::FileHandler(const std::string& fileName, bool read)
 {
-	m_file.open(fileName, std::fstream::in | std::fstream::out | std::fstream::app);
-	
+	if(read)
+		m_file.open(fileName);
 
+	else //open for append 
+		m_file.open(fileName, std::ios::in | std::ios::out | std::ios::app);
 }
 
 FileHandler::~FileHandler()
@@ -83,7 +85,9 @@ std::vector<Level> FileHandler::readLevels()
 
 void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
 {
-	m_file.clear();
+	// m_file.clear();
+	m_file << "\n";
+
 	std::string objTyp,
 		x_loc, y_loc,
 		size,
@@ -100,6 +104,7 @@ void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
 		if(size != "-1" && angle != "-1")
 			m_file<< size << angle;
 	}	 
+	m_file << "-\n-\n-\n-\n";
 }
 
 Type_t FileHandler::strToEnum(const std::string& str)

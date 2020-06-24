@@ -125,10 +125,9 @@ bool Board::isItemInLoc(conditionToWinLoc cond) const
 
 void Board::saveLevelToFile()
 {
-	auto file = FileHandler("newLevel.txt");
+	auto file = FileHandler(ResourceManager::instance().getLevelPath(), false);//fix SAVE
 	file.saveNewLevel(getObjInfo());
 }
-
 
 
 std::vector<ObjInfo> Board::getObjInfo() const
