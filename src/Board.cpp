@@ -1,15 +1,17 @@
 #include "Board.h"
 #include <vector>
 
-Board::Board(const Level& lvl, b2World& world)
+using boardObjects = std::vector<ObjInfo>;// changed
+
+Board::Board(const boardObjects& objects, b2World& world)
  {
-	setBoard(lvl, world);
+	setBoard(objects, world);
  }
 
-void Board::setBoard(const Level& level, b2World& world)
+void Board::setBoard(const boardObjects& objects, b2World& world)
 {
-	for (auto i = 0; i < level.getBoardSize(); i++)
-		m_objects.push_back(ObjFactory::create(level.getFromBoard(i).first,level.getFromBoard(i).second,UNMOVABLE,world));
+	for (auto i = 0; i <objects.size(); i++)
+		m_objects.push_back(ObjFactory::create(objects[i],UNMOVABLE,world));
 }
 
 
@@ -31,7 +33,11 @@ void Board::updateImgLocs()
 
 bool Board::tryToAdd(sf::Vector2f mouseLoc, Type_t currObj, b2World& world )
 {
-	std::unique_ptr<GameObj> current = ObjFactory::create(currObj,mouseLoc,MOVABLE,world);
+	ObjInfo info;
+	info._typ = currObj;
+	info._loc = mouseLoc;
+
+	std::unique_ptr<GameObj> current = ObjFactory::create(info,MOVABLE,world);
 
 	if(current && !collides(current.get()))
 	{

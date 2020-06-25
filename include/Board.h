@@ -21,8 +21,8 @@ class Board
 {
 public:
 
-	Board(const Level& level, b2World& world);
-	void setBoard(const Level& level, b2World& world);
+	Board(const boardObjects&, b2World& world);
+	void setBoard(const boardObjects & objects, b2World& world);
 	void draw(sf::RenderWindow& window, bool);
 	bool tryToAdd(sf::Vector2f mouseLoc, Type_t currObj,b2World& world);
 	Type_t handleClick(sf::Vector2f mouseLoc);
