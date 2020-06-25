@@ -12,7 +12,7 @@
 										  "Resizable.cpp"
 										  "Board.cpp"
 										  "OverallController.cpp"
-										  "GameMenu.cpp"
+										 
 										  "Level.cpp"
 										  "LevelController.cpp"
 										  "FileHandler.cpp"

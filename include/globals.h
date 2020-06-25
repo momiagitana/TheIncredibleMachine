@@ -26,6 +26,7 @@ enum Type_t
 	startButton,
 	reset,
 	sound,
+	choseLevel,
 	none,
 	rotateButton,
 	resizeButton,

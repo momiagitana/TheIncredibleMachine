@@ -10,7 +10,7 @@ LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWin
 {
 }
 
-void LevelController::run()
+bool LevelController::run()
 {
 	while (m_window.isOpen() && !m_finished)
 	{
@@ -76,10 +76,14 @@ void LevelController::run()
         }
     }
 
+	return m_finished;
+
+
 	// m_board.saveLevelToFile();
 
 	// while(replaySolution())
 	// 	tryRunning();
+
 
 }
 

@@ -1,5 +1,5 @@
 #include "ResourceManager.h"
-#include <string>
+
 
 //makes an instance and is created only once
 ResourceManager& ResourceManager::instance()
@@ -89,10 +89,10 @@ ResourceManager::ResourceManager()
 	loadTexture("build/resizeButton.png", Type_t::resizeButton);
 	loadTexture("build/rotateButton.png", Type_t::rotateButton);
  
-  	loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
+  loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
 	loadTexture("build/arrowRButton.png", Type_t::arrowRButton);
   
-   	loadTexture("build/advanceButton.png", Type_t::msgAdvance);
+  loadTexture("build/advanceButton.png", Type_t::msgAdvance);
 	loadTexture("build/puzzleComplete.png", Type_t::msgRublic);
 	loadTexture("build/replayButton.png", Type_t::msgRepley);
 
@@ -101,7 +101,6 @@ ResourceManager::ResourceManager()
 	loadTexture("build/playmenu.png", Type_t::startButton);
 	loadTexture("build/bomb.png", Type_t::reset);
 	loadTexture("build/sound.png", Type_t::sound);
-
 
 	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
 	loadTexture("build/frame.png", Type_t::frame);
@@ -121,13 +120,14 @@ ResourceManager::ResourceManager()
 
 	//m_path = "levels.txt";
 	m_path = "build/levels.txt";
+
 }
 
 void ResourceManager::loadTexture(std::string path, Type_t name)
 {
 	sf::Texture temp;
 	temp.loadFromFile(path);
-	m_textures[name] = temp; // why cant it be m_textures[name].loadFromFile(path);
+	m_textures[name] = temp;
 }
 
 void ResourceManager::loadFont(std::string path, Font name)
