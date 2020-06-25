@@ -29,6 +29,8 @@ private:
 	void closeWindow();
 	void setLevel();
 	void chooseLevel();
+	Type_t getSelection(sf::Vector2f loc) const;
+	void handleClick(sf::Vector2f loc);
 
 	std::vector<Button> m_buttons;
 	sf::RenderWindow m_window;
@@ -37,5 +39,6 @@ private:
 	BaseImg m_background;
 	sf::Text m_text;
 	unsigned m_numOfLevel = 0;
+	LevelController m_levelController;
 };
 sf::IntRect getIntRectOfMenuIcon(int i);

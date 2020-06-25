@@ -30,7 +30,7 @@ configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("startButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("The_Incredible_Machine.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("frame.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 

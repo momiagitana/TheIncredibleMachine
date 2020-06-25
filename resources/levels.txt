@@ -1,3 +1,4 @@
+brickWall 300 350
 -
 basketBall 2
 balloon 4

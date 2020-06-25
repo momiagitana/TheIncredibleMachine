@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 const int MENU_BUTTONS_INT_RECT [4][2]=  {{24, 23}, {22, 34}, {18, 31}, {110,28}};
+const int MENU_BUTTONS_LOC [4][2] = {{260, 250}, {200, 250}, {150,250}, {150, 200}};
 
 
 
@@ -16,17 +17,20 @@ enum Type_t
 	bowlingBall,
 	conveyor,
 	brickWall,
+
 	play,
-	arrows,
 	arrowRButton,
 	arrowLButton,
-	background,
+	menuBackground,
 	frame,
+
+	//menu buttons
 	exitButton,
 	startButton,
 	reset,
 	sound,
 	choseLevel,
+	//----
 	none,
 	rotateButton,
 	resizeButton,

@@ -18,7 +18,7 @@ bool LevelController::run()
 
 		sf::Event event;
 
-		while (m_window.pollEvent(event) && !m_finished)// level status might have to be on the outer while
+		while (m_window.pollEvent(event) && !m_finished)// fix 
 		{
 			switch (event.type)
 			{
@@ -28,6 +28,9 @@ bool LevelController::run()
 
 			case sf::Event::MouseButtonReleased:
 			{
+				if(event.mouseButton.button == sf::Mouse::Button::Right)
+					return false; //fix
+					
 				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 
 				if (clickOnToolbar(mouseLoc))
