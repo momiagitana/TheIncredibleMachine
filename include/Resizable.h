@@ -16,7 +16,7 @@ public:
     void draw(sf::RenderWindow&) const;
     void setTexture();
     void fixLastChange(Type_t);
-    void setInitialLoc();
+    void backToStartingPlace();
 
 private:
 	int m_whichSize = 1; //from 1 to 5

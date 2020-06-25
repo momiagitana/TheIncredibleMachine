@@ -4,7 +4,7 @@ ObjFactory::ObjFactory()
 {
 }
 
-std::unique_ptr<GameObj> ObjFactory::create(const Type_t& name,const sf::Vector2f& center, bool movable, b2World &world) 
+std::shared_ptr<GameObj> ObjFactory::create(const Type_t& name,const sf::Vector2f& center, bool movable, b2World &world) 
 {
 	auto it = ObjFactory::getMap().find(name);
 

@@ -29,9 +29,9 @@ private:
 	int m_page = 0;
 	sf::RectangleShape m_bar;
 
-	std::unique_ptr<Button> m_play;
-	std::unique_ptr<Button> m_arrowRButton;
-	std::unique_ptr<Button> m_arrowLButton;
+	std::shared_ptr<Button> m_play;
+	std::shared_ptr<Button> m_arrowRButton;
+	std::shared_ptr<Button> m_arrowLButton;
 	
 
 };

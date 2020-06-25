@@ -7,7 +7,6 @@
 #include "Toolbar.h"
 //#include "globals.h"
 
-
 class LevelController
 {
 public:
@@ -23,6 +22,8 @@ public:
 	void updateMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
 	void drawAll();
+	void whereAmI(sf::Vector2f);
+	void clearMouse(Type_t type, const sf::Vector2f loc);
 	//void removeMouseImage();
 
 
@@ -36,9 +37,13 @@ private:
 	bool m_finished = false;
 
 	Type_t m_selected = none;
+	std::shared_ptr<GameObj> m_mouseObj = nullptr;
 	BaseImg m_mouseImg;
+
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
+
+	bool m_mouseOnToolBr = false;
 
 	bool tryRunning();
 	bool checkIfLevelFinished() const;

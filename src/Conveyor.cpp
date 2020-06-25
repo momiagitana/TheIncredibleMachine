@@ -5,4 +5,4 @@ Conveyor::Conveyor (const sf::Vector2f& center, bool movable, b2World &world)
 {
 }
 
-bool Conveyor::m_registerit = ObjFactory::registerit(conveyor, [](const sf::Vector2f& center, bool movable, b2World &world)->std::unique_ptr<GameObj> { return std::make_unique<Conveyor>(center,movable,world); });
+bool Conveyor::m_registerit = ObjFactory::registerit(conveyor, [](const sf::Vector2f& center, bool movable, b2World &world)->std::shared_ptr<GameObj> { return std::make_shared<Conveyor>(center,movable,world); });
