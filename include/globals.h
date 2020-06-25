@@ -54,6 +54,7 @@ struct ObjInfo
 	sf::Vector2f _loc;
 	int _angle = -1;
 	int _size = -1;
+	int _fliped = -1; // -1 not intersting, 0 regular , 1 filped
 };
 
 const float TIMESTEP = 1.0f / 60.0f;

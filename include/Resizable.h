@@ -12,6 +12,7 @@ public:
 	
     int getWhichSize() const { return m_whichSize; }
     int getAngle() const { return m_whichAngle; }
+    int getIfFliped() const { return m_isFliped; }
     void setWhichSize(int size) { m_whichSize = size; }
     bool clickedOnMe(sf::Vector2f loc, Type_t&);
     void draw(sf::RenderWindow&) const;
@@ -24,6 +25,7 @@ public:
 private:
 	int m_whichSize = 1; //from 1 to 5
     int m_whichAngle = 0;
+    int m_isFliped = 0;
     std::vector<Button> m_buttons;
 
     void makeItBigger();

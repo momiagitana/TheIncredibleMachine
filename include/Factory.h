@@ -16,7 +16,7 @@ class ObjFactory
 public:
     ObjFactory();
 	
-	static std::unique_ptr<GameObj> create(const Type_t& ,const sf::Vector2f& , bool , b2World &wold);
+	static std::unique_ptr<GameObj> create(const ObjInfo&, bool , b2World &wold);
 	static bool registerit(const Type_t& , funcPtr);
 
 private:

@@ -4,13 +4,13 @@
 #include "globals.h"
  
 
-using boardPair 	 = std::pair<Type_t, sf::Vector2f>;
+//using boardPair 	 = std::pair<Type_t, sf::Vector2f>;
 using toolbarPair 	 = std::pair<Type_t, int>;
 
 using conditionToWinLoc = std::pair<int, std::pair<sf::Vector2f, sf::Vector2f>>; //id of object that needs to be in the square with sqSize, sqLoc
 using conditionToWinAct = int;	//id that needs to be on
 
-using boardObjects   = std::vector<boardPair>;
+using boardObjects   = std::vector<ObjInfo>;// changed
 using toolbarObjects = std::vector<toolbarPair>;
 
 using conditionsLocs = std::vector<conditionToWinLoc>;
@@ -21,28 +21,11 @@ class Level
 public:
 	Level();
 
-	void addBoardObj   (Type_t, sf::Vector2f);
-	void addToolbarObj (Type_t, int);
+	void addBoardObj(ObjInfo);
+	void addToolbarObj(Type_t, int);
 
 	void addCondLoc (int, sf::Vector2f, sf::Vector2f);
 	void addCondAct (int);
-
-
-	//------option 1, check with yechezkel
-
-	boardPair 	getFromBoard(int i) 	const { return m_initial[i]; }
-	toolbarPair getFromToolbar(int i) 	const { return m_toolbar[i]; }
-	
-	conditionToWinLoc getFromCondLoc(int i) const { return m_locConditons[i]; }
-	conditionToWinAct getFromCondAct(int i) const { return m_actConditions[i]; }
-	
-
-	int getBoardSize() 	const { return m_initial.size(); }
-	int getToolSize() 	const { return m_toolbar.size(); }
-
-	int getCondLocSize() 	const { return m_locConditons.size(); }
-	int getCondActSize() 	const { return m_actConditions.size(); }
-
 
 	//---------option 2
 
@@ -59,5 +42,4 @@ private:
 
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
-
 };

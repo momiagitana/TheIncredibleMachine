@@ -5,7 +5,7 @@
 #include <string>
 #include "globals.h"
 #include "Level.h"
-
+#include <sstream>
 
 class FileHandler
 {
@@ -18,6 +18,7 @@ public:
 
 private:
 
+	ObjInfo buildObjInfo(std::stringstream &);
 	Level getlevel();
 	Type_t strToEnum(const std::string& str);
 	std::string enumToStr(Type_t);

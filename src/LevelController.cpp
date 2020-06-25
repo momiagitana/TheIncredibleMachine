@@ -3,7 +3,7 @@
 #include <iostream>
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
-	:m_board(lvl, world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
+	:m_board(lvl.getBoardObjs(), world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
 	m_mouseImg(sf::Vector2f(-100.f, -100.f), baseBall),//fix
 	m_frame (sf::Vector2f(FRAME_X, FRAME_Y), frame)
@@ -79,14 +79,12 @@ bool LevelController::run()
         }
     }
 
-	return m_finished;
 
-
-	// m_board.saveLevelToFile();
+	m_board.saveLevelToFile();
 
 	// while(replaySolution())
 	// 	tryRunning();
-
+  return m_finished;
 
 }
 
