@@ -17,9 +17,6 @@ OverallController::OverallController(b2World& world)
 	for (int i = exitButton; i < none; i++)
 		m_buttons.emplace_back(sf::Vector2f(0, 0), Type_t(i));
 	setButtons();
-
-
-
 }
 
 void OverallController::run()
