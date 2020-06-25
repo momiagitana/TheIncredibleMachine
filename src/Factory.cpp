@@ -4,7 +4,9 @@ ObjFactory::ObjFactory()
 {
 }
 
+
 std::unique_ptr<GameObj> ObjFactory::create(const ObjInfo& info, bool movable, b2World &world) 
+  
 {
 	auto it = ObjFactory::getMap().find(info._typ);
 	if (it == ObjFactory::getMap().end())

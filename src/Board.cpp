@@ -13,9 +13,7 @@ void Board::setBoard(const boardObjects& objects, b2World& world)
 	for (auto i = 0; i <objects.size(); i++)
 		m_objects.push_back(ObjFactory::create(objects[i],UNMOVABLE,world));
 
-
 }
-
 
 void Board::draw(sf::RenderWindow& window, bool running)
 {
@@ -32,9 +30,9 @@ void Board::updateImgLocs()
 		obj->updateLoc();
 }
 
-
-bool Board::tryToAdd(sf::Vector2f mouseLoc, Type_t currObj, b2World& world )
+bool Board::tryToAdd(std::shared_ptr<GameObj> current)
 {
+
 	ObjInfo info;
 	info._typ = currObj;
 	info._loc = mouseLoc;
@@ -43,10 +41,10 @@ bool Board::tryToAdd(sf::Vector2f mouseLoc, Type_t currObj, b2World& world )
 
 	if(current && !collides(current.get()))
 	{
-		m_objects.push_back(std::move(current));
+		current->setInitialLoc();
+		m_objects.push_back(current);
 		return true;
 	}
-
 	return false;
 }
 
@@ -76,7 +74,7 @@ Type_t Board::handleClick(sf::Vector2f mouseLoc)
 {
 	Type_t type = none;
 	Resizable *resizableObj = nullptr;
-	for (auto i = 0; i<m_objects.size(); i++)
+	for (auto i = 0; i < m_objects.size(); i++)
 	{	
 		if (m_objects[i]->isMovable())
 		{
@@ -114,7 +112,7 @@ Type_t Board::handleClick(sf::Vector2f mouseLoc)
 void Board::resetObjectsPositions()
 {
 	for (auto &obj : m_objects)
-		obj->setInitialLoc();
+		obj->backToStartingPlace();
 }
 
 

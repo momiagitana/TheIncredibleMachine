@@ -5,8 +5,9 @@
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
 	:m_board(lvl.getBoardObjs(), world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
-	m_mouseImg(sf::Vector2f(-100.f, -100.f), baseBall),//fix
-	m_frame (sf::Vector2f(FRAME_X, FRAME_Y), frame)
+	m_mouseImg(sf::Vector2f(-100.f, -100.f),baseBall),
+  m_frame (sf::Vector2f(FRAME_X, FRAME_Y), frame)
+
 {
 }
 
@@ -32,7 +33,7 @@ bool LevelController::run()
 					return false; //fix
 					
 				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
-
+				
 				if (clickOnToolbar(mouseLoc))
 				{
 					if(m_selected == none)
@@ -44,14 +45,16 @@ bool LevelController::run()
 								m_finished = true;//leave the while and next level
 							else
 								m_board.resetObjectsPositions();//from before gravity
-							setSelected(none, mouseLoc);
+							//setSelected(none, mouseLoc);
+							clearMouse(none, mouseLoc);
+
 						}
 					}
-
 					else
 					{
 						m_toolbar.addOrIncrease(m_selected);
-						setSelected(none, mouseLoc);
+						//setSelected(none, mouseLoc);
+						clearMouse(none, mouseLoc);
 					}
 				}
 
@@ -59,9 +62,9 @@ bool LevelController::run()
 				{
 					if (m_selected != none)
 					{
-						if(m_board.tryToAdd(mouseLoc, m_selected, m_world)) //returns true if managed added obj
+						if(m_board.tryToAdd(m_mouseObj)) //returns true if managed added obj
 						{
-							setSelected(none, mouseLoc);
+							clearMouse(none, mouseLoc);
 						}
 					}
 					else //if(m_selected == none)
@@ -71,7 +74,9 @@ bool LevelController::run()
 			}
 			case sf::Event::MouseMoved:
 				auto mouseLoc = m_window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
+				whereAmI(mouseLoc);
 				updateMouseLoc(mouseLoc);
+			
 				break;
 
 				
@@ -88,20 +93,39 @@ bool LevelController::run()
 
 }
 
+void LevelController::whereAmI(sf::Vector2f mouseLoc)
+{
+	if(clickOnToolbar(mouseLoc)) //maybe use set funcs and check if need both ifs
+		m_mouseOnToolBr = true;
+	if(clickOnBoard(mouseLoc))
+		m_mouseOnToolBr = false;
+}
+
 void LevelController::setSelected(Type_t type, const sf::Vector2f loc)
 {
 	m_selected = type;
 	updateMouseImg (loc);
 }
 
+void LevelController::clearMouse(Type_t type, const sf::Vector2f loc)
+{
+	m_selected = type;
+	//m_mouseImg = BaseImg(loc, Type_t(m_selected+100));//might have some code reuse here need to check
+	m_mouseObj = nullptr;
+}
+
 void LevelController::updateMouseImg(const sf::Vector2f loc)
 {
 	m_mouseImg = BaseImg(loc, Type_t(m_selected+100));//fix
+	m_mouseObj = ObjFactory::create(m_selected,loc,MOVABLE,m_world);
 }
 
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
 	m_mouseImg.setPosition(loc);
+	
+	if(m_mouseObj)
+		m_mouseObj->setPosition(loc);
 
 	m_board.checkMouseOver(loc);
 }
@@ -137,7 +161,16 @@ void LevelController::drawAll(bool running)
 	m_toolbar.draw(m_window);
 	
 	if (m_selected < play)
-		m_mouseImg.draw(m_window);
+	{
+		if(m_mouseOnToolBr)
+		{
+			m_mouseImg.draw(m_window);
+		}
+		else if(m_mouseObj && !m_mouseOnToolBr)
+		{
+			m_mouseObj->draw(m_window);
+		}	
+	}
 
 	m_window.display();
 }

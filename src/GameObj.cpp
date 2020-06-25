@@ -16,9 +16,19 @@ void GameObj::updateLoc()
 	BaseImg::setRotation(m_phyObj.getAngle());
 }
 
+void GameObj::backToStartingPlace()
+{
+	setPosition(m_initialLoc);
+}
+
 void GameObj::setInitialLoc()
 {
-	m_phyObj.setPosition(m_initialLoc);
+	m_initialLoc = getLocation();
+}
+
+void GameObj::setPosition(sf::Vector2f loc)
+{
+	m_phyObj.setPosition(loc);
 	updateLoc();
 }
 

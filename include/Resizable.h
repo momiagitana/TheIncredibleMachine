@@ -19,7 +19,7 @@ public:
     void setTexture();
     ObjInfo getInfo()const; //fix const
     void fixLastChange(Type_t);
-    void setInitialLoc();
+    void backToStartingPlace();
 
 
 private:

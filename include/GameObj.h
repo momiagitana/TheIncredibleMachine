@@ -15,7 +15,7 @@ public:
 	~GameObj(){}
 
 
-	virtual void setInitialLoc();
+	virtual void backToStartingPlace();
 
 	void setGravityScale(float);
 	int getID() const { return m_ID; }
@@ -27,6 +27,9 @@ public:
 
 	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
 	bool getMouseOverMe() const { return m_mouseOnMe; }
+
+	void setPosition(sf::Vector2f);
+	void setInitialLoc();
 
 private:
 

@@ -102,8 +102,8 @@ void Resizable::fixLastChange(Type_t change)
     
 }
 
-void Resizable::setInitialLoc()
+void Resizable::backToStartingPlace()
 {
-    GameObj::setInitialLoc();
+    GameObj::backToStartingPlace();
     rotateBody(m_whichAngle);
 }
