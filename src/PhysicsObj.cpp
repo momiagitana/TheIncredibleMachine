@@ -3,6 +3,8 @@
 
 PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, bool dynamic, Type_t type)
 {
+    //auto box = ResourceManager::instance().getInfoFor(type);
+
     b2BodyDef bodyDef;
 
 	if (dynamic)
@@ -15,12 +17,20 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, bool dynami
     m_body = world.CreateBody(&bodyDef);
 
 	b2PolygonShape polygonShape;
+    //b2CircleShape circleShape;//
+   
     auto size = ResourceManager::instance().getTexture(type)->getSize();
     polygonShape.SetAsBox( size.x/2 * MPP, size.y/2 * MPP);
+
+    //circleShape.m_radius = size.x/2 * MPP;//
+    
     m_fixtureDef.shape = &polygonShape;
+    //m_fixtureDef.shape = &circleShape;
+    
+
     m_fixtureDef.friction = 1;
-    m_fixtureDef.restitution=0.4f;
-    m_fixtureDef.density=0.7f;
+    m_fixtureDef.restitution = .8f;
+    m_fixtureDef.density = 0.7f;
 
     m_fixture = m_body->CreateFixture(&m_fixtureDef);
     
