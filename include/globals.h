@@ -4,19 +4,20 @@
 const int MENU_BUTTONS_INT_RECT [4][2]=  {{24, 23}, {22, 34}, {18, 31}, {110,28}};
 const int MENU_BUTTONS_LOC [4][2] = {{260, 250}, {200, 250}, {150,250}, {150, 200}};
 
-
-
 const unsigned obj_size = 40;
 
+const int NUM_OF_OBJECTS = 6; // update when adding an object 
 
 enum Type_t
 {
+	//objects
 	balloon,
 	basketBall,
 	baseBall,
 	bowlingBall,
 	conveyor,
 	brickWall,
+	//---------
 
 	play,
 	arrowRButton,
@@ -30,7 +31,8 @@ enum Type_t
 	reset,
 	sound,
 	choseLevel,
-	//----
+	//-----------
+
 	none,
 	rotateButton,
 	resizeButton,
@@ -57,12 +59,24 @@ struct ObjInfo
 	int _fliped = -1; // -1 not intersting, 0 regular , 1 filped
 };
 
+struct PhysicsInfo
+{
+	bool _shape;
+	float _friction;
+	float _restitution;
+	float _density;
+};
 
-// const ObjInfo arr[2] = {{CIRCLE, -2,-3,4}, //balloon
-// 						{conveyor, sf::Vector2f(10.f,10.f), -2,-3,4}};
+ const bool CIRCLE = true;
+ const bool RECT = false;
 
-// const bool CIRCLE = true;
-// const bool RECT = fasle;
+ const PhysicsInfo physicsInfo[NUM_OF_OBJECTS] = {{CIRCLE, 1,0.4f,0.7f},  //balloon
+                                                 {CIRCLE, 1,0.4f,0.7f},  //basketBall
+                                                 {CIRCLE, 1,0.4f,0.7f},  //baseBall
+                                                 {CIRCLE, 1,0.4f,0.7f},  //bowlingBall
+                                                 {RECT, 1,0.4f,0.7f},    //conveyor
+                                                 {RECT, 1,0.4f,0.7f}};   //brickWall
+
 
 const float TIMESTEP = 1.0f / 60.0f;
 const int VELITER = 10;
@@ -76,13 +90,7 @@ const bool STATIC = false;
 const bool MOVABLE = true;
 const bool UNMOVABLE = false;
 
-
-
-const char READ_NEXT [1] = {'-'};
-
 const float DEG_TO_RAD = 0.0174533;
-
-
 
 //images
 const int WINDOW_WIDTH = 640;

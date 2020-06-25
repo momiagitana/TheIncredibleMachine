@@ -36,43 +36,41 @@ std::string& ResourceManager::getLevelPath()
 //CTOR
 ResourceManager::ResourceManager()
 {
-
 	//---------- textures -------windows---
-	// loadTexture("balloon.png", Type_t::balloon);
-	// loadTexture("basketBall.png", Type_t::basketBall);
-	// loadTexture("baseBall.png", Type_t::baseBall);
-	// loadTexture("bowlingBall.png", Type_t::bowlingBall);
-	// loadTexture("conveyor.png", Type_t::conveyor);
-	// loadTexture("brick.png", Type_t::brickWall);
-	// loadTexture("balloonButton.png", Type_t::balloonButton);
-	// loadTexture("basketButton.png", Type_t::basketButton);
-	// loadTexture("baseButton.png", Type_t::baseButton);
-	// loadTexture("bowlingButton.png", Type_t::bowlingButton);
-	// loadTexture("conveyorButton.png", Type_t::conveyorButton);
-	// loadTexture("brickButton.png", Type_t::brickWallButton);
-	// loadTexture("resizeButton.png", Type_t::resizeButton);
-	// loadTexture("rotateButton.png", Type_t::rotateButton);
+	 loadTexture("balloon.png", Type_t::balloon);
+	 loadTexture("basketBall.png", Type_t::basketBall);
+	 loadTexture("baseBall.png", Type_t::baseBall);
+	 loadTexture("bowlingBall.png", Type_t::bowlingBall);
+	 loadTexture("conveyor.png", Type_t::conveyor);
+	 loadTexture("brick.png", Type_t::brickWall);
+	 loadTexture("balloonButton.png", Type_t::balloonButton);
+	 loadTexture("basketButton.png", Type_t::basketButton);
+	 loadTexture("baseButton.png", Type_t::baseButton);
+	 loadTexture("bowlingButton.png", Type_t::bowlingButton);
+	 loadTexture("conveyorButton.png", Type_t::conveyorButton);
+	 loadTexture("brickButton.png", Type_t::brickWallButton);
+	 loadTexture("resizeButton.png", Type_t::resizeButton);
+	 loadTexture("rotateButton.png", Type_t::rotateButton);
   
-   	// loadTexture("arrowLButton.png", Type_t::arrowLButton);
-	// loadTexture("arrowRButton.png", Type_t::arrowRButton);
+   	 loadTexture("arrowLButton.png", Type_t::arrowLButton);
+	 loadTexture("arrowRButton.png", Type_t::arrowRButton);
   
-   	// loadTexture("advanceButton.png", Type_t::msgAdvance);
- 	// loadTexture("puzzleComplete.png", Type_t::msgRublic);
- 	// loadTexture("replayButton.png", Type_t::msgRepley);
+   	 loadTexture("advanceButton.png", Type_t::msgAdvance);
+ 	 loadTexture("puzzleComplete.png", Type_t::msgRublic);
+ 	 loadTexture("replayButton.png", Type_t::msgRepley);
 
-	// loadTexture("play.png", Type_t::play);
-	// loadTexture("exit.png", Type_t::exitButton);
-	// loadTexture("playmenu.png", Type_t::startButton);
-	// loadTexture("bomb.png", Type_t::reset);
-	// loadTexture("sound.png", Type_t::sound);
+	 loadTexture("play.png", Type_t::play);
+	 loadTexture("exit.png", Type_t::exitButton);
+	 loadTexture("playmenu.png", Type_t::startButton);
+	 loadTexture("bomb.png", Type_t::reset);
+	 loadTexture("sound.png", Type_t::sound);
 
-
- 	// loadTexture("build/menuBackground.png", Type_t::menuBackground);
- 	// loadTexture("frame.png", Type_t::frame);
+	 loadTexture("menuBackground.png", Type_t::menuBackground);
+ 	 loadTexture("frame.png", Type_t::frame);
 
 
 	////textures for mac----------
-	loadTexture("build/balloon.png", Type_t::balloon);
+	/*loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
 	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
@@ -105,13 +103,13 @@ ResourceManager::ResourceManager()
 
 
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
-	loadTexture("build/frame.png", Type_t::frame);
+	loadTexture("build/frame.png", Type_t::frame);*/
 
 
 
 	////---------- font ---win------
-	//  loadFont("kongtext.ttf", Font::kongtext);
-	loadFont("build/kongtext.ttf", Font::kongtext);
+	  loadFont("kongtext.ttf", Font::kongtext);
+	//loadFont("build/kongtext.ttf", Font::kongtext);
 
 
 	////---------- sound ----------
@@ -122,8 +120,8 @@ ResourceManager::ResourceManager()
 	//loadSound("build/background.ogg", Sound::background);
 
 
-	//m_path = "levels.txt";
-	m_path = "build/levels.txt";
+	m_path = "levels.txt";
+	//m_path = "build/levels.txt";
 
 }
 
