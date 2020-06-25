@@ -68,7 +68,7 @@ bool LevelController::run()
 						}
 					}
 					else //if(m_selected == none)
-						setSelected(m_board.handleClick(mouseLoc), mouseLoc);//tries to grabb and object flip it or delete it..
+						grabFromBoard(m_board.handleClick(mouseLoc), mouseLoc);//fix second argument
 				}
 				break;
 			}
@@ -85,12 +85,19 @@ bool LevelController::run()
     }
 
 
-	m_board.saveLevelToFile();
+	//m_board.saveLevelToFile();
 
-	// while(replaySolution())
-	// 	tryRunning();
+	while(replaySolution())
+		tryRunning();
   return m_finished;
 
+}
+
+void LevelController::setSelected(Type_t type, sf::Vector2f mouseLoc)
+{
+	m_selected = type;
+	createOnHandObj(mouseLoc);
+	createMouseImg (mouseLoc);
 }
 
 void LevelController::whereAmI(sf::Vector2f mouseLoc)
@@ -101,23 +108,40 @@ void LevelController::whereAmI(sf::Vector2f mouseLoc)
 		m_mouseOnToolBr = false;
 }
 
-void LevelController::setSelected(Type_t type, const sf::Vector2f loc)
+void LevelController::grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc)
 {
-	m_selected = type;
-	updateMouseImg (loc);
+	m_mouseObj = obj;
+
+	if (obj != nullptr)
+		m_selected = obj->getType();
+	else
+		m_selected = none;
+	
+	createMouseImg (loc);
 }
 
 void LevelController::clearMouse(Type_t type, const sf::Vector2f loc)
 {
 	m_selected = type;
-	//m_mouseImg = BaseImg(loc, Type_t(m_selected+100));//might have some code reuse here need to check
 	m_mouseObj = nullptr;
 }
 
-void LevelController::updateMouseImg(const sf::Vector2f loc)
+void LevelController::createOnHandObj(sf::Vector2f loc)
+{
+	ObjInfo info;
+
+	if(m_selected == brickWall)
+		info = wallInitTransforms;
+
+	info._typ = m_selected;
+	info._loc = loc;
+
+	m_mouseObj = ObjFactory::create(info,MOVABLE,m_world);
+}
+
+void LevelController::createMouseImg(const sf::Vector2f loc)
 {
 	m_mouseImg = BaseImg(loc, Type_t(m_selected+100));//fix
-	m_mouseObj = ObjFactory::create(m_selected,loc,MOVABLE,m_world);
 }
 
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
@@ -177,9 +201,9 @@ void LevelController::drawAll(bool running)
 
 bool LevelController::replaySolution()
 {
-	BaseImg nextLevelMesseage(sf::Vector2f(400,300),Type_t::msgRublic);
-	Button replayLevelRexuest(sf::Vector2f(350,350),Type_t::msgRepley);
-	Button advanceRequest(sf::Vector2f(460,350),Type_t::msgAdvance);
+	BaseImg nextLevelMesseage(sf::Vector2f(400,300),Type_t::puzzleComplete);
+	Button replayLevelRexuest(sf::Vector2f(350,350),Type_t::replayButton);
+	Button advanceRequest(sf::Vector2f(460,350),Type_t::advanceButton);
 	
 	sf::Event evnt;
 
@@ -218,11 +242,22 @@ bool LevelController::replaySolution()
 
 bool LevelController::tryRunning()
 {
+	auto counter = 0;
 	m_board.hideObjButtons();
 	while (m_window.isOpen())
 	{
-		if (checkIfLevelFinished())
-			return true;
+		// if(counter == 10)
+		// {
+			if (checkIfLevelFinished())
+				return true;
+
+		// 	counter  = 0;
+		// }
+		// else
+		// {
+		// 	counter ++;
+		// }
+		
 
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 

@@ -28,8 +28,8 @@ public:
 	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
 	bool getMouseOverMe() const { return m_mouseOnMe; }
 
-	void setPosition(sf::Vector2f);
-	void setInitialLoc();
+	virtual void setPosition(sf::Vector2f);
+	virtual void setInitialLoc();
 
 private:
 

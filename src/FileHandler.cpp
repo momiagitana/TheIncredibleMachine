@@ -26,7 +26,7 @@ ObjInfo FileHandler::buildObjInfo(std::stringstream& lineBuffer)
 		x_loc, y_loc,
 		angle, size, fliped;
 
-	lineBuffer >> objTyp >> x_loc >> y_loc >> angle >> size >> fliped;
+	lineBuffer >> objTyp >> x_loc >> y_loc >> size >> angle >> fliped;
 	obj._typ = strToEnum(objTyp);
 	obj._loc = sf::Vector2f(std::stof(x_loc), std::stof(y_loc));
 	obj._angle = std::stoi(angle);

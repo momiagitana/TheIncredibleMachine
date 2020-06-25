@@ -90,9 +90,9 @@ ResourceManager::ResourceManager()
 	loadTexture("build/arrowRButton.png", Type_t::arrowRButton);
   
 
-  	loadTexture("build/advanceButton.png", Type_t::msgAdvance);
-	loadTexture("build/puzzleComplete.png", Type_t::msgRublic);
-	loadTexture("build/replayButton.png", Type_t::msgRepley);
+  	loadTexture("build/advanceButton.png", Type_t::advanceButton);
+	loadTexture("build/puzzleComplete.png", Type_t::puzzleComplete);
+	loadTexture("build/replayButton.png", Type_t::replayButton);
 
 
 	loadTexture("build/play.png", Type_t::play);

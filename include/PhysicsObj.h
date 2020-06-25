@@ -12,6 +12,7 @@ private:
     b2Body*         m_body;
     b2FixtureDef    m_fixtureDef;
     b2Fixture*      m_fixture;
+
     
 public:
 

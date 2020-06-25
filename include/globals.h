@@ -37,9 +37,9 @@ enum Type_t
 	rotateButton,
 	resizeButton,
 
-	msgRublic,
-	msgRepley,
-	msgAdvance,
+	puzzleComplete,
+	replayButton,
+	advanceButton,
 
 	balloonButton = 100,
 	basketButton,
@@ -59,6 +59,9 @@ struct ObjInfo
 	int _fliped = -1; // -1 not intersting, 0 regular , 1 filped
 };
 
+const struct ObjInfo wallInitTransforms = {brickWall, sf::Vector2f(0.f,0.f), 0, 1, -1};
+
+
 struct PhysicsInfo
 {
 	bool _shape;
@@ -70,12 +73,17 @@ struct PhysicsInfo
  const bool CIRCLE = true;
  const bool RECT = false;
 
- const PhysicsInfo physicsInfo[NUM_OF_OBJECTS] = {{CIRCLE, 1,0.4f,0.7f},  //balloon
-                                                 {CIRCLE, 1,0.4f,0.7f},  //basketBall
-                                                 {CIRCLE, 1,0.4f,0.7f},  //baseBall
-                                                 {CIRCLE, 1,0.4f,0.7f},  //bowlingBall
-                                                 {RECT, 1,0.4f,0.7f},    //conveyor
-                                                 {RECT, 1,0.4f,0.7f}};   //brickWall
+
+ const PhysicsInfo physicsInfo[NUM_OF_OBJECTS] = {{CIRCLE, 0.1f, 0.4f, 0.7f},    //balloon
+                                                  {CIRCLE, 0.5f, 0.775f, 0.2f},  //basketBall
+                                                  {CIRCLE, 0.8f, 0.4f, 0.9f},  	 //baseBall
+                                                  {CIRCLE, 0.1f, 0.1f, 0.7f},    //bowlingBall
+                                                  {RECT,   0.5f, 0.4f, 0.7f},    //conveyor
+                                                  {RECT,   0.5f, 0.4f, 0.7f}};   //brickWall
+
+	// m_fixtureDef.friction = 1;
+    // m_fixtureDef.restitution = 0.4f;
+    // m_fixtureDef.density = 0.7f;
 
 
 const float TIMESTEP = 1.0f / 60.0f;
@@ -131,20 +139,18 @@ const float BUTTON_SCALE = .9f;
 
 
 //fix 
-const int puzzleCompleteX = 400;
-const int puzzleCompleteY = 300;
-const int puzzleCompleteSIZE = 250;
-const int replayLevelRexuestX = 350;
-const int replayLevelRexuestY = 350;
-const int advanceRequestX = 460;
-const int advanceRequestY = 350;
+const int PUZZLE_COMPLETE_X = 400;
+const int PUZZLE_COMPLETE_Y = 300;
+const int REPLAY_BUTTON_X = 350;
+const int REPLAY_BUTTON_Y = 350;
+const int ADVANCE_BUTTON_X = 460;
+const int ADVANCE_BUTTON_Y = 350;
 
 
 
 const int BUTTONS_IN_PAGE = 5;
 const int SPACING = 25;
 const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE;
-
 
 
 const float PPM = 64.f;

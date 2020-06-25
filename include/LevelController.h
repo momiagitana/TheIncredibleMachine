@@ -19,7 +19,7 @@ public:
 	bool clickOnBoard(const sf::Vector2f);
 	bool levelStatus();
 	bool setlevelStatus(const bool);
-	void updateMouseImg(const sf::Vector2f loc);
+	void createMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
 
 	void whereAmI(sf::Vector2f);
@@ -51,6 +51,8 @@ private:
 
 	bool tryRunning();
 	bool checkIfLevelFinished() const;
-	void setSelected(Type_t, const sf::Vector2f);
+	void grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc);
+	void createOnHandObj(sf::Vector2f loc);
+	void setSelected(Type_t type, sf::Vector2f mouseLoc);
 
 };

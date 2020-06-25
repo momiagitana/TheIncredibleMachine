@@ -1,12 +1,27 @@
 #include "Resizable.h"
 
 
-Resizable::Resizable(const sf::Vector2f& center, bool movable, b2World &world, Type_t type)
-    :GameObj(center, false, movable, world, type)
+Resizable::Resizable(ObjInfo info, bool movable, b2World &world, Type_t type)
+    :GameObj(info._loc, false, movable, world, type), m_whichAngle(info._angle), m_whichSize(info._size)
 {
     setTexture();
+    rotateBody(m_whichAngle);
     setButtons();
 }
+
+void Resizable::setPosition(sf::Vector2f loc)
+{
+    GameObj::setPosition(loc);
+    resetButtonsPos();
+}
+
+// void Resizable::setInitialLoc()
+// {
+//     GameObj::setInitialLoc();
+//     // setTexture();
+//     // resetButtonsPos();
+//     // rotateBody(m_whichAngle);
+// }
 
 void Resizable::setTexture()
 {
@@ -20,6 +35,7 @@ void Resizable::makeItBigger()
     if(++m_whichSize == 6)//fix
         m_whichSize = 1;
     setTexture();
+    resetButtonsPos(); //fix move to setTexture
 }
 
 void Resizable::makeItSmaller()
@@ -28,6 +44,7 @@ void Resizable::makeItSmaller()
     if(--m_whichSize == 0)
         m_whichSize = 5;//fix
     setTexture();
+    resetButtonsPos();
 
 }
 
@@ -35,11 +52,13 @@ void Resizable::shiftL()
 {
     m_whichAngle = (m_whichAngle+1)%4;
     rotateBody(m_whichAngle);
+    resetButtonsPos();
 }
 void Resizable::shiftR()
 {
     m_whichAngle = (m_whichAngle-1)%4;
     rotateBody(m_whichAngle);
+    resetButtonsPos();
 }
 
 ObjInfo Resizable::getInfo() const
@@ -54,10 +73,22 @@ ObjInfo Resizable::getInfo() const
 
 void Resizable::setButtons()
 {
-    auto center = BaseImg::getLocation();
-    auto diff = BaseImg::getSize().x/2;
-    m_buttons.push_back(Button(sf::Vector2f(center.x+diff, center.y+FLOORING_UNIT), Type_t::rotateButton));//fix
-    m_buttons.push_back(Button(sf::Vector2f(center.x-diff, center.y+FLOORING_UNIT), Type_t::resizeButton));//fix
+    m_buttons.push_back(Button(sf::Vector2f(0, 0), Type_t::rotateButton));//fix
+    m_buttons.push_back(Button(sf::Vector2f(0, 0), Type_t::resizeButton));//fix
+    resetButtonsPos();
+}
+
+void Resizable::resetButtonsPos()
+{
+    auto space = 0;
+    auto globalBounds = BaseImg::getGlobalBounds();
+    auto left = globalBounds.left;
+    auto y = globalBounds.top + globalBounds.height + 4;//fix BUTTON_SIZE/2
+    if (m_buttons.size() > 1)
+        space = globalBounds.width/(m_buttons.size()-1);
+
+    for (int i = 0; i < m_buttons.size(); i++)
+        m_buttons[i].setPosition(sf::Vector2f(left + space * (i), y));
 }
 
 

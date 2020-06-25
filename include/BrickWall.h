@@ -6,7 +6,7 @@
 class BrickWall : public Resizable
 {
 public:
-	BrickWall (const sf::Vector2f& center, bool movable, b2World &world);
+	BrickWall (ObjInfo info, bool movable, b2World &world);
 	
 private:
 	static bool m_registerit;

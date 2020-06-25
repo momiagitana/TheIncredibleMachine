@@ -25,10 +25,10 @@ public:
 	void setBoard(const boardObjects & objects, b2World& world);
 	void draw(sf::RenderWindow& window, bool);
 	bool tryToAdd(std::shared_ptr<GameObj>);
-	Type_t handleClick(sf::Vector2f mouseLoc);
+	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc);
 	void resetObjectsPositions();
-	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
-	bool collides(GameObj* current);
+	bool clickedOnMe(sf::Vector2f mouseLoc) const;
+	bool collides(GameObj* current);//fix const
 	bool checkCollison(GameObj* obj2, GameObj* obj1);
 	bool isItemInLoc(conditionToWinLoc) const;
 
@@ -47,7 +47,7 @@ private:
 	bool isResizable(GameObj* curr) const;
 
 	std::vector <std::shared_ptr<GameObj>> m_objects;
-	std::vector <std::unique_ptr<GameObj>> m_objects;
 	std::vector< ObjInfo> getObjInfo() const;
+	sf::RectangleShape m_background;
 
 };

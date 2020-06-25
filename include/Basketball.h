@@ -6,7 +6,7 @@
 class BasketBall : public Ball
 {
 public:
-	BasketBall(const sf::Vector2f& center, bool movable, b2World &world);
+	BasketBall(ObjInfo info, bool movable, b2World &world);
 
 private:
 	static bool m_registerit;

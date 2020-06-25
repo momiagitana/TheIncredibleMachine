@@ -6,7 +6,7 @@
 class Conveyor : public Resizable
 {
 public:
-	Conveyor (const sf::Vector2f& center, bool movable, b2World &world);
+	Conveyor (ObjInfo info, bool movable, b2World &world);
 	
 private:
 	static bool m_registerit;

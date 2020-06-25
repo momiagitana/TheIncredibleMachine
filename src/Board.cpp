@@ -4,8 +4,11 @@
 using boardObjects = std::vector<ObjInfo>;// changed
 
 Board::Board(const boardObjects& objects, b2World& world)
+	:m_background(sf::Vector2f(560.f,352.f))//fix constants
  {
 	setBoard(objects, world);
+	m_background.setPosition(sf::Vector2f(8,8));//fix constants
+	m_background.setFillColor(sf::Color(18,160,159));
  }
 
 void Board::setBoard(const boardObjects& objects, b2World& world)
@@ -17,6 +20,7 @@ void Board::setBoard(const boardObjects& objects, b2World& world)
 
 void Board::draw(sf::RenderWindow& window, bool running)
 {
+	window.draw(m_background);
 	if (running)
 		updateImgLocs();
 
@@ -32,13 +36,6 @@ void Board::updateImgLocs()
 
 bool Board::tryToAdd(std::shared_ptr<GameObj> current)
 {
-
-	ObjInfo info;
-	info._typ = currObj;
-	info._loc = mouseLoc;
-
-	std::unique_ptr<GameObj> current = ObjFactory::create(info,MOVABLE,world);
-
 	if(current && !collides(current.get()))
 	{
 		current->setInitialLoc();
@@ -70,9 +67,9 @@ bool Board::checkCollison(GameObj* obj2, GameObj* obj1)
 	return false;
 }
 
-Type_t Board::handleClick(sf::Vector2f mouseLoc)
+std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc)
 {
-	Type_t type = none;
+	std::shared_ptr<GameObj> obj = nullptr;
 	Resizable *resizableObj = nullptr;
 	for (auto i = 0; i < m_objects.size(); i++)
 	{	
@@ -85,7 +82,7 @@ Type_t Board::handleClick(sf::Vector2f mouseLoc)
 				resizableObj = static_cast <Resizable*> (m_objects[i].get());
 				if(resizableObj->clickedOnMe(mouseLoc, whatHappen))
 				{
-					type = m_objects[i]->getType();
+					obj = m_objects[i];
 					m_objects.erase(m_objects.begin()+i);
 				}
 				else if (whatHappen != none) //means it resized or rotated
@@ -100,13 +97,13 @@ Type_t Board::handleClick(sf::Vector2f mouseLoc)
 				
 			else if(m_objects[i]->mouseOnMe(mouseLoc))
 			{
-				type = m_objects[i]->getType();
+				obj = m_objects[i];
 				m_objects.erase(m_objects.begin()+i);
 			}
 
 		}
 	}
-	return type;
+	return obj;
 }
 
 void Board::resetObjectsPositions()
@@ -177,3 +174,10 @@ bool Board::isResizable(GameObj* curr) const
 
 }
 
+bool Board::clickedOnMe(sf::Vector2f loc) const
+{
+	if (m_background.getGlobalBounds().contains(loc))
+		return true;
+	
+	return false;
+}
