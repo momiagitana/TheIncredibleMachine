@@ -20,13 +20,20 @@ configure_file ("arrowRButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("rotateButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("resizeButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("advanceButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("puzzleComplete.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("replayButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("startButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("The_Incredible_Machine.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("frame.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
@@ -35,6 +42,7 @@ configure_file ("exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("playmenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sound.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("up.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("chooseLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 

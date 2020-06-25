@@ -42,6 +42,15 @@ void Resizable::shiftR()
     rotateBody(m_whichAngle);
 }
 
+ObjInfo Resizable::getInfo() const
+{
+    ObjInfo info = GameObj::getInfo();
+    info._size = getWhichSize();
+    info._angle = getAngle();
+    info._fliped = getIfFliped();
+    return info;
+}
+
 
 void Resizable::setButtons()
 {

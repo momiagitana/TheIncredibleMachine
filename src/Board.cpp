@@ -1,17 +1,18 @@
 #include "Board.h"
 #include <vector>
 
-Board::Board(const Level& lvl, b2World& world)
+using boardObjects = std::vector<ObjInfo>;// changed
+
+Board::Board(const boardObjects& objects, b2World& world)
  {
-	setBoard(lvl, world);
+	setBoard(objects, world);
  }
 
-void Board::setBoard(const Level& level, b2World& world)
+void Board::setBoard(const boardObjects& objects, b2World& world)
 {
-	for (auto i = 0; i < level.getBoardSize(); i++)
-		m_objects.push_back(ObjFactory::create(level.getFromBoard(i).first,
-											   level.getFromBoard(i).second,
-											   UNMOVABLE,world));
+	for (auto i = 0; i <objects.size(); i++)
+		m_objects.push_back(ObjFactory::create(objects[i],UNMOVABLE,world));
+
 }
 
 void Board::draw(sf::RenderWindow& window, bool running)
@@ -31,7 +32,14 @@ void Board::updateImgLocs()
 
 bool Board::tryToAdd(std::shared_ptr<GameObj> current)
 {
-	if(current && !collides(current.get()))//probably can remove the check if current is null
+
+	ObjInfo info;
+	info._typ = currObj;
+	info._loc = mouseLoc;
+
+	std::unique_ptr<GameObj> current = ObjFactory::create(info,MOVABLE,world);
+
+	if(current && !collides(current.get()))
 	{
 		current->setInitialLoc();
 		m_objects.push_back(current);
@@ -121,6 +129,20 @@ bool Board::isItemInLoc(conditionToWinLoc cond) const
 	return false;
 }
 
+void Board::saveLevelToFile()
+{
+	auto file = FileHandler(ResourceManager::instance().getLevelPath(), false);//fix SAVE
+	file.saveNewLevel(getObjInfo());
+}
+
+
+std::vector<ObjInfo> Board::getObjInfo() const
+{
+	auto info = std::vector<ObjInfo>();
+	for (auto& obj : m_objects)
+		info.push_back(obj->getInfo());
+	return info;
+}
 
 void Board::checkMouseOver(sf::Vector2f loc)
 {
@@ -154,3 +176,4 @@ bool Board::isResizable(GameObj* curr) const
 	return false;
 
 }
+

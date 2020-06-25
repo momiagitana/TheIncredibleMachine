@@ -6,10 +6,9 @@ Level::Level()
 
 }
 
-void Level::addBoardObj(Type_t obj, sf::Vector2f loc)
+void Level::addBoardObj(ObjInfo obj)
 {
-
-	m_initial.push_back(std::pair(obj,loc));
+	m_initial.push_back(obj);
 }
 
 void Level::addToolbarObj (Type_t obj, int amount)

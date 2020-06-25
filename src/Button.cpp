@@ -7,6 +7,7 @@ Button::Button(const sf::Vector2f& center, Type_t obj)
 	:BaseImg(center, obj),
 	m_type(obj)
 {
+
 }
 
 bool Button::mouseOnMe(sf::Vector2f loc)
@@ -17,7 +18,7 @@ bool Button::mouseOnMe(sf::Vector2f loc)
 	return false;
 }
 
-Type_t Button::getType()
+Type_t Button::getType() const
 {
 	return Type_t(m_type%100);//fix global 
 }

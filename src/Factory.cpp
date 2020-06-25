@@ -4,14 +4,15 @@ ObjFactory::ObjFactory()
 {
 }
 
-std::shared_ptr<GameObj> ObjFactory::create(const Type_t& name,const sf::Vector2f& center, bool movable, b2World &world) 
-{
-	auto it = ObjFactory::getMap().find(name);
 
+std::unique_ptr<GameObj> ObjFactory::create(const ObjInfo& info, bool movable, b2World &world) 
+  
+{
+	auto it = ObjFactory::getMap().find(info._typ);
 	if (it == ObjFactory::getMap().end())
 		return nullptr;
 
-	return it->second(center,movable,world);
+	return it->second(info._loc,movable,world);
 }
 
 bool ObjFactory::registerit(const Type_t& name, funcPtr f) 

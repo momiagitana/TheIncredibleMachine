@@ -13,7 +13,7 @@ public:
 
 	LevelController(const Level&, b2World& world, sf::RenderWindow&);
 
-	void run();
+	bool run();
 
 	bool clickOnToolbar(const sf::Vector2f );
 	bool clickOnBoard(const sf::Vector2f);
@@ -21,10 +21,13 @@ public:
 	bool setlevelStatus(const bool);
 	void updateMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
-	void drawAll();
+
 	void whereAmI(sf::Vector2f);
 	void clearMouse(Type_t type, const sf::Vector2f loc);
-	//void removeMouseImage();
+
+	bool replaySolution();
+
+	void drawAll(bool);
 
 
 private:
@@ -40,6 +43,7 @@ private:
 	std::shared_ptr<GameObj> m_mouseObj = nullptr;
 	BaseImg m_mouseImg;
 
+	BaseImg m_frame;
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
 
