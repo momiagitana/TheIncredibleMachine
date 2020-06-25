@@ -57,6 +57,13 @@ struct ObjInfo
 	int _fliped = -1; // -1 not intersting, 0 regular , 1 filped
 };
 
+
+// const ObjInfo arr[2] = {{CIRCLE, -2,-3,4}, //balloon
+// 						{conveyor, sf::Vector2f(10.f,10.f), -2,-3,4}};
+
+// const bool CIRCLE = true;
+// const bool RECT = fasle;
+
 const float TIMESTEP = 1.0f / 60.0f;
 const int VELITER = 10;
 const int POSITER = 10;

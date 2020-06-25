@@ -4,6 +4,7 @@
 PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, bool dynamic, Type_t type)
 {
     //auto box = ResourceManager::instance().getInfoFor(type);
+    
 
     b2BodyDef bodyDef;
 
