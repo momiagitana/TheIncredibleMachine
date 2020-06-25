@@ -12,6 +12,8 @@ void Board::setBoard(const boardObjects& objects, b2World& world)
 {
 	for (auto i = 0; i <objects.size(); i++)
 		m_objects.push_back(ObjFactory::create(objects[i],UNMOVABLE,world));
+
+
 }
 
 
