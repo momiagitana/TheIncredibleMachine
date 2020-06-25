@@ -41,7 +41,7 @@ Type_t GameMenu::runStart(sf::RenderWindow& window)
 				sf::Vector2f location = window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 				for (auto button : m_buttons)
 				{
-					if (button.clickedOnMe(location))
+					if (button.mouseOnMe(location))
 					{
 						if (button.getType() == sound)
 						{

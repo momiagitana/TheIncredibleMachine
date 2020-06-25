@@ -10,6 +10,8 @@
 #include "BaseBall.h"
 #include "BasketBall.h"
 #include "BrickWall.h"
+#include "FileHandler.h"
+#include "Conveyor.h"//fix all these
 //#include "BowlingBall.h"
 
 
@@ -28,17 +30,20 @@ public:
 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
 	bool collides(GameObj* current);
 	bool checkCollison(GameObj* obj2, GameObj* obj1);
-	void wakeEmAllUp();
 	bool isItemInLoc(conditionToWinLoc) const;
 
-	//bool levelFinished();
-	//void MoveObjects(sf::Time deltaTime);
+	void saveLevelToFile();
+	void wakeEmAllUp();
 
-private:
+	void checkMouseOver(sf::Vector2f loc);
+	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
+
+
 	void updateImgLocs();
-
+	void setEveryoneElseFalse(int);
+	bool isResizable(GameObj* curr) const;
 
 	sf::Sprite m_levelBackground;
 	std::vector <std::unique_ptr<GameObj>> m_objects;
-	
+	std::vector< ObjInfo> getObjInfo() const;
 };

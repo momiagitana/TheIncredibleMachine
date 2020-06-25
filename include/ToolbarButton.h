@@ -11,12 +11,12 @@ public:
 	ToolbarButton(sf::Vector2f,Type_t,int);
 	void increase();
 	void decrease();
-	int getAmount();
-	void setString();
+	bool isEmpty() const;
 	void setPosition(sf::Vector2f pos);
 	void draw(sf::RenderWindow&) const;
-
+	
 private:
+	void setString();
 
 	int m_amount;
 

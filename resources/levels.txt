@@ -1,12 +1,11 @@
-balloon 150 250
-brickWall 100 300
 -
-basketBall 3
-balloon 6
-brickWall 10
-baseBall 2
+basketBall 2
+balloon 4
+brickWall 3
+baseBall 7
+conveyor 2
 -
-1 100 16 440 0
+1 100 100 320 0
 -
 1
 -

@@ -4,16 +4,15 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include<memory>
-
-
-
 #include "ResourceManager.h"
 #include "Button.h"
+
 #include "Board.h"
 #include "globals.h"
 #include "FileHandler.h"
 #include "LevelController.h"
 #include "Level.h"
+
 
 class OverallController
 {

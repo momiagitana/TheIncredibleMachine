@@ -13,15 +13,27 @@ configure_file ("baseButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("conveyorButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("brickButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+
+configure_file ("arrowLButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("arrowRButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 configure_file ("rotateButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("resizeButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("advanceButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("puzzleComplete.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("replayButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("arrows.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("startButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("The_Incredible_Machine.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("frame.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)

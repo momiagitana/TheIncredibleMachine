@@ -33,13 +33,21 @@ void Resizable::makeItSmaller()
 
 void Resizable::shiftL()
 {
-    m_whichAngle = (m_whichAngle+1)%3;
+    m_whichAngle = (m_whichAngle+1)%4;
     rotateBody(m_whichAngle);
 }
 void Resizable::shiftR()
 {
-    m_whichAngle = (m_whichAngle-1)%3;
+    m_whichAngle = (m_whichAngle-1)%4;
     rotateBody(m_whichAngle);
+}
+
+ObjInfo Resizable::getInfo() const
+{
+    ObjInfo info = GameObj::getInfo();
+    info._size = getWhichSize();
+    info._angle = getAngle();
+    return info;
 }
 
 
@@ -52,30 +60,49 @@ void Resizable::setButtons()
 }
 
 
-bool Resizable::clickedOnMe(sf::Vector2f loc)
+bool Resizable::clickedOnMe(sf::Vector2f loc, Type_t&  whatHappen)
 {
-    bool buttonClick = false;;
-    for (auto &button : m_buttons)
-        if(button.clickedOnMe(loc))
-        {
-            if (button.getType() == Type_t::resizeButton)
-                makeItBigger();
-            else if (button.getType() == Type_t::rotateButton)
-                shiftL();//fix 
-            
-            buttonClick = true;
-        }
-    if(!buttonClick)
-        return (Button::clickedOnMe(loc));
+    if(GameObj::getMouseOverMe())//could be protected
+    {
+        for (auto &button : m_buttons)
+            if(button.mouseOnMe(loc))
+            {
+                whatHappen = button.getType();
+                if (whatHappen == Type_t::resizeButton)
+                    makeItBigger();
+                else if (whatHappen == Type_t::rotateButton)
+                    shiftL();
+                
+                
+                return false;
+            }
+    }
 
-    return false;
-
+    return (Button::mouseOnMe(loc));
 }
 
 void Resizable::draw(sf::RenderWindow& win) const
 {
     BaseImg::draw(win);
 
-    for (auto &button : m_buttons)
-        button.draw(win);
+    if(GameObj::getMouseOverMe())
+    {
+        for (auto &button : m_buttons)
+            button.draw(win);
+    }
+}
+
+void Resizable::fixLastChange(Type_t change)
+{
+    if(change == Type_t::resizeButton)
+        makeItSmaller();
+    else
+        shiftR();
+    
+}
+
+void Resizable::setInitialLoc()
+{
+    GameObj::setInitialLoc();
+    rotateBody(m_whichAngle);
 }

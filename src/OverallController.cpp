@@ -7,8 +7,8 @@
 OverallController::OverallController(b2World& world)
 	:m_world(world), m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine", sf::Style::Default), m_background(sf::Vector2f((float)WINDOW_WIDTH / 2, (float)WINDOW_HEIGHT / 2), background)
 {
-	FileHandler file(ResourceManager::instance().getLevelPath());
-	m_levels = file.readLevels();
+	FileHandler file(ResourceManager::instance().getLevelPath(), true);//fix OPEN
+	m_levels = file.readLevels();          
 	m_window.setFramerateLimit(60);
 
 	for (int i = exitButton; i < none; i++)

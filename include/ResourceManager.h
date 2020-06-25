@@ -10,6 +10,7 @@ makes sure they wont be loaded more then once
 #include <string>
 #include "globals.h"
 
+
 class ResourceManager
 {
 public:
