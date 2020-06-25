@@ -33,7 +33,7 @@ enum Type_t
 	msgRublic,
 	msgRepley,
 	msgAdvance,
-	
+
 	balloonButton = 100,
 	basketButton,
 	baseButton,
@@ -121,7 +121,7 @@ const int advanceRequestY = 350;
 
 
 const int BUTTONS_IN_PAGE = 5;
-const int SPACING = 20;
+const int SPACING = 25;
 const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE;
 
 
