@@ -6,7 +6,6 @@ BaseImg::BaseImg(sf::Vector2f center, Type_t objTexture)
 	sf::Texture *texture = ResourceManager::instance().getTexture(objTexture);
 	m_sprite.setTexture(*texture);
 	m_sprite.setOrigin(texture->getSize().x / 2, texture->getSize().y / 2);
-	//setSize(texture->getSize());
 	setPosition(center);
 }
 
@@ -24,7 +23,6 @@ void BaseImg::draw(sf::RenderWindow& window) const
 {
 	window.draw(m_sprite);
 }
-
 
 sf::Vector2f BaseImg::getLocation() const
 {
@@ -49,7 +47,7 @@ void BaseImg::setPosition(sf::Vector2f loc)
 
 sf::Vector2f BaseImg::getSize() const
 {
-	return sf::Vector2f(m_sprite.getGlobalBounds().width, m_sprite.getGlobalBounds().height);
+	return sf::Vector2f(m_sprite.getTextureRect().width, m_sprite.getTextureRect().height);
 }
 
 void BaseImg::setIntRect(sf::IntRect newRect)

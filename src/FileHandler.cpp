@@ -131,7 +131,8 @@ Type_t FileHandler::strToEnum(const std::string& str)
 	else if (str == "bowlingBall") return bowlingBall;
 	else if (str == "conveyor") return conveyor;
 	else if (str == "brickWall") return brickWall;
-	//add obj
+	return none;
+
 }
 
 std::string FileHandler::enumToStr(Type_t obj)
@@ -142,7 +143,7 @@ std::string FileHandler::enumToStr(Type_t obj)
 	else if (obj == bowlingBall ) return "bowlingBall";
 	else if (obj == conveyor ) return "conveyor";
 	else if (obj == brickWall ) return "brickWall";
-}//add obj
+}//add obj fix
 
 
 

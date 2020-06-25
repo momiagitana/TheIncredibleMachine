@@ -10,7 +10,7 @@ LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWin
 {
 }
 
-void LevelController::run()
+bool LevelController::run()
 {
 	while (m_window.isOpen() && !m_finished)
 	{
@@ -18,7 +18,7 @@ void LevelController::run()
 
 		sf::Event event;
 
-		while (m_window.pollEvent(event) && !m_finished)// level status might have to be on the outer while
+		while (m_window.pollEvent(event) && !m_finished)// fix 
 		{
 			switch (event.type)
 			{
@@ -28,6 +28,9 @@ void LevelController::run()
 
 			case sf::Event::MouseButtonReleased:
 			{
+				if(event.mouseButton.button == sf::Mouse::Button::Right)
+					return false; //fix
+					
 				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 
 				if (clickOnToolbar(mouseLoc))
@@ -75,11 +78,13 @@ void LevelController::run()
 			}
         }
     }
-	// testing save to level
+
+
 	m_board.saveLevelToFile();
 
-	//while(replaySolution())
-	//	tryRunning();
+	// while(replaySolution())
+	// 	tryRunning();
+  return m_finished;
 
 }
 

@@ -11,17 +11,17 @@ class GameMenu
 public:
 
 	GameMenu();
-	void runStart(sf::RenderWindow& window);
-	void settexturs( sf::RenderWindow&);
-	void draw(sf::RenderWindow& window);
-	bool shouldStartplaying()const;
+	Type_t runStart(sf::RenderWindow& window);
+	
+	int getLevel()const;
 
 private:
+	void draw(sf::RenderWindow& window);
 	void setButtons();
-	bool m_StartPlaying = false;
 	std::vector<Button> m_buttons;
 	BaseImg m_background;
 	sf::Text m_text;
+	unsigned m_numOfLevel = 0;
 };
 
 sf::IntRect getIntRectOfMenuIcon(int i);

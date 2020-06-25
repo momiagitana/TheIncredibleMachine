@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 const int MENU_BUTTONS_INT_RECT [4][2]=  {{24, 23}, {22, 34}, {18, 31}, {110,28}};
+const int MENU_BUTTONS_LOC [4][2] = {{260, 250}, {200, 250}, {150,250}, {150, 200}};
 
 
 
@@ -16,16 +17,20 @@ enum Type_t
 	bowlingBall,
 	conveyor,
 	brickWall,
+
 	play,
-	arrows,
 	arrowRButton,
 	arrowLButton,
-	background,
+	menuBackground,
 	frame,
+
+	//menu buttons
 	exitButton,
 	startButton,
 	reset,
 	sound,
+	choseLevel,
+	//----
 	none,
 	rotateButton,
 	resizeButton,
@@ -33,7 +38,7 @@ enum Type_t
 	msgRublic,
 	msgRepley,
 	msgAdvance,
-	
+
 	balloonButton = 100,
 	basketButton,
 	baseButton,
@@ -122,7 +127,7 @@ const int advanceRequestY = 350;
 
 
 const int BUTTONS_IN_PAGE = 5;
-const int SPACING = 20;
+const int SPACING = 25;
 const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE;
 
 

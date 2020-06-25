@@ -7,7 +7,7 @@ ToolbarButton::ToolbarButton(sf::Vector2f center, Type_t objType, int amount)
 	//setSize(sf::Vector2u(BUTTON_OBJ_SIZE,BUTTON_OBJ_SIZE));
 	setScale(BUTTON_SCALE);
 	m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
-	m_text.setCharacterSize(15);//fix
+	m_text.setCharacterSize(10);//fix
 	m_text.setColor(sf::Color::Black);
 	setString();
 }
