@@ -18,8 +18,7 @@ OverallController::OverallController(b2World& world)
 		m_buttons.emplace_back(sf::Vector2f(0, 0), Type_t(i));
 	setButtons();
 
-	m_background.setPosition(sf::Vector2f((float)WINDOW_WIDTH / 2, (float)WINDOW_HEIGHT / 2));
-	m_background.setSize(sf::Vector2u(WINDOW_WIDTH, WINDOW_HEIGHT));
+
 
 }
 
