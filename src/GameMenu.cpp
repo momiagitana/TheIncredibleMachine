@@ -14,7 +14,7 @@ GameMenu::GameMenu()
 
 
 
-void GameMenu::runStart(sf::RenderWindow& window)
+Type_t GameMenu::runStart(sf::RenderWindow& window)
 {
 
 	while (window.isOpen())
@@ -43,16 +43,24 @@ void GameMenu::runStart(sf::RenderWindow& window)
 				{
 					if (button.clickedOnMe(location))
 					{
-						if (button.getType() == startButton)
+						if (button.getType() == sound)
 						{
-							m_StartPlaying = true;
-							return;
+							//increase voll each click
+							
 						}
-						else if (button.getType() == exitButton)
+						else if (button.getType() == reset)
 						{
-							m_StartPlaying = false;
-							return;
+							
+							return reset;
 						}
+						else if (button.getType() == choseLevel)
+						{
+
+							return reset;
+						}
+							
+							return button.getType();
+						
 					}
 				}
 				break;
@@ -73,10 +81,11 @@ void GameMenu::draw(sf::RenderWindow& window)
 	window.draw(m_text);
 }
 
-bool GameMenu::shouldStartplaying()const
+int GameMenu::getLevel() const
 {
-	return m_StartPlaying;
+	return m_numOfLevel;
 }
+
 
 void GameMenu::setButtons()
 {
@@ -88,7 +97,3 @@ void GameMenu::setButtons()
 		
 }
 
-sf::IntRect getIntRectOfMenuIcon(int i)
-{
-	return sf::IntRect(sf::Vector2i(1,1),sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0],MENU_BUTTONS_INT_RECT[i][1]));
-}

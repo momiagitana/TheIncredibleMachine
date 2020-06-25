@@ -14,7 +14,7 @@ public:
 
 	LevelController(const Level&, b2World& world, sf::RenderWindow&);
 
-	void run();
+	bool run();
 
 	bool clickOnToolbar(const sf::Vector2f );
 	bool clickOnBoard(const sf::Vector2f);

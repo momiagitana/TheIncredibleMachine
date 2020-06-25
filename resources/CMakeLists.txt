@@ -30,6 +30,7 @@ configure_file ("exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("playmenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sound.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("up.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("chooseLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
