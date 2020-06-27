@@ -6,9 +6,10 @@ LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWin
 	:m_board(lvl.getBoardObjs(), world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
 	m_mouseImg(sf::Vector2f(-100.f, -100.f),baseBall),
-  m_frame (sf::Vector2f(FRAME_X, FRAME_Y), frame)
+  	m_frame (sf::Vector2f(FRAME_X, FRAME_Y), frame)
 
 {
+	//listner.setBoardReference(m_board);
 }
 
 bool LevelController::run()
