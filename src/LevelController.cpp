@@ -87,9 +87,13 @@ bool LevelController::run()
 
 	//m_board.saveLevelToFile();
 
-	while(replaySolution())
+	while(replaySolution() && m_finished)
+	{
 		tryRunning();
-  return m_finished;
+		m_board.resetObjectsPositions();
+	}
+
+  	return m_finished;
 
 }
 
@@ -203,7 +207,7 @@ void LevelController::drawStatic(bool running)
 	m_toolbar.draw(m_window);
 }
 
-bool LevelController::replaySolution()
+bool LevelController::replaySolution() //fix
 {
 	BaseImg nextLevelMesseage(sf::Vector2f(400,300),Type_t::puzzleComplete);
 	Button replayLevelRexuest(sf::Vector2f(350,350),Type_t::replayButton);
@@ -242,6 +246,7 @@ bool LevelController::replaySolution()
 			}
 		}
 	}
+	return true;
 }
 
 
@@ -276,7 +281,7 @@ bool LevelController::tryRunning()
 			}
         }
     }
-	
+	return false;//we never get here
 }
 
 bool LevelController::checkIfLevelFinished() const

@@ -44,8 +44,10 @@ public:
 
 //master--------------
 	bool clickedOnMe(sf::Vector2f mouseLoc) const;
-	bool collides(GameObj* current);//fix const
-	bool checkCollison(GameObj* obj2, GameObj* obj1);
+	// bool collides(GameObj* current);//fix const
+	// bool checkCollison(GameObj* obj2, GameObj* obj1);
+	bool checkCollison(GameObj& obj2, GameObj& obj1);
+	bool collides(GameObj& current);
 	bool isItemInLoc(conditionToWinLoc) const;
 
 	void saveLevelToFile();

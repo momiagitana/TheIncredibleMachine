@@ -7,7 +7,7 @@ void MyListener::BeginContact(b2Contact* contact)
     b2Fixture* fixtureB = contact->GetFixtureB();
     b2Body* body1 = fixtureA->GetBody();
     b2Body* body2 = fixtureB->GetBody();
-    std::cout << "started";
+    std::cout << "started" << std::endl;;
 }
 
 void MyListener::EndContact(b2Contact* contact)
@@ -16,5 +16,5 @@ void MyListener::EndContact(b2Contact* contact)
 
 void MyListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 {
-    std::cout << "colide";
+    std::cout << "colide" <<std::endl;
 }

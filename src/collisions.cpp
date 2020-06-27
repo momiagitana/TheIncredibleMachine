@@ -3,8 +3,8 @@
 Collisions::Collisions()
 {
       m_hitMap[Key(typeid(Balloon), typeid(BaseBall))] = &balloonAndBaseball;
-      m_hitMap[Key(typeid(BasketBall), typeid(BrickWallH))] = &basketWall;
-      m_hitMap[Key(typeid(Balloon), typeid(BrickWallH))] = &balloonWall;
+      m_hitMap[Key(typeid(BasketBall), typeid(BrickWall))] = &basketWall;
+      m_hitMap[Key(typeid(Balloon), typeid(BrickWall))] = &balloonWall;
       m_hitMap[Key(typeid(BasketBall), typeid(Balloon))] = &basketBalloon;
 }
 

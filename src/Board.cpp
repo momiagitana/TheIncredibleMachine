@@ -72,7 +72,7 @@ void Board::updateImgLocs()
 
 bool Board::tryToAdd(std::shared_ptr<GameObj> current)
 {
-	if(current && !collides(current.get()))
+	if(current && !collides(*current.get()))
 	{
 		current->setInitialLoc();
 		m_objects.push_back(current);
@@ -86,7 +86,7 @@ bool Board::collides(GameObj& current)
 {
 	for(auto& i : m_objects)
 	{
-		if(checkCollison(*i.get(),current) && current.getID() != i->getID())
+		if(checkCollison((*i.get()), current) && current.getID() != i->getID())
 		{
 			return true;
 		}
@@ -99,7 +99,7 @@ bool Board::collides(GameObj& current)
 bool Board::checkCollison(GameObj& obj2, GameObj& obj1)
 {
 
-	if(obj1->getGlobalBounds().intersects(obj2->getGlobalBounds()))
+	if(obj1.getGlobalBounds().intersects(obj2.getGlobalBounds()))
 		return true;
 
 	return false;
@@ -125,7 +125,7 @@ std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc)
 				}
 				else if (whatHappen != none) //means it resized or rotated
 				{
-					if (collides(resizableObj))
+					if (collides(*resizableObj))
 					{
 						resizableObj->fixLastChange(whatHappen);
 					}

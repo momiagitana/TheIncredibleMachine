@@ -13,7 +13,7 @@
 #include "GameObj.h"
 #include "BaseBall.h"
 #include "Balloon.h"
-#include "Basketball.h"
+#include "BasketBall.h"
 #include "BrickWall.h"
 
 
@@ -58,9 +58,9 @@ void balloonAndBaseball(GameObj& object1, GameObj& object2)
 void basketWall(GameObj& object1, GameObj& object2)
 {
     BasketBall& bsktBall = static_cast<BasketBall&>(object1);
-    BrickWallH& brick    = static_cast<BrickWallH&>(object2);
+    BrickWall& brick    = static_cast<BrickWall&>(object2);
 
-    bsktBall.getPhysical().applyForce();
+    //bsktBall.getPhysical().applyForce();
 
     std::cout << "BasketBall and Wall collision!" << std::endl;
 }

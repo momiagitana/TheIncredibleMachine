@@ -97,6 +97,7 @@ Type_t OverallController::getSelection(sf::Vector2f loc) const
 	for (auto button : m_buttons)
 		if (button.mouseOnMe(loc))
 			return button.getType();
+	return none;
 }
 
 void OverallController::draw(sf::RenderWindow& window)
