@@ -4,15 +4,16 @@
 
 
 
-OverallController::OverallController(b2World& world)
+OverallController::OverallController(b2World& world)//fix change name to menu
 	:m_world(world),
 	m_levels(FileHandler(ResourceManager::instance().getLevelPath(), true).readLevels()), //fix true->OPEN
 	m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine", sf::Style::Default),
-	m_background(sf::Vector2f((float)WINDOW_WIDTH / 2, (float)WINDOW_HEIGHT / 2), menuBackground),
+	m_background(sf::Vector2f(MENU_X, MENU_Y), menuBackground),
 	m_levelController(m_levels[m_numOfLevel], world, m_window)//fix
 {
  
 	m_window.setFramerateLimit(60);
+	m_smallBoard.create(TINY_BOARD_W, TINY_BOARD_H);
 
 	for (int i = exitButton; i < none; i++)
 		m_buttons.emplace_back(sf::Vector2f(0, 0), Type_t(i));
@@ -21,6 +22,11 @@ OverallController::OverallController(b2World& world)
 
 void OverallController::run()
 {
+
+	//set after loading new level
+	m_levelController.drawTinyBoard(m_smallBoard);
+
+
 	while (m_window.isOpen())
 	{
 		m_window.clear();
@@ -95,11 +101,17 @@ Type_t OverallController::getSelection(sf::Vector2f loc) const
 
 void OverallController::draw(sf::RenderWindow& window)
 {
+	sf::Sprite tinyBoard(m_smallBoard.getTexture());
+	tinyBoard.setPosition(268,70);//fix
+
+	m_levelController.drawStatic(false);
+	m_window.draw(tinyBoard);
 	m_background.draw(window);
 
 	for (auto& button : m_buttons)
 		button.draw(window);
-	window.draw(m_text);
+
+	//window.draw(m_text);
 }
 
 void OverallController::setButtons()

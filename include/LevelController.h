@@ -21,14 +21,16 @@ public:
 	bool setlevelStatus(const bool);
 	void createMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
+	//void loadNewLevel(level);
 
 	void whereAmI(sf::Vector2f);
 	void clearMouse(Type_t type, const sf::Vector2f loc);
 
 	bool replaySolution();
 
-	void drawAll(bool);
-
+	void drawAll(bool); //fix const?
+	void drawStatic(bool running);
+	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
 
 private:
 

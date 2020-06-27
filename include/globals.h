@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 const int MENU_BUTTONS_INT_RECT [4][2]=  {{24, 23}, {22, 34}, {18, 31}, {110,28}};
-const int MENU_BUTTONS_LOC [4][2] = {{260, 250}, {200, 250}, {150,250}, {150, 200}};
+const int MENU_BUTTONS_LOC [4][2] = {{210, 200}, {150, 200}, {100,200}, {150, 200}};
 
 const unsigned obj_size = 40;
 
@@ -104,9 +104,9 @@ const float DEG_TO_RAD = 0.0174533;
 const int WINDOW_WIDTH = 640;
 const int WINDOW_HEIGHT = 450;
 
+
 const int FLOORING_UNIT = 16; //pixels
 const int FLOORING_MARGIN = 1; //pix
-
 const int FRAME_SIZE = 8;
 const int SCORE_TIME_H = 60;
 
@@ -119,6 +119,7 @@ const int ARROWS_H = 20;
 const int TB_W = 56;
 const int TB_H = WINDOW_HEIGHT - SCORE_TIME_H - PLAY_BUTTON_H - ARROWS_H-60;//frames
 const int TB_TOP = 100;//PLAYH+ARRH+3FRAMES~
+
 
 const int TB_X = WINDOW_WIDTH - FRAME_SIZE - TB_W; //topleft
 const int TB_OBJ_X = WINDOW_WIDTH - FRAME_SIZE- TB_W/2;
@@ -133,9 +134,17 @@ const int BAR_Y = PLAY_BUTTON_H + ARROWS_H + TB_H/2;
 
 const float BUTTON_SCALE = .9f;
 
+const int MENU_X = (WINDOW_WIDTH - (TB_W + FRAME_SIZE*2)) /2;
+const int MENU_Y = (WINDOW_HEIGHT - SCORE_TIME_H - FRAME_SIZE) / 2;
 
 
+const float BOARD_W = 560;
+const float BOARD_H = 352;
+const float TINY_BOARD_W = 263;
+const float TINY_BOARD_H = 166;
 
+const float BOARDS_RATIO_X = TINY_BOARD_W / BOARD_W ;
+const float BOARDS_RATIO_Y = TINY_BOARD_H / BOARD_H ;
 
 
 //fix 

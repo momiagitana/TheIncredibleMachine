@@ -177,12 +177,9 @@ bool LevelController::setlevelStatus(const bool status)
 
 void LevelController::drawAll(bool running)
 {
-	m_window.clear(sf::Color(18, 160, 159));
+	m_window.clear();//sf::Color(18, 160, 159));
 
-	m_board.draw(m_window, running);//fix RUNNING
-
-	m_frame.draw(m_window);
-	m_toolbar.draw(m_window);
+	drawStatic(running);
 	
 	if (m_selected < play)
 	{
@@ -197,6 +194,13 @@ void LevelController::drawAll(bool running)
 	}
 
 	m_window.display();
+}
+
+void LevelController::drawStatic(bool running)
+{
+	m_board.draw(m_window, running);//fix RUNNING
+	m_frame.draw(m_window);
+	m_toolbar.draw(m_window);
 }
 
 bool LevelController::replaySolution()
@@ -291,4 +295,9 @@ bool LevelController::checkIfLevelFinished() const
 			return false;
 	}
 	return true;
+}
+
+void LevelController::drawTinyBoard (sf::RenderTexture& tinyBoard) const
+{
+	m_board.drawTinyBoard(tinyBoard);
 }

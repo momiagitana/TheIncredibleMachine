@@ -40,5 +40,6 @@ private:
 	sf::Text m_text;
 	unsigned m_numOfLevel = 0;
 	LevelController m_levelController;
+	sf::RenderTexture m_smallBoard;
 };
 sf::IntRect getIntRectOfMenuIcon(int i);

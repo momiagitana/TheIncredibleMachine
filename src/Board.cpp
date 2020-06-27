@@ -4,7 +4,7 @@
 using boardObjects = std::vector<ObjInfo>;// changed
 
 Board::Board(const boardObjects& objects, b2World& world)
-	:m_background(sf::Vector2f(560.f,352.f))//fix constants
+	:m_background(sf::Vector2f(BOARD_W, BOARD_H))
  {
 	setBoard(objects, world);
 	m_background.setPosition(sf::Vector2f(8,8));//fix constants
@@ -180,4 +180,15 @@ bool Board::clickedOnMe(sf::Vector2f loc) const
 		return true;
 	
 	return false;
+}
+
+
+void Board::drawTinyBoard (sf::RenderTexture& tinyBoard) const
+{
+	tinyBoard.clear(sf::Color(18,160,159));
+
+	for(auto &obj : m_objects)
+		obj->drawSmall(tinyBoard);	
+
+   tinyBoard.display();
 }

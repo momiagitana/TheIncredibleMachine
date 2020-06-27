@@ -22,6 +22,7 @@ public:
 	void setIntRect(sf::IntRect);
 	void setOrigin(float, float);
 	void setScale(float);
+	virtual void drawSmall (sf::RenderTexture&);
 
 
 

@@ -23,7 +23,8 @@ public:
 
 	Board(const boardObjects&, b2World& world);
 	void setBoard(const boardObjects & objects, b2World& world);
-	void draw(sf::RenderWindow& window, bool);
+	void draw(sf::RenderWindow& window, bool);//fix const?
+	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
 	bool tryToAdd(std::shared_ptr<GameObj>);
 	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc);
 	void resetObjectsPositions();

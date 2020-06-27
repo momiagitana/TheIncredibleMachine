@@ -64,3 +64,14 @@ void BaseImg::setScale(float scale)
 {
 	m_sprite.setScale(sf::Vector2f(scale, scale));
 }
+
+void BaseImg::drawSmall (sf::RenderTexture& tinyBoard)
+{
+	auto pos = m_sprite.getPosition();
+	auto scale = m_sprite.getScale();
+	m_sprite.setScale(sf::Vector2f(BOARDS_RATIO_X,BOARDS_RATIO_Y));
+	m_sprite.setPosition(sf::Vector2f(pos.x*BOARDS_RATIO_X, pos.y*BOARDS_RATIO_Y));
+	tinyBoard.draw(m_sprite);
+	m_sprite.setScale(scale);
+	m_sprite.setPosition(pos);
+}
