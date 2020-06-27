@@ -244,24 +244,16 @@ bool LevelController::replaySolution()
 	}
 }
 
+
 bool LevelController::tryRunning()
 {
 	auto counter = 0;
 	m_board.hideObjButtons();
 	while (m_window.isOpen())
 	{
-		// if(counter == 10)
-		// {
+
 			if (checkIfLevelFinished())
 				return true;
-
-		// 	counter  = 0;
-		// }
-		// else
-		// {
-		// 	counter ++;
-		// }
-		
 
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 
@@ -284,7 +276,7 @@ bool LevelController::tryRunning()
 			}
         }
     }
-
+	
 }
 
 bool LevelController::checkIfLevelFinished() const

@@ -10,8 +10,10 @@
 #include "BaseBall.h"
 #include "BasketBall.h"
 #include "BrickWall.h"
+#include "Collisions.h"
 #include "FileHandler.h"
 #include "Conveyor.h"//fix all these
+
 //#include "BowlingBall.h"
 
 
@@ -28,6 +30,19 @@ public:
 	bool tryToAdd(std::shared_ptr<GameObj>);
 	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc);
 	void resetObjectsPositions();
+
+
+  //zalman muti------------------
+// 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
+// 	bool collides(GameObj& current);
+// 	bool checkCollison(GameObj& obj2, GameObj& obj1);
+// 	void wakeEmAllUp();
+// 	bool isItemInLoc(conditionToWinLoc) const;
+
+// 	void testCollison(b2World& world );
+// 	bool collision(GameObj& one, GameObj& two);
+
+//master--------------
 	bool clickedOnMe(sf::Vector2f mouseLoc) const;
 	bool collides(GameObj* current);//fix const
 	bool checkCollison(GameObj* obj2, GameObj* obj1);
@@ -42,6 +57,10 @@ public:
 
 private:
 
+
+  //zalman muti------------------
+	//Collisions m_collision;
+	
 
 	void updateImgLocs();
 	void setEveryoneElseFalse(int);

@@ -12,7 +12,7 @@ public:
 
 	GameObj(const sf::Vector2f&, bool, bool, b2World &, Type_t);
 
-	~GameObj(){}
+	virtual ~GameObj(){}
 
 
 	virtual void backToStartingPlace();
@@ -30,6 +30,11 @@ public:
 
 	virtual void setPosition(sf::Vector2f);
 	virtual void setInitialLoc();
+
+	PhysicsObj getPhysical()
+	{
+		return m_phyObj;
+	}
 
 private:
 

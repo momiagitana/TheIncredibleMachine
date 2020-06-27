@@ -8,7 +8,8 @@
 
 int main()
 {   
-	MyListener listener;
+
+	 MyListener listener;
    auto m_world = std::make_unique<b2World>(b2Vec2(0,9.81));
    m_world->SetContactListener(&listener);
 
@@ -18,4 +19,10 @@ int main()
 	        
 
 	return EXIT_SUCCESS;
+    
+}
+catch (std::exception& ex)
+{
+    std::cerr << "Exception: " << ex.what() << '\n';
+    return EXIT_FAILURE;
 }
