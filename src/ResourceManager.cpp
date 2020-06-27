@@ -77,6 +77,8 @@ ResourceManager::ResourceManager()
 	loadTexture("build/conveyor.png", Type_t::conveyor);
 	loadTexture("build/brick.png", Type_t::brickWall);
 	loadTexture("build/balloonButton.png", Type_t::balloonButton);
+	loadTexture("build/mouseEngine.png", Type_t::mouseEngine);
+	
 
 	loadTexture("build/basketButton.png", Type_t::basketButton);
 	loadTexture("build/baseButton.png", Type_t::baseButton);
@@ -85,7 +87,12 @@ ResourceManager::ResourceManager()
 	loadTexture("build/brickButton.png", Type_t::brickWallButton);
 	loadTexture("build/resizeButton.png", Type_t::resizeButton);
 	loadTexture("build/rotateButton.png", Type_t::rotateButton);
- 
+	loadTexture("build/mouseEngineButton.png", Type_t::mouseEngineButton);
+	loadTexture("build/beltButton.png", Type_t::beltButton);
+
+	loadTexture("build/engineConectButton.png", Type_t::engineConectButton);
+
+
   	loadTexture("build/arrowLButton.png", Type_t::arrowLButton);
 	loadTexture("build/arrowRButton.png", Type_t::arrowRButton);
   

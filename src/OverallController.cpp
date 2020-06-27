@@ -95,7 +95,7 @@ void OverallController::handleClick(sf::Vector2f loc)
 Type_t OverallController::getSelection(sf::Vector2f loc) const
 {
 	for (auto button : m_buttons)
-		if (button.mouseOnMe(loc))
+		if (button.mouseOnMe(loc) != none)
 			return button.getType();
 	return none;
 }

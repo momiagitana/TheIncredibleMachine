@@ -70,7 +70,7 @@ void Board::updateImgLocs()
 		
 
 
-bool Board::tryToAdd(std::shared_ptr<GameObj> current)
+bool Board::tryToAdd(std::shared_ptr<GameObj> current, Type_t selected) //fix take selected if non used
 {
 	if(current && !collides(*current.get()))
 	{
@@ -111,34 +111,28 @@ std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc)
 	Resizable *resizableObj = nullptr;
 	for (auto i = 0; i < m_objects.size(); i++)
 	{	
-		if (m_objects[i]->isMovable())
+
+		Type_t clicked = m_objects[i]->mouseOnMe(mouseLoc);
+		if (m_objects[i]->isMovable() && clicked != none)
 		{
 
-			if (isResizable(m_objects[i].get()))
+			if (clicked == rotateButton || clicked == resizeButton) //means it resized or rotated
 			{
-				Type_t whatHappen = none;
 				resizableObj = static_cast <Resizable*> (m_objects[i].get());
-				if(resizableObj->clickedOnMe(mouseLoc, whatHappen))
-				{
-					obj = m_objects[i];
-					m_objects.erase(m_objects.begin()+i);
-				}
-				else if (whatHappen != none) //means it resized or rotated
-				{
-					if (collides(*resizableObj))
-					{
-						resizableObj->fixLastChange(whatHappen);
-					}
-				}
-				
-			}			
-				
-			else if(m_objects[i]->mouseOnMe(mouseLoc))
+				if (collides(*resizableObj))
+					resizableObj->fixLastChange(clicked);
+			}
+			
+			else if (clicked == engineConectButton)
+				obj = m_objects[i];
+
+
+			else
 			{
 				obj = m_objects[i];
 				m_objects.erase(m_objects.begin()+i);
 			}
-
+			break;
 		}
 	}
 	return obj;
@@ -229,4 +223,14 @@ void Board::drawTinyBoard (sf::RenderTexture& tinyBoard) const
 		obj->drawSmall(tinyBoard);	
 
    tinyBoard.display();
+}
+
+bool Board::tryConecting(sf::Vector2f mouseLoc)
+{
+	std::shared_ptr<GameObj> obj = handleClick(mouseLoc);
+
+	if (obj.get() != nullptr)//fix
+		return (m_conections.tryConecting(obj));
+	
+	return false;
 }

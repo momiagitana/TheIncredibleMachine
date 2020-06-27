@@ -15,14 +15,6 @@ void Resizable::setPosition(sf::Vector2f loc)
     resetButtonsPos();
 }
 
-// void Resizable::setInitialLoc()
-// {
-//     GameObj::setInitialLoc();
-//     // setTexture();
-//     // resetButtonsPos();
-//     // rotateBody(m_whichAngle);
-// }
-
 void Resizable::setTexture()
 {
     BaseImg::setIntRect(sf::IntRect(sf::Vector2i(FLOORING_MARGIN,FLOORING_MARGIN+(FLOORING_MARGIN*2+FLOORING_UNIT)*(m_whichSize-1)), sf::Vector2i(FLOORING_UNIT*(m_whichSize+2), FLOORING_UNIT)));
@@ -92,25 +84,54 @@ void Resizable::resetButtonsPos()
 }
 
 
-bool Resizable::clickedOnMe(sf::Vector2f loc, Type_t&  whatHappen)
+bool Resizable::clickedOnMe(sf::Vector2f loc, Type_t&  whatHappen) //fix delete if not using
 {
+    // if(GameObj::getMouseOverMe())//could be protected
+    // {
+    //     for (auto &button : m_buttons)
+    //         if(button.mouseOnMe(loc))
+    //         {
+    //             whatHappen = button.getType();
+    //             if (whatHappen == Type_t::resizeButton)
+    //                 makeItBigger();
+    //             else if (whatHappen == Type_t::rotateButton)
+    //                 shiftL();
+                
+                
+    //             return false;
+    //         }
+    // }
+
+     return true;
+}
+
+Type_t Resizable::mouseOnMe(sf::Vector2f loc)
+{
+    Type_t clicked = none;
     if(GameObj::getMouseOverMe())//could be protected
     {
         for (auto &button : m_buttons)
-            if(button.mouseOnMe(loc))
+        {
+            clicked = button.mouseOnMe(loc);
+            if(clicked == resizeButton)
             {
-                whatHappen = button.getType();
-                if (whatHappen == Type_t::resizeButton)
-                    makeItBigger();
-                else if (whatHappen == Type_t::rotateButton)
-                    shiftL();
-                
-                
-                return false;
+                makeItBigger();
+                break;
             }
+
+            else if (clicked == rotateButton)
+            {
+                shiftL();
+                break;
+            }
+        }
     }
 
-    return (Button::mouseOnMe(loc));
+    if (clicked != none)
+        return clicked;
+    
+    return GameObj::mouseOnMe(loc);
+
 }
 
 void Resizable::draw(sf::RenderWindow& win) const

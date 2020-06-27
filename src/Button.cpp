@@ -10,12 +10,12 @@ Button::Button(const sf::Vector2f& center, Type_t obj)
 
 }
 
-bool Button::mouseOnMe(sf::Vector2f loc)
+Type_t Button::mouseOnMe(sf::Vector2f loc)
 {
 	if (getGlobalBounds().contains(loc))
-		return true;
+		return getType();
 
-	return false;
+	return none;
 }
 
 Type_t Button::getType() const

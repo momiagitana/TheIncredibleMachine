@@ -31,12 +31,12 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 {
 	Type_t type = none;
 
-	if (m_play->mouseOnMe(loc))
+	if (m_play->mouseOnMe(loc) != none)
 	{
-		type = play;
+		return play;
 	}
 
-	if (m_arrowLButton->mouseOnMe(loc))
+	if (m_arrowLButton->mouseOnMe(loc) != none)
 	{
 		if(m_page!=0)
 			m_page--;
@@ -44,7 +44,7 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 			m_page = m_toolbar.size()/(BUTTONS_IN_PAGE+1);
 	}
 
-	if (m_arrowRButton->mouseOnMe(loc))
+	if (m_arrowRButton->mouseOnMe(loc) != none)
 	{
 		if(BUTTONS_IN_PAGE * (m_page + 1) < m_toolbar.size())
 			m_page++;
@@ -54,7 +54,7 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 
 	for (auto i = BUTTONS_IN_PAGE*m_page; i < m_toolbar.size() && i < BUTTONS_IN_PAGE*(m_page+1); i++)
 	{
-		if (m_toolbar.at(i).mouseOnMe(loc))
+		if (m_toolbar[i].mouseOnMe(loc) != none)
 		{
 			type = m_toolbar.at(i).getType();
 			deleteObj(type);

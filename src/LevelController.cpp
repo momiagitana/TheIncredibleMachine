@@ -31,45 +31,8 @@ bool LevelController::run()
 			{
 				if(event.mouseButton.button == sf::Mouse::Button::Right)
 					return false; //fix
-					
-				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
-				
-				if (clickOnToolbar(mouseLoc))
-				{
-					if(m_selected == none)
-					{
-						setSelected(m_toolbar.handleClick(mouseLoc),mouseLoc);
-						if (m_selected == play)//needs to be inside the if ontop??
-						{
-							if (tryRunning())//apply gravitiy check if game was won
-								m_finished = true;//leave the while and next level
-							else
-								m_board.resetObjectsPositions();//from before gravity
-							//setSelected(none, mouseLoc);
-							clearMouse(none, mouseLoc);
-
-						}
-					}
-					else
-					{
-						m_toolbar.addOrIncrease(m_selected);
-						//setSelected(none, mouseLoc);
-						clearMouse(none, mouseLoc);
-					}
-				}
-
-				else if (clickOnBoard(mouseLoc))
-				{
-					if (m_selected != none)
-					{
-						if(m_board.tryToAdd(m_mouseObj)) //returns true if managed added obj
-						{
-							clearMouse(none, mouseLoc);
-						}
-					}
-					else //if(m_selected == none)
-						grabFromBoard(m_board.handleClick(mouseLoc), mouseLoc);//fix second argument
-				}
+				else
+					leftClick(event);
 				break;
 			}
 			case sf::Event::MouseMoved:
@@ -78,8 +41,6 @@ bool LevelController::run()
 				updateMouseLoc(mouseLoc);
 			
 				break;
-
-				
 			}
         }
     }
@@ -96,6 +57,72 @@ bool LevelController::run()
   	return m_finished;
 
 }
+
+void LevelController::leftClick(sf::Event event)
+{					
+	auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
+	
+	if (clickOnToolbar(mouseLoc))
+	{
+		handleToolbarClick(mouseLoc);
+	}
+
+	else if (clickOnBoard(mouseLoc))
+	{
+		handleBoardClick(mouseLoc);
+	}
+
+}
+void LevelController::handleBoardClick(sf::Vector2f mouseLoc)
+{
+	if (m_selected != none)
+	{
+		if (m_selected == belt)
+		{
+			if (!m_board.tryConecting(mouseLoc)) //tries to connect
+			{
+				if (m_board.doneConecting())
+					clearMouse();
+			}
+			else //if failed to connect we return the belt to the toolbar
+			{
+				clearMouse();
+				m_toolbar.addOrIncrease(belt);
+			}
+			
+
+			
+		}
+
+		else if(m_board.tryToAdd(m_mouseObj, m_selected)) //fix check if needs m_selected //returns true if managed added obj
+			clearMouse();
+	}
+	else //if(m_selected == none)
+		grabFromBoard(m_board.handleClick(mouseLoc), mouseLoc);//fix second argument
+}
+
+void LevelController::handleToolbarClick(sf::Vector2f mouseLoc)
+{
+	if(m_selected == none)
+	{
+		setSelected(m_toolbar.handleClick(mouseLoc),mouseLoc);
+		if (m_selected == play)//needs to be inside the if ontop??
+		{
+			if (tryRunning())//apply gravitiy check if game was won
+				m_finished = true;//leave the while and next level
+			else
+				m_board.resetObjectsPositions();//from before gravity
+
+			clearMouse();
+		}
+	}
+	else
+	{
+		m_toolbar.addOrIncrease(m_selected);
+		clearMouse();
+	}
+}
+
 
 void LevelController::setSelected(Type_t type, sf::Vector2f mouseLoc)
 {
@@ -124,9 +151,9 @@ void LevelController::grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f l
 	createMouseImg (loc);
 }
 
-void LevelController::clearMouse(Type_t type, const sf::Vector2f loc)
+void LevelController::clearMouse()
 {
-	m_selected = type;
+	m_selected = none;
 	m_mouseObj = nullptr;
 }
 

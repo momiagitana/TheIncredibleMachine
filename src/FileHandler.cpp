@@ -125,24 +125,28 @@ void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
 
 Type_t FileHandler::strToEnum(const std::string& str)
 {
-	if (str == "balloon") return balloon;
-	else if (str == "basketBall") return basketBall;
-	else if (str == "baseBall") return baseBall;
-	else if (str == "bowlingBall") return bowlingBall;
-	else if (str == "conveyor") return conveyor;
-	else if (str == "brickWall") return brickWall;
+	if (str == "balloon") 			return balloon;
+	else if (str == "basketBall") 	return basketBall;
+	else if (str == "baseBall") 	return baseBall;
+	else if (str == "bowlingBall") 	return bowlingBall;
+	else if (str == "conveyor") 	return conveyor;
+	else if (str == "brickWall") 	return brickWall;
+	else if (str == "mouseEngine")	return mouseEngine;
+	else if (str == "belt")			return belt;
 	return none;
 
 }
 
 std::string FileHandler::enumToStr(Type_t obj)
 {
-	if (obj == balloon ) return "balloon";
-	else if (obj == basketBall ) return "basketBall";
-	else if (obj == baseBall ) return "baseBall";
-	else if (obj == bowlingBall ) return "bowlingBall";
-	else if (obj == conveyor ) return "conveyor";
-	else if (obj == brickWall ) return "brickWall";
+	if (obj == balloon ) 			return "balloon";
+	else if (obj == basketBall ) 	return "basketBall";
+	else if (obj == baseBall ) 		return "baseBall";
+	else if (obj == bowlingBall ) 	return "bowlingBall";
+	else if (obj == conveyor ) 		return "conveyor";
+	else if (obj == brickWall ) 	return "brickWall";
+	else if (obj == mouseEngine )	return "mouseEngine";
+	else if (obj == belt )	return "belt";
 }//add obj fix
 
 

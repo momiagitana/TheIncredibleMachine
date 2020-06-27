@@ -13,6 +13,8 @@
 #include "Collisions.h"
 #include "FileHandler.h"
 #include "Conveyor.h"//fix all these
+#include "MouseEngine.h"
+#include "Conections.h"
 
 //#include "BowlingBall.h"
 
@@ -27,25 +29,11 @@ public:
 	void setBoard(const boardObjects & objects, b2World& world);
 	void draw(sf::RenderWindow& window, bool);//fix const?
 	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
-	bool tryToAdd(std::shared_ptr<GameObj>);
+	bool tryToAdd(std::shared_ptr<GameObj>, Type_t);
 	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc);
 	void resetObjectsPositions();
 
-
-  //zalman muti------------------
-// 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
-// 	bool collides(GameObj& current);
-// 	bool checkCollison(GameObj& obj2, GameObj& obj1);
-// 	void wakeEmAllUp();
-// 	bool isItemInLoc(conditionToWinLoc) const;
-
-// 	void testCollison(b2World& world );
-// 	bool collision(GameObj& one, GameObj& two);
-
-//master--------------
 	bool clickedOnMe(sf::Vector2f mouseLoc) const;
-	// bool collides(GameObj* current);//fix const
-	// bool checkCollison(GameObj* obj2, GameObj* obj1);
 	bool checkCollison(GameObj& obj2, GameObj& obj1);
 	bool collides(GameObj& current);
 	bool isItemInLoc(conditionToWinLoc) const;
@@ -55,21 +43,17 @@ public:
 
 	void checkMouseOver(sf::Vector2f loc);
 	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
-
+	bool tryConecting(sf::Vector2f mouseLoc);
 
 private:
-
-
-  //zalman muti------------------
-	//Collisions m_collision;
-	
 
 	void updateImgLocs();
 	void setEveryoneElseFalse(int);
 	bool isResizable(GameObj* curr) const;
+	std::vector< ObjInfo> getObjInfo() const;
 
 	std::vector <std::shared_ptr<GameObj>> m_objects;
-	std::vector< ObjInfo> getObjInfo() const;
+	Conections m_conections;
 	sf::RectangleShape m_background;
 
 };
