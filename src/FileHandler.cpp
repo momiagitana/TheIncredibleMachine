@@ -1,16 +1,39 @@
 #include <iostream>
 #include "FileHandler.h"
-#include <sstream>
 
-FileHandler::FileHandler(const std::string& fileName)
+const std::string END_PART = "-" ;
+const int NUM_OF_PARTS = 4;
+
+FileHandler::FileHandler(const std::string& fileName, bool read)
 {
-	m_file.open(fileName);
+	if(read)
+		m_file.open(fileName);
+
+	else //open for append 
+		m_file.open("newLevel.txt", std::ios::in | std::ios::out | std::ios::app);
 }
 
 FileHandler::~FileHandler()
 {
 	if (m_file.is_open())
 		m_file.close();
+}
+
+ObjInfo FileHandler::buildObjInfo(std::stringstream& lineBuffer)
+{
+	ObjInfo obj;
+	std::string objTyp,
+		x_loc, y_loc,
+		angle, size, fliped;
+
+	lineBuffer >> objTyp >> x_loc >> y_loc >> size >> angle >> fliped;
+	obj._typ = strToEnum(objTyp);
+	obj._loc = sf::Vector2f(std::stof(x_loc), std::stof(y_loc));
+	obj._angle = std::stoi(angle);
+	obj._size = std::stoi(size);
+	obj._fliped = std::stoi(fliped);
+
+	return obj;
 }
 
 Level FileHandler::getlevel()
@@ -23,10 +46,10 @@ Level FileHandler::getlevel()
 		        x_size,y_size,
 		        id,objAmount;
 
-	while (PartOflevel <= 4)
+	while (PartOflevel <= NUM_OF_PARTS)
 	{
 		std::getline(m_file, line);
-		if (line == "-") //fix const
+		if (line == END_PART) 
 		{
 			PartOflevel++;
 			continue;
@@ -37,9 +60,7 @@ Level FileHandler::getlevel()
 		{
 		case 1:
 		{
-			buffer >> objTyp >> x_loc >> y_loc;
-			int x = 6;
-			currLevel.addBoardObj(strToEnum(objTyp), sf::Vector2f(std::stof(x_loc), std::stof(y_loc)));
+			currLevel.addBoardObj(buildObjInfo(buffer));
 			break;
 		}
 		case 2:
@@ -62,7 +83,6 @@ Level FileHandler::getlevel()
 			break;
 		}
 		}
-
 	}
 	m_file.get();
 	return currLevel;
@@ -79,17 +99,51 @@ std::vector<Level> FileHandler::readLevels()
 	return levels;
 }
 
-GameObject_t FileHandler::strToEnum(const std::string& str)
+void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
+{
+	// m_file.clear();
+	m_file << "\n";
+
+	std::string objTyp,
+		x_loc, y_loc,
+		size,
+		angle,
+		fliped;
+
+	for (auto& obj : objects)
+	{
+		objTyp = enumToStr(obj._typ) + " ";
+		x_loc = std::to_string(obj._loc.x)+ " ";
+		y_loc = std::to_string(obj._loc.y) + " ";
+		size = std::to_string(obj._size) + " ";
+		angle = std::to_string(obj._angle) + " ";
+		fliped = std::to_string(obj._fliped) + "\n";
+		m_file << objTyp << x_loc << y_loc << size << angle << fliped;
+	}	 
+	m_file << "-\n-\n-\n-\n";
+}
+
+Type_t FileHandler::strToEnum(const std::string& str)
 {
 	if (str == "balloon") return balloon;
 	else if (str == "basketBall") return basketBall;
 	else if (str == "baseBall") return baseBall;
 	else if (str == "bowlingBall") return bowlingBall;
 	else if (str == "conveyor") return conveyor;
-	else if (str == "brickWallH") return brickWallH;
-	else if (str == "brickWallV") return brickWallV;
-	else if (str == "worker") return worker;
+	else if (str == "brickWall") return brickWall;
+	return none;
+
 }
+
+std::string FileHandler::enumToStr(Type_t obj)
+{
+	if (obj == balloon ) return "balloon";
+	else if (obj == basketBall ) return "basketBall";
+	else if (obj == baseBall ) return "baseBall";
+	else if (obj == bowlingBall ) return "bowlingBall";
+	else if (obj == conveyor ) return "conveyor";
+	else if (obj == brickWall ) return "brickWall";
+}//add obj fix
 
 
 

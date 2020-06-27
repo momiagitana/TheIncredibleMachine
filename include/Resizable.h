@@ -1,23 +1,41 @@
 #pragma once
 #include "GameObj.h"
 #include "ResourceManager.h"
+#include "Button.h"
+#include "globals.h"
+
 
 class Resizable : public GameObj
 {
 public:
-	Resizable(const sf::Vector2f& center, const sf::Vector2u& size,  bool movable, b2World &world, GameObject_t);
+	Resizable(ObjInfo info,  bool movable, b2World &world, Type_t);
 	
-    int getSize() const { return m_which; }
-    void setSize(int size) { m_which = size; }
-
+    int getWhichSize() const { return m_whichSize; }
+    int getAngle() const { return m_whichAngle; }
+    int getIfFliped() const { return m_isFliped; }
+    void setWhichSize(int size) { m_whichSize = size; }
+    bool clickedOnMe(sf::Vector2f loc, Type_t&);
+    void draw(sf::RenderWindow&) const;
     void setTexture();
+    ObjInfo getInfo()const; //fix const
+    void fixLastChange(Type_t);
+    void backToStartingPlace();
+    //void setInitialLoc();
+    void setPosition(sf::Vector2f loc);
+
+
+private:
+	int m_whichSize = 1; //from 1 to 5
+    int m_whichAngle = 0;
+    int m_isFliped = -1;
+    std::vector<Button> m_buttons;
+
     void makeItBigger();
     void makeItSmaller();
     void shiftL();
     void shiftR();
 
-private:
-	int m_which = 2; //from 1 to 5
-
+    void setButtons();
+    void resetButtonsPos();
 };
 

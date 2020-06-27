@@ -10,26 +10,26 @@ class GameObj : public Button
 {
 public:
 
-
-	GameObj(const sf::Vector2f& center, const sf::Vector2u& size, bool dynamic, bool movable, b2World &world, GameObject_t);
+	GameObj(const sf::Vector2f&, bool, bool, b2World &, Type_t);
 
 	virtual ~GameObj(){}
 
-	void draw (sf::RenderWindow&);
 
-	void setInitialLoc();
+	virtual void backToStartingPlace();
 
 	void setGravityScale(float);
-
-	GameObject_t getType() const;
-
 	int getID() const { return m_ID; }
-
 	bool isMovable() const { return m_movable; }
-
 	void updateBodySize();
+	virtual ObjInfo getInfo() const; 
+	void rotateBody(int);
+	void updateLoc();
 
-	void rotateBody(float angle);
+	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
+	bool getMouseOverMe() const { return m_mouseOnMe; }
+
+	virtual void setPosition(sf::Vector2f);
+	virtual void setInitialLoc();
 
 	PhysicsObj getPhysical()
 	{
@@ -42,9 +42,6 @@ private:
 	bool m_movable;
 	int m_ID;
 	sf::Vector2f m_initialLoc;
-	GameObject_t m_type;
-	
-	void updateLoc();
-
+	bool m_mouseOnMe = false;
 	
 };

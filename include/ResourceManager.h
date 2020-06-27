@@ -10,6 +10,7 @@ makes sure they wont be loaded more then once
 #include <string>
 #include "globals.h"
 
+
 class ResourceManager
 {
 public:
@@ -27,7 +28,7 @@ public:
 
 	//make the static event so we wont load the textures multiple times
 	static ResourceManager& instance();
-	sf::Texture* getTexture(GameObject_t name);
+	sf::Texture* getTexture(Type_t name);
 	sf::Font& getFont(Font name);
 	sf::SoundBuffer& getSound(Sound name);
 	std::string& getLevelPath();
@@ -35,11 +36,11 @@ public:
 private:
 
 	ResourceManager(); //private ctor for singleton
-	void loadTexture(std::string path, GameObject_t name);
+	void loadTexture(std::string path, Type_t name);
 	void loadFont(std::string path, Font name);
 	void loadSound(std::string path, Sound name);
 
-	std::unordered_map<GameObject_t, sf::Texture> m_textures;
+	std::unordered_map<Type_t, sf::Texture> m_textures;
 	std::unordered_map<Font, sf::Font> m_fonts;
 	std::unordered_map<Sound, sf::SoundBuffer> m_sounds;
 	std::string m_path;

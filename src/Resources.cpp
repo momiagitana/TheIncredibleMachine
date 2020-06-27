@@ -1,5 +1,5 @@
 #include "Resources.h"
-#include "Globals.h"
+#include "globals.h"
 
 
 Resources::Resources()

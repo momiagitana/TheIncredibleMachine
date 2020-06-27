@@ -8,11 +8,11 @@
 										  "BaseBall.cpp"
 										  "BasketBall.cpp"
 										  "BrickWall.cpp"
-										  "Surface.cpp"
+										  "Conveyor.cpp"
 										  "Resizable.cpp"
 										  "Board.cpp"
 										  "OverallController.cpp"
-										  "GameMenu.cpp"
+										  "MyListener.cpp"
 										  "Level.cpp"
 										  "LevelController.cpp"
 										  "FileHandler.cpp"
@@ -20,5 +20,6 @@
 										  "ResourceManager.cpp"
 										  "Collisions.cpp"
 										  "ToolbarButton.cpp"
+										  "Factory.cpp"
 										)
 

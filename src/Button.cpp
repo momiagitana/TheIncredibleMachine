@@ -1,49 +1,25 @@
 #include "Button.h"
-#include "Globals.h"
+#include "globals.h"
 #include "ResourceManager.h"
 
 
-Button::Button(const sf::Vector2f& center,GameObject_t obj)
-	:BaseImg(center, ResourceManager::instance().getTexture(obj)),
-	m_light(false) , 
-	m_obj(obj)
+Button::Button(const sf::Vector2f& center, Type_t obj)
+	:BaseImg(center, obj),
+	m_type(obj)
 {
+
 }
 
-bool Button::clicked(sf::Vector2f loc)
+bool Button::mouseOnMe(sf::Vector2f loc)
 {
 	if (getGlobalBounds().contains(loc))
 		return true;
-		
+
 	return false;
 }
 
-GameObject_t Button::getObj()
+Type_t Button::getType() const
 {
-	return m_obj;
+	return Type_t(m_type%100);//fix global 
 }
 
-void Button::light()
-{
-	m_light = true;
-	setColor(sf::Color(255, 255, 255, 120));
-
-}
-
-void Button::unlight()
-{
-	m_light = false;
-	//setColor(sf::Color(255, 255, 255, 255));
-}
-
-
-bool Button::getlightStatus()
-{
-	return m_light;
-}
-
-void Button::draw(sf::RenderWindow& w) const
-{
-	BaseImg::draw(w);
-	
-}

@@ -1,17 +1,8 @@
 #include "BrickWall.h"
 
-BrickWallH::BrickWallH (const sf::Vector2f& center, bool movable, b2World &world)
-    :Resizable(center,ResourceManager::instance().getTexture(brickWallH)->getSize(), movable, world, brickWallH)
+BrickWall::BrickWall (ObjInfo info, bool movable, b2World &world)
+    :Resizable(info, movable, world, brickWall)
 {
 }
 
-
-// void BrickWallH::makeItBigger()
-// {
-//     Resizable::makeItBigger();
-// }
-
-// void BrickWallH::makeItSmaller()
-// {
-//     Resizable::makeItSmaller();
-// }
+bool BrickWall::m_registerit = ObjFactory::registerit(brickWall, [](ObjInfo info, bool movable, b2World &world) -> std::shared_ptr<GameObj> { return std::make_shared<BrickWall>(info,movable,world);});

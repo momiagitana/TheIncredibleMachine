@@ -11,6 +11,9 @@
 #include "BasketBall.h"
 #include "BrickWall.h"
 #include "Collisions.h"
+#include "FileHandler.h"
+#include "Conveyor.h"//fix all these
+
 //#include "BowlingBall.h"
 
 
@@ -20,32 +23,51 @@ class Board
 {
 public:
 
-	Board(const Level& level, b2World& world);
-	void setBoard(const Level& level, b2World& world);
-	void draw(sf::RenderWindow& window);
-	bool tryToadd(sf::Vector2f mouseLoc, GameObject_t currObj,b2World& world);
-	GameObject_t handleClick(sf::Vector2f mouseLoc);
+	Board(const boardObjects&, b2World& world);
+	void setBoard(const boardObjects & objects, b2World& world);
+	void draw(sf::RenderWindow& window, bool);//fix const?
+	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
+	bool tryToAdd(std::shared_ptr<GameObj>);
+	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc);
 	void resetObjectsPositions();
-	//bool tryToAdd(sf::Vector2f loc, GameObject_t,b2World& world);
-	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
-	bool collides(GameObj& current);
-	bool checkCollison(GameObj& obj2, GameObj& obj1);
-	void wakeEmAllUp();
+
+
+  //zalman muti------------------
+// 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
+// 	bool collides(GameObj& current);
+// 	bool checkCollison(GameObj& obj2, GameObj& obj1);
+// 	void wakeEmAllUp();
+// 	bool isItemInLoc(conditionToWinLoc) const;
+
+// 	void testCollison(b2World& world );
+// 	bool collision(GameObj& one, GameObj& two);
+
+//master--------------
+	bool clickedOnMe(sf::Vector2f mouseLoc) const;
+	bool collides(GameObj* current);//fix const
+	bool checkCollison(GameObj* obj2, GameObj* obj1);
 	bool isItemInLoc(conditionToWinLoc) const;
 
+	void saveLevelToFile();
+	void wakeEmAllUp();
 
-	void testCollison(b2World& world );
-	bool collision(GameObj& one, GameObj& two);
+	void checkMouseOver(sf::Vector2f loc);
+	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
 
-	//bool levelFinished();
-	//void MoveObjects(sf::Time deltaTime);
 
 private:
 
 
-	sf::Sprite m_levelBackground;
-	std::vector <std::unique_ptr<GameObj>> m_objects;
-
-	Collisions m_collision;
+  //zalman muti------------------
+	//Collisions m_collision;
 	
+
+	void updateImgLocs();
+	void setEveryoneElseFalse(int);
+	bool isResizable(GameObj* curr) const;
+
+	std::vector <std::shared_ptr<GameObj>> m_objects;
+	std::vector< ObjInfo> getObjInfo() const;
+	sf::RectangleShape m_background;
+
 };
