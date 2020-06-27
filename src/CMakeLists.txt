@@ -21,7 +21,7 @@
 										  "Collisions.cpp"
 										  "ToolbarButton.cpp"
 										  "Factory.cpp"
-										  "Conections.cpp"
+										  "Connections.cpp"
 										  "MouseEngine.cpp"
 										)
 

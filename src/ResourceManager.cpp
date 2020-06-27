@@ -90,7 +90,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/mouseEngineButton.png", Type_t::mouseEngineButton);
 	loadTexture("build/beltButton.png", Type_t::beltButton);
 
-	loadTexture("build/engineConectButton.png", Type_t::engineConectButton);
+	loadTexture("build/engineConectButton.png", Type_t::connectButton);
 
 
   	loadTexture("build/arrowLButton.png", Type_t::arrowLButton);

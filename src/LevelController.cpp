@@ -79,18 +79,17 @@ void LevelController::handleBoardClick(sf::Vector2f mouseLoc)
 	{
 		if (m_selected == belt)
 		{
-			if (!m_board.tryConecting(mouseLoc)) //tries to connect
+			if (m_board.tryConnecting(mouseLoc)) //tries to connect
 			{
-				if (m_board.doneConecting())
+				if (m_board.doneConnecting())
 					clearMouse();
 			}
 			else //if failed to connect we return the belt to the toolbar
 			{
+
 				clearMouse();
 				m_toolbar.addOrIncrease(belt);
 			}
-			
-
 			
 		}
 
@@ -98,7 +97,7 @@ void LevelController::handleBoardClick(sf::Vector2f mouseLoc)
 			clearMouse();
 	}
 	else //if(m_selected == none)
-		grabFromBoard(m_board.handleClick(mouseLoc), mouseLoc);//fix second argument
+		grabFromBoard(m_board.handleClick(mouseLoc, m_selected), mouseLoc);//fix second argument
 }
 
 void LevelController::handleToolbarClick(sf::Vector2f mouseLoc)
@@ -117,7 +116,9 @@ void LevelController::handleToolbarClick(sf::Vector2f mouseLoc)
 		}
 	}
 	else
-	{
+	{	
+		if(m_selected == belt)
+			m_board.resetConnections();
 		m_toolbar.addOrIncrease(m_selected);
 		clearMouse();
 	}
@@ -141,14 +142,17 @@ void LevelController::whereAmI(sf::Vector2f mouseLoc)
 
 void LevelController::grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc)
 {
-	m_mouseObj = obj;
+	if(m_selected != belt)
+	{
+		m_mouseObj = obj;
 
-	if (obj != nullptr)
-		m_selected = obj->getType();
-	else
-		m_selected = none;
-	
-	createMouseImg (loc);
+		if (obj != nullptr)
+			m_selected = obj->getType();
+		else
+			m_selected = none;
+	}
+		createMouseImg (loc);
+
 }
 
 void LevelController::clearMouse()

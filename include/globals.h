@@ -46,7 +46,7 @@ enum Type_t
 	advanceButton,
 
 
-	engineConectButton,
+	connectButton,
 
 	balloonButton = 100,
 	basketButton,

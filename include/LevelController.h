@@ -60,4 +60,5 @@ private:
 	void handleBoardClick(sf::Vector2f);
 	void handleToolbarClick(sf::Vector2f);
 
+
 };

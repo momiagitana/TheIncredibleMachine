@@ -14,7 +14,7 @@
 #include "FileHandler.h"
 #include "Conveyor.h"//fix all these
 #include "MouseEngine.h"
-#include "Conections.h"
+#include "Connections.h"
 
 //#include "BowlingBall.h"
 
@@ -30,7 +30,7 @@ public:
 	void draw(sf::RenderWindow& window, bool);//fix const?
 	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
 	bool tryToAdd(std::shared_ptr<GameObj>, Type_t);
-	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc);
+	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc, Type_t&);
 	void resetObjectsPositions();
 
 	bool clickedOnMe(sf::Vector2f mouseLoc) const;
@@ -43,7 +43,9 @@ public:
 
 	void checkMouseOver(sf::Vector2f loc);
 	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
-	bool tryConecting(sf::Vector2f mouseLoc);
+	bool tryConnecting(sf::Vector2f mouseLoc);
+	bool doneConnecting();
+	void resetConnections() { m_connections.reset(); }
 
 private:
 
@@ -51,9 +53,10 @@ private:
 	void setEveryoneElseFalse(int);
 	bool isResizable(GameObj* curr) const;
 	std::vector< ObjInfo> getObjInfo() const;
+	std::shared_ptr<GameObj> findConnectable(sf::Vector2f mouseLoc); 
 
 	std::vector <std::shared_ptr<GameObj>> m_objects;
-	Conections m_conections;
+	Connections m_connections;
 	sf::RectangleShape m_background;
 
 };
