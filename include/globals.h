@@ -6,7 +6,7 @@ const int MENU_BUTTONS_LOC [4][2] = {{210, 200}, {150, 200}, {100,200}, {150, 20
 
 const unsigned obj_size = 40;
 
-const int DELTA_ENGINE_CONECT[1][2] = {{13,-3}}; //1 mouse engine
+const int DELTA_ENGINE_CONECT[2][2] = {{13,-3}, {13,0}}; //1 mouse engine
 
 const int NUM_OF_OBJECTS = 7; // update when adding an object 
 

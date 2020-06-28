@@ -14,6 +14,7 @@ OverallController::OverallController(b2World& world)//fix change name to menu
  
 	m_window.setFramerateLimit(60);
 	m_smallBoard.create(TINY_BOARD_W, TINY_BOARD_H);
+	m_levelController.drawTinyBoard(m_smallBoard);
 
 	for (int i = exitButton; i < none; i++)
 		m_buttons.emplace_back(sf::Vector2f(0, 0), Type_t(i));
@@ -22,11 +23,6 @@ OverallController::OverallController(b2World& world)//fix change name to menu
 
 void OverallController::run()
 {
-
-	//set after loading new level
-	m_levelController.drawTinyBoard(m_smallBoard);
-
-
 	while (m_window.isOpen())
 	{
 		m_window.clear();
@@ -63,7 +59,11 @@ void OverallController::handleClick(sf::Vector2f loc)
 	case startButton:
 	{
 		if (m_levelController.run())//won level
+		{
 			++m_numOfLevel;
+			setLevel();
+		}
+		m_levelController.drawTinyBoard(m_smallBoard);
 		break;
 	}
 	case exitButton:
@@ -135,7 +135,7 @@ void OverallController::closeWindow()
 
 void OverallController::setLevel()
 {
-	//levelControler = LevelController(m_levels[m_numOfLevel], m_world, m_window);
+	m_levelController.loadNewLevel(m_levels[m_numOfLevel]);
 }
 
 void OverallController::chooseLevel()

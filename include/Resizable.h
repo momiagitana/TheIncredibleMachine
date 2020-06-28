@@ -16,7 +16,7 @@ public:
 
     void setWhichSize(int size) { m_whichSize = size; }
    
-    //bool mouseOnMe(sf::Vector2f loc);
+    bool mouseOnMe(sf::Vector2f loc);
     Type_t handleClick(sf::Vector2f loc);
     void draw(sf::RenderWindow&) const;
     void setTexture();

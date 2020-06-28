@@ -12,13 +12,13 @@ Connections::~Connections()
 
 bool Connections::tryConnecting (std::shared_ptr<GameObj> obj)
 {
-    if (canConnect(obj.get()))
+    if (Connectable* toAdd = canConnect(obj.get()))//fix check that if null doestn enter
     {
         if (m_first == nullptr)
-            m_first = obj.get();
+            m_first = toAdd;
 
         else 
-            m_second = obj.get();
+            m_second = toAdd;
         
         return true;
     }
@@ -29,13 +29,23 @@ bool Connections::tryConnecting (std::shared_ptr<GameObj> obj)
 
 }
 
-bool Connections::canConnect(GameObj* obj) const
+Connectable* Connections::isConnectedAndConnectable(GameObj* obj) const //fix kefel code
+{
+    if (Connectable* connectable = dynamic_cast<Connectable*>(obj))
+        if(connectable->isConected())
+            return connectable;
+
+    return nullptr;
+}
+
+Connectable* Connections::canConnect(GameObj* obj) const
 {
     if(obj != m_first)//fix set connected as soon as is m_first
-        if (MouseEngine *engine = dynamic_cast<MouseEngine*>(obj))
-            return !engine->isConected();
+        if (Connectable* connectable = dynamic_cast<Connectable*>(obj))
+            if(!connectable->isConected())
+                return connectable;
 
-    return false;
+    return nullptr;
 }
 
 bool Connections::doneConnecting()
@@ -64,22 +74,19 @@ void Connections::checkConnections()
     }
 }
 
-bool Connections::isOn(GameObj* obj) const
+bool Connections::isOn(Connectable* connectable) const
 {
-    if (MouseEngine *engine = dynamic_cast<MouseEngine*>(obj))
-        return engine->isOn();
+    return connectable->isOn();
 }
 
-void Connections::turnOn(GameObj* obj)
+void Connections::turnOn(Connectable* connectable)
 {
-    if (MouseEngine *engine = dynamic_cast<MouseEngine*>(obj))
-        engine->setStatus(true);//fix ON
+    connectable->setStatus(true);//fix ON
 }
 
-void Connections::setConnectedStatus(GameObj* obj, bool status)
+void Connections::setConnectedStatus(Connectable* connectable, bool status)
 {
-    if (MouseEngine *engine = dynamic_cast<MouseEngine*>(obj))
-        engine->setConected(status);
+    connectable->setConected(status);
 }
 
 void Connections::draw(sf::RenderWindow& window) const
@@ -91,22 +98,22 @@ void Connections::draw(sf::RenderWindow& window) const
         drawMovingBelt(window);
 }
 
-void Connections::drawBelt(std::pair<GameObj*, GameObj*> each, sf::RenderWindow& window) const
+void Connections::drawBelt(std::pair<Connectable*, Connectable*> each, sf::RenderWindow& window) const
 {
 
     sf::Vertex line[2];
-    line[0].position = each.first->getLocation();
+    line[0].position = each.first->getConnectionButtonPos();
     line[0].color  = sf::Color::Black;
-    line[1].position = each.second->getLocation();
+    line[1].position = each.second->getConnectionButtonPos();
     line[1].color = sf::Color::Black;
 
     window.draw(line, 2, sf::Lines);
 
 }
 
-void Connections::unplug(GameObj* toUnplug)
+void Connections::unplug(Connectable* toUnplug)
 {
-    GameObj* other;
+    Connectable* other;
     auto i = 0;
     for (; i < m_connections.size() ; i++)
     {
@@ -141,10 +148,32 @@ void Connections::setMousePos(sf::Vector2f mouseLoc)
 void Connections::drawMovingBelt(sf::RenderWindow &window) const
 {
     sf::Vertex line[2];
-    line[0].position = m_first->getLocation();
+    line[0].position = m_first->getConnectionButtonPos();
     line[0].color  = sf::Color::Black;
     line[1].position = m_mousePos;
     line[1].color = sf::Color::Black;
 
     window.draw(line, 2, sf::Lines);
+}
+
+void Connections::deleteConnection(Connectable* obj)
+{
+    Connectable* other;
+    auto i = 0;
+    for (; i < m_connections.size() ; i++) //fix code repeated
+    {
+        if (m_connections[i].first == obj)
+        {
+            other = m_connections[i].second;
+            break;
+        }
+        else if (m_connections[i].second == obj)
+        {
+            other = m_connections[i].first;
+            break;
+        }
+    }
+    setConnectedStatus(obj, false);
+    setConnectedStatus(other, false);
+    m_connections.erase(m_connections.begin() + i);
 }

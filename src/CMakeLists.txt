@@ -23,5 +23,6 @@
 										  "Factory.cpp"
 										  "Connections.cpp"
 										  "MouseEngine.cpp"
+										  "Connectable.cpp"
 										)
 

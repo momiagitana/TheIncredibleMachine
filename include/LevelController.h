@@ -19,7 +19,7 @@ public:
 	bool clickOnBoard(const sf::Vector2f);
 	void createMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
-	//void loadNewLevel(level);
+	void loadNewLevel(const Level&);
 
 	void whereAmI(sf::Vector2f);
 	void clearMouse();
@@ -57,6 +57,7 @@ private:
 	void leftClick(sf::Event);
 	void handleBoardClick(sf::Vector2f);
 	void handleToolbarClick(sf::Vector2f);
+	void returnConnectableToToolbar();
 
 
 };

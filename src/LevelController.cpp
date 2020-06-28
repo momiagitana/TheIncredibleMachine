@@ -11,6 +11,15 @@ LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWin
 {
 }
 
+void LevelController::loadNewLevel(const Level& level)
+{
+	m_finished = false;
+	m_board = Board(level.getBoardObjs(), m_world);
+	m_toolbar = Toolbar(level.getToolbarObjs());
+	m_locConditons = level.getLocConditions();
+	m_actConditions = level.getActConditions();
+}
+
 bool LevelController::run()
 {
 	while (m_window.isOpen() && !m_finished)
@@ -119,11 +128,24 @@ void LevelController::handleToolbarClick(sf::Vector2f mouseLoc)
 	{	
 		if(m_selected == belt)
 			m_board.resetConnections();
+		
+		else if (m_selected == mouseEngine)
+			returnConnectableToToolbar();
+
+
 		m_toolbar.addOrIncrease(m_selected);
 		clearMouse();
 	}
 }
 
+void LevelController::returnConnectableToToolbar()
+{
+	if (Connectable* connectable = m_board.isConnectedAndConnectable(m_mouseObj.get()))
+	{
+		m_board.deleteConnection(connectable);
+		m_toolbar.addOrIncrease(belt);
+	}
+}
 
 void LevelController::setSelected(Type_t type, sf::Vector2f mouseLoc)
 {
@@ -231,14 +253,14 @@ void LevelController::drawStatic(bool running)
 bool LevelController::replaySolution() //fix
 {
 	BaseImg nextLevelMesseage(sf::Vector2f(400,300),Type_t::puzzleComplete);
-	Button replayLevelRexuest(sf::Vector2f(350,350),Type_t::replayButton);
-	Button advanceRequest(sf::Vector2f(460,350),Type_t::advanceButton);
+	Button replay(sf::Vector2f(350,350),Type_t::replayButton);
+	Button advance(sf::Vector2f(460,350),Type_t::advanceButton);
 	
 	sf::Event evnt;
 
 	nextLevelMesseage.draw(m_window);
-	advanceRequest.draw(m_window);
-	replayLevelRexuest.draw(m_window);
+	advance.draw(m_window);
+	replay.draw(m_window);
 	m_window.display();
 
 	while (m_window.isOpen())
@@ -255,11 +277,11 @@ bool LevelController::replaySolution() //fix
 			case sf::Event::MouseButtonReleased:
 				auto mouseLoc = m_window.mapPixelToCoords({ evnt.mouseButton.x, evnt.mouseButton.y });
 
-				if (advanceRequest.mouseOnMe(mouseLoc))
+				if (advance.mouseOnMe(mouseLoc))
 				{
 					return false;
 				}
-				if (replayLevelRexuest.mouseOnMe(mouseLoc))
+				if (replay.mouseOnMe(mouseLoc))
 				{
 					return true;
 				}
@@ -278,8 +300,8 @@ bool LevelController::tryRunning()
 	while (m_window.isOpen())
 	{
 
-			if (checkIfLevelFinished())
-				return true;
+		if (checkIfLevelFinished())
+			return true;
 
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 

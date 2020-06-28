@@ -34,8 +34,9 @@ brickWall 173.000000 317.000000 1 1 0
 brickWall 318.000000 314.000000 1 3 0
 -
 brickWall 5
-mouseEngine 6
+mouseEngine 3
 belt 3
+conveyor 3
 -
 0 38 12 530 8
 -

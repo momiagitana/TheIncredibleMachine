@@ -15,6 +15,7 @@
 #include "Conveyor.h"//fix all these
 #include "MouseEngine.h"
 #include "Connections.h"
+#include "Connectable.h"
 
 //#include "BowlingBall.h"
 
@@ -46,6 +47,8 @@ public:
 	bool tryConnecting(sf::Vector2f mouseLoc);
 	bool doneConnecting();
 	void resetConnections() { m_connections.reset(); }
+	void deleteConnection(Connectable* obj) { m_connections.deleteConnection(obj); }
+	Connectable* isConnectedAndConnectable(GameObj* obj) const { return m_connections.isConnectedAndConnectable(obj); }
 	void setMousePos(sf::Vector2f mouseLoc);
 
 private:

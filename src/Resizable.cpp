@@ -83,6 +83,14 @@ void Resizable::resetButtonsPos()
         m_buttons[i].setPosition(sf::Vector2f(left + space * (i), y));
 }
 
+bool Resizable::mouseOnMe(sf::Vector2f loc)
+{
+    for(auto& button : m_buttons)
+        if(button.mouseOnMe(loc))
+            return true;
+    
+    return Button::mouseOnMe(loc);
+}
 
 Type_t Resizable::handleClick(sf::Vector2f loc)
 {

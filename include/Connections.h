@@ -1,34 +1,36 @@
 #pragma once
 #include "GameObj.h"
-#include "MouseEngine.h"
+#include "Connectable.h"
 
 
 class Connections
 {
 private:
-    std::vector<std::pair<GameObj*, GameObj*>> m_connections;
+    std::vector<std::pair<Connectable*, Connectable*>> m_connections;
 
-    GameObj* m_first = nullptr;
-    GameObj* m_second = nullptr;
+    Connectable* m_first = nullptr;
+    Connectable* m_second = nullptr;
     sf::Vector2f  m_mousePos;
 
-    bool canConnect(GameObj*) const;
-    void setConnectedStatus(GameObj* obj, bool status);
-    void drawBelt(std::pair<GameObj*, GameObj*>, sf::RenderWindow&) const;
+    Connectable* canConnect(GameObj*) const;
+    void setConnectedStatus(Connectable* obj, bool status);
+    void drawBelt(std::pair<Connectable*, Connectable*>, sf::RenderWindow&) const;
     void drawMovingBelt(sf::RenderWindow &) const;
 
 public:
     Connections();
     ~Connections();
 
+    bool isOn(Connectable*) const; //fix private?
+    void turnOn(Connectable*); 
 
     bool tryConnecting (std::shared_ptr<GameObj>);
     bool doneConnecting();
     void checkConnections();
-    bool isOn(GameObj*) const;
-    void turnOn(GameObj*); 
     void draw (sf::RenderWindow&) const;
-    void unplug (GameObj*);
+    void unplug (Connectable*);
     void reset();
     void setMousePos(sf::Vector2f mouseLoc);
+    void deleteConnection(Connectable* obj);
+    Connectable* isConnectedAndConnectable(GameObj* obj)const;
 };

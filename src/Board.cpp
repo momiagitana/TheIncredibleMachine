@@ -126,16 +126,12 @@ std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc, Type_t& selec
 
 			else if (clicked == connectButton)
 			{
-				if (MouseEngine *engine = dynamic_cast<MouseEngine*>(m_objects[i].get()))
+				if (Connectable *connectable = isConnectedAndConnectable(m_objects[i].get()))
 				{
-        			if(engine->isConected())
-					{
-						selected = belt;
-						m_connections.unplug(m_objects[i].get());
-					}
-					obj = m_objects[i];
+					selected = belt;
+					m_connections.unplug(connectable);
 				}
-
+					obj = m_objects[i];
 			}
 			
 			else
