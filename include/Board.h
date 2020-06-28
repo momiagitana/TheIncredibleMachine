@@ -50,19 +50,18 @@ public:
 
 	Collisions getCollisionObj() { return m_collision;	}
 
-
-private:
-
-
-	Collisions m_collision; //fix see where to put it
-	
-
 	bool tryConnecting(sf::Vector2f mouseLoc);
 	bool doneConnecting();
 	void resetConnections() { m_connections.reset(); }
 	void deleteConnection(Connectable* obj) { m_connections.deleteConnection(obj); }
 	Connectable* isConnectedAndConnectable(GameObj* obj) const { return m_connections.isConnectedAndConnectable(obj); }
 	void setMousePos(sf::Vector2f mouseLoc);
+
+private:
+
+
+	Collisions m_collision; //fix see where to put it
+	
 
 
 
