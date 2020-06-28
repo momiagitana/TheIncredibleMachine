@@ -7,6 +7,7 @@ GameObj::GameObj(const sf::Vector2f& center, const bool dynamic, bool movable, b
 	m_ID = ID;
 	ID ++;
 	updateLoc();
+	//m_phyObj.setID(m_ID);
 }
 
 void GameObj::updateLoc()
