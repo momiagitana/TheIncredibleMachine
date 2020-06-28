@@ -114,11 +114,9 @@ std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc, Type_t& selec
 	Resizable *resizableObj = nullptr;
 	for (auto i = 0; i < m_objects.size(); i++)
 	{	
-
-		Type_t clicked = m_objects[i]->mouseOnMe(mouseLoc);
-		if (m_objects[i]->isMovable() && clicked != none)
+		if (m_objects[i]->mouseOnMe(mouseLoc) && m_objects[i]->isMovable())
 		{
-
+			Type_t clicked = m_objects[i]->handleClick(mouseLoc);
 			if (clicked == rotateButton || clicked == resizeButton) //means it resized or rotated
 			{
 				resizableObj = static_cast <Resizable*> (m_objects[i].get());
@@ -156,7 +154,7 @@ std::shared_ptr<GameObj> Board::findConnectable(sf::Vector2f mouseLoc)
 	
 	for (auto i = 0; i < m_objects.size(); i++)
 	{	
-		if(connectButton==m_objects[i]->mouseOnMe(mouseLoc))
+		if(connectButton==m_objects[i]->handleClick(mouseLoc))
 			return m_objects[i];
 	}
 	return nullptr;
@@ -168,7 +166,6 @@ void Board::resetObjectsPositions()
 	for (auto &obj : m_objects)
 		obj->backToStartingPlace();
 }
-
 
 bool Board::isItemInLoc(conditionToWinLoc cond) const
 {
@@ -265,3 +262,12 @@ bool Board::doneConnecting()
 {
 	return m_connections.doneConnecting();
 }
+
+
+void Board::setMousePos(sf::Vector2f mouseLoc) 
+{
+	checkMouseOver(mouseLoc);
+
+	m_connections.setMousePos(mouseLoc); 
+}
+

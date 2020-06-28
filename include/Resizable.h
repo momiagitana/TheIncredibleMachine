@@ -15,8 +15,9 @@ public:
     int getIfFliped() const { return m_isFliped; }
 
     void setWhichSize(int size) { m_whichSize = size; }
-    bool clickedOnMe(sf::Vector2f loc, Type_t&);//fix delete if not using
-    Type_t mouseOnMe(sf::Vector2f loc);
+   
+    //bool mouseOnMe(sf::Vector2f loc);
+    Type_t handleClick(sf::Vector2f loc);
     void draw(sf::RenderWindow&) const;
     void setTexture();
     ObjInfo getInfo()const; //fix const

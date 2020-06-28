@@ -17,8 +17,6 @@ public:
 
 	bool clickOnToolbar(const sf::Vector2f );
 	bool clickOnBoard(const sf::Vector2f);
-	bool levelStatus();
-	bool setlevelStatus(const bool);
 	void createMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
 	//void loadNewLevel(level);

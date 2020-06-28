@@ -182,11 +182,12 @@ void LevelController::createMouseImg(const sf::Vector2f loc)
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
 	m_mouseImg.setPosition(loc);
+
+	m_board.setMousePos(loc);
 	
 	if(m_mouseObj)
 		m_mouseObj->setPosition(loc);
 
-	m_board.checkMouseOver(loc);
 }
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
@@ -199,17 +200,6 @@ bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
 	return m_board.clickedOnMe(mouseLoc);
 }
 
-bool LevelController::levelStatus()
-{
-	return m_finished;
-}
-
-bool LevelController::setlevelStatus(const bool status)
-{
-	m_finished = status;
-	return m_finished;
-}
-
 void LevelController::drawAll(bool running)
 {
 	m_window.clear();//sf::Color(18, 160, 159));
@@ -218,7 +208,7 @@ void LevelController::drawAll(bool running)
 	
 	if (m_selected < play)
 	{
-		if(m_mouseOnToolBr)
+		if(m_mouseOnToolBr || m_selected == belt)
 		{
 			m_mouseImg.draw(m_window);
 		}

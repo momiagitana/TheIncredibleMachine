@@ -46,6 +46,7 @@ public:
 	bool tryConnecting(sf::Vector2f mouseLoc);
 	bool doneConnecting();
 	void resetConnections() { m_connections.reset(); }
+	void setMousePos(sf::Vector2f mouseLoc);
 
 private:
 

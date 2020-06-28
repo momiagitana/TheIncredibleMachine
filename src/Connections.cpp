@@ -29,7 +29,6 @@ bool Connections::tryConnecting (std::shared_ptr<GameObj> obj)
 
 }
 
-
 bool Connections::canConnect(GameObj* obj) const
 {
     if(obj != m_first)//fix set connected as soon as is m_first
@@ -87,12 +86,13 @@ void Connections::draw(sf::RenderWindow& window) const
 {
     for (auto &each: m_connections)
         drawBelt(each, window);
+
+    if (m_first != nullptr)//fix
+        drawMovingBelt(window);
 }
 
 void Connections::drawBelt(std::pair<GameObj*, GameObj*> each, sf::RenderWindow& window) const
 {
-    // sf::Vector2f loc1 = each.first->getLocation();
-    // sf::Vector2f loc2 = each.second->getLocation();
 
     sf::Vertex line[2];
     line[0].position = each.first->getLocation();
@@ -131,4 +131,20 @@ void Connections::reset()
 {
     m_first = nullptr;
     m_second = nullptr; //not really necessary
+}
+
+void Connections::setMousePos(sf::Vector2f mouseLoc)
+{
+    m_mousePos = mouseLoc;
+}
+
+void Connections::drawMovingBelt(sf::RenderWindow &window) const
+{
+    sf::Vertex line[2];
+    line[0].position = m_first->getLocation();
+    line[0].color  = sf::Color::Black;
+    line[1].position = m_mousePos;
+    line[1].color = sf::Color::Black;
+
+    window.draw(line, 2, sf::Lines);
 }

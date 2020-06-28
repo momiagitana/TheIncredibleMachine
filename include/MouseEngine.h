@@ -9,7 +9,7 @@ public:
     MouseEngine(ObjInfo info, bool movable, b2World &world);
     ~MouseEngine();
 
-    Type_t mouseOnMe(sf::Vector2f);
+    Type_t handleClick(sf::Vector2f); //fix override
     void setPosition(sf::Vector2f) ;//override
     
     bool isConected() const { return m_conected; }
@@ -24,7 +24,7 @@ private:
     bool m_conected = false; 
     bool m_status = false; //fix ON OFF
 
-    Button m_conection;
+    Button m_connection;
     
 
 };
