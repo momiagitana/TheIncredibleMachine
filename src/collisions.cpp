@@ -22,26 +22,44 @@ HitMap Collisions::initializeCollisionMap()
 {
     HitMap map;
 
-      map[Key(typeid(Balloon), typeid(BaseBall))]     = &balloonBaseball;
-      map[Key(typeid(BaseBall), typeid(Balloon))]     = &baseballBalloon;
+    map[Key(typeid(Balloon), typeid(BaseBall))]     = &balloonBaseball;
+    map[Key(typeid(BaseBall), typeid(Balloon))]     = &baseballBalloon;
 
-      map[Key(typeid(BasketBall), typeid(BrickWall))] = &basketWall;
-      map[Key(typeid(BrickWall), typeid(BasketBall))] = &wallBasket;
+    map[Key(typeid(BasketBall), typeid(BrickWall))] = &basketWall;
+    map[Key(typeid(BrickWall), typeid(BasketBall))] = &wallBasket;
 
-      map[Key(typeid(Balloon), typeid(BrickWall))]    = &balloonWall;
-      map[Key(typeid(BrickWall), typeid(Balloon))]    = &wallBalloon;
+    map[Key(typeid(Balloon), typeid(BrickWall))]    = &balloonWall;
+    map[Key(typeid(BrickWall), typeid(Balloon))]    = &wallBalloon;
 
-      map[Key(typeid(BasketBall), typeid(Balloon))]   = &basketBalloon;
-      map[Key(typeid(Balloon), typeid(BasketBall))]   = &balloonBasket;
+    map[Key(typeid(BasketBall), typeid(Balloon))]   = &basketBalloon;
+    map[Key(typeid(Balloon), typeid(BasketBall))]   = &balloonBasket;
      
-      map[Key(typeid(BrickWall), typeid(BaseBall))]   = &wallBaseball;
-      map[Key(typeid(BaseBall), typeid(BrickWall))]   = &baseballWall;
+    map[Key(typeid(BrickWall), typeid(BaseBall))]   = &wallBaseball;
+    map[Key(typeid(BaseBall), typeid(BrickWall))]   = &baseballWall;
 
-      map[Key(typeid(BaseBall), typeid(BaseBall))]   = &baseballBaseball;
+    map[Key(typeid(Balloon), typeid(Conveyor))]   = &balloonConveyor;
+    map[Key(typeid(Conveyor), typeid(Balloon))]   = &conveyorBalloon;
 
-      map[Key(typeid(Balloon), typeid(Balloon))]   = &balloonBalloon;
+    map[Key(typeid(BasketBall), typeid(Conveyor))]   = &basketConveyor;
+    map[Key(typeid(Conveyor), typeid(BasketBall))]   = &conveyorBasket;
 
-      map[Key(typeid(BasketBall), typeid(BasketBall))]   = &basketBasket;
+    map[Key(typeid(Conveyor), typeid(BaseBall))]   = &conveyorBase;
+    map[Key(typeid(BaseBall), typeid(Conveyor))]   = &baseConveyor;
+
+    map[Key(typeid(MouseEngine), typeid(BaseBall))]   = &engineBall;
+    map[Key(typeid(BaseBall), typeid(MouseEngine))]   = &ballEngine;
+
+    map[Key(typeid(MouseEngine), typeid(BasketBall))]   = &engineBall;
+    map[Key(typeid(BasketBall), typeid(MouseEngine))]   = &ballEngine;
+
+    // map[Key(typeid(MouseEngine), typeid(BaseBall))]   = &engineBall;
+    // map[Key(typeid(BaseBall), typeid(MouseEngine))]   = &ballEngine;
+
+    map[Key(typeid(BaseBall), typeid(BaseBall))]   = &baseballBaseball;
+
+    map[Key(typeid(Balloon), typeid(Balloon))]   = &balloonBalloon;
+
+    map[Key(typeid(BasketBall), typeid(BasketBall))]   = &basketBasket;
       
 
     return map;
@@ -75,4 +93,9 @@ void Collisions::processCollision(GameObj& object1, GameObj& object2)
     }
 
     phf(object1, object2);
+}
+
+int Collisions::aboveOrBelow(GameObj& object1, GameObj& object2)
+{
+
 }

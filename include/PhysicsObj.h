@@ -24,7 +24,7 @@ public:
     void setPosition(sf::Vector2f);
     void setGravityScale(float);
     void setSize(sf::Vector2f);
-    void applyForce(const force&);
+    void applyForce(const b2Vec2&);
     int randomNumber(int min, int max);
     void setID(const int);
 };

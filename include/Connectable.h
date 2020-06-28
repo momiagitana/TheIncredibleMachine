@@ -22,6 +22,7 @@ public:
     void setStatus(bool status)     { m_status = status; }
 
 private:
+
     static bool m_registerit;
 
     bool m_conected = false; 
@@ -30,7 +31,6 @@ private:
     Button m_connection;
 
     sf::Vector2f m_buttonDelta;
-    
 
 };
 

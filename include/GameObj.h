@@ -24,6 +24,7 @@ public:
 	virtual ObjInfo getInfo() const; 
 	void rotateBody(int);
 	void updateLoc();
+	int aboveOrBelow(GameObj& other);
 
 	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
 	bool getMouseOverMe() const { return m_mouseOnMe; }

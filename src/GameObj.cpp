@@ -56,3 +56,11 @@ ObjInfo GameObj::getInfo() const
 	info._typ = getType();
 	return info;
 }
+
+int GameObj::aboveOrBelow(GameObj& other)
+{
+	if(this->getLocation().y > other.getLocation().y)
+		return 1;
+
+	return -1;
+}

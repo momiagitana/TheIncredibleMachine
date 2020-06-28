@@ -15,6 +15,8 @@
 #include "Balloon.h"
 #include "BasketBall.h"
 #include "BrickWall.h"
+#include "Conveyor.h"
+#include "MouseEngine.h"
 
 
 using HitFunctionPtr = void (*)(GameObj&, GameObj&);
@@ -33,6 +35,8 @@ public:
     HitFunctionPtr lookup(const std::type_index& class1, const std::type_index& class2);
 
     HitMap initializeCollisionMap();
+
+    int aboveOrBelow(GameObj& object1, GameObj& object2);
  
 };
 
@@ -41,11 +45,11 @@ namespace
 
     void basketWall(GameObj& object1, GameObj& object2)
     {
-        b2Vec2 force;
-        force.x = 0.1;
-        force.y = 0.1;
+        // b2Vec2 force;
+        // force.x = 0.1;
+        // force.y = 0.1;
 
-        object1.applyForce(force);
+        // object1.applyForce(force);
 
         std::cout << "BasketBall and Wall collision!" << std::endl;
     }
@@ -88,9 +92,6 @@ namespace
 
     void balloonBaseball(GameObj& object1, GameObj& object2)
     {
-        // Balloon& ballonn = static_cast<Balloon&>(balloon);
-        // BaseBall&  ball  = static_cast<BaseBall&>(baseBall);
-
         std::cout << "balloonn and baseball collision!" << std::endl;
     }
     void baseballBalloon(GameObj& object1, GameObj& object2)
@@ -116,6 +117,84 @@ namespace
         std::cout << "basketBall and basketBall collision!" << std::endl;
     }
 
+    void conveyorBalloon(GameObj& object1, GameObj& object2)
+    {
+        Conveyor&  conv  = static_cast<Conveyor&>(object1);
+        
+        if(conv.isOn())
+        {
+            b2Vec2 force;
+            force.x = 0.1;
+            force.y = 0.0;
 
+            force.x *= object1.aboveOrBelow(object2);
+
+            object2.applyForce(force);
+        }
+        std::cout << "conveyor and balloon collision!" << std::endl;
+    }
+    void balloonConveyor(GameObj& object1, GameObj& object2)
+    {
+        conveyorBalloon(object2, object1);
+    }
+
+
+    void conveyorBasket(GameObj& object1, GameObj& object2)
+    {
+        Conveyor&  conv  = static_cast<Conveyor&>(object1);
+    
+        if(conv.isOn())
+        {
+            b2Vec2 force;
+            force.x = 0.1;
+            force.y = 0.0;
+
+            force.x *= object1.aboveOrBelow(object2);
+
+            object2.applyForce(force);
+        }
+        std::cout << "conveyor and balloon collision!" << std::endl;
+    }
+    void basketConveyor(GameObj& object1, GameObj& object2)
+    {
+        conveyorBasket(object2, object1);
+    }
+
+
+    void conveyorBase(GameObj& object1, GameObj& object2)
+    {
+       Conveyor&  conv  = static_cast<Conveyor&>(object1);
+
+       if(conv.isOn())
+        {
+            b2Vec2 force;
+            force.x = 0.1;
+            force.y = 0.0;
+
+            force.x *= object1.aboveOrBelow(object2);
+
+            object2.applyForce(force);
+        }
+
+        std::cout << "conveyor and balloon collision!" << std::endl;
+    }
+    void baseConveyor(GameObj& object1, GameObj& object2)
+    {
+        conveyorBase(object2, object1);
+    }
+
+
+    void ballEngine(GameObj& object1, GameObj& object2)
+    {
+        MouseEngine&  conv  = static_cast<MouseEngine&>(object1);
+
+        if(conv.isConected())
+            conv.setStatus(true);
+    
+    }
+    void engineBall(GameObj& object1, GameObj& object2)
+    {
+        ballEngine(object2, object1);
+    }
 
 }
