@@ -84,7 +84,7 @@ void PhysicsObj::setAngle(int whichAngle)
 }
 
 
-void PhysicsObj::applyForce(const force& force)
+void PhysicsObj::applyForce(const b2Vec2& force)
 {
     m_body->ApplyLinearImpulse(force, m_body->GetWorldCenter(), true);
 }

@@ -106,8 +106,8 @@ void OverallController::draw(sf::RenderWindow& window)
 	tinyBoard.setPosition(268,70);//fix
 
 	m_levelController.drawStatic(false);
-	m_window.draw(tinyBoard);
 	m_background.draw(window);
+	m_window.draw(tinyBoard);
 
 	for (auto& button : m_buttons)
 		button.draw(window);
