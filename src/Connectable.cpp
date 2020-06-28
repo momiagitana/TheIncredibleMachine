@@ -27,3 +27,9 @@ Type_t Connectable::handleClick(sf::Vector2f loc)
     return getType();
 }
 
+
+void Connectable::backToStartingPlace()
+{
+    GameObj::backToStartingPlace();
+    m_status = false;
+}

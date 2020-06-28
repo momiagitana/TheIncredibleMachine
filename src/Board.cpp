@@ -27,29 +27,6 @@ GameObj* Board::getObjWithId(const int obj)
 	}
 }
 
-
-
-
-  //zalman muti------------------
-// void Board::testCollison(b2World& world )
-// {
-// 	GameObj* current = new BasketBall(sf::Vector2f(20,30),MOVABLE,world);
-// 	m_objects.push_back(std::unique_ptr<GameObj>(current));
-
-// 	for(auto& i : m_objects)
-// 	{
-// 		m_collision.processCollision(*current,*i.get());
-
-// 	}
-
-// }
-
-// bool Board::collision(GameObj& one, GameObj& two)
-// {
-// 	return one.getGlobalBounds().intersects(two.getGlobalBounds());
-// }
-
-
 void Board::draw(sf::RenderWindow& window, bool running)
 {
 	window.draw(m_background);
@@ -69,20 +46,6 @@ void Board::updateImgLocs()
 	
 	m_connections.checkConnections();
 }
-
-
-  //zalman muti------------------
-// 		if(current && !collides(*current))
-// 		{
-// 			m_objects.push_back(std::unique_ptr<GameObj>(current));
-// 			return true;
-// 		}
-// 		else  
-// 		{
-// 			delete current;
-// 		}
-		
-
 
 bool Board::tryToAdd(std::shared_ptr<GameObj> current, Type_t selected) //fix take selected if non used
 {
@@ -106,14 +69,11 @@ bool Board::collides(GameObj& current)
 		}
 	}
 	return false;
-
 }
-
 
 bool Board::checkCollison(GameObj& obj2, GameObj& obj1)
 {
-
-	if(obj1.getGlobalBounds().intersects(obj2.getGlobalBounds()))
+	if(obj1.pixelPerfectColides(obj2))
 		return true;
 
 	return false;
@@ -166,7 +126,6 @@ std::shared_ptr<GameObj> Board::findConnectable(sf::Vector2f mouseLoc)
 	}
 	return nullptr;
 }
-
 
 void Board::resetObjectsPositions()
 {
@@ -224,17 +183,6 @@ void Board::setEveryoneElseFalse(int except)
 			obj->setMouse(false);
 }
 
-bool Board::isResizable(GameObj* curr) const
-{
-	if(typeid(*(curr)) == typeid(BrickWall))
-		return true;
-	if(typeid(*(curr)) == typeid(Conveyor))
-		return true;
-
-	return false;
-
-}
-
 bool Board::clickedOnMe(sf::Vector2f loc) const
 {
 	if (m_background.getGlobalBounds().contains(loc))
@@ -269,7 +217,6 @@ bool Board::doneConnecting()
 {
 	return m_connections.doneConnecting();
 }
-
 
 void Board::setMousePos(sf::Vector2f mouseLoc) 
 {

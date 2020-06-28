@@ -8,7 +8,7 @@ const unsigned obj_size = 40;
 
 const int DELTA_ENGINE_CONECT[2][2] = {{13,-3}, {13,0}}; //1 mouse engine
 
-const int NUM_OF_OBJECTS = 7; // update when adding an object 
+const int NUM_OF_OBJECTS = 8; // update when adding an object 
 
 enum Type_t
 {
@@ -20,6 +20,7 @@ enum Type_t
 	conveyor,
 	brickWall,
 	mouseEngine,
+	trampoline,
 	belt,
 	//---------
 
@@ -44,7 +45,7 @@ enum Type_t
 	puzzleComplete,
 	replayButton,
 	advanceButton,
-
+	onePixel,
 
 	connectButton,
 
@@ -55,6 +56,7 @@ enum Type_t
 	conveyorButton,
 	brickWallButton,
 	mouseEngineButton,
+	trampolineButton,
 	beltButton
 
 };
@@ -68,7 +70,7 @@ struct ObjInfo
 	int _fliped = -1; // -1 not intersting, 0 regular , 1 filped
 };
 
-const struct ObjInfo wallInitTransforms = {brickWall, sf::Vector2f(0.f,0.f), 0, 1, -1};
+const struct ObjInfo wallInitTransforms = {brickWall, sf::Vector2f(0.f,0.f), 0, 1, -1};// fix check if everyone starts like this and then no need
 
 
 struct PhysicsInfo
@@ -85,11 +87,12 @@ struct PhysicsInfo
 
  const PhysicsInfo physicsInfo[NUM_OF_OBJECTS] = {{CIRCLE, 0.1f, 0.4f, 0.7f},    //balloon
                                                   {CIRCLE, 0.5f, 0.775f, 0.2f},  //basketBall
-                                                  {CIRCLE, 0.8f, 0.4f, 0.9f},  	 //baseBall
+                                                  {CIRCLE, 0.8f, 0.4f, 0.25f},  	 //baseBall
                                                   {CIRCLE, 0.1f, 0.1f, 0.7f},    //bowlingBall
                                                   {RECT,   0.5f, 0.4f, 0.7f},    //conveyor
                                                   {RECT,   0.5f, 0.4f, 0.7f},   //brickWall
-												  {RECT,   0.5f, 0.4f, 0.7f}};   //mouseEngine
+												  {RECT,   0.5f, 0.4f, 0.7f},   //mouseEngine
+												  {RECT,   0.5f, 0.4f, 0.7f}};   //trampoline
 
 	// m_fixtureDef.friction = 1;
     // m_fixtureDef.restitution = 0.4f;

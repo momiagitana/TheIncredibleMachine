@@ -89,6 +89,9 @@ bool Resizable::mouseOnMe(sf::Vector2f loc)
         if(button.mouseOnMe(loc))
             return true;
     
+    // sf::Sprite pixel (*ResourceManager::instance().getTexture(onePixel)); //fix if not using delete 1px.png
+    // pixel.setPosition(loc);
+    // return Collision::PixelPerfectTest(this->getSprite(), pixel);
     return Button::mouseOnMe(loc);
 }
 
@@ -145,3 +148,4 @@ void Resizable::backToStartingPlace()
     GameObj::backToStartingPlace();
     rotateBody(m_whichAngle);
 }
+

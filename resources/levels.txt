@@ -1,3 +1,17 @@
+-
+basketBall -1
+balloon -1
+brickWall -1
+baseBall -1
+conveyor -1
+belt -1
+mouseEngine -1
+trampoline -1
+-
+9 100 100 320 0
+-
+-
+
 balloon 123.000000 300.000000 -1 -1 -1
 brickWall 558.000000 80.000000 5 2 0
 brickWall 16.000000 81.000000 5 2 0

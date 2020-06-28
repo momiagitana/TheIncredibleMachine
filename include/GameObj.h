@@ -4,6 +4,7 @@
 
 #include "Button.h"
 #include "PhysicsObj.h"
+#include "CollisionsSFML.h"
 
 
 class GameObj : public Button
@@ -24,7 +25,10 @@ public:
 	virtual ObjInfo getInfo() const; 
 	void rotateBody(int);
 	void updateLoc();
-	int aboveOrBelow(GameObj& other);
+
+	//for collisions
+	int aboveOrBelow(GameObj& other) const;
+	bool isBelow(GameObj& other) const;
 
 	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
 	bool getMouseOverMe() const { return m_mouseOnMe; }
@@ -33,6 +37,8 @@ public:
 	virtual void setInitialLoc();
 
 	void applyForce(const b2Vec2& force) { m_phyObj.applyForce(force); }
+
+	bool pixelPerfectColides(GameObj&) const;
 
 private:
 

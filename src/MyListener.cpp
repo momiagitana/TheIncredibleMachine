@@ -3,6 +3,16 @@
 
 void MyListener::BeginContact(b2Contact* contact)
 {
+
+}
+
+void MyListener::EndContact(b2Contact* contact)
+{
+
+}
+
+void MyListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
+{
     b2Fixture* fixtureA = contact->GetFixtureA();
     b2Fixture* fixtureB = contact->GetFixtureB();
 
@@ -13,16 +23,6 @@ void MyListener::BeginContact(b2Contact* contact)
     auto obj2 = m_board->getObjWithId((int)(size_t)body2->GetUserData());
 
     m_board->getCollisionObj().processCollision(*obj1,*obj2);
-}
-
-void MyListener::EndContact(b2Contact* contact)
-{
-
-}
-
-void MyListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
-{
-
 }
 
 

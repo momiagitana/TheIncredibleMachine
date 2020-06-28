@@ -25,7 +25,6 @@ public:
     void backToStartingPlace();
     void setPosition(sf::Vector2f loc);
 
-
 private:
 	int m_whichSize = 1; //from 1 to 5
     int m_whichAngle = 0;

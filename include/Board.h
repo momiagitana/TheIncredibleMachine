@@ -61,14 +61,10 @@ private:
 
 
 	Collisions m_collision; //fix see where to put it
-	
-
-
 
 
 	void updateImgLocs();
 	void setEveryoneElseFalse(int);
-	bool isResizable(GameObj* curr) const;
 	std::vector< ObjInfo> getObjInfo() const;
 	std::shared_ptr<GameObj> findConnectable(sf::Vector2f mouseLoc); 
 

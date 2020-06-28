@@ -78,7 +78,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/brick.png", Type_t::brickWall);
 	loadTexture("build/balloonButton.png", Type_t::balloonButton);
 	loadTexture("build/mouseEngine.png", Type_t::mouseEngine);
-	
+	loadTexture("build/trampoline.png", Type_t::trampoline);
 
 	loadTexture("build/basketButton.png", Type_t::basketButton);
 	loadTexture("build/baseButton.png", Type_t::baseButton);
@@ -89,6 +89,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/rotateButton.png", Type_t::rotateButton);
 	loadTexture("build/mouseEngineButton.png", Type_t::mouseEngineButton);
 	loadTexture("build/beltButton.png", Type_t::beltButton);
+	loadTexture("build/trampolineButton.png", Type_t::trampolineButton);
 
 	loadTexture("build/engineConectButton.png", Type_t::connectButton);
 
@@ -109,7 +110,7 @@ ResourceManager::ResourceManager()
 
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
 	loadTexture("build/frame.png", Type_t::frame);
-
+	loadTexture("build/1px.png", Type_t::onePixel);
 
 
 	////---------- font ---win------

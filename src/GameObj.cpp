@@ -57,10 +57,29 @@ ObjInfo GameObj::getInfo() const
 	return info;
 }
 
-int GameObj::aboveOrBelow(GameObj& other)
+int GameObj::aboveOrBelow(GameObj& other) const
 {
 	if(this->getLocation().y > other.getLocation().y)
 		return 1;
 
 	return -1;
+}
+
+bool GameObj::isBelow(GameObj& other) const
+{
+	// auto globalBoundsOfOther = other.getGlobalBounds();
+	// auto otherBottom = globalBoundsOfOther.top+globalBoundsOfOther.height;
+
+	if (this->getGlobalBounds().top <= other.getLocation().y);
+		return true;
+
+	return false;
+}
+
+bool GameObj::pixelPerfectColides(GameObj& other) const
+{
+	if(Collision::PixelPerfectTest(this->getSprite(), other.getSprite()))
+		return true;
+	
+	return false;
 }

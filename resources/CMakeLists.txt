@@ -5,6 +5,7 @@ configure_file ("baseBall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("conveyor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("brick.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("mouseEngine.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("trampoline.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("balloonButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
@@ -16,6 +17,7 @@ configure_file ("brickButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("mouseEngineButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("beltButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("engineConectButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("trampolineButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("arrowLButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
@@ -36,6 +38,7 @@ configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("startButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("frame.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("1px.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)

@@ -10,6 +10,7 @@ public:
     Connectable(ObjInfo info, bool movable, b2World &world, int);
     ~Connectable();
 
+    void backToStartingPlace(); //fix override
     Type_t handleClick(sf::Vector2f); //fix override
     void setPosition(sf::Vector2f);//override
 

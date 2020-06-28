@@ -24,5 +24,7 @@
 										  "Connections.cpp"
 										  "MouseEngine.cpp"
 										  "Connectable.cpp"
+										  "Trampoline.cpp"
+										  "CollisionsSFML.cpp"
 										)
 

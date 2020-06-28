@@ -10,7 +10,7 @@ class BaseImg
 public:
 
 	BaseImg(sf::Vector2f, Type_t);
-	sf::FloatRect getGlobalBounds() const;
+	virtual sf::FloatRect getGlobalBounds() const;
 	virtual void draw(sf::RenderWindow&) const;
 
 	sf::Vector2f getLocation() const;
@@ -23,6 +23,8 @@ public:
 	void setOrigin(float, float);
 	void setScale(float);
 	virtual void drawSmall (sf::RenderTexture&);
+
+	sf::Sprite getSprite() const { return m_sprite; } //fix ask if correct
 
 
 

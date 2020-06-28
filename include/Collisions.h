@@ -17,6 +17,7 @@
 #include "BrickWall.h"
 #include "Conveyor.h"
 #include "MouseEngine.h"
+#include "Trampoline.h"
 
 
 using HitFunctionPtr = void (*)(GameObj&, GameObj&);
@@ -45,11 +46,7 @@ namespace
 
     void basketWall(GameObj& object1, GameObj& object2)
     {
-        // b2Vec2 force;
-        // force.x = 0.1;
-        // force.y = 0.1;
 
-        // object1.applyForce(force);
 
         std::cout << "BasketBall and Wall collision!" << std::endl;
     }
@@ -186,15 +183,32 @@ namespace
 
     void ballEngine(GameObj& object1, GameObj& object2)
     {
-        MouseEngine&  conv  = static_cast<MouseEngine&>(object1);
+        MouseEngine&  engine  = static_cast<MouseEngine&>(object2);
 
-        if(conv.isConected())
-            conv.setStatus(true);
+        engine.setStatus(true);
     
     }
     void engineBall(GameObj& object1, GameObj& object2)
     {
         ballEngine(object2, object1);
+    }
+
+    void trampBall(GameObj& object1, GameObj& object2)
+    {
+        if(object1.isBelow(object2))
+        {
+            b2Vec2 force;
+            force.x = 0.0;
+            force.y = 0.125;
+
+            object2.applyForce(force);
+        }
+
+        std::cout << "trampoline and Basketball collision!" << std::endl;
+    }
+    void ballTramp(GameObj& object1, GameObj& object2)
+    {
+        trampBall(object2, object1);
     }
 
 }
