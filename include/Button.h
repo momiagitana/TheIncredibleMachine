@@ -14,6 +14,7 @@ public:
 	Type_t getType()const;
 
 	virtual bool mouseOnMe(sf::Vector2f loc);
+	virtual Type_t handleClick(sf::Vector2f loc);
 
 	
 private:

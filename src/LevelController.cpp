@@ -12,6 +12,15 @@ LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWin
 	listener.setBoardReference(m_board);
 }
 
+void LevelController::loadNewLevel(const Level& level)
+{
+	m_finished = false;
+	m_board = Board(level.getBoardObjs(), m_world);
+	m_toolbar = Toolbar(level.getToolbarObjs());
+	m_locConditons = level.getLocConditions();
+	m_actConditions = level.getActConditions();
+}
+
 bool LevelController::run()
 {
 	while (m_window.isOpen() && !m_finished)
@@ -32,23 +41,16 @@ bool LevelController::run()
 			{
 				if(event.mouseButton.button == sf::Mouse::Button::Right)
 					return false; //fix
-					
-				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
-				
-				if (clickOnToolbar(mouseLoc))
-					dealWithToolbar(mouseLoc);
-
-				else if (clickOnBoard(mouseLoc))
-					dealWithBoard(mouseLoc);
-				
+				else
+					leftClick(event);
 				break;
 			}
 			case sf::Event::MouseMoved:
 				auto mouseLoc = m_window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
 				whereAmI(mouseLoc);
 				updateMouseLoc(mouseLoc);
-			
-				break;				
+
+				break;
 			}
         }
     }
@@ -66,7 +68,50 @@ bool LevelController::run()
 
 }
 
-void LevelController::dealWithToolbar(sf::Vector2f mouseLoc)
+
+void LevelController::leftClick(sf::Event event)
+{					
+	auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
+	
+	if (clickOnToolbar(mouseLoc))
+	{
+		handleToolbarClick(mouseLoc);
+	}
+
+	else if (clickOnBoard(mouseLoc))
+	{
+		handleBoardClick(mouseLoc);
+	}
+
+}
+void LevelController::handleBoardClick(sf::Vector2f mouseLoc)
+{
+	if (m_selected != none)
+	{
+		if (m_selected == belt)
+		{
+			if (m_board.tryConnecting(mouseLoc)) //tries to connect
+			{
+				if (m_board.doneConnecting())
+					clearMouse();
+			}
+			else //if failed to connect we return the belt to the toolbar
+			{
+
+				clearMouse();
+				m_toolbar.addOrIncrease(belt);
+			}
+			
+		}
+
+		else if(m_board.tryToAdd(m_mouseObj, m_selected)) //fix check if needs m_selected //returns true if managed added obj
+			clearMouse();
+	}
+	else //if(m_selected == none)
+		grabFromBoard(m_board.handleClick(mouseLoc, m_selected), mouseLoc);//fix second argument
+}
+
+void LevelController::handleToolbarClick(sf::Vector2f mouseLoc)
 {
 	if(m_selected == none)
 	{
@@ -77,31 +122,30 @@ void LevelController::dealWithToolbar(sf::Vector2f mouseLoc)
 				m_finished = true;//leave the while and next level
 			else
 				m_board.resetObjectsPositions();//from before gravity
-				//setSelected(none, mouseLoc);
-				clearMouse(none, mouseLoc);
-
+			clearMouse();
 		}
 	}
 	else
-	{
+	{	
+		if(m_selected == belt)
+			m_board.resetConnections();
+		
+		else if (m_selected == mouseEngine)
+			returnConnectableToToolbar();
+
+
 		m_toolbar.addOrIncrease(m_selected);
-		//setSelected(none, mouseLoc);
-		clearMouse(none, mouseLoc);
+		clearMouse();
 	}
 }
 
-void LevelController::dealWithBoard(sf::Vector2f mouseLoc)
+void LevelController::returnConnectableToToolbar()
 {
-	if (m_selected != none)
+	if (Connectable* connectable = m_board.isConnectedAndConnectable(m_mouseObj.get()))
 	{
-		if(m_board.tryToAdd(m_mouseObj)) //returns true if managed added obj
-		{
-			clearMouse(none, mouseLoc);
-		}
+		m_board.deleteConnection(connectable);
+		m_toolbar.addOrIncrease(belt);
 	}
-	else //if(m_selected == none)
-		grabFromBoard(m_board.handleClick(mouseLoc), mouseLoc);//fix second argument
-
 }
 
 void LevelController::setSelected(Type_t type, sf::Vector2f mouseLoc)
@@ -121,19 +165,22 @@ void LevelController::whereAmI(sf::Vector2f mouseLoc)
 
 void LevelController::grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc)
 {
-	m_mouseObj = obj;
+	if(m_selected != belt)
+	{
+		m_mouseObj = obj;
 
-	if (obj != nullptr)
-		m_selected = obj->getType();
-	else
-		m_selected = none;
-	
-	createMouseImg (loc);
+		if (obj != nullptr)
+			m_selected = obj->getType();
+		else
+			m_selected = none;
+	}
+		createMouseImg (loc);
+
 }
 
-void LevelController::clearMouse(Type_t type, const sf::Vector2f loc)
+void LevelController::clearMouse()
 {
-	m_selected = type;
+	m_selected = none;
 	m_mouseObj = nullptr;
 }
 
@@ -158,11 +205,12 @@ void LevelController::createMouseImg(const sf::Vector2f loc)
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
 	m_mouseImg.setPosition(loc);
+
+	m_board.setMousePos(loc);
 	
 	if(m_mouseObj)
 		m_mouseObj->setPosition(loc);
 
-	m_board.checkMouseOver(loc);
 }
 
 bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
@@ -175,17 +223,6 @@ bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
 	return m_board.clickedOnMe(mouseLoc);
 }
 
-bool LevelController::levelStatus()
-{
-	return m_finished;
-}
-
-bool LevelController::setlevelStatus(const bool status)
-{
-	m_finished = status;
-	return m_finished;
-}
-
 void LevelController::drawAll(bool running)
 {
 	m_window.clear();//sf::Color(18, 160, 159));
@@ -194,7 +231,7 @@ void LevelController::drawAll(bool running)
 	
 	if (m_selected < play)
 	{
-		if(m_mouseOnToolBr)
+		if(m_mouseOnToolBr || m_selected == belt)
 		{
 			m_mouseImg.draw(m_window);
 		}
@@ -217,14 +254,14 @@ void LevelController::drawStatic(bool running)
 bool LevelController::replaySolution() //fix
 {
 	BaseImg nextLevelMesseage(sf::Vector2f(400,300),Type_t::puzzleComplete);
-	Button replayLevelRexuest(sf::Vector2f(350,350),Type_t::replayButton);
-	Button advanceRequest(sf::Vector2f(460,350),Type_t::advanceButton);
+	Button replay(sf::Vector2f(350,350),Type_t::replayButton);
+	Button advance(sf::Vector2f(460,350),Type_t::advanceButton);
 	
 	sf::Event evnt;
 
 	nextLevelMesseage.draw(m_window);
-	advanceRequest.draw(m_window);
-	replayLevelRexuest.draw(m_window);
+	advance.draw(m_window);
+	replay.draw(m_window);
 	m_window.display();
 
 	while (m_window.isOpen())
@@ -241,11 +278,11 @@ bool LevelController::replaySolution() //fix
 			case sf::Event::MouseButtonReleased:
 				auto mouseLoc = m_window.mapPixelToCoords({ evnt.mouseButton.x, evnt.mouseButton.y });
 
-				if (advanceRequest.mouseOnMe(mouseLoc))
+				if (advance.mouseOnMe(mouseLoc))
 				{
 					return false;
 				}
-				if (replayLevelRexuest.mouseOnMe(mouseLoc))
+				if (replay.mouseOnMe(mouseLoc))
 				{
 					return true;
 				}
@@ -264,8 +301,8 @@ bool LevelController::tryRunning()
 	while (m_window.isOpen())
 	{
 
-			if (checkIfLevelFinished())
-				return true;
+		if (checkIfLevelFinished())
+			return true;
 
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 

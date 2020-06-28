@@ -33,7 +33,7 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 
 	if (m_play->mouseOnMe(loc))
 	{
-		type = play;
+		return play;
 	}
 
 	if (m_arrowLButton->mouseOnMe(loc))
@@ -54,9 +54,9 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 
 	for (auto i = BUTTONS_IN_PAGE*m_page; i < m_toolbar.size() && i < BUTTONS_IN_PAGE*(m_page+1); i++)
 	{
-		if (m_toolbar.at(i).mouseOnMe(loc))
+		if (m_toolbar[i].mouseOnMe(loc))
 		{
-			type = m_toolbar.at(i).getType();
+			type = m_toolbar[i].getType();
 			deleteObj(type);
 			break;
 		}

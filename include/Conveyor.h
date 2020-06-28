@@ -1,9 +1,8 @@
 #pragma once
-#include"Resizable.h"
 #include "Factory.h"//fix needs to add to base class
+#include "Connectable.h"
 
-
-class Conveyor : public Resizable
+class Conveyor : public Connectable
 {
 public:
 	Conveyor (ObjInfo info, bool movable, b2World &world);

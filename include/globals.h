@@ -6,7 +6,9 @@ const int MENU_BUTTONS_LOC [4][2] = {{210, 200}, {150, 200}, {100,200}, {150, 20
 
 const unsigned obj_size = 40;
 
-const int NUM_OF_OBJECTS = 6; // update when adding an object 
+const int DELTA_ENGINE_CONECT[2][2] = {{13,-3}, {13,0}}; //1 mouse engine
+
+const int NUM_OF_OBJECTS = 7; // update when adding an object 
 
 enum Type_t
 {
@@ -17,6 +19,8 @@ enum Type_t
 	bowlingBall,
 	conveyor,
 	brickWall,
+	mouseEngine,
+	belt,
 	//---------
 
 	play,
@@ -41,12 +45,17 @@ enum Type_t
 	replayButton,
 	advanceButton,
 
+
+	connectButton,
+
 	balloonButton = 100,
 	basketButton,
 	baseButton,
 	bowlingButton,
 	conveyorButton,
 	brickWallButton,
+	mouseEngineButton,
+	beltButton
 
 };
 
@@ -79,7 +88,8 @@ struct PhysicsInfo
                                                   {CIRCLE, 0.8f, 0.4f, 0.9f},  	 //baseBall
                                                   {CIRCLE, 0.1f, 0.1f, 0.7f},    //bowlingBall
                                                   {RECT,   0.5f, 0.4f, 0.7f},    //conveyor
-                                                  {RECT,   0.5f, 0.4f, 0.7f}};   //brickWall
+                                                  {RECT,   0.5f, 0.4f, 0.7f},   //brickWall
+												  {RECT,   0.5f, 0.4f, 0.7f}};   //mouseEngine
 
 	// m_fixtureDef.friction = 1;
     // m_fixtureDef.restitution = 0.4f;

@@ -10,7 +10,7 @@ class GameObj : public Button
 {
 public:
 
-	GameObj(const sf::Vector2f&, bool, bool, b2World &, Type_t);
+	GameObj(const sf::Vector2f&, const bool, bool, b2World &, Type_t);
 
 	virtual ~GameObj(){}
 

@@ -51,7 +51,6 @@ GameObj* Board::getObjWithId(const int obj)
 
 
 void Board::draw(sf::RenderWindow& window, bool running)
-
 {
 	window.draw(m_background);
 	if (running)
@@ -59,12 +58,16 @@ void Board::draw(sf::RenderWindow& window, bool running)
 
 	for(auto &obj : m_objects)
 		obj->draw(window);
+	
+	m_connections.draw(window);
 }
 
 void Board::updateImgLocs()
 {
 	for(auto &obj : m_objects)
 		obj->updateLoc();
+	
+	m_connections.checkConnections();
 }
 
 
@@ -81,7 +84,7 @@ void Board::updateImgLocs()
 		
 
 
-bool Board::tryToAdd(std::shared_ptr<GameObj> current)
+bool Board::tryToAdd(std::shared_ptr<GameObj> current, Type_t selected) //fix take selected if non used
 {
 	if(current && !collides(*current.get()))
 	{
@@ -116,51 +119,60 @@ bool Board::checkCollison(GameObj& obj2, GameObj& obj1)
 	return false;
 }
 
-std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc)
+std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc, Type_t& selected)
 {
 	std::shared_ptr<GameObj> obj = nullptr;
 	Resizable *resizableObj = nullptr;
 	for (auto i = 0; i < m_objects.size(); i++)
 	{	
-		if (m_objects[i]->isMovable())
+		if (m_objects[i]->mouseOnMe(mouseLoc) && m_objects[i]->isMovable())
 		{
-
-			if (isResizable(m_objects[i].get()))
+			Type_t clicked = m_objects[i]->handleClick(mouseLoc);
+			if (clicked == rotateButton || clicked == resizeButton) //means it resized or rotated
 			{
-				Type_t whatHappen = none;
 				resizableObj = static_cast <Resizable*> (m_objects[i].get());
-				if(resizableObj->clickedOnMe(mouseLoc, whatHappen))
+				if (collides(*resizableObj))
+					resizableObj->fixLastChange(clicked);
+			}
+
+			else if (clicked == connectButton)
+			{
+				if (Connectable *connectable = isConnectedAndConnectable(m_objects[i].get()))
 				{
+					selected = belt;
+					m_connections.unplug(connectable);
+				}
 					obj = m_objects[i];
-					m_objects.erase(m_objects.begin()+i);
-				}
-				else if (whatHappen != none) //means it resized or rotated
-				{
-					if (collides(*resizableObj))
-					{
-						resizableObj->fixLastChange(whatHappen);
-					}
-				}
-				
-			}			
-				
-			else if(m_objects[i]->mouseOnMe(mouseLoc))
+			}
+			
+			else
 			{
 				obj = m_objects[i];
 				m_objects.erase(m_objects.begin()+i);
 			}
-
+			break;
 		}
 	}
 	return obj;
 }
+
+std::shared_ptr<GameObj> Board::findConnectable(sf::Vector2f mouseLoc)
+{
+	
+	for (auto i = 0; i < m_objects.size(); i++)
+	{	
+		if(connectButton==m_objects[i]->handleClick(mouseLoc))
+			return m_objects[i];
+	}
+	return nullptr;
+}
+
 
 void Board::resetObjectsPositions()
 {
 	for (auto &obj : m_objects)
 		obj->backToStartingPlace();
 }
-
 
 bool Board::isItemInLoc(conditionToWinLoc cond) const
 {
@@ -241,3 +253,28 @@ void Board::drawTinyBoard (sf::RenderTexture& tinyBoard) const
 
    tinyBoard.display();
 }
+
+bool Board::tryConnecting(sf::Vector2f mouseLoc)
+{
+	std::shared_ptr<GameObj> obj = findConnectable(mouseLoc);
+
+	if (obj.get() != nullptr)//fix
+		return (m_connections.tryConnecting(obj));
+	
+	m_connections.reset();
+	return false;
+}
+
+bool Board::doneConnecting()
+{
+	return m_connections.doneConnecting();
+}
+
+
+void Board::setMousePos(sf::Vector2f mouseLoc) 
+{
+	checkMouseOver(mouseLoc);
+
+	m_connections.setMousePos(mouseLoc); 
+}
+

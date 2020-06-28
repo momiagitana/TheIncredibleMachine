@@ -1,6 +1,6 @@
 #include "GameObj.h"
 
-GameObj::GameObj(const sf::Vector2f& center, bool dynamic, bool movable, b2World &world, Type_t type)
+GameObj::GameObj(const sf::Vector2f& center, const bool dynamic, bool movable, b2World &world, Type_t type)
 	:Button(center, type), m_phyObj(world, center, dynamic, type), m_movable(movable), m_initialLoc(center)
 {
 	static int ID = 0;

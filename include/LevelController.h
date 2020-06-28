@@ -18,14 +18,12 @@ public:
 
 	bool clickOnToolbar(const sf::Vector2f );
 	bool clickOnBoard(const sf::Vector2f);
-	bool levelStatus();
-	bool setlevelStatus(const bool);
 	void createMouseImg(const sf::Vector2f loc);
 	void updateMouseLoc(const sf::Vector2f);
-	//void loadNewLevel(level);
+	void loadNewLevel(const Level&);
 
 	void whereAmI(sf::Vector2f);
-	void clearMouse(Type_t type, const sf::Vector2f loc);
+	void clearMouse();
 
 	bool replaySolution();
 
@@ -59,5 +57,10 @@ private:
 	void grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc);
 	void createOnHandObj(sf::Vector2f loc);
 	void setSelected(Type_t type, sf::Vector2f mouseLoc);
+	void leftClick(sf::Event);
+	void handleBoardClick(sf::Vector2f);
+	void handleToolbarClick(sf::Vector2f);
+	void returnConnectableToToolbar();
+
 
 };

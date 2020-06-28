@@ -13,6 +13,9 @@
 #include "Collisions.h"
 #include "FileHandler.h"
 #include "Conveyor.h"//fix all these
+#include "MouseEngine.h"
+#include "Connections.h"
+#include "Connectable.h"
 
 //#include "BowlingBall.h"
 
@@ -27,25 +30,11 @@ public:
 	void setBoard(const boardObjects & objects, b2World& world);
 	void draw(sf::RenderWindow& window, bool);//fix const?
 	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
-	bool tryToAdd(std::shared_ptr<GameObj>);
-	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc);
+	bool tryToAdd(std::shared_ptr<GameObj>, Type_t);
+	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc, Type_t&);
 	void resetObjectsPositions();
 
-
-  //zalman muti------------------
-// 	bool clickedOnMe(sf::Vector2f mouseLoc) { return true; }
-// 	bool collides(GameObj& current);
-// 	bool checkCollison(GameObj& obj2, GameObj& obj1);
-// 	void wakeEmAllUp();
-// 	bool isItemInLoc(conditionToWinLoc) const;
-
-// 	void testCollison(b2World& world );
-// 	bool collision(GameObj& one, GameObj& two);
-
-//master--------------
 	bool clickedOnMe(sf::Vector2f mouseLoc) const;
-	// bool collides(GameObj* current);//fix const
-	// bool checkCollison(GameObj* obj2, GameObj* obj1);
 	bool checkCollison(GameObj& obj2, GameObj& obj1);
 	bool collides(GameObj& current);
 	bool isItemInLoc(conditionToWinLoc) const;
@@ -56,27 +45,36 @@ public:
 	void checkMouseOver(sf::Vector2f loc);
 	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
 
+
 	GameObj* getObjWithId(const int);
 
-	Collisions getCollisionObj()
-	{
-		return m_collision;
-	}
+	Collisions getCollisionObj() { return m_collision;	}
 
 
 private:
 
 
-  //zalman muti------------------
-	Collisions m_collision;
+	Collisions m_collision; //fix see where to put it
 	
+
+	bool tryConnecting(sf::Vector2f mouseLoc);
+	bool doneConnecting();
+	void resetConnections() { m_connections.reset(); }
+	void deleteConnection(Connectable* obj) { m_connections.deleteConnection(obj); }
+	Connectable* isConnectedAndConnectable(GameObj* obj) const { return m_connections.isConnectedAndConnectable(obj); }
+	void setMousePos(sf::Vector2f mouseLoc);
+
+
+
 
 	void updateImgLocs();
 	void setEveryoneElseFalse(int);
 	bool isResizable(GameObj* curr) const;
+	std::vector< ObjInfo> getObjInfo() const;
+	std::shared_ptr<GameObj> findConnectable(sf::Vector2f mouseLoc); 
 
 	std::vector <std::shared_ptr<GameObj>> m_objects;
-	std::vector< ObjInfo> getObjInfo() const;
+	Connections m_connections;
 	sf::RectangleShape m_background;
 
 };
