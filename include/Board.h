@@ -56,12 +56,19 @@ public:
 	void checkMouseOver(sf::Vector2f loc);
 	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
 
+	GameObj* getObjWithId(const int);
+
+	Collisions getCollisionObj()
+	{
+		return m_collision;
+	}
+
 
 private:
 
 
   //zalman muti------------------
-	//Collisions m_collision;
+	Collisions m_collision;
 	
 
 	void updateImgLocs();

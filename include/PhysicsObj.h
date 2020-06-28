@@ -13,7 +13,6 @@ private:
     b2FixtureDef    m_fixtureDef;
     b2Fixture*      m_fixture;
 
-    
 public:
 
     PhysicsObj(b2World &, const sf::Vector2f&, bool , Type_t);
@@ -27,5 +26,5 @@ public:
     void setSize(sf::Vector2f);
     //void applyForce ();
     int randomNumber(int min, int max);
-
+    void setID(const int);
 };

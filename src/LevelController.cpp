@@ -2,14 +2,14 @@
 #include "ResourceManager.h"
 #include <iostream>
 
-LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
+LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win, MyListener& listener)
 	:m_board(lvl.getBoardObjs(), world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
 	m_mouseImg(sf::Vector2f(-100.f, -100.f),baseBall),
   	m_frame (sf::Vector2f(FRAME_X, FRAME_Y), frame)
 
 {
-	//listner.setBoardReference(m_board);
+	listener.setBoardReference(m_board);
 }
 
 bool LevelController::run()
@@ -36,41 +36,11 @@ bool LevelController::run()
 				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 				
 				if (clickOnToolbar(mouseLoc))
-				{
-					if(m_selected == none)
-					{
-						setSelected(m_toolbar.handleClick(mouseLoc),mouseLoc);
-						if (m_selected == play)//needs to be inside the if ontop??
-						{
-							if (tryRunning())//apply gravitiy check if game was won
-								m_finished = true;//leave the while and next level
-							else
-								m_board.resetObjectsPositions();//from before gravity
-							//setSelected(none, mouseLoc);
-							clearMouse(none, mouseLoc);
-
-						}
-					}
-					else
-					{
-						m_toolbar.addOrIncrease(m_selected);
-						//setSelected(none, mouseLoc);
-						clearMouse(none, mouseLoc);
-					}
-				}
+					dealWithToolbar(mouseLoc);
 
 				else if (clickOnBoard(mouseLoc))
-				{
-					if (m_selected != none)
-					{
-						if(m_board.tryToAdd(m_mouseObj)) //returns true if managed added obj
-						{
-							clearMouse(none, mouseLoc);
-						}
-					}
-					else //if(m_selected == none)
-						grabFromBoard(m_board.handleClick(mouseLoc), mouseLoc);//fix second argument
-				}
+					dealWithBoard(mouseLoc);
+				
 				break;
 			}
 			case sf::Event::MouseMoved:
@@ -78,9 +48,7 @@ bool LevelController::run()
 				whereAmI(mouseLoc);
 				updateMouseLoc(mouseLoc);
 			
-				break;
-
-				
+				break;				
 			}
         }
     }
@@ -95,6 +63,44 @@ bool LevelController::run()
 	}
 
   	return m_finished;
+
+}
+
+void LevelController::dealWithToolbar(sf::Vector2f mouseLoc)
+{
+	if(m_selected == none)
+	{
+		setSelected(m_toolbar.handleClick(mouseLoc),mouseLoc);
+		if (m_selected == play)//needs to be inside the if ontop??
+		{
+			if (tryRunning())//apply gravitiy check if game was won
+				m_finished = true;//leave the while and next level
+			else
+				m_board.resetObjectsPositions();//from before gravity
+				//setSelected(none, mouseLoc);
+				clearMouse(none, mouseLoc);
+
+		}
+	}
+	else
+	{
+		m_toolbar.addOrIncrease(m_selected);
+		//setSelected(none, mouseLoc);
+		clearMouse(none, mouseLoc);
+	}
+}
+
+void LevelController::dealWithBoard(sf::Vector2f mouseLoc)
+{
+	if (m_selected != none)
+	{
+		if(m_board.tryToAdd(m_mouseObj)) //returns true if managed added obj
+		{
+			clearMouse(none, mouseLoc);
+		}
+	}
+	else //if(m_selected == none)
+		grabFromBoard(m_board.handleClick(mouseLoc), mouseLoc);//fix second argument
 
 }
 

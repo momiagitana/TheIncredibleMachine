@@ -18,6 +18,17 @@ void Board::setBoard(const boardObjects& objects, b2World& world)
 
 }
 
+GameObj* Board::getObjWithId(const int obj)
+{
+	for(auto& i : m_objects)
+	{
+		if(i->getID() == obj)
+			return i.get();
+	}
+}
+
+
+
 
   //zalman muti------------------
 // void Board::testCollison(b2World& world )

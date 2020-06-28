@@ -5,13 +5,14 @@
 #include "Board.h"
 #include "Level.h"
 #include "Toolbar.h"
+#include "MyListener.h"
 //#include "globals.h"
 
 class LevelController
 {
 public:
 
-	LevelController(const Level&, b2World& world, sf::RenderWindow&);
+	LevelController(const Level&, b2World& world, sf::RenderWindow&, MyListener& );
 
 	bool run();
 
@@ -31,6 +32,8 @@ public:
 	void drawAll(bool); //fix const?
 	void drawStatic(bool running);
 	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
+	void dealWithToolbar(sf::Vector2f mouseLoc);
+	void dealWithBoard(sf::Vector2f mouseLoc);
 
 private:
 

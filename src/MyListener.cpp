@@ -5,10 +5,14 @@ void MyListener::BeginContact(b2Contact* contact)
 {
     b2Fixture* fixtureA = contact->GetFixtureA();
     b2Fixture* fixtureB = contact->GetFixtureB();
+
     b2Body* body1 = fixtureA->GetBody();
     b2Body* body2 = fixtureB->GetBody();
-    //std::cout << "started" << std::endl;;
-    //collide()
+
+    auto obj1 = m_board->getObjWithId((int)(size_t)body1->GetUserData());
+    auto obj2 = m_board->getObjWithId((int)(size_t)body2->GetUserData());
+
+    m_board->getCollisionObj().processCollision(*obj1,*obj2);
 }
 
 void MyListener::EndContact(b2Contact* contact)
@@ -17,5 +21,10 @@ void MyListener::EndContact(b2Contact* contact)
 
 void MyListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 {
-    std::cout << "colide" <<std::endl;
+    //std::cout << "colide" <<std::endl;
+}
+
+void MyListener::setBoardReference(Board& board)
+{
+    m_board = &board;
 }
