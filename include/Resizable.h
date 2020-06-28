@@ -13,14 +13,16 @@ public:
     int getWhichSize() const { return m_whichSize; }
     int getAngle() const { return m_whichAngle; }
     int getIfFliped() const { return m_isFliped; }
+
     void setWhichSize(int size) { m_whichSize = size; }
-    bool clickedOnMe(sf::Vector2f loc, Type_t&);
+   
+    bool mouseOnMe(sf::Vector2f loc);
+    Type_t handleClick(sf::Vector2f loc);
     void draw(sf::RenderWindow&) const;
     void setTexture();
     ObjInfo getInfo()const; //fix const
     void fixLastChange(Type_t);
     void backToStartingPlace();
-    //void setInitialLoc();
     void setPosition(sf::Vector2f loc);
 
 

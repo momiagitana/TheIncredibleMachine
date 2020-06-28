@@ -1,7 +1,7 @@
 #include "Conveyor.h"
 
 Conveyor::Conveyor (ObjInfo info, bool movable, b2World &world)
-    :Resizable(info, movable, world, conveyor)
+    :Connectable(info, movable, world, 1)
 {
 }
 
