@@ -12,13 +12,14 @@
 #include "FileHandler.h"
 #include "LevelController.h"
 #include "Level.h"
+#include "MyListener.h"
 
 
 class OverallController
 {
 public:
 
-	OverallController(b2World& world);
+	OverallController(b2World& world, MyListener& listener);
 	void run();
 	
 private:

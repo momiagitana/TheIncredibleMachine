@@ -44,6 +44,19 @@ public:
 
 	void checkMouseOver(sf::Vector2f loc);
 	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
+
+
+	GameObj* getObjWithId(const int);
+
+	Collisions getCollisionObj() { return m_collision;	}
+
+
+private:
+
+
+	Collisions m_collision; //fix see where to put it
+	
+
 	bool tryConnecting(sf::Vector2f mouseLoc);
 	bool doneConnecting();
 	void resetConnections() { m_connections.reset(); }
@@ -51,7 +64,8 @@ public:
 	Connectable* isConnectedAndConnectable(GameObj* obj) const { return m_connections.isConnectedAndConnectable(obj); }
 	void setMousePos(sf::Vector2f mouseLoc);
 
-private:
+
+
 
 	void updateImgLocs();
 	void setEveryoneElseFalse(int);

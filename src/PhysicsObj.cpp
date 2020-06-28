@@ -34,7 +34,7 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, bool dynami
     m_fixtureDef.density = objPhysicsInfo._density;
     m_fixture = m_body->CreateFixture(&m_fixtureDef);
 
-   // m_body->SetUserData();
+    //m_body->SetUserData();
 }
 
 PhysicsObj::~PhysicsObj()
@@ -42,6 +42,10 @@ PhysicsObj::~PhysicsObj()
     m_body->GetWorld()->DestroyBody(m_body);
 }
 
+void PhysicsObj::setID(const int ID)
+{
+    m_body->SetUserData((void*)ID);
+}
 
 void PhysicsObj::setPosition(sf::Vector2f pos)
 {

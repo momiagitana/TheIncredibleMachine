@@ -4,12 +4,12 @@
 
 
 
-OverallController::OverallController(b2World& world)//fix change name to menu
+OverallController::OverallController(b2World& world, MyListener& listener)//fix change name to menu
 	:m_world(world),
 	m_levels(FileHandler(ResourceManager::instance().getLevelPath(), true).readLevels()), //fix true->OPEN
 	m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine", sf::Style::Default),
 	m_background(sf::Vector2f(MENU_X, MENU_Y), menuBackground),
-	m_levelController(m_levels[m_numOfLevel], world, m_window)//fix
+	m_levelController(m_levels[m_numOfLevel], world, m_window, listener)//fix
 {
  
 	m_window.setFramerateLimit(60);

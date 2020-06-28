@@ -2,14 +2,14 @@
 #include "ResourceManager.h"
 #include <iostream>
 
-LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
+LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win, MyListener& listener)
 	:m_board(lvl.getBoardObjs(), world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
 	m_mouseImg(sf::Vector2f(-100.f, -100.f),baseBall),
   	m_frame (sf::Vector2f(FRAME_X, FRAME_Y), frame)
 
 {
-	//listner.setBoardReference(m_board);
+	listener.setBoardReference(m_board);
 }
 
 void LevelController::loadNewLevel(const Level& level)
@@ -49,7 +49,7 @@ bool LevelController::run()
 				auto mouseLoc = m_window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
 				whereAmI(mouseLoc);
 				updateMouseLoc(mouseLoc);
-			
+
 				break;
 			}
         }
@@ -67,6 +67,7 @@ bool LevelController::run()
   	return m_finished;
 
 }
+
 
 void LevelController::leftClick(sf::Event event)
 {					
@@ -121,7 +122,6 @@ void LevelController::handleToolbarClick(sf::Vector2f mouseLoc)
 				m_finished = true;//leave the while and next level
 			else
 				m_board.resetObjectsPositions();//from before gravity
-
 			clearMouse();
 		}
 	}
