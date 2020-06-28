@@ -100,7 +100,6 @@ void Connections::draw(sf::RenderWindow& window) const
 
 void Connections::drawBelt(std::pair<Connectable*, Connectable*> each, sf::RenderWindow& window) const
 {
-
     sf::Vertex line[2];
     line[0].position = each.first->getConnectionButtonPos();
     line[0].color  = sf::Color::Black;
@@ -108,7 +107,6 @@ void Connections::drawBelt(std::pair<Connectable*, Connectable*> each, sf::Rende
     line[1].color = sf::Color::Black;
 
     window.draw(line, 2, sf::Lines);
-
 }
 
 void Connections::unplug(Connectable* toUnplug)
