@@ -17,12 +17,14 @@ void MyListener::BeginContact(b2Contact* contact)
 
 void MyListener::EndContact(b2Contact* contact)
 {
+
 }
 
 void MyListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 {
-    //std::cout << "colide" <<std::endl;
+
 }
+
 
 void MyListener::setBoardReference(Board& board)
 {

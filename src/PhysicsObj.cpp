@@ -80,25 +80,11 @@ void PhysicsObj::setSize(sf::Vector2f size)
 
 void PhysicsObj::setAngle(int whichAngle)
 {
-
-//     m_body->SetTransform( m_body->GetPosition(), m_body->GetAngle()+angle);
-// }
-
-// void PhysicsObj::applyForce()
-// {
-//     b2Vec2 force;
-//     force.x = 200;
-//     force.y = 200;
-//     //m_body = vectorShapes.back()->getBody();
-    
-//     m_body->ApplyForceToCenter(force, true);
-
-// }
-
-// int PhysicsObj::randomNumber(int min, int max)
-// {
-//     return min + rand()% (max - min + 1);
-
     m_body->SetTransform( m_body->GetPosition(), whichAngle*45*DEG_TO_RAD);
+}
 
+
+void PhysicsObj::applyForce(const force& force)
+{
+    m_body->ApplyLinearImpulse(force, m_body->GetWorldCenter(), true);
 }

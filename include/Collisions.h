@@ -41,13 +41,15 @@ namespace
 
     void basketWall(GameObj& object1, GameObj& object2)
     {
-        // BasketBall& bsktBall = static_cast<BasketBall&>(object1);
-        // BrickWall& brick    = static_cast<BrickWall&>(object2);
+        b2Vec2 force;
+        force.x = 0.1;
+        force.y = 0.1;
 
-        //bsktBall.getPhysical().applyForce();
+        object1.applyForce(force);
 
         std::cout << "BasketBall and Wall collision!" << std::endl;
     }
+
     void wallBasket(GameObj& object1, GameObj& object2)
     {
         basketWall(object2,object1);

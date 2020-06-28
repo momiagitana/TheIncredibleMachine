@@ -31,10 +31,7 @@ public:
 	virtual void setPosition(sf::Vector2f);
 	virtual void setInitialLoc();
 
-	PhysicsObj getPhysical()
-	{
-		return m_phyObj;
-	}
+	void applyForce(const b2Vec2& force) { m_phyObj.applyForce(force); }
 
 private:
 
