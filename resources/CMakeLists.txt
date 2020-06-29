@@ -29,6 +29,7 @@ configure_file ("resizeButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("advanceButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("puzzleComplete.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("replayButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("chooseLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
@@ -44,12 +45,15 @@ configure_file ("1px.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("down.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("playmenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sound.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("up.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("chooseLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+configure_file ("choseLevelMenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("playButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("upButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("downButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
@@ -59,3 +63,4 @@ configure_file ("levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 if (WIN32)
     configure_file (C:/SFML/SFML-2.5.1/bin/openal32.dll ${CMAKE_BINARY_DIR} COPYONLY)
 endif()
+

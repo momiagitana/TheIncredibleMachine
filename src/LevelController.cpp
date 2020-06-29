@@ -242,7 +242,6 @@ void LevelController::drawAll(bool running)
 			m_mouseObj->draw(m_window);
 		}	
 	}
-
 	m_window.display();
 }
 

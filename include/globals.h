@@ -1,9 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-
 const int MENU_BUTTONS_INT_RECT[5][2] = { {24,23}, {21, 35}, {18, 31}, {110,28},{30,30} };
-const int MENU_BUTTONS_LOC[5][2] = { {210, 200}, {150, 200}, {100,200}, {200, 150},{100,150} };
+const int MENU_BUTTONS_LOC[5][2] = { {210, 200}, {150, 200}, {100,200}, {150, 200}, {300,300} };
+
+const int CHOSE_LEVEL_BUTTONS_INT_RECT[3][2] = { {48, 18}, {23, 18}, {23, 18} };
+const int CHOSE_LEVEL_BUTTONS_LOC[3][2] = { {200, 150}, {140, 145}, {141,165} };
+
 const int TOOLBAR_BUTTONS_LOC[2][2] = { {21, 15}, {21,16}};
 const unsigned obj_size = 40;
 
@@ -37,8 +40,17 @@ enum Type_t
 	reset,
 	sound,
 	choseLevel,
+	endMenuButtons,
 	//-----------
 
+	//chose level menu
+	choseLevelMenu,
+	playButton,
+	upButton,
+	downButton,
+	endChoseLevelButtons,
+
+	//----------------
 	none,
 	rotateButton,
 	resizeButton,
@@ -182,3 +194,15 @@ const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE
 
 const float PPM = 64.f;
 const float MPP = 0.015625f;
+
+const unsigned CHARATER_SIZE = 9;  
+
+const sf::Vector2f LEVEL_GOAL_TEXT_LOC{ 300,300 };
+
+const sf::Vector2f LEVEL_NO_TEXT_LOC_MENU{ 85,40 };
+const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,40 };
+
+const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 300,300 };
+const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 300,300 };
+
+

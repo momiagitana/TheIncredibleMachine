@@ -113,14 +113,22 @@ ResourceManager::ResourceManager()
 	loadTexture("build/bomb.png", Type_t::reset);
 	loadTexture("build/sound.png", Type_t::sound);
 
+	loadTexture("build/choseLevelMenu.png", Type_t::choseLevelMenu);
+	loadTexture("build/playButton.png", Type_t::playButton);
+	loadTexture("build/upButton.png", Type_t::upButton);
+	loadTexture("build/downButton.png", Type_t::downButton);
+
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
 	loadTexture("build/frame.png", Type_t::frame);
 	loadTexture("build/1px.png", Type_t::onePixel);
 
 
+
 	////---------- font ---win------
-	//loadFont("kongtext.ttf", Font::kongtext);
+	//  loadFont("kongtext.ttf", Font::kongtext);
+	//  loadFont("coue1255.fon", Font::coue1255);
 	loadFont("build/kongtext.ttf", Font::kongtext);
+	loadFont("build/coue1255.fon", Font::coue1255);
 
 
 	////---------- sound ----------

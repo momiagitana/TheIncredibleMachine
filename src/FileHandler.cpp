@@ -2,7 +2,7 @@
 #include "FileHandler.h"
 
 const std::string END_PART = "-" ;
-const int NUM_OF_PARTS = 4;
+const int NUM_OF_PARTS = 6;
 
 FileHandler::FileHandler(const std::string& fileName, bool read)
 {
@@ -60,23 +60,37 @@ Level FileHandler::getlevel()
 		{
 		case 1:
 		{
-			currLevel.addBoardObj(buildObjInfo(buffer));
+			std::string levelName;
+			buffer >> levelName;
+			currLevel.addName(levelName);
 			break;
 		}
 		case 2:
+		{
+			std::string levelGoal;
+			buffer >> levelGoal;
+			currLevel.addLevelGoal(levelGoal);
+			break;
+		}
+		case 3:
+		{
+			currLevel.addBoardObj(buildObjInfo(buffer));
+			break;
+		}
+		case 4:
 		{
 			buffer >> objTyp >> objAmount;
 			currLevel.addToolbarObj(strToEnum(objTyp), std::stoi(objAmount));
 			break;
 			
 		}
-		case 3:
+		case 5:
 		{
 			buffer >> id >> x_size >> y_size >> x_loc >> y_loc;
 			currLevel.addCondLoc(std::stoi(id), sf::Vector2f(std::stof(x_size), std::stof(y_size)), sf::Vector2f(std::stof(x_loc), std::stof(y_loc)));
 			break;
 		}
-		case 4:
+		case 6:
 		{
 			buffer >> id;
 			currLevel.addCondAct(std::stoi(id));
@@ -102,7 +116,7 @@ std::vector<Level> FileHandler::readLevels()
 void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
 {
 	// m_file.clear();
-	m_file << "\n";
+	m_file << "\n\n-\n\n-";
 
 	std::string objTyp,
 		x_loc, y_loc,
@@ -121,6 +135,7 @@ void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
 		m_file << objTyp << x_loc << y_loc << size << angle << fliped;
 	}	 
 	m_file << "-\n-\n-\n-\n";
+	m_file << "\n";
 }
 
 Type_t FileHandler::strToEnum(const std::string& str)
