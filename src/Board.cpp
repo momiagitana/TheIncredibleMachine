@@ -57,10 +57,14 @@ void Board::draw(sf::RenderWindow& window, bool running)
 		updateImgLocs();
 
 	for(auto &obj : m_objects)
+	{
 		obj->draw(window);
+		
+	}
 	
 	m_connections.draw(window);
 }
+
 
 void Board::updateImgLocs()
 {
@@ -69,19 +73,6 @@ void Board::updateImgLocs()
 	
 	m_connections.checkConnections();
 }
-
-
-  //zalman muti------------------
-// 		if(current && !collides(*current))
-// 		{
-// 			m_objects.push_back(std::unique_ptr<GameObj>(current));
-// 			return true;
-// 		}
-// 		else  
-// 		{
-// 			delete current;
-// 		}
-		
 
 
 bool Board::tryToAdd(std::shared_ptr<GameObj> current, Type_t selected) //fix take selected if non used

@@ -109,6 +109,7 @@ ResourceManager::ResourceManager()
 
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
 	loadTexture("build/frame.png", Type_t::frame);
+	loadTexture("build/conveyorAnim", Type_t::conveyorAnim);
 
 
 

@@ -4,6 +4,8 @@
 
 #include "Button.h"
 #include "PhysicsObj.h"
+#include "Animation.h"
+
 
 
 class GameObj : public Button
@@ -25,6 +27,11 @@ public:
 	void rotateBody(int);
 	void updateLoc();
 
+	void draw(sf::RenderWindow& window) const;
+
+	bool isOn() const { return m_status; }
+	void setStatus(bool status)     { m_status = status; }
+
 	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
 	bool getMouseOverMe() const { return m_mouseOnMe; }
 
@@ -36,6 +43,11 @@ public:
 		return m_phyObj;
 	}
 
+	void animate();
+
+    bool finishedAnim();
+
+
 private:
 
 	PhysicsObj m_phyObj;
@@ -43,5 +55,13 @@ private:
 	int m_ID;
 	sf::Vector2f m_initialLoc;
 	bool m_mouseOnMe = false;
+	bool m_status = false; //fix ON OFF
+
+	//Animation m_animation;
+
+    sf::Clock m_clock;
+
+    bool m_animationFinished;
+    
 	
 };

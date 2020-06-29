@@ -56,3 +56,31 @@ ObjInfo GameObj::getInfo() const
 	info._typ = getType();
 	return info;
 }
+
+void GameObj::draw(sf::RenderWindow& window) const
+{
+	//  if(isOn() )
+	//   	animate();
+	// else
+	// {
+	// }
+	
+}
+
+void GameObj::animate()
+{
+    // if(m_clock.restart().asSeconds() > 0.04)
+	// 	BaseImg::nextIntRect();
+
+    // if(m_currX > animationAmounts[m_type % 200]) //check this modulu shit!
+    // {
+    //   m_currX = 0;
+    //   m_finished = true;
+    // }
+
+    // sf::IntRect newRect(m_currX * animationSizes[m_type % 200].x, 0,  animationSizes[m_type % 200].x, animationSizes[m_type % 200].y);
+
+    // m_sprite.setTextureRect(newRect);
+
+    // m_clock.restart();
+}

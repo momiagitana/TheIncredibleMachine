@@ -55,7 +55,9 @@ enum Type_t
 	conveyorButton,
 	brickWallButton,
 	mouseEngineButton,
-	beltButton
+	beltButton,
+
+	conveyorAnim = 200
 
 };
 
@@ -174,3 +176,10 @@ const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE
 
 const float PPM = 64.f;
 const float MPP = 0.015625f;
+
+
+
+
+std::vector<sf::Vector2i> animationSizes = {sf::Vector2i(17,18)};
+
+const int animationAmounts[2] = {7,7};
