@@ -53,6 +53,7 @@ sf::Vector2f BaseImg::getSize() const
 void BaseImg::setIntRect(sf::IntRect newRect)
 {
 	m_sprite.setTextureRect(newRect);
+	m_sprite.setOrigin(getSize().x / 2, getSize().y / 2);
 }
 
 void BaseImg::setOrigin(float x, float y)
@@ -74,4 +75,22 @@ void BaseImg::drawSmall (sf::RenderTexture& tinyBoard)
 	tinyBoard.draw(m_sprite);
 	m_sprite.setScale(scale);
 	m_sprite.setPosition(pos);
+}
+
+void BaseImg::nextIntRect()
+{
+	sf::IntRect newRect = m_sprite.getTextureRect();
+	if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
+		newRect.left += newRect.width;
+
+	setIntRect(newRect);
+}
+
+void BaseImg::prevIntRect()
+{
+	sf::IntRect newRect = m_sprite.getTextureRect();
+	if (newRect.left - newRect.width >= 0)
+		newRect.left -= newRect.width;
+
+	setIntRect(newRect);
 }

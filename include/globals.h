@@ -1,9 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-const int MENU_BUTTONS_INT_RECT[7][2] = { {24, 23}, {22, 34}, {18, 31}, {110,28},{50,23},{44,34},{40,31} };
-const int MENU_BUTTONS_LOC [4][2] = {{210, 200}, {150, 200}, {100,200}, {150, 200}};
 
+const int MENU_BUTTONS_INT_RECT[5][2] = { {24,23}, {21, 35}, {18, 31}, {110,28},{30,30} };
+const int MENU_BUTTONS_LOC[5][2] = { {210, 200}, {150, 200}, {100,200}, {200, 150},{100,150} };
+const int TOOLBAR_BUTTONS_LOC[2][2] = { {21, 15}, {21,16}};
 const unsigned obj_size = 40;
 
 const int DELTA_ENGINE_CONECT[2][2] = {{13,-3}, {13,0}}; //1 mouse engine
@@ -47,6 +48,9 @@ enum Type_t
 	advanceButton,
 	onePixel,
 
+	up,
+	down,
+
 	connectButton,
 
 	balloonButton = 100,
@@ -58,6 +62,7 @@ enum Type_t
 	mouseEngineButton,
 	trampolineButton,
 	beltButton
+
 
 };
 

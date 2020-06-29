@@ -101,7 +101,7 @@ void OverallController::handleClick(sf::Vector2f loc)
 
 void OverallController::handleMouseMove(sf::Vector2f mouseLoc)
 {
-	for (auto i = 0; i < m_buttons.size() - 1; i++)
+	for (auto i = 0; i < m_buttons.size() ; i++)
 	{
 		if (m_buttons[i].mouseOnMe(mouseLoc))
 		{
@@ -109,27 +109,22 @@ void OverallController::handleMouseMove(sf::Vector2f mouseLoc)
 			{
 			case startButton:
 			{
-				m_buttons[i].setIntRect(getIntRectOfMenuIconClicked(i));
+				m_buttons[i].nextIntRect();
 				break;
 			}
 			case exitButton:
 			{
-				m_buttons[i].setIntRect(getIntRectOfMenuIconClicked(i));
-				break;
-			}
-			case sound:
-			{
-
+				m_buttons[i].nextIntRect();
 				break;
 			}
 			case reset:
 			{
-				m_buttons[i].setIntRect(getIntRectOfMenuIconClicked(i));
+				m_buttons[i].nextIntRect();
 				break;
 			}
 			case choseLevel:
 			{
-
+				m_buttons[i].nextIntRect();
 				break;
 			}
 			default:
@@ -138,7 +133,7 @@ void OverallController::handleMouseMove(sf::Vector2f mouseLoc)
 		}
 		else
 		{
-			m_buttons[i].setIntRect(getIntRectOfMenuIcon(i));
+			m_buttons[i].prevIntRect();
 		}
 	}
 }
@@ -167,7 +162,7 @@ void OverallController::draw(sf::RenderWindow& window)
 
 void OverallController::setButtons()
 {
-	for (auto i = 0; i < m_buttons.size() - 1; i++)
+	for (auto i = 0; i < m_buttons.size() ; i++)
 	{
 		m_buttons[i].setIntRect(getIntRectOfMenuIcon(i));
 		m_buttons[i].setPosition(sf::Vector2f(MENU_BUTTONS_LOC[i][0], MENU_BUTTONS_LOC[i][1]));
@@ -204,10 +199,5 @@ void OverallController::chooseLevel()
 
 sf::IntRect getIntRectOfMenuIcon(int i)
 {
-	return sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0], MENU_BUTTONS_INT_RECT[i][1]));
-}
-
-sf::IntRect getIntRectOfMenuIconClicked(int i)
-{
-	return sf::IntRect(sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0]+1, 1), sf::Vector2i(MENU_BUTTONS_INT_RECT[i+4][0], MENU_BUTTONS_INT_RECT[i+4][1]));
+	return sf::IntRect(sf::Vector2i(0,0), sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0], MENU_BUTTONS_INT_RECT[i][1]));
 }
