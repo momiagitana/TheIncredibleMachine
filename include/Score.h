@@ -17,4 +17,5 @@ private:
 	std::vector<BaseImg> m_numbers;
 	BaseImg m_background;
 	sf::Clock m_clock;
+	std::vector<float> m_sources;
 };

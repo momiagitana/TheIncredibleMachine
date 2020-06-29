@@ -1,4 +1,4 @@
-#include "..\include\Score.h"
+#include "Score.h"
 #include <iostream>
 using std::cout;
 int speed = 20;
@@ -8,10 +8,15 @@ int speed = 20;
 Score::Score(const int)
 	:m_score(9999),m_background(sf::Vector2f(SC_X,SC_Y),Type_t::score)
 {
-	for (int i = 0; i < NUM_OF_NUMBERS_TEX; i++)
+	for (int i = NUM_OF_NUMBERS_TEX-1 ; i >= 0  ; i--)
 	{
-		m_numbers.emplace_back(BaseImg(sf::Vector2f(SC_N_INITIAL +(SC_N_W+SC_SEP)*i ,WINDOW_HEIGHT+50),Type_t::numbers));  //alloc baseimg
-		m_numbers.at(i).setTextureRect(sf::IntRect(SC_INS_RECT_X, SC_INS_RECT_Y, SC_N_W, SC_N_W*2));     //slice a rectangle
+		BaseImg number(sf::Vector2f(0,0), Type_t::numbers);
+		number.setTextureRect(sf::IntRect(SC_INS_RECT_X, SC_INS_RECT_Y, SC_N_W, INT_RECT_H));
+		number.setOrigin(number.getGlobalBounds().width/2, number.getGlobalBounds().height/2);
+		number.setPosition(sf::Vector2f(SC_N_INITIAL +(SC_N_W+SC_SEP)*i, SC_Y + NUM_DELTA_Y_FROM_SCORE));
+		m_numbers.push_back(number);
+
+		m_sources.push_back(float(0));
 	}
 	m_clock.restart();
 }
@@ -23,9 +28,8 @@ void Score::set(int score)
 
 int Score::get() const
 {
-	return m_score;
+	return 1;//for (int i = )
 }
-
 
 void Score::draw(sf::RenderWindow& window) const
 {
@@ -40,19 +44,32 @@ void Score::draw(sf::RenderWindow& window) const
 void Score::setClock()
 {	
 	
-	int spped = 40;
+	float mult = 0.1f;
 
-	for (auto& i : m_numbers)
+	static auto delta = m_clock.getElapsedTime().asSeconds();
+	m_clock.restart();
+
+	
+
+	for (int i = 0; i < m_numbers.size(); i++)
 	{
-		i.setTextureRect(sf::IntRect(0,160- m_clock.getElapsedTime().asSeconds()*spped, SC_N_W, SC_N_W * 2));
+		sf::IntRect newRect(m_numbers[i].getTextureRect());
+		m_sources[i] += delta * (mult);
+		if(m_sources[i] >= 1)
+		{
+			newRect.top -= 1;
+			m_sources[i] = 0;
+		}
+
+		m_numbers[i].setTextureRect(newRect);
+		mult = mult/10.f;
+
+		if(m_numbers[i].getTextureRect().top == 0)
+			m_numbers[i].setTextureRect(sf::IntRect(SC_INS_RECT_X, 210, SC_N_W, INT_RECT_H));
+			
 	}
 
-	if (m_numbers.at(m_numbers.size() - 1).getTextureRect().top == 0)
-	{
-		m_numbers.at(m_numbers.size() - 1).setTextureRect(sf::IntRect(0,160, SC_N_W, SC_N_W * 2));
-		m_clock.restart();
-
-	}
+	
 
 	
 
