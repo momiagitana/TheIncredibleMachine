@@ -119,7 +119,7 @@ ResourceManager::ResourceManager()
 
 	////---------- font ---win------
 	//loadFont("kongtext.ttf", Font::kongtext);
-	// loadFont("build/kongtext.ttf", Font::kongtext);
+	loadFont("build/kongtext.ttf", Font::kongtext);
 
 
 	////---------- sound ----------
