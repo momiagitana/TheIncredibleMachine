@@ -112,7 +112,6 @@ void OverallController::draw(sf::RenderWindow& window)
 	for (auto& button : m_buttons)
 		button.draw(window);
 
-	//window.draw(m_text);
 }
 
 void OverallController::setButtons()

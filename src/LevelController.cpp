@@ -56,13 +56,15 @@ bool LevelController::run()
     }
 
 
-	//m_board.saveLevelToFile();
+
 
 	while(replaySolution() && m_finished)
 	{
 		tryRunning();
 		m_board.resetObjectsPositions();
 	}
+
+	m_board.saveLevelToFile();
 
   	return m_finished;
 
