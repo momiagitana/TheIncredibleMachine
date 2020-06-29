@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-const int MENU_BUTTONS_INT_RECT [4][2]=  {{24, 23}, {22, 34}, {18, 31}, {110,28}};
+const int MENU_BUTTONS_INT_RECT[7][2] = { {24, 23}, {22, 34}, {18, 31}, {110,28},{50,23},{44,34},{40,31} };
 const int MENU_BUTTONS_LOC [4][2] = {{210, 200}, {150, 200}, {100,200}, {150, 200}};
 
 const unsigned obj_size = 40;

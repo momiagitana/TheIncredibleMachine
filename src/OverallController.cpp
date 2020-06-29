@@ -11,7 +11,7 @@ OverallController::OverallController(b2World& world, MyListener& listener)//fix 
 	m_background(sf::Vector2f(MENU_X, MENU_Y), menuBackground),
 	m_levelController(m_levels[m_numOfLevel], world, m_window, listener)//fix
 {
- 
+
 	m_window.setFramerateLimit(60);
 	m_smallBoard.create(TINY_BOARD_W, TINY_BOARD_H);
 	m_levelController.drawTinyBoard(m_smallBoard);
@@ -41,12 +41,19 @@ void OverallController::run()
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 					closeWindow();
+				break;
 
 			case sf::Event::MouseButtonReleased:
-
-				sf::Vector2f location = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
+			{
+				auto location = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 				handleClick(location);
-			
+				break;
+			}
+
+			case sf::Event::MouseMoved:
+				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseMove.x, event.mouseMove.y });
+				handleMouseMove(mouseLoc);
+				break;
 			}
 		}
 	}
@@ -92,6 +99,50 @@ void OverallController::handleClick(sf::Vector2f loc)
 
 }
 
+void OverallController::handleMouseMove(sf::Vector2f mouseLoc)
+{
+	for (auto i = 0; i < m_buttons.size() - 1; i++)
+	{
+		if (m_buttons[i].mouseOnMe(mouseLoc))
+		{
+			switch (m_buttons[i].getType())
+			{
+			case startButton:
+			{
+				m_buttons[i].setIntRect(getIntRectOfMenuIconClicked(i));
+				break;
+			}
+			case exitButton:
+			{
+				m_buttons[i].setIntRect(getIntRectOfMenuIconClicked(i));
+				break;
+			}
+			case sound:
+			{
+
+				break;
+			}
+			case reset:
+			{
+				m_buttons[i].setIntRect(getIntRectOfMenuIconClicked(i));
+				break;
+			}
+			case choseLevel:
+			{
+
+				break;
+			}
+			default:
+				break;
+			}
+		}
+		else
+		{
+			m_buttons[i].setIntRect(getIntRectOfMenuIcon(i));
+		}
+	}
+}
+
 Type_t OverallController::getSelection(sf::Vector2f loc) const
 {
 	for (auto button : m_buttons)
@@ -103,7 +154,7 @@ Type_t OverallController::getSelection(sf::Vector2f loc) const
 void OverallController::draw(sf::RenderWindow& window)
 {
 	sf::Sprite tinyBoard(m_smallBoard.getTexture());
-	tinyBoard.setPosition(268,70);//fix
+	tinyBoard.setPosition(268, 70);//fix
 
 	m_levelController.drawStatic(false);
 	m_window.draw(tinyBoard);
@@ -116,7 +167,7 @@ void OverallController::draw(sf::RenderWindow& window)
 
 void OverallController::setButtons()
 {
-	for (auto i = 0; i < m_buttons.size()-1; i++)
+	for (auto i = 0; i < m_buttons.size() - 1; i++)
 	{
 		m_buttons[i].setIntRect(getIntRectOfMenuIcon(i));
 		m_buttons[i].setPosition(sf::Vector2f(MENU_BUTTONS_LOC[i][0], MENU_BUTTONS_LOC[i][1]));
@@ -138,15 +189,15 @@ void OverallController::setLevel()
 }
 
 void OverallController::chooseLevel()
-{	
+{
 	int level = -1;
-	
-	while(level >= m_levels.size() || level < 0)
+
+	while (level >= m_levels.size() || level < 0)
 	{
 		std::cout << "please which level you want:\n";
-		std::cin >> level;	
+		std::cin >> level;
 	}
-	
+
 	m_numOfLevel = level;
 	setLevel();
 }
@@ -154,4 +205,9 @@ void OverallController::chooseLevel()
 sf::IntRect getIntRectOfMenuIcon(int i)
 {
 	return sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0], MENU_BUTTONS_INT_RECT[i][1]));
+}
+
+sf::IntRect getIntRectOfMenuIconClicked(int i)
+{
+	return sf::IntRect(sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0]+1, 1), sf::Vector2i(MENU_BUTTONS_INT_RECT[i+4][0], MENU_BUTTONS_INT_RECT[i+4][1]));
 }

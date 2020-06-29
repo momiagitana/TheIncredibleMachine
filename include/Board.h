@@ -42,7 +42,7 @@ public:
 	void saveLevelToFile();
 	void wakeEmAllUp();
 
-	void checkMouseOver(sf::Vector2f loc);
+	void checkMouseOver(sf::Vector2f loc ,std::shared_ptr<GameObj> mouseImg);
 	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
 
 
@@ -55,7 +55,7 @@ public:
 	void resetConnections() { m_connections.reset(); }
 	void deleteConnection(Connectable* obj) { m_connections.deleteConnection(obj); }
 	Connectable* isConnectedAndConnectable(GameObj* obj) const { return m_connections.isConnectedAndConnectable(obj); }
-	void setMousePos(sf::Vector2f mouseLoc);
+	void setMousePos(sf::Vector2f mouseLoc, std::shared_ptr<GameObj> mouseImg);
 
 private:
 
