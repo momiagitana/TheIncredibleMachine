@@ -31,9 +31,13 @@ int Score::get() const
 	return 1;//for (int i = )
 }
 
-void Score::draw(sf::RenderWindow& window) const
+void Score::draw(sf::RenderWindow& window)
 {
 	m_background.draw(window);
+	
+	//if (m_play) mishtane bool member
+	updateClock();
+
 	for (auto & number : m_numbers)
 	{
 		number.draw(window);
@@ -41,7 +45,7 @@ void Score::draw(sf::RenderWindow& window) const
 }
 
 
-void Score::setClock()
+void Score::updateClock()
 {	
 	
 	float mult = 0.1f;
@@ -68,9 +72,6 @@ void Score::setClock()
 			m_numbers[i].setTextureRect(sf::IntRect(SC_INS_RECT_X, 210, SC_N_W, INT_RECT_H));
 			
 	}
-
-	
-//
 	
 
 }

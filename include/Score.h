@@ -9,8 +9,8 @@ public:
 	Score(const int);
 	void set(int score);
 	int get() const;
-	void draw(sf::RenderWindow& window) const;
-	void setClock();
+	void draw(sf::RenderWindow& window);
+	void updateClock();
 
 private:
 	int m_score;

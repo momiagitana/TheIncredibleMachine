@@ -29,9 +29,6 @@ int main()
 				break;
 			}
 		}
-
-		
-		sco.setClock();
 		
 	}
 			
