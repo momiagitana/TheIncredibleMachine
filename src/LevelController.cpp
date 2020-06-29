@@ -206,7 +206,7 @@ void LevelController::updateMouseLoc(const sf::Vector2f loc)
 {
 	m_mouseImg.setPosition(loc);
 
-	m_board.setMousePos(loc);
+	m_board.setMousePos(loc,m_mouseObj);
 	
 	if(m_mouseObj)
 		m_mouseObj->setPosition(loc);

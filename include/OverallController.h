@@ -32,6 +32,7 @@ private:
 	void chooseLevel();
 	Type_t getSelection(sf::Vector2f loc) const;
 	void handleClick(sf::Vector2f loc);
+	void handleMouseMove(sf::Vector2f mouseLoc);
 
 	std::vector<Button> m_buttons;
 	sf::RenderWindow m_window;
@@ -44,3 +45,4 @@ private:
 	sf::RenderTexture m_smallBoard;
 };
 sf::IntRect getIntRectOfMenuIcon(int i);
+sf::IntRect getIntRectOfMenuIconClicked(int i);
