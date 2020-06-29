@@ -30,3 +30,4 @@ Type_t Button::getType() const
 	return Type_t(m_type%100);//fix global 
 }
 
+

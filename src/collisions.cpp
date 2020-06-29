@@ -105,5 +105,5 @@ void Collisions::processCollision(GameObj& object1, GameObj& object2)
 
 int Collisions::aboveOrBelow(GameObj& object1, GameObj& object2)
 {
-
+    return 1; // fix
 }

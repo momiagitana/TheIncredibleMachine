@@ -45,4 +45,3 @@ private:
 	sf::RenderTexture m_smallBoard;
 };
 sf::IntRect getIntRectOfMenuIcon(int i);
-sf::IntRect getIntRectOfMenuIconClicked(int i);

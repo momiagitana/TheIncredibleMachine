@@ -25,8 +25,8 @@ public:
 	virtual void drawSmall (sf::RenderTexture&);
 
 	sf::Sprite getSprite() const { return m_sprite; } //fix ask if correct
-
-
+	void nextIntRect();
+	void prevIntRect();
 
 private:
 
