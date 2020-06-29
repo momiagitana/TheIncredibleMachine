@@ -85,30 +85,34 @@ std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc, Type_t& selec
 	Resizable* resizableObj = nullptr;
 	for (auto i = 0; i < m_objects.size(); i++)
 	{
-		if (m_objects[i]->mouseOnMe(mouseLoc) && m_objects[i]->isMovable())
+		if (m_objects[i]->mouseOnMe(mouseLoc))
 		{
-			Type_t clicked = m_objects[i]->handleClick(mouseLoc);
-			if (clicked == rotateButton || clicked == resizeButton) //means it resized or rotated
-			{
-				resizableObj = static_cast <Resizable*> (m_objects[i].get());
-				if (collides(*resizableObj))
-					resizableObj->fixLastChange(clicked);
-			}
 
-			else if (clicked == connectButton)
+			Type_t clicked = m_objects[i]->handleClick(mouseLoc);
+			if (clicked == connectButton)
 			{
 				if (Connectable* connectable = isConnectedAndConnectable(m_objects[i].get()))
 				{
 					selected = belt;
 					m_connections.unplug(connectable);
 				}
-				obj = m_objects[i];
 			}
 
-			else
+			else if(m_objects[i]->isMovable())
 			{
-				obj = m_objects[i];
-				m_objects.erase(m_objects.begin() + i);
+				if (clicked == rotateButton || clicked == resizeButton) //means it resized or rotated
+				{
+					resizableObj = static_cast <Resizable*> (m_objects[i].get());
+					if (collides(*resizableObj))
+						resizableObj->fixLastChange(clicked);
+				}
+
+				else
+				{
+					obj = m_objects[i];
+					m_objects.erase(m_objects.begin() + i);
+				}
+
 			}
 			break;
 		}
@@ -243,3 +247,10 @@ void Board::setMousePos(sf::Vector2f mouseLoc, std::shared_ptr<GameObj> mouseImg
 	m_connections.setMousePos(mouseLoc);
 }
 
+void Board::wakeEmAllUp()//fix urgent delete if not using
+{
+	// for(auto& obj: m_objects)
+	// {
+	// 	//obj->wakeUp();
+	// }
+}

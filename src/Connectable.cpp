@@ -6,6 +6,7 @@ Connectable::Connectable(ObjInfo info, bool movable, b2World &world, int typeOfE
     m_connection((sf::Vector2f(info._loc.x, info._loc.y)), connectButton)
 {
     m_buttonDelta = sf::Vector2f(DELTA_ENGINE_CONECT[typeOfEngine][0],DELTA_ENGINE_CONECT[typeOfEngine][1]);
+    setPosition(info._loc);
 }
 
 Connectable::~Connectable()

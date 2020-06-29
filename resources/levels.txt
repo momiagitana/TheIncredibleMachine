@@ -50,26 +50,53 @@ zalman mom
 -
 "You need to tie the bowlingtball to the basket"
 -
-balloon 123.000000 300.000000 -1 -1 -1
-brickWall 558.000000 80.000000 5 2 0
-brickWall 16.000000 81.000000 5 2 0
-brickWall 16.000000 196.000000 5 2 0
-brickWall 518.000000 138.000000 1 1 0
-brickWall 523.000000 187.000000 1 3 0
-brickWall 522.000000 239.000000 1 1 0
-brickWall 457.000000 315.000000 1 1 0
-brickWall 411.000000 313.000000 1 3 0
-brickWall 364.000000 316.000000 1 1 0
-brickWall 267.000000 316.000000 1 1 0
-brickWall 221.000000 315.000000 1 3 0
-brickWall 173.000000 317.000000 1 1 0
-brickWall 318.000000 314.000000 1 3 0
 -
-brickWall 5
-mouseEngine 3
-belt 3
-conveyor 3
+basketBall -1
+brickWall -1
+mouseEngine -1
+belt -1
+conveyor -1
+balloon -1
+baseBall -1
+trampoline -1
 -
-0 38 12 530 8
+0 0 0 530 8
+-
+-
+
+
+-
+
+-
+brickWall 73.000000 157.000000 1 0 -1
+mouseEngine 73.000000 133.000000 -1 -1 -1
+brickWall 40.000000 109.999992 5 2 -1
+brickWall 73.000000 62.000000 1 0 -1
+brickWall 106.000000 109.000000 5 2 -1
+conveyor 71.000000 236.999985 -1 -1 -1
+brickWall 94.000000 269.000000 1 2 -1
+brickWall 126.000000 302.000000 3 0 -1
+brickWall 155.000000 253.000015 3 2 -1
+brickWall 289.000000 155.000000 1 0 -1
+brickWall 289.000000 59.000000 1 0 -1
+conveyor 294.000000 239.000000 -1 -1 -1
+brickWall 317.000000 271.000000 1 2 -1
+brickWall 349.000000 303.000000 3 0 -1
+brickWall 378.000000 253.999985 3 2 -1
+brickWall 322.000000 108.000008 5 2 -1
+baseBall 64.000000 213.000000 -1 -1 -1
+baseBall 286.000000 218.000000 -1 -1 -1
+brickWall 257.000000 108.000008 5 2 -1
+-
+basketBall -1
+brickWall -1
+mouseEngine -1
+belt -1
+conveyor -1
+balloon -1
+baseBall -1
+trampoline -1
+-
+0 0 0 0 0
 -
 -

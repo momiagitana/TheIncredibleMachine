@@ -99,7 +99,6 @@ void LevelController::handleBoardClick(sf::Vector2f mouseLoc)
 			}
 			else //if failed to connect we return the belt to the toolbar
 			{
-
 				clearMouse();
 				m_toolbar.addOrIncrease(belt);
 			}
@@ -132,7 +131,7 @@ void LevelController::handleToolbarClick(sf::Vector2f mouseLoc)
 		if(m_selected == belt)
 			m_board.resetConnections();
 		
-		else if (m_selected == mouseEngine)
+		else if (m_selected == mouseEngine || m_selected == conveyor)
 			returnConnectableToToolbar();
 
 
@@ -227,7 +226,7 @@ bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
 
 void LevelController::drawAll(bool running)
 {
-	m_window.clear();//sf::Color(18, 160, 159));
+	m_window.clear();
 
 	drawStatic(running);
 	
@@ -247,12 +246,12 @@ void LevelController::drawAll(bool running)
 
 void LevelController::drawStatic(bool running)
 {
-	m_board.draw(m_window, running);//fix RUNNING
+	m_board.draw(m_window, running);
 	m_frame.draw(m_window);
 	m_toolbar.draw(m_window);
 }
 
-bool LevelController::replaySolution() //fix
+bool LevelController::replaySolution() //fix urgent
 {
 	BaseImg nextLevelMesseage(sf::Vector2f(400,300),Type_t::puzzleComplete);
 	Button replay(sf::Vector2f(350,350),Type_t::replayButton);
@@ -308,6 +307,13 @@ bool LevelController::tryRunning()
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 
 		drawAll(true);//fix RUNNING
+		
+		b2Body* body = m_world.GetBodyList();
+		while(body)
+		{
+			body->SetAwake(true);
+			body = body->GetNext();
+		}
 
 		sf::Event event;
 		while (m_window.pollEvent(event))

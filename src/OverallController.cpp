@@ -146,7 +146,7 @@ void OverallController::menuMode(sf::Vector2f loc)
 	{
 		if (m_levelController.run())//won level
 		{
-			++m_numOfLevel;
+			m_numOfLevel = m_numOfLevel+1 % m_levels.size();
 			setLevel();
 		}
 		m_levelController.drawTinyBoard(m_smallBoard);
@@ -177,32 +177,32 @@ void OverallController::menuMode(sf::Vector2f loc)
 	}
 }
 
-void OverallController::handleMouseMove(sf::Vector2f mouseLoc)
+void OverallController::handleMouseMove(sf::Vector2f mouseLoc) //fix
 {
-	for (auto i = 0; i < m_buttons.size() ; i++)
+	for (auto i = 0; i < m_menuButtons.size() ; i++)
 	{
-		if (m_buttons[i].mouseOnMe(mouseLoc))
+		if (m_menuButtons[i].mouseOnMe(mouseLoc))
 		{
-			switch (m_buttons[i].getType())
+			switch (m_menuButtons[i].getType())
 			{
 			case startButton:
 			{
-				m_buttons[i].nextIntRect();
+				m_menuButtons[i].nextIntRect();
 				break;
 			}
 			case exitButton:
 			{
-				m_buttons[i].nextIntRect();
+				m_menuButtons[i].nextIntRect();
 				break;
 			}
 			case reset:
 			{
-				m_buttons[i].nextIntRect();
+				m_menuButtons[i].nextIntRect();
 				break;
 			}
 			case choseLevel:
 			{
-				m_buttons[i].nextIntRect();
+				m_menuButtons[i].nextIntRect();
 				break;
 			}
 			default:
@@ -211,7 +211,8 @@ void OverallController::handleMouseMove(sf::Vector2f mouseLoc)
 		}
 		else
 		{
-			m_buttons[i].prevIntRect();
+
+			m_menuButtons[i].prevIntRect();
 		}
 	}
 }
@@ -299,10 +300,10 @@ void OverallController::setLevel()
 
 sf::IntRect getIntRectOfMenuIcon(int i)
 {
-	return sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0], MENU_BUTTONS_INT_RECT[i][1]));
+	return sf::IntRect(sf::Vector2i(0, 0), sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0], MENU_BUTTONS_INT_RECT[i][1]));
 }
 
 sf::IntRect getIntRectOfChoseLevelIcon(int i)
 {
-	return sf::IntRect(sf::Vector2i(1, 1), sf::Vector2i(CHOSE_LEVEL_BUTTONS_INT_RECT[i][0], CHOSE_LEVEL_BUTTONS_INT_RECT[i][1]));
+	return sf::IntRect(sf::Vector2i(0, 0), sf::Vector2i(CHOSE_LEVEL_BUTTONS_INT_RECT[i][0], CHOSE_LEVEL_BUTTONS_INT_RECT[i][1]));
 }

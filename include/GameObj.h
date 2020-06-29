@@ -30,6 +30,8 @@ public:
 	int aboveOrBelow(GameObj& other) const;
 	bool isBelow(GameObj& other) const;
 
+	void wakeUp();
+
 	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
 	bool getMouseOverMe() const { return m_mouseOnMe; }
 

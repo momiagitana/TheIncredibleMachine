@@ -120,6 +120,7 @@ ResourceManager::ResourceManager()
 
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
 	loadTexture("build/frame.png", Type_t::frame);
+ 	loadTexture("build/chooseLevelButton.png", Type_t::choseLevel);
 	loadTexture("build/1px.png", Type_t::onePixel);
 
 
