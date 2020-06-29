@@ -25,3 +25,13 @@ void Level::addCondAct (int id)
 {
 	m_actConditions.push_back(id);
 }
+
+void Level::addName(const std::string& name)
+{
+	m_name = name;
+}
+
+void Level::addLevelGoal(const std::string& levelGoal)
+{
+	m_levelGoal = levelGoal;
+}

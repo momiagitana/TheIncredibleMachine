@@ -27,7 +27,11 @@ public:
 	void addCondLoc (int, sf::Vector2f, sf::Vector2f);
 	void addCondAct (int);
 
-	//---------option 2
+	void addName(const std::string&);
+	void addLevelGoal(const std::string&);
+
+	std::string getLevelName() const { return m_name; }
+	std::string getLevelGoal() const { return m_levelGoal; }
 
 	boardObjects   getBoardObjs() const { return m_initial; }
 	toolbarObjects getToolbarObjs() const {return m_toolbar; }
@@ -42,4 +46,7 @@ private:
 
 	conditionsLocs m_locConditons;
 	conditionsActs m_actConditions;
+
+	std::string m_name;
+	std::string m_levelGoal;
 };

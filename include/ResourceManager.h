@@ -17,7 +17,8 @@ public:
 
 	enum class Font
 	{
-		kongtext
+		kongtext,
+		coue1255
 	};
 
 	enum class Sound
@@ -25,7 +26,6 @@ public:
 		background,
 		menu
 	};
-
 	//make the static event so we wont load the textures multiple times
 	static ResourceManager& instance();
 	sf::Texture* getTexture(Type_t name);
