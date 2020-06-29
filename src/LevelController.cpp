@@ -1,6 +1,7 @@
 #include "LevelController.h"
 #include "ResourceManager.h"
 #include <iostream>
+#include "Score.h"
 
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win)
 	:m_board(lvl, world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
@@ -15,7 +16,7 @@ void LevelController::run()
 	while (m_window.isOpen() && !m_finished)
 	{
 		drawAll(false);//NOT_RUNNING fix
-
+		
 		sf::Event event;
 
 		while (m_window.pollEvent(event) && !m_finished)// level status might have to be on the outer while
@@ -73,6 +74,7 @@ void LevelController::run()
 
 				
 			}
+			
         }
     }
 
@@ -127,7 +129,6 @@ void LevelController::drawAll(bool running)
 	m_window.clear(sf::Color(18, 160, 159));
 
 	m_board.draw(m_window, running);//fix RUNNING
-
 	m_frame.draw(m_window);
 	m_toolbar.draw(m_window);
 	

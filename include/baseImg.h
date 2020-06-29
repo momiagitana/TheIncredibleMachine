@@ -23,7 +23,8 @@ public:
 	void setOrigin(float, float);
 	void setScale(float);
 
-
+	void setTextureRect(sf::IntRect intrect);
+	const sf::IntRect& getTextureRect() const;
 
 private:
 

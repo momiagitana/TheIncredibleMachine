@@ -20,5 +20,6 @@
 										  "ResourceManager.cpp"
 										  "ToolbarButton.cpp"
 										  "Factory.cpp"
-										)
+										 "Score.cpp"
+										  )										  
 

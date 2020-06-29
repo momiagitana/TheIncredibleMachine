@@ -66,3 +66,13 @@ void BaseImg::setScale(float scale)
 {
 	m_sprite.setScale(sf::Vector2f(scale, scale));
 }
+
+void BaseImg::setTextureRect(sf::IntRect intrect)
+{
+	m_sprite.setTextureRect(intrect);
+}
+
+const sf::IntRect& BaseImg::getTextureRect() const
+{
+	return m_sprite.getTextureRect();
+}

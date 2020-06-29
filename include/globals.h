@@ -33,6 +33,9 @@ enum Type_t
 	msgRublic,
 	msgRepley,
 	msgAdvance,
+
+	numbers,
+	score,
 	
 	balloonButton = 100,
 	basketButton,
@@ -79,16 +82,16 @@ const int FLOORING_UNIT = 16; //pixels
 const int FLOORING_MARGIN = 1; //pix
 
 const int FRAME_SIZE = 8;
-const int SCORE_TIME_H = 60;
+const int SCORE_H = 60;
 
 const int FRAME_X = WINDOW_WIDTH/2;
-const int FRAME_Y = (WINDOW_HEIGHT-SCORE_TIME_H)/2;
+const int FRAME_Y = (WINDOW_HEIGHT-SCORE_H)/2;
 
 const int PLAY_BUTTON_H = 50;
 const int ARROWS_H = 20;
 
 const int TB_W = 56;
-const int TB_H = WINDOW_HEIGHT - SCORE_TIME_H - PLAY_BUTTON_H - ARROWS_H-60;//frames
+const int TB_H = WINDOW_HEIGHT - SCORE_H - PLAY_BUTTON_H - ARROWS_H-60;//frames
 const int TB_TOP = 100;//PLAYH+ARRH+3FRAMES~
 
 const int TB_X = WINDOW_WIDTH - FRAME_SIZE - TB_W; //topleft
@@ -117,6 +120,16 @@ const int replayLevelRexuestX = 350;
 const int replayLevelRexuestY = 350;
 const int advanceRequestX = 460;
 const int advanceRequestY = 350;
+
+const int SC_H = 40;
+const int SC_N_W = 24;
+const int SC_SEP = 8;
+const int SC_N_INITIAL = WINDOW_WIDTH/2 - SC_N_W*2;
+const int SC_X =  WINDOW_WIDTH/2;
+const int SC_Y = WINDOW_HEIGHT - SC_H;
+const int SC_INS_RECT_Y = 190;
+const int SC_INS_RECT_X = 0;
+const int NUM_OF_NUMBERS_TEX = 4;
 
 
 
