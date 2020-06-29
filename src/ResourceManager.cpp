@@ -67,8 +67,9 @@ ResourceManager::ResourceManager()
 	 loadTexture("bomb.png", Type_t::reset);
 	 loadTexture("sound.png", Type_t::sound);
 
-	loadTexture("build/score.png", Type_t::score);
-	loadTexture("build/numbers.png", Type_t::numbers);
+	loadTexture("score.png", Type_t::score);
+	loadTexture("numbers.png", Type_t::numbers);
+	
 
 
  	loadTexture("The_Incredible_Machine.png", Type_t::background);
@@ -105,6 +106,8 @@ ResourceManager::ResourceManager()
 	loadTexture("build/bomb.png", Type_t::reset);
 	loadTexture("build/sound.png", Type_t::sound);
 	
+	loadTexture("build/score.png", Type_t::score);
+	loadTexture("build/numbers.png", Type_t::numbers);
 
 	loadTexture("build/The_Incredible_Machine.png", Type_t::background);
 	loadTexture("build/frame.png", Type_t::frame);*/

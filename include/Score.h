@@ -9,6 +9,8 @@ public:
 	Score(const int);
 	void set(int score);
 	int get() const;
+	void play();
+	void stop();
 	void draw(sf::RenderWindow& window);
 	void updateClock();
 
@@ -18,4 +20,5 @@ private:
 	BaseImg m_background;
 	sf::Clock m_clock;
 	std::vector<float> m_sources;
+	bool m_play = true;
 };
