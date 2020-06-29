@@ -70,7 +70,7 @@ void Score::setClock()
 	}
 
 	
-
+//
 	
 
 }
