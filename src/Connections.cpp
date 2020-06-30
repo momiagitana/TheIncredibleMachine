@@ -98,15 +98,53 @@ void Connections::draw(sf::RenderWindow& window) const
         drawMovingBelt(window);
 }
 
+sf::Vector2f Connections::calculateNormal(const sf::Vertex& pointA, const sf::Vertex& pointB)const
+{
+    sf::Vector2f vertex;
+    float x;
+    float y;
+    x = pointB.position.x - pointA.position.x;
+    y = pointB.position.y - pointA.position.y;
+    std::swap(x, y);
+    x = x * (-1);
+    float normal = std::sqrt(std::pow(x, 2) + std::pow(y, 2));
+    vertex.x = x / normal;
+    vertex.y = y / normal;
+
+    return vertex;
+}
+
 void Connections::drawBelt(std::pair<Connectable*, Connectable*> each, sf::RenderWindow& window) const
 {
-    sf::Vertex line[2];
-    line[0].position = each.first->getConnectionButtonPos();
-    line[0].color  = sf::Color::Black;
-    line[1].position = each.second->getConnectionButtonPos();
-    line[1].color = sf::Color::Black;
+    sf::Vector2f centerA;
+    sf::Vector2f centerB;
+    sf::Vector2f normal;
+    sf::Vertex line1[2];
+    sf::Vertex line2[2];
+    float radius = ResourceManager::instance().getTexture(connectButton)->getSize().x/2;
 
-    window.draw(line, 2, sf::Lines);
+    line1[0].color = sf::Color::Black;
+    line1[1].color = sf::Color::Black;
+    line2[0].color = sf::Color::Black;
+    line2[1].color = sf::Color::Black;
+  
+    centerA = each.first->getConnectionButtonPos();
+    centerB = each.second->getConnectionButtonPos();
+    normal = calculateNormal(centerA, centerB);
+    normal.x *= radius;
+    normal.y *= radius;
+
+    line1[0].position.x = (centerA.x + normal.x);
+    line1[0].position.y = (centerA.y + normal.y);
+    line1[1].position.x = (centerB.x + normal.x);
+    line1[1].position.y = (centerB.y + normal.y);
+    line2[0].position.x = (centerA.x - normal.x);
+    line2[0].position.y = (centerA.y - normal.y);
+    line2[1].position.x = (centerB.x - normal.x);
+    line2[1].position.y = (centerB.y - normal.y);
+
+    window.draw(line1, 2, sf::Lines);
+    window.draw(line2, 2, sf::Lines);
 }
 
 void Connections::unplug(Connectable* toUnplug)

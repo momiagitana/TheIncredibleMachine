@@ -41,6 +41,7 @@ private:
 	void setMenuTexts();
 	void setChoseLevelTexts();
 	void setText();
+	
 
 	std::vector<Button> m_menuButtons;
 	std::vector<Button> m_choseLevelButtons;

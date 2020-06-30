@@ -1,5 +1,7 @@
 #include "OverallController.h"
 #include <iostream>
+#include <algorithm>
+#include <math.h>
 #include "ResourceManager.h"
 
 
@@ -141,6 +143,8 @@ void OverallController::setText()
 	m_levelNo.setCharacterSize(CHARATER_SIZE);
 	m_levelNo.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
 }
+
+
 
 void OverallController::menuMode(sf::Vector2f loc)
 {

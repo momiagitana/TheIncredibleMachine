@@ -32,5 +32,6 @@ public:
     void reset();
     void setMousePos(sf::Vector2f mouseLoc);
     void deleteConnection(Connectable* obj);
+    sf::Vector2f calculateNormal(const sf::Vertex&, const sf::Vertex&)const;
     Connectable* isConnectedAndConnectable(GameObj* obj)const;
 };

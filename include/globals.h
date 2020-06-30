@@ -11,7 +11,7 @@ const int TOOLBAR_BUTTONS_LOC[2][2] = { {21, 15}, {21,16}};
 
 const unsigned obj_size = 40;//fix check if needed
 
-const int DELTA_ENGINE_CONECT[2][2] = {{13,-3}, {13,0}}; //1 mouse engine, fix change name, 2conveyor
+const int DELTA_ENGINE_CONECT[2][2] = {{13,-6}, {13,0}}; //1 mouse engine, fix change name, 2conveyor
 
 const int NUM_OF_OBJECTS = 8; // update when adding an object 
 
