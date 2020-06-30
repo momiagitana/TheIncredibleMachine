@@ -1,4 +1,4 @@
-zingman mom
+Zingman Mom
 -
 "You need to tie the basketball to the basket"
 -
@@ -46,9 +46,9 @@ conveyor 3
 -
 -
 
-zalman mom
+Level Editor
 -
-"You need to tie the bowlingtball to the basket"
+"Creat a new level"
 -
 -
 basketBall -1
@@ -64,9 +64,9 @@ trampoline -1
 -
 -
 
-
+Zalman Mom
 -
-
+"You need to tie the bowlingtball to the basket"
 -
 brickWall 73.000000 157.000000 1 0 -1
 mouseEngine 73.000000 133.000000 -1 -1 -1

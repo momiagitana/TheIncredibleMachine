@@ -18,7 +18,7 @@ public:
 	enum class Font
 	{
 		kongtext,
-		coue1255
+		CourierNew,
 	};
 
 	enum class Sound

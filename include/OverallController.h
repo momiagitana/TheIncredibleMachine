@@ -41,6 +41,7 @@ private:
 	void setMenuTexts();
 	void setChoseLevelTexts();
 	void setText();
+	
 
 	std::vector<Button> m_menuButtons;
 	std::vector<Button> m_choseLevelButtons;
@@ -52,7 +53,7 @@ private:
 	sf::Text m_levelGoal;
 	sf::Text m_levelName;
 	sf::Text m_levelNo;
-	unsigned m_numOfLevel = 0;
+	int m_numOfLevel = 0;
 	LevelController m_levelController;
 	sf::RenderTexture m_smallBoard;
 	bool m_choseLevelMode = false;

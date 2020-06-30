@@ -60,16 +60,12 @@ Level FileHandler::getlevel()
 		{
 		case 1:
 		{
-			std::string levelName;
-			buffer >> levelName;
-			currLevel.addName(levelName);
+			currLevel.addName(line);
 			break;
 		}
 		case 2:
 		{
-			std::string levelGoal;
-			buffer >> levelGoal;
-			currLevel.addLevelGoal(levelGoal);
+			currLevel.addLevelGoal(line);
 			break;
 		}
 		case 3:

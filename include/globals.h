@@ -7,15 +7,15 @@ const int MENU_BUTTONS_LOC[5][2] = { {210, 200}, {150, 200}, {100,200}, {200, 15
 const int CHOSE_LEVEL_BUTTONS_INT_RECT[3][2] = { {48, 18}, {21, 15}, {21, 16} };
 const int CHOSE_LEVEL_BUTTONS_LOC[3][2] = { {200, 150}, {140, 145}, {141,165} };
 
-const int TOOLBAR_BUTTONS_LOC[2][2] = { {21, 15}, {21,16}};
+const int TOOLBAR_BUTTONS_LOC[2][2] = {{21, 15}, {21,16}};
 
-const int SCORE_PIX_LOC[10][2] = { (0,21), (0,42), (0,63), (0,84), (0,105) , (0,126) , (0,147), (0 , 168) , (0,189) ,(0,210) }; //fix make function
+const int SCORE_PIX_LOC[10][2] = {(0,21), (0,42), (0,63), (0,84), (0,105) , (0,126) , (0,147), (0 , 168) , (0,189) ,(0,210)}; //fix make function
 const int SCORE_PIX_LOC_SIZE = 10;
 const int SC_N_H = 21;
 
 const unsigned obj_size = 40;//fix check if needed
 
-const int DELTA_ENGINE_CONECT[2][2] = {{13,-3}, {13,0}}; //1 mouse engine, fix change name, 2conveyor
+const int DELTA_ENGINE_CONECT[2][2] = {{13,-6}, {13,0}}; //1 mouse engine, fix change name, 2conveyor
 
 const int NUM_OF_OBJECTS = 8; // update when adding an object 
 
@@ -219,14 +219,15 @@ const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE
 const float PPM = 64.f;
 const float MPP = 0.015625f;
 
-const unsigned CHARATER_SIZE = 9;  
+const unsigned CHARATER_SIZE = 13;
+const float CHARATER_OUTLINE_THICKNESS = 0.20; 
 
-const sf::Vector2f LEVEL_GOAL_TEXT_LOC{ 300,300 };
+const sf::Vector2f LEVEL_GOAL_TEXT_LOC{ 70,270 };
 
-const sf::Vector2f LEVEL_NO_TEXT_LOC_MENU{ 85,40 };
-const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,40 };
+const sf::Vector2f LEVEL_NO_TEXT_LOC_MENU{ 95,36 };
+const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,36 };
 
-const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 300,300 };
-const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 300,300 };
+const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 125,85.5 };
+const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 100,204 };
 
 
