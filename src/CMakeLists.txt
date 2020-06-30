@@ -27,6 +27,6 @@
 										  "Trampoline.cpp"
 										  "CollisionsSFML.cpp"
 										  "Score.cpp"
-
+										  "ClickButton.cpp"
 										  )										  
 

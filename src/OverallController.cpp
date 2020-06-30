@@ -18,9 +18,9 @@ OverallController::OverallController(b2World& world, MyListener& listener)//fix 
 	m_smallBoard.create(TINY_BOARD_W, TINY_BOARD_H);
 	
 	for (int i = exitButton; i < endMenuButtons; i++)
-		m_menuButtons.emplace_back(sf::Vector2f(0, 0), Type_t(i));
+		m_menuButtons.push_back(ClickButton(sf::Vector2f(0, 0), Type_t(i), sf::Vector2i(getIntRectOfMenuIcon(i-exitButton).width,getIntRectOfMenuIcon(i-exitButton).height)));
 	for (int i = playButton; i < endChoseLevelButtons; i++)
-		m_choseLevelButtons.emplace_back(sf::Vector2f(0, 0), Type_t(i));
+		m_choseLevelButtons.push_back(ClickButton(sf::Vector2f(0, 0), Type_t(i), sf::Vector2i(getIntRectOfChoseLevelIcon(i-playButton).width,getIntRectOfChoseLevelIcon(i-playButton).height)));
 
 	setButtons();
 	setLevel();
@@ -187,42 +187,14 @@ void OverallController::menuMode(sf::Vector2f loc)
 
 void OverallController::handleMouseMove(sf::Vector2f mouseLoc) //fix
 {
-	for (auto i = 0; i < m_menuButtons.size() ; i++)
-	{
-		if (m_menuButtons[i].mouseOnMe(mouseLoc))
-		{
-			switch (m_menuButtons[i].getType())
-			{
-			case startButton:
-			{
-				m_menuButtons[i].nextIntRect();
-				break;
-			}
-			case exitButton:
-			{
-				m_menuButtons[i].nextIntRect();
-				break;
-			}
-			case reset:
-			{
-				m_menuButtons[i].nextIntRect();
-				break;
-			}
-			case choseLevel:
-			{
-				m_menuButtons[i].nextIntRect();
-				break;
-			}
-			default:
-				break;
-			}
-		}
-		else
-		{
+	if(!m_choseLevelMode)
+		for (auto i = 0; i < m_menuButtons.size() ; i++)
+			m_menuButtons[i].mouseOnMe(mouseLoc);
+	
+	else
+		for (auto i = 0; i < m_choseLevelButtons.size() ; i++)
+			m_choseLevelButtons[i].mouseOnMe(mouseLoc);
 
-			m_menuButtons[i].prevIntRect();
-		}
-	}
 }
 
 Type_t OverallController::getSelection(sf::Vector2f loc) const
@@ -281,12 +253,12 @@ void OverallController::setButtons()
 {
 	for (auto i = 0; i < m_menuButtons.size() ; i++)
 	{
-		m_menuButtons[i].setIntRect(getIntRectOfMenuIcon(i));
+		//m_menuButtons[i].setIntRect(getIntRectOfMenuIcon(i));
 		m_menuButtons[i].setPosition(sf::Vector2f(MENU_BUTTONS_LOC[i][0], MENU_BUTTONS_LOC[i][1]));
 	}
 	for (auto i = 0; i <m_choseLevelButtons.size(); i++)
 	{
-		m_choseLevelButtons[i].setIntRect(getIntRectOfChoseLevelIcon(i));
+		//m_choseLevelButtons[i].setIntRect(getIntRectOfChoseLevelIcon(i));
 		m_choseLevelButtons[i].setPosition(sf::Vector2f(CHOSE_LEVEL_BUTTONS_LOC[i][0], CHOSE_LEVEL_BUTTONS_LOC[i][1]));
 	}
 }

@@ -4,8 +4,8 @@
 
 Toolbar::Toolbar(toolbarObjects objs)
 	:m_play(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X, PLAY_Y), Type_t::play)),
-	 m_arrowLButton(std::make_unique<Button>(sf::Vector2f(L_ARR_X, ARROWS_Y), Type_t::arrowLButton)),
-	 m_arrowRButton(std::make_unique<Button>(sf::Vector2f(R_ARR_X, ARROWS_Y), Type_t::arrowRButton))
+	 m_arrowLButton(std::make_unique<ClickButton>(sf::Vector2f(L_ARR_X, ARROWS_Y), Type_t::arrowLButton, sf::Vector2i(29,26))),
+	 m_arrowRButton(std::make_unique<ClickButton>(sf::Vector2f(R_ARR_X, ARROWS_Y), Type_t::arrowRButton, sf::Vector2i(30,26)))//fix
 {
 	for (auto& pair : objs)
 		add(pair.first, pair.second);
@@ -17,8 +17,8 @@ Toolbar::Toolbar(toolbarObjects objs)
 bool Toolbar::clickedOnMe(sf::Vector2f loc) const
 {
 	if (m_play->getGlobalBounds().contains(loc) 
-		|| m_arrowLButton->getGlobalBounds().contains(loc) 
-		|| m_arrowRButton->getGlobalBounds().contains(loc)
+		|| m_arrowLButton->mouseOnMe(loc) 
+		|| m_arrowRButton->mouseOnMe(loc) 
 		|| m_bar.getGlobalBounds().contains(loc))
 	{
 		return true;

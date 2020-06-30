@@ -37,7 +37,7 @@ std::string& ResourceManager::getLevelPath()
 ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
-	 loadTexture("balloon.png", Type_t::balloon);
+	/*loadTexture("balloon.png", Type_t::balloon);
 	loadTexture("basketBall.png", Type_t::basketBall);
 	loadTexture("baseBall.png", Type_t::baseBall);
 	loadTexture("bowlingBall.png", Type_t::bowlingBall);
@@ -83,11 +83,11 @@ ResourceManager::ResourceManager()
 	loadTexture("menuBackground.png", Type_t::menuBackground);
 	loadTexture("frame.png", Type_t::frame);
 	loadTexture("chooseLevelButton.png", Type_t::choseLevel);
-	loadTexture("1px.png", Type_t::onePixel);
+	loadTexture("1px.png", Type_t::onePixel);*/
 
 
 	//textures for mac----------
-	/*loadTexture("build/balloon.png", Type_t::balloon);
+	loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
 	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
@@ -127,21 +127,21 @@ ResourceManager::ResourceManager()
 
 	loadTexture("build/choseLevelMenu.png", Type_t::choseLevelMenu);
 	loadTexture("build/playButton.png", Type_t::playButton);
-	loadTexture("build/upButton.png", Type_t::upButton);
-	loadTexture("build/downButton.png", Type_t::downButton);
+	loadTexture("build/up.png", Type_t::upButton);
+	loadTexture("build/down.png", Type_t::downButton);
 
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
 	loadTexture("build/frame.png", Type_t::frame);
  	loadTexture("build/chooseLevelButton.png", Type_t::choseLevel);
-	loadTexture("build/1px.png", Type_t::onePixel);*/
+	loadTexture("build/1px.png", Type_t::onePixel);
 
 
 
 	////---------- font ---win------
-	  loadFont("kongtext.ttf", Font::kongtext);
-	  loadFont("Courier New.ttf", Font::CourierNew);
-	/*loadFont("build/kongtext.ttf", Font::kongtext);
-	loadFont("build/coue1255.fon", Font::coue1255);*/
+	//   loadFont("kongtext.ttf", Font::kongtext);
+	//   loadFont("Courier New.ttf", Font::CourierNew);
+	loadFont("build/kongtext.ttf", Font::kongtext);
+	loadFont("build/Courier New.ttf", Font::CourierNew);
 
 
 	////---------- sound ----------
@@ -152,8 +152,8 @@ ResourceManager::ResourceManager()
 	//loadSound("build/background.ogg", Sound::background);
 
 
-	 m_path = "levels.txt";
-	/*m_path = "build/levels.txt";*/
+	//m_path = "levels.txt";
+	m_path = "build/levels.txt";
 
 }
 

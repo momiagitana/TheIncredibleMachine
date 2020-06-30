@@ -53,8 +53,8 @@ configure_file ("chooseLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("choseLevelMenu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("playButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("upButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("downButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("up.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("down.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 

@@ -43,8 +43,8 @@ private:
 	void setText();
 	
 
-	std::vector<Button> m_menuButtons;
-	std::vector<Button> m_choseLevelButtons;
+	std::vector<ClickButton> m_menuButtons;
+	std::vector<ClickButton> m_choseLevelButtons;
 	sf::RenderWindow m_window;
 	std::vector<Level> m_levels;
 	b2World& m_world;

@@ -1,5 +1,5 @@
 #pragma once
-#include "Button.h"
+#include "ClickButton.h"
 #include "ToolbarButton.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -30,8 +30,8 @@ private:
 	sf::RectangleShape m_bar;
 
 	std::shared_ptr<Button> m_play;
-	std::shared_ptr<Button> m_arrowRButton;
-	std::shared_ptr<Button> m_arrowLButton;
+	std::shared_ptr<ClickButton> m_arrowRButton;
+	std::shared_ptr<ClickButton> m_arrowLButton;
 	
 
 };
