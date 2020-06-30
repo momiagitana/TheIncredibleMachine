@@ -31,42 +31,51 @@ void Score::set(int score)
 	for (int i =0; i < NUM_OF_NUMBERS_TEX; i++)
 	{
 		temp = score % 10;
-		score = score * 0.1;
-		m_numbers.at(i).setTextureRect(sf::IntRect(SC_INS_RECT_X, temp * 21, SC_N_W, SC_N_W * 2));     //slice a rectangle
+		score /= 10;
+		m_numbers[i].setTextureRect(sf::IntRect(SC_INS_RECT_X, (temp * SC_N_H)+9, SC_N_W, SC_N_H * 2));
 	}
 }
 
 int Score::get() const
 {
-	int numberTop = 0;
-	int found = 0;
-	int pSum = 0;
-	int mod = 0;
-	int power = 3;
+	// int numberTop = 0;
+	// int found = 0;
+	// int pSum = 0;
+	// int mod = 0;
+	// int power = 3;
 
 
-	for (auto number = NUM_OF_NUMBERS_TEX - 1; number != -1; number--)
+	// for (auto number = NUM_OF_NUMBERS_TEX - 1; number >= 0; number--)
+	// {
+	// 	numberTop = m_numbers.at(number).getTextureRect().top;
+
+	// 	for (int top = 0; top < SCORE_PIX_LOC_SIZE - 1; top++)
+	// 	{
+	// 		if (numberTop >= SCORE_PIX_LOC[0][top] && numberTop < SCORE_PIX_LOC[0][top + 1])
+	// 		{
+	// 			found = top;
+	// 			found++;
+	// 			break;
+	// 		}
+	// 	}
+
+	// 	mod = (pow(10, power));
+	// 	power--;
+	// 	found *= mod;
+	// 	found += pSum;
+	// 	pSum = found;
+	// }
+
+	int sum = 0;
+	for (int i = m_numbers.size() - 1; i >= 0; i--)
 	{
-		numberTop = m_numbers.at(number).getTextureRect().top;
-
-		for (int top = 0; top < SCORE_PIX_LOC_SIZE - 1; top++)
-		{
-			if (numberTop >= SCORE_PIX_LOC[0][top] && numberTop < SCORE_PIX_LOC[0][top + 1])
-			{
-				found = top;
-				found++;
-				break;
-			}
-		}
-
-		mod = (pow(10, power));
-		power--;
-		found *= mod;
-		found += pSum;
-		pSum = found;
+		float digit = (m_numbers[i].getTextureRect().top)/21;
+		sum += std::ceil(digit);
+		sum *= 10;
 	}
+	sum/=10;
 
-	return pSum;
+	return sum;
 }
 
 void Score::play()
@@ -96,9 +105,9 @@ void Score::draw(sf::RenderWindow& window)
 void Score::updateClock()
 {
 	
-	float mult = 0.1f;
+	float mult = 21.f;
 
-	static auto delta = m_clock.getElapsedTime().asSeconds();
+	float delta = m_clock.getElapsedTime().asSeconds();
 	m_clock.restart();
 
 
@@ -113,7 +122,7 @@ void Score::updateClock()
 		}
 
 		m_numbers[i].setTextureRect(newRect);
-		mult = mult / 10.f;
+		mult /= 10.f;
 
 		if (m_numbers[i].getTextureRect().top == 0)
 			m_numbers[i].setTextureRect(sf::IntRect(SC_INS_RECT_X, 210, SC_N_W, INT_RECT_H));

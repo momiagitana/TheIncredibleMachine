@@ -3,7 +3,6 @@
 
 Level::Level()
 {
-
 }
 
 Level::Level(bool buildLevel)
@@ -12,6 +11,7 @@ Level::Level(bool buildLevel)
 	{
 		addToolbarObj(Type_t(i), -1);
 	}
+	addCondLoc(0, sf::Vector2f(0,0), sf::Vector2f(0,0));//fix
 }
 
 void Level::addBoardObj(ObjInfo obj)

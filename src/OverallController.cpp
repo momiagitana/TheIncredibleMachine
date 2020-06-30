@@ -31,6 +31,7 @@ OverallController::OverallController(b2World& world, MyListener& listener)//fix 
 
 void OverallController::run()
 {
+	ResourceManager::instance().setSong((int)ResourceManager::Sound::menu);
 	while (m_window.isOpen())
 	{
 		m_window.clear();
@@ -162,13 +163,17 @@ void OverallController::menuMode(sf::Vector2f loc)
 	{
 	case startButton:
 	{
+		if (m_choseMode == 0)
+			ResourceManager::instance().setSong((int)ResourceManager::Sound::background);
+		else if (m_choseMode == 2)
+			ResourceManager::instance().setSong((int)ResourceManager::Sound::build);
 		bool won = m_levelController.run();
 		if (m_choseMode == 0 && won)
 		{
 			m_numOfLevel = m_numOfLevel + 1 % m_levels.size();
 			setLevel();
 		}
-
+		ResourceManager::instance().setSong((int)ResourceManager::Sound::menu);
 		m_levelController.drawTinyBoard(m_smallBoard);
 		return;
 	}
@@ -217,7 +222,7 @@ void OverallController::createLevel()
 {
 	Level newLevel(true);//fix to const change level
 	m_levelController.loadNewLevel(newLevel);
-	//m_levelController.run();
+	m_levelController.drawTinyBoard(m_smallBoard);
 }
 
 void OverallController::saveLevelToFile()

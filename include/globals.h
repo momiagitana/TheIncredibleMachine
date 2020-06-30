@@ -195,14 +195,14 @@ const int REPLAY_BUTTON_Y = 350;
 const int ADVANCE_BUTTON_X = 460;
 const int ADVANCE_BUTTON_Y = 350;
 
-const int SC_H = 40;
+const int SC_H = 67;
 const int SC_N_W = 24;
 const int INT_RECT_H = 42;
 const int SC_SEP = 8;
 const int SC_N_INITIAL = WINDOW_WIDTH/2 - SC_N_W*2;
 
 const int SC_X =  WINDOW_WIDTH/2;
-const int SC_Y = WINDOW_HEIGHT - SC_H;
+const int SC_Y = 401;
 
 const int SC_INS_RECT_Y = 198;
 const int SC_INS_RECT_X = 0;

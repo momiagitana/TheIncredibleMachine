@@ -26,6 +26,7 @@ bool LevelController::run()
 {
 	m_score.play();
 
+
 	while (m_window.isOpen() && !m_finished)
 	{
 		drawAll(false);//NOT_RUNNING fiX
@@ -45,8 +46,7 @@ bool LevelController::run()
 				if (event.mouseButton.button == sf::Mouse::Button::Right)
 				{
 					m_score.stop();
-					m_score.set(2500);
-					//std::cout << m_score.get() << std::endl;
+					std::cout << m_score.get() << std::endl;
 					return false; //fix
 				}
 				else
@@ -69,7 +69,6 @@ bool LevelController::run()
 		m_board.resetObjectsPositions();
 	}
 
-	m_board.saveLevelToFile();
 	if (m_finished)
 	{
 		m_score.stop();
@@ -307,7 +306,7 @@ bool LevelController::replaySolution() //fix urgent
 
 bool LevelController::tryRunning()
 {
-	auto counter = 0;
+	m_score.stop();
 	m_board.hideObjButtons();
 	while (m_window.isOpen())
 	{
@@ -336,7 +335,10 @@ bool LevelController::tryRunning()
 				break;
 			case sf::Event::MouseButtonReleased:
 				if (event.mouseButton.button == sf::Mouse::Right)
+				{
+					m_score.play();
 					return false;
+				}
 				break;
 			default:
 				break;

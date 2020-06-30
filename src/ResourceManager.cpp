@@ -24,7 +24,7 @@ sf::Font& ResourceManager::getFont(Font name)
 
 sf::SoundBuffer& ResourceManager::getSound(Sound name)
 {
-	return m_sounds[name];
+	return m_soundBuff[name];
 }
 
 std::string& ResourceManager::getLevelPath()
@@ -89,7 +89,7 @@ ResourceManager::ResourceManager()
 
 
 	//textures for mac----------
-	/*loadTexture("build/balloon.png", Type_t::balloon);
+	loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
 	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
@@ -137,7 +137,11 @@ ResourceManager::ResourceManager()
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
 	loadTexture("build/frame.png", Type_t::frame);
  	loadTexture("build/chooseLevelButton.png", Type_t::choseLevel);
-	loadTexture("build/1px.png", Type_t::onePixel);*/
+ 	loadTexture("build/numbers.png", Type_t::numbers);
+ 	loadTexture("build/score.png", Type_t::score);
+
+
+	loadTexture("build/1px.png", Type_t::onePixel);
 
 
 
@@ -149,16 +153,18 @@ ResourceManager::ResourceManager()
 
 
 	////---------- sound ----------
-	  loadSound("menu.ogg", Sound::menu);
-	 loadSound("background.ogg", Sound::background);
+	//   loadSound("menu.ogg", Sound::menu);
+	//  loadSound("background.ogg", Sound::background);
 
-	//loadSound("build/menu.ogg", Sound::menu);
-	//loadSound("build/background.ogg", Sound::background);
+	loadSound("build/menu.ogg", Sound::menu);
+	loadSound("build/background.ogg", Sound::background);
+	loadSound("build/build.ogg", Sound::build);
 
 
 	//m_path = "levels.txt";
 	m_path = "build/levels.txt";
 
+	setSounds();
 }
 
 void ResourceManager::loadTexture(std::string path, Type_t name)
@@ -179,6 +185,53 @@ void ResourceManager::loadSound(std::string path, Sound name)
 {
 	sf::SoundBuffer temp;
 	temp.loadFromFile(path);
-	m_sounds[name] = temp;
+	m_soundBuff[name] = temp;
 }
 
+void ResourceManager::setSounds()
+{
+	for(int i = 0; i < 3; i++) //fix 3 -> num of sounds
+	{
+		m_sounds.push_back(sf::Sound(getSound(Sound(i))));
+		m_sounds[i].setLoop(true);
+		m_sounds[i].setVolume(m_volume);
+	}
+}
+
+void ResourceManager::stopAllSongs()
+{
+	for (auto& sound:m_sounds)
+		sound.stop();
+}
+
+void ResourceManager::playSong()
+{
+	stopAllSongs();
+	m_sounds[int(m_playing)].play();
+}
+
+void ResourceManager::setSong(int song)
+{
+	m_playing = (Sound)song;
+	playSong();
+}
+
+void ResourceManager::volUp()
+{
+	if(m_volume+14 <100)
+		m_volume += 14;
+	setVolume();
+}
+
+void ResourceManager::volDown()
+{
+	if(m_volume-14 >= 0)
+		m_volume += 14;
+	setVolume();
+}
+
+void ResourceManager::setVolume()
+{
+	for (auto& sound:m_sounds)
+		sound.setVolume(m_volume);
+}

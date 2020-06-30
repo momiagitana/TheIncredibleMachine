@@ -37,6 +37,10 @@ configure_file ("save.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("background.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("build.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
