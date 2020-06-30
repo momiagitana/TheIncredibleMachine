@@ -1,26 +1,26 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <globals.h>
+// #include <SFML/Graphics.hpp>
+// #include <SFML/Audio.hpp>
+// #include <globals.h>
 
-class Animation
-{
-public:
-    Animation(sf::Sprite& ,Type_t);
+// class Animation
+// {
+// public:
+//     Animation(sf::Sprite& ,Type_t);
 
-    void drawAnimation(sf::RenderWindow& window);
+//     void drawAnimation(sf::RenderWindow& window);
 
-    void updateSprite();
+//     void updateSprite();
 
-    bool finishedAnim();
+//     bool finishedAnim(return true;);
 
-private:
+// private:
 
 
-    sf::Clock m_clock;
+//     sf::Clock m_clock;
 
-    bool m_animationFinished;
+//     bool m_animationFinished;
     
-};
+// };
 

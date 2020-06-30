@@ -67,7 +67,7 @@ struct ObjInfo
 	sf::Vector2f _loc;
 	int _angle = -1;
 	int _size = -1;
-	int _fliped = -1; // -1 not intersting, 0 regular , 1 filped
+	int _fliped = -1; // -1 not interesting, 0 regular , 1 fliped
 };
 
 const struct ObjInfo wallInitTransforms = {brickWall, sf::Vector2f(0.f,0.f), 0, 1, -1};
@@ -180,6 +180,6 @@ const float MPP = 0.015625f;
 
 
 
-std::vector<sf::Vector2i> animationSizes = {sf::Vector2i(17,18)};
+// std::vector<sf::Vector2i> animationSizes = {sf::Vector2i(17,18)};
 
-const int animationAmounts[2] = {7,7};
+// const int animationAmounts[2] = {7,7};

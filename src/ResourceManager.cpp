@@ -70,7 +70,7 @@ ResourceManager::ResourceManager()
 
 
 	////textures for mac----------
-	loadTexture("build/balloon.png", Type_t::balloon);
+	loadTexture("build/balloon2.0.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
 	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);

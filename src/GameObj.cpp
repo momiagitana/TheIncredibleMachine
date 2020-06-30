@@ -57,17 +57,18 @@ ObjInfo GameObj::getInfo() const
 	return info;
 }
 
-void GameObj::draw(sf::RenderWindow& window) const
+void GameObj::draw(sf::RenderWindow& window)
 {
-	//  if(isOn() )
-	//   	animate();
-	// else
-	// {
-	// }
+	 if(isOn())
+	  	animate();
+	else
+	{
+		
+	}
 	
 }
 
-void GameObj::animate()
+void GameObj::animate() 
 {
     // if(m_clock.restart().asSeconds() > 0.04)
 	// 	BaseImg::nextIntRect();

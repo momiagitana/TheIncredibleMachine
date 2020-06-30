@@ -4,8 +4,6 @@
 
 #include "Button.h"
 #include "PhysicsObj.h"
-#include "Animation.h"
-
 
 
 class GameObj : public Button
@@ -27,7 +25,7 @@ public:
 	void rotateBody(int);
 	void updateLoc();
 
-	void draw(sf::RenderWindow& window) const;
+	void draw(sf::RenderWindow& window);
 
 	bool isOn() const { return m_status; }
 	void setStatus(bool status)     { m_status = status; }
@@ -45,7 +43,7 @@ public:
 
 	void animate();
 
-    bool finishedAnim();
+    //bool finishedAnim();
 
 
 private:
@@ -56,9 +54,6 @@ private:
 	sf::Vector2f m_initialLoc;
 	bool m_mouseOnMe = false;
 	bool m_status = false; //fix ON OFF
-
-	//Animation m_animation;
-
     sf::Clock m_clock;
 
     bool m_animationFinished;

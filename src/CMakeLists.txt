@@ -24,6 +24,5 @@
 										  "Connections.cpp"
 										  "MouseEngine.cpp"
 										  "Connectable.cpp"
-										  "Animation.cpp"
 										)
 
