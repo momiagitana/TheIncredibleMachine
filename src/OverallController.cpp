@@ -221,7 +221,7 @@ void OverallController::saveLevelToFile()
 
 void OverallController::handleMouseMove(sf::Vector2f mouseLoc) //fix
 {
-	if(!m_choseLevelMode)
+	if(m_choseMode != 1)
 		for (auto i = 0; i < m_menuButtons.size() ; i++)//check 
 			m_menuButtons[i].mouseOnMe(mouseLoc);
 	

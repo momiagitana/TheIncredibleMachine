@@ -120,6 +120,8 @@ ResourceManager::ResourceManager()
   	loadTexture("build/advanceButton.png", Type_t::advanceButton);
 	loadTexture("build/puzzleComplete.png", Type_t::puzzleComplete);
 	loadTexture("build/replayButton.png", Type_t::replayButton);
+	loadTexture("build/save.png", Type_t::save);
+	loadTexture("build/build.png", Type_t::build);
 
 	loadTexture("build/play.png", Type_t::play);
 	loadTexture("build/exit.png", Type_t::exitButton);
