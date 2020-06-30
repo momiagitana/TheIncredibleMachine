@@ -9,6 +9,10 @@ const int CHOSE_LEVEL_BUTTONS_LOC[3][2] = { {200, 150}, {140, 145}, {141,165} };
 
 const int TOOLBAR_BUTTONS_LOC[2][2] = { {21, 15}, {21,16}};
 
+const int SCORE_PIX_LOC[10][2] = { (0,21), (0,42), (0,63), (0,84), (0,105) , (0,126) , (0,147), (0 , 168) , (0,189) ,(0,210) }; //fix make function
+const int SCORE_PIX_LOC_SIZE = 10;
+const int SC_N_H = 21;
+
 const unsigned obj_size = 40;//fix check if needed
 
 const int DELTA_ENGINE_CONECT[2][2] = {{13,-3}, {13,0}}; //1 mouse engine, fix change name, 2conveyor
@@ -66,6 +70,9 @@ enum Type_t
 
 	connectButton,
 
+	numbers,
+	score,
+	
 	balloonButton = 100,
 	basketButton,
 	baseButton,
@@ -139,16 +146,16 @@ const int WINDOW_HEIGHT = 450;
 const int FLOORING_UNIT = 16; //pixels
 const int FLOORING_MARGIN = 1; //pix
 const int FRAME_SIZE = 8;
-const int SCORE_TIME_H = 60;
+const int SCORE_H = 60;
 
 const int FRAME_X = WINDOW_WIDTH/2;
-const int FRAME_Y = (WINDOW_HEIGHT-SCORE_TIME_H)/2;
+const int FRAME_Y = (WINDOW_HEIGHT-SCORE_H)/2;
 
 const int PLAY_BUTTON_H = 50;
 const int ARROWS_H = 20;
 
 const int TB_W = 56;
-const int TB_H = WINDOW_HEIGHT - SCORE_TIME_H - PLAY_BUTTON_H - ARROWS_H-60;//frames
+const int TB_H = WINDOW_HEIGHT - SCORE_H - PLAY_BUTTON_H - ARROWS_H-60;//frames
 const int TB_TOP = 100;//PLAYH+ARRH+3FRAMES~
 
 
@@ -185,6 +192,22 @@ const int REPLAY_BUTTON_X = 350;
 const int REPLAY_BUTTON_Y = 350;
 const int ADVANCE_BUTTON_X = 460;
 const int ADVANCE_BUTTON_Y = 350;
+
+const int SC_H = 40;
+const int SC_N_W = 24;
+const int INT_RECT_H = 42;
+const int SC_SEP = 8;
+const int SC_N_INITIAL = WINDOW_WIDTH/2 - SC_N_W*2;
+
+const int SC_X =  WINDOW_WIDTH/2;
+const int SC_Y = WINDOW_HEIGHT - SC_H;
+
+const int SC_INS_RECT_Y = 198;
+const int SC_INS_RECT_X = 0;
+
+const int NUM_OF_NUMBERS_TEX = 4;
+
+const int NUM_DELTA_Y_FROM_SCORE = 12;
 
 
 

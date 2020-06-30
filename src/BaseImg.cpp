@@ -93,4 +93,13 @@ void BaseImg::prevIntRect()
 		newRect.left -= newRect.width;
 
 	setIntRect(newRect);
+
+void BaseImg::setTextureRect(sf::IntRect intrect) //fix check if used
+{
+	m_sprite.setTextureRect(intrect);
+}
+
+const sf::IntRect& BaseImg::getTextureRect() const
+{
+	return m_sprite.getTextureRect();
 }

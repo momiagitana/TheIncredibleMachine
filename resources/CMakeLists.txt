@@ -43,7 +43,8 @@ configure_file ("1px.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
-
+configure_file ("numbers.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("score.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("playmenu.png" ${CMAKE_BINARY_DIR} COPYONLY)

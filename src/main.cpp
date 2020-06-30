@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp> //fix
 
 #include "OverallController.h"
-
+#include "Score.h"
 
 int main()
 {   
@@ -21,9 +21,3 @@ int main()
 	return EXIT_SUCCESS;
     
 }
-
-// catch (std::exception& ex)
-// {
-//     std::cerr << "Exception: " << ex.what() << '\n';
-//     return EXIT_FAILURE;
-// }

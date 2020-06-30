@@ -28,6 +28,10 @@ public:
 	void nextIntRect();
 	void prevIntRect();
 
+	//fix check if used
+	void setTextureRect(sf::IntRect intrect);
+	const sf::IntRect& getTextureRect() const;
+
 private:
 
 	sf::Sprite m_sprite;
