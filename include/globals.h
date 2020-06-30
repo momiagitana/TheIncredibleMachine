@@ -173,7 +173,7 @@ const int BAR_Y = PLAY_BUTTON_H + ARROWS_H + TB_H/2;
 const float BUTTON_SCALE = .9f;
 
 const int MENU_X = (WINDOW_WIDTH - (TB_W + FRAME_SIZE*2)) /2;
-const int MENU_Y = (WINDOW_HEIGHT - SCORE_TIME_H - FRAME_SIZE) / 2;
+const int MENU_Y = (WINDOW_HEIGHT - SCORE_H - FRAME_SIZE) / 2;
 
 
 const float BOARD_W = 560;

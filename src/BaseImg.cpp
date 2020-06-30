@@ -93,6 +93,7 @@ void BaseImg::prevIntRect()
 		newRect.left -= newRect.width;
 
 	setIntRect(newRect);
+}
 
 void BaseImg::setTextureRect(sf::IntRect intrect) //fix check if used
 {
