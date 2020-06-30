@@ -74,6 +74,8 @@ ResourceManager::ResourceManager()
 	loadTexture("playmenu.png", Type_t::startButton);
 	loadTexture("bomb.png", Type_t::reset);
 	loadTexture("sound.png", Type_t::sound);
+	loadTexture("save.png", Type_t::save);
+	loadTexture("build.png", Type_t::build);
 
 	loadTexture("choseLevelMenu.png", Type_t::choseLevelMenu);
 	loadTexture("playButton.png", Type_t::playButton);

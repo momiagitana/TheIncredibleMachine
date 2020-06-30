@@ -19,7 +19,8 @@ using conditionsActs = std::vector<conditionToWinAct>;
 class Level
 {
 public:
-	Level();
+	Level(); 
+	Level(bool);
 
 	void addBoardObj(ObjInfo);
 	void addToolbarObj(Type_t, int);

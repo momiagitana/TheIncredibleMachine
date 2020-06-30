@@ -32,7 +32,7 @@ public:
 	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
 	void dealWithToolbar(sf::Vector2f mouseLoc);
 	void dealWithBoard(sf::Vector2f mouseLoc);
-
+	void saveNewLevel();
 private:
 
 	Board m_board;

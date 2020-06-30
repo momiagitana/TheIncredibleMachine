@@ -6,6 +6,14 @@ Level::Level()
 
 }
 
+Level::Level(bool buildLevel)
+{
+	for (int i = balloon; i < play; ++i)
+	{
+		addToolbarObj(Type_t(i), -1);
+	}
+}
+
 void Level::addBoardObj(ObjInfo obj)
 {
 	m_initial.push_back(obj);

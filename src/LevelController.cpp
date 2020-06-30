@@ -351,3 +351,8 @@ void LevelController::drawTinyBoard (sf::RenderTexture& tinyBoard) const
 {
 	m_board.drawTinyBoard(tinyBoard);
 }
+
+void LevelController::saveNewLevel()
+{
+	m_board.saveLevelToFile();
+}

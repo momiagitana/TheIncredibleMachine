@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-const int MENU_BUTTONS_INT_RECT[5][2] = { {24,23}, {21, 35}, {18, 31}, {110,28},{30,30} };
-const int MENU_BUTTONS_LOC[5][2] = { {210, 200}, {150, 200}, {100,200}, {200, 150}, {100,150} };
+const int MENU_BUTTONS_INT_RECT[7][2] = { {24,23}, {21, 35}, {18, 31}, {110,28},{30,30},{37,37},{25,24} };
+const int MENU_BUTTONS_LOC[7][2] = { {210, 200}, {150, 200}, {100,200}, {200, 150}, {100,150},{50,150},{100,150} };
 
 const int CHOSE_LEVEL_BUTTONS_INT_RECT[3][2] = { {48, 18}, {21, 15}, {21, 16} };
 const int CHOSE_LEVEL_BUTTONS_LOC[3][2] = { {200, 150}, {140, 145}, {141,165} };
@@ -45,6 +45,8 @@ enum Type_t
 	reset,
 	sound,
 	choseLevel,
+	build,
+	save,
 	endMenuButtons,
 	//-----------
 

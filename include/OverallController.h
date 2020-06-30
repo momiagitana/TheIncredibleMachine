@@ -36,6 +36,8 @@ private:
 	void handleClick(sf::Vector2f loc);
 	void handleMouseMove(sf::Vector2f mouseLoc);
 	void menuMode(sf::Vector2f loc);
+	void createLevel();
+	void saveLevelToFile();
 	void chooseLevelMode(sf::Vector2f loc);
 	void drawTexts(sf::RenderWindow& window);
 	void setMenuTexts();
@@ -56,7 +58,7 @@ private:
 	int m_numOfLevel = 0;
 	LevelController m_levelController;
 	sf::RenderTexture m_smallBoard;
-	bool m_choseLevelMode = false;
+	int m_choseMode = 0;
 };
 sf::IntRect getIntRectOfMenuIcon(int i);
 sf::IntRect getIntRectOfChoseLevelIcon(int i);

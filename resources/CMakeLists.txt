@@ -30,6 +30,10 @@ configure_file ("advanceButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("puzzleComplete.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("replayButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("chooseLevelButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("build.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("save.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 
 
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
