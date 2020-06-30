@@ -27,5 +27,6 @@
 										  "Trampoline.cpp"
 										  "CollisionsSFML.cpp"
 										  "Score.cpp"
+
 										  )										  
 
