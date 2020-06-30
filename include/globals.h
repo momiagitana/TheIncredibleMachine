@@ -196,14 +196,15 @@ const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE
 const float PPM = 64.f;
 const float MPP = 0.015625f;
 
-const unsigned CHARATER_SIZE = 9;  
+const unsigned CHARATER_SIZE = 13;
+const float CHARATER_OUTLINE_THICKNESS = 0.20; 
 
-const sf::Vector2f LEVEL_GOAL_TEXT_LOC{ 300,300 };
+const sf::Vector2f LEVEL_GOAL_TEXT_LOC{ 70,270 };
 
-const sf::Vector2f LEVEL_NO_TEXT_LOC_MENU{ 85,40 };
-const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,40 };
+const sf::Vector2f LEVEL_NO_TEXT_LOC_MENU{ 95,36 };
+const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,36 };
 
-const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 300,300 };
-const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 300,300 };
+const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 125,85.5 };
+const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 100,204 };
 
 

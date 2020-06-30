@@ -37,45 +37,57 @@ std::string& ResourceManager::getLevelPath()
 ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
-	//  loadTexture("balloon.png", Type_t::balloon);
-	//  loadTexture("basketBall.png", Type_t::basketBall);
-	//  loadTexture("baseBall.png", Type_t::baseBall);
-	//  loadTexture("bowlingBall.png", Type_t::bowlingBall);
-	//  loadTexture("conveyor.png", Type_t::conveyor);
-	//  loadTexture("brick.png", Type_t::brickWall);
-	//  loadTexture("balloonButton.png", Type_t::balloonButton);
-	//  loadTexture("basketButton.png", Type_t::basketButton);
-	//  loadTexture("baseButton.png", Type_t::baseButton);
-	//  loadTexture("bowlingButton.png", Type_t::bowlingButton);
-	//  loadTexture("conveyorButton.png", Type_t::conveyorButton);
-	//  loadTexture("brickButton.png", Type_t::brickWallButton);
-	//  loadTexture("resizeButton.png", Type_t::resizeButton);
-	//  loadTexture("rotateButton.png", Type_t::rotateButton);
-	//  loadTexture("mouseEngine.png", Type_t::mouseEngine);
-	//  loadTexture("mouseEngineButton.png", Type_t::mouseEngineButton);
-	//  loadTexture("beltButton.png", Type_t::beltButton);
-	//  loadTexture("engineConectButton.png", Type_t::connectButton);
+	 loadTexture("balloon.png", Type_t::balloon);
+	loadTexture("basketBall.png", Type_t::basketBall);
+	loadTexture("baseBall.png", Type_t::baseBall);
+	loadTexture("bowlingBall.png", Type_t::bowlingBall);
+	loadTexture("conveyor.png", Type_t::conveyor);
+	loadTexture("brick.png", Type_t::brickWall);
+	loadTexture("balloonButton.png", Type_t::balloonButton);
+	loadTexture("mouseEngine.png", Type_t::mouseEngine);
+	loadTexture("trampoline.png", Type_t::trampoline);
 
-	//  loadTexture("arrowLButton.png", Type_t::arrowLButton);
-	//  loadTexture("arrowRButton.png", Type_t::arrowRButton);
+	loadTexture("basketButton.png", Type_t::basketButton);
+	loadTexture("baseButton.png", Type_t::baseButton);
+	loadTexture("bowlingButton.png", Type_t::bowlingButton);
+	loadTexture("conveyorButton.png", Type_t::conveyorButton);
+	loadTexture("brickButton.png", Type_t::brickWallButton);
+	loadTexture("resizeButton.png", Type_t::resizeButton);
+	loadTexture("rotateButton.png", Type_t::rotateButton);
+	loadTexture("mouseEngineButton.png", Type_t::mouseEngineButton);
+	loadTexture("beltButton.png", Type_t::beltButton);
+	loadTexture("trampolineButton.png", Type_t::trampolineButton);
 
-	//  loadTexture("advanceButton.png", Type_t::advanceButton);
-	//  loadTexture("puzzleComplete.png", Type_t::puzzleComplete);
-	//  loadTexture("replayButton.png", Type_t::replayButton);
+	loadTexture("engineConectButton.png", Type_t::connectButton);
 
-	//  loadTexture("play.png", Type_t::play);
-	//  loadTexture("exit.png", Type_t::exitButton);
-	//  loadTexture("playmenu.png", Type_t::startButton);
-	//  loadTexture("bomb.png", Type_t::reset);
-	//  loadTexture("sound.png", Type_t::sound); 
-	//  loadTexture("chooseLevelButton.png", Type_t::choseLevel);
 
-	//  loadTexture("menuBackground.png", Type_t::menuBackground);
-	//  loadTexture("frame.png", Type_t::frame);
+	loadTexture("arrowLButton.png", Type_t::arrowLButton);
+	loadTexture("arrowRButton.png", Type_t::arrowRButton);
+
+
+	loadTexture("advanceButton.png", Type_t::advanceButton);
+	loadTexture("puzzleComplete.png", Type_t::puzzleComplete);
+	loadTexture("replayButton.png", Type_t::replayButton);
+
+	loadTexture("play.png", Type_t::play);
+	loadTexture("exit.png", Type_t::exitButton);
+	loadTexture("playmenu.png", Type_t::startButton);
+	loadTexture("bomb.png", Type_t::reset);
+	loadTexture("sound.png", Type_t::sound);
+
+	loadTexture("choseLevelMenu.png", Type_t::choseLevelMenu);
+	loadTexture("playButton.png", Type_t::playButton);
+	loadTexture("upButton.png", Type_t::upButton);
+	loadTexture("downButton.png", Type_t::downButton);
+
+	loadTexture("menuBackground.png", Type_t::menuBackground);
+	loadTexture("frame.png", Type_t::frame);
+	loadTexture("chooseLevelButton.png", Type_t::choseLevel);
+	loadTexture("1px.png", Type_t::onePixel);
 
 
 	//textures for mac----------
-	loadTexture("build/balloon.png", Type_t::balloon);
+	/*loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
 	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
@@ -121,15 +133,15 @@ ResourceManager::ResourceManager()
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
 	loadTexture("build/frame.png", Type_t::frame);
  	loadTexture("build/chooseLevelButton.png", Type_t::choseLevel);
-	loadTexture("build/1px.png", Type_t::onePixel);
+	loadTexture("build/1px.png", Type_t::onePixel);*/
 
 
 
 	////---------- font ---win------
-	//  loadFont("kongtext.ttf", Font::kongtext);
-	//  loadFont("coue1255.fon", Font::coue1255);
-	loadFont("build/kongtext.ttf", Font::kongtext);
-	loadFont("build/coue1255.fon", Font::coue1255);
+	  loadFont("kongtext.ttf", Font::kongtext);
+	  loadFont("Courier New.ttf", Font::CourierNew);
+	/*loadFont("build/kongtext.ttf", Font::kongtext);
+	loadFont("build/coue1255.fon", Font::coue1255);*/
 
 
 	////---------- sound ----------
@@ -140,8 +152,8 @@ ResourceManager::ResourceManager()
 	//loadSound("build/background.ogg", Sound::background);
 
 
-	// m_path = "levels.txt";
-	m_path = "build/levels.txt";
+	 m_path = "levels.txt";
+	/*m_path = "build/levels.txt";*/
 
 }
 

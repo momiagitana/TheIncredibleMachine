@@ -41,7 +41,7 @@ configure_file ("menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("frame.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("1px.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
-
+configure_file ("Courier New.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("kongtext.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("bomb.png" ${CMAKE_BINARY_DIR} COPYONLY)

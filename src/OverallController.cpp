@@ -89,7 +89,8 @@ void OverallController::chooseLevelMode(sf::Vector2f loc)
 	}
 	case downButton:
 	{
-		m_numOfLevel = (--m_numOfLevel) % m_levels.size();
+		if (--m_numOfLevel == -1)
+			m_numOfLevel = m_levels.size() - 1;// try to fix with modulo
 		setLevel();
 		return;
 	}
@@ -121,21 +122,24 @@ void OverallController::setChoseLevelTexts()
 
 void OverallController::setText()
 {
-	m_levelGoal.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
+	m_levelGoal.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
 	m_levelGoal.setString(m_levels[m_numOfLevel].getLevelGoal());
 	m_levelGoal.setPosition(LEVEL_GOAL_TEXT_LOC);
 	m_levelGoal.setColor(sf::Color::Black);
 	m_levelGoal.setCharacterSize(CHARATER_SIZE);
+	m_levelGoal.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
 
-	m_levelName.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
+	m_levelName.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
 	m_levelName.setString(m_levels[m_numOfLevel].getLevelName());
 	m_levelName.setColor(sf::Color::Black);
 	m_levelName.setCharacterSize(CHARATER_SIZE);
+	m_levelName.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
 
-	m_levelNo.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
+	m_levelNo.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
 	m_levelNo.setString("LEVEL:" + std::to_string(m_numOfLevel+1));
 	m_levelNo.setColor(sf::Color::Black);
 	m_levelNo.setCharacterSize(CHARATER_SIZE);
+	m_levelNo.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
 }
 
 void OverallController::menuMode(sf::Vector2f loc)
