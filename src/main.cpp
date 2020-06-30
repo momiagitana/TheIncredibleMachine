@@ -34,6 +34,7 @@ int main()
 		if (clock.getElapsedTime().asSeconds() > 2)
 		{
 			sco.stop();
+			
 		}
 
 		if (clock.getElapsedTime().asSeconds() > 10)

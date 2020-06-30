@@ -3,7 +3,9 @@
 
 const int MENU_BUTTONS_INT_RECT [4][2]=  {{24, 23}, {22, 34}, {18, 31}, {110,28}};
 
-
+const int SCORE_PIX_LOC[10][2] = { (0,21), (0,42), (0,63), (0,84), (0,105) , (0,126) , (0,147), (0 , 168) , (0,189) ,(0,210) };
+const int SCORE_PIX_LOC_SIZE = 10;
+const int SC_N_H = 21;
 
 const unsigned obj_size = 40;
 

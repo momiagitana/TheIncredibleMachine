@@ -37,7 +37,35 @@ void Score::set(int score)
 
 int Score::get() const
 {
-	return 1;//for (int i = )
+	int numberTop = 0;
+	int found = 0;
+	int pSum = 0;
+	int mod = 0;
+	int power = 0;
+
+
+	for (auto number = NUM_OF_NUMBERS_TEX - 1; number != -1; number--)
+	{
+		numberTop = m_numbers.at(number).getTextureRect().top;
+
+		for (int top = 0; top < SCORE_PIX_LOC_SIZE - 1; top++)
+		{
+			if (numberTop >= SCORE_PIX_LOC[0][top] && numberTop < SCORE_PIX_LOC[0][top + 1])
+			{
+				found = top;
+				found++;
+				break;
+			}
+		}
+
+		mod = (pow(10, power));
+		power++;
+		found *= mod;
+		found += pSum;
+		pSum = found;
+	}
+
+	return pSum;
 }
 
 void Score::play()
