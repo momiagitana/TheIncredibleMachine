@@ -6,8 +6,8 @@
 LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWindow& win, MyListener& listener)
 	:m_board(lvl.getBoardObjs(), world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
-	m_mouseImg(sf::Vector2f(-100.f, -100.f),baseBall),
-  	m_frame (sf::Vector2f(FRAME_X, FRAME_Y), frame)
+	m_mouseImg(sf::Vector2f(-100.f, -100.f), baseBall),
+	m_frame(sf::Vector2f(FRAME_X, FRAME_Y), frame), m_score(9999)
 
 {
 	listener.setBoardReference(m_board);
@@ -24,9 +24,11 @@ void LevelController::loadNewLevel(const Level& level)
 
 bool LevelController::run()
 {
+	m_score.play();
+
 	while (m_window.isOpen() && !m_finished)
 	{
-		drawAll(false);//NOT_RUNNING fix
+		drawAll(false);//NOT_RUNNING fiX
 		
 		sf::Event event;
 
@@ -40,8 +42,13 @@ bool LevelController::run()
 
 			case sf::Event::MouseButtonReleased:
 			{
-				if(event.mouseButton.button == sf::Mouse::Button::Right)
+				if (event.mouseButton.button == sf::Mouse::Button::Right)
+				{
+					m_score.stop();
+					m_score.set(2500);
+					//std::cout << m_score.get() << std::endl;
 					return false; //fix
+				}
 				else
 					leftClick(event);
 				break;
@@ -50,15 +57,11 @@ bool LevelController::run()
 				auto mouseLoc = m_window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
 				whereAmI(mouseLoc);
 				updateMouseLoc(mouseLoc);
-
 				break;
 			}
 			
         }
     }
-
-
-
 
 	while(replaySolution() && m_finished)
 	{
@@ -67,14 +70,20 @@ bool LevelController::run()
 	}
 
 	m_board.saveLevelToFile();
-
+	if (m_finished)
+	{
+		m_score.stop();
+		std::cout << m_score.get() << std::endl;
+	}
   	return m_finished;
 
 }
 
 
 void LevelController::leftClick(sf::Event event)
-{					
+{				
+	
+
 	auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 	
 	if (clickOnToolbar(mouseLoc))
@@ -229,9 +238,8 @@ bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
 void LevelController::drawAll(bool running)
 {
 	m_window.clear();
-
 	drawStatic(running);
-	
+
 	if (m_selected < play)
 	{
 		if(m_mouseOnToolBr || m_selected == belt)
@@ -251,6 +259,7 @@ void LevelController::drawStatic(bool running)
 	m_board.draw(m_window, running);
 	m_frame.draw(m_window);
 	m_toolbar.draw(m_window);
+	m_score.draw(m_window);
 }
 
 bool LevelController::replaySolution() //fix urgent
