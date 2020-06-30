@@ -7,7 +7,6 @@
 #include<memory>
 #include "ResourceManager.h"
 #include "Button.h"
-
 #include "Board.h"
 #include "globals.h"
 #include "FileHandler.h"
@@ -58,7 +57,7 @@ private:
 	int m_numOfLevel = 0;
 	LevelController m_levelController;
 	sf::RenderTexture m_smallBoard;
-	int m_choseMode = 0;
+	int m_choseMode = 0;//fix
 };
 sf::IntRect getIntRectOfMenuIcon(int i);
 sf::IntRect getIntRectOfChoseLevelIcon(int i);

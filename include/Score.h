@@ -6,6 +6,7 @@
 class Score
 {
 public:
+	Score() = default;
 	Score(const int);
 	void set(int score);
 	int get() const;
@@ -20,5 +21,5 @@ private:
 	BaseImg m_background;
 	sf::Clock m_clock;
 	std::vector<float> m_sources;
-	bool m_play = true;
+	bool m_play = false;
 };

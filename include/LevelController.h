@@ -6,6 +6,7 @@
 #include "Level.h"
 #include "Toolbar.h"
 #include "MyListener.h"
+#include "Score.h"
 //#include "globals.h"
 
 class LevelController
@@ -34,7 +35,7 @@ public:
 	void dealWithBoard(sf::Vector2f mouseLoc);
 	void saveNewLevel();
 private:
-
+	Score m_score;
 	Board m_board;
 	sf::RenderWindow& m_window;
 	b2World& m_world;
@@ -51,7 +52,6 @@ private:
 	conditionsActs m_actConditions;
 
 	bool m_mouseOnToolBr = false;
-
 	bool tryRunning();
 	bool checkIfLevelFinished() const;
 	void grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc);
@@ -61,6 +61,4 @@ private:
 	void handleBoardClick(sf::Vector2f);
 	void handleToolbarClick(sf::Vector2f);
 	void returnConnectableToToolbar();
-
-
 };

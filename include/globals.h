@@ -211,7 +211,7 @@ const int NUM_OF_NUMBERS_TEX = 4;
 
 const int NUM_DELTA_Y_FROM_SCORE = 12;
 
-
+const int INS_SCORE = 9999;
 
 const int BUTTONS_IN_PAGE = 5;
 const int SPACING = 25;

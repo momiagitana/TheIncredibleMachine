@@ -13,6 +13,7 @@ OverallController::OverallController(b2World& world, MyListener& listener)//fix 
 	m_background(sf::Vector2f(MENU_X, MENU_Y), menuBackground),
 	m_choseLevelMenu(sf::Vector2f(MENU_X, MENU_Y), choseLevelMenu),
 	m_levelController(m_levels[m_numOfLevel], world, m_window, listener)//fix
+	
 {
 	m_window.setFramerateLimit(60);
 	m_smallBoard.create(TINY_BOARD_W, TINY_BOARD_H);
@@ -27,6 +28,7 @@ OverallController::OverallController(b2World& world, MyListener& listener)//fix 
 	setText();
 }
 
+
 void OverallController::run()
 {
 	while (m_window.isOpen())
@@ -34,6 +36,7 @@ void OverallController::run()
 		m_window.clear();
 		draw(m_window);
 		m_window.display();
+
 		if (auto event = sf::Event{}; m_window.waitEvent(event))
 		{
 			switch (event.type)
@@ -57,6 +60,7 @@ void OverallController::run()
 			}
 
 			case sf::Event::MouseMoved:
+
 				auto mouseLoc = m_window.mapPixelToCoords({ event.mouseMove.x, event.mouseMove.y });
 				handleMouseMove(mouseLoc);
 				break;
@@ -64,6 +68,7 @@ void OverallController::run()
 		}
 	}
 }
+
 
 void OverallController::handleClick(sf::Vector2f loc)
 {
@@ -112,6 +117,7 @@ void OverallController::drawTexts(sf::RenderWindow& window)
 	window.draw(m_levelGoal);
 	window.draw(m_levelName);
 	window.draw(m_levelNo);
+	
 }
 
 void OverallController::setMenuTexts()
@@ -257,7 +263,6 @@ void OverallController::draw(sf::RenderWindow& window)
 {
 	sf::Sprite tinyBoard(m_smallBoard.getTexture());
 	tinyBoard.setPosition(268, 70);//fix
-
 	m_levelController.drawStatic(false);
 	m_window.draw(tinyBoard);
 

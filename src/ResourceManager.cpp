@@ -89,7 +89,7 @@ ResourceManager::ResourceManager()
 
 
 	//textures for mac----------
-	loadTexture("build/balloon.png", Type_t::balloon);
+	/*loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
 	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
@@ -137,7 +137,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/menuBackground.png", Type_t::menuBackground);
 	loadTexture("build/frame.png", Type_t::frame);
  	loadTexture("build/chooseLevelButton.png", Type_t::choseLevel);
-	loadTexture("build/1px.png", Type_t::onePixel);
+	loadTexture("build/1px.png", Type_t::onePixel);*/
 
 
 
@@ -149,8 +149,8 @@ ResourceManager::ResourceManager()
 
 
 	////---------- sound ----------
-	//  loadSound("menu.ogg", Sound::menu);
-	// loadSound("background.ogg", Sound::background);
+	  loadSound("menu.ogg", Sound::menu);
+	 loadSound("background.ogg", Sound::background);
 
 	//loadSound("build/menu.ogg", Sound::menu);
 	//loadSound("build/background.ogg", Sound::background);

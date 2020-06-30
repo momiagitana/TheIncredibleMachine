@@ -18,6 +18,7 @@ Score::Score(const int)
 
 		m_sources.push_back(float(0));
 	}
+
 	m_clock.restart();
 }
 
@@ -27,7 +28,7 @@ void Score::set(int score)
 
 	int temp;
 
-	for (int i = NUM_OF_NUMBERS_TEX - 1; i >= 0; i--)
+	for (int i =0; i < NUM_OF_NUMBERS_TEX; i++)
 	{
 		temp = score % 10;
 		score = score * 0.1;
@@ -41,7 +42,7 @@ int Score::get() const
 	int found = 0;
 	int pSum = 0;
 	int mod = 0;
-	int power = 0;
+	int power = 3;
 
 
 	for (auto number = NUM_OF_NUMBERS_TEX - 1; number != -1; number--)
@@ -59,7 +60,7 @@ int Score::get() const
 		}
 
 		mod = (pow(10, power));
-		power++;
+		power--;
 		found *= mod;
 		found += pSum;
 		pSum = found;
@@ -94,12 +95,11 @@ void Score::draw(sf::RenderWindow& window)
 
 void Score::updateClock()
 {
-
+	
 	float mult = 0.1f;
 
 	static auto delta = m_clock.getElapsedTime().asSeconds();
 	m_clock.restart();
-
 
 
 	for (int i = 0; i < m_numbers.size(); i++)
@@ -117,8 +117,6 @@ void Score::updateClock()
 
 		if (m_numbers[i].getTextureRect().top == 0)
 			m_numbers[i].setTextureRect(sf::IntRect(SC_INS_RECT_X, 210, SC_N_W, INT_RECT_H));
-
 	}
-
 
 }
