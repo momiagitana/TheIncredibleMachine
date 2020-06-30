@@ -26,5 +26,6 @@
 										  "Connectable.cpp"
 										  "Trampoline.cpp"
 										  "CollisionsSFML.cpp"
+										  "FancyWall.cpp"
 										)
 

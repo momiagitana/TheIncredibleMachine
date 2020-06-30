@@ -8,6 +8,8 @@ class Balloon : public GameObj
 {
 public:
 	Balloon(ObjInfo info, bool movable, b2World &world);
+	void draw(sf::RenderWindow& window);
+	void animation();
 	
 private:
 	static bool m_registerit;

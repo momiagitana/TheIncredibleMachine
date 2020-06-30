@@ -6,7 +6,6 @@
 #include "PhysicsObj.h"
 #include "CollisionsSFML.h"
 
-
 class GameObj : public Button
 {
 public:
@@ -42,6 +41,18 @@ public:
 
 	bool pixelPerfectColides(GameObj&) const;
 
+	virtual void draw(sf::RenderWindow& window){BaseImg::draw(window); }
+
+	bool isOn() const { return m_status; }
+
+	void setStatus(bool status) { m_status = status; }
+
+	void setBodySize(sf::Vector2f size);
+
+	sf::Clock getClock(){return m_clock;}
+
+	 void animation();
+
 private:
 
 	PhysicsObj m_phyObj;
@@ -49,5 +60,6 @@ private:
 	int m_ID;
 	sf::Vector2f m_initialLoc;
 	bool m_mouseOnMe = false;
-	
+	sf::Clock m_clock;
+	bool m_status = false; //fix ON OFF
 };

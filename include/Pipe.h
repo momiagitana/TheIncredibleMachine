@@ -1,13 +1,13 @@
 #pragma once
-#include"Ball.h"
+#include"Resizable.h"
 #include "Factory.h"//fix needs to add to base class
 
-class BaseBall : public Ball
+
+class Pipe : public Resizable
 {
 public:
-	BaseBall (ObjInfo info, bool movable, b2World &world);
-
-
+	Pipe (ObjInfo info, bool movable, b2World &world);
+	
 private:
 	static bool m_registerit;
 };

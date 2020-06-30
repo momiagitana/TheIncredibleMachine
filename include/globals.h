@@ -27,6 +27,9 @@ enum Type_t
 	mouseEngine,
 	trampoline,
 	belt,
+	fancyWall,
+	pipe,
+	scissors,
 	//---------
 
 	play,
@@ -74,7 +77,12 @@ enum Type_t
 	brickWallButton,
 	mouseEngineButton,
 	trampolineButton,
-	beltButton
+	beltButton,
+	fancywallButton,
+	pipeButton,
+
+
+	balloonPopping = 200
 
 
 };
@@ -207,3 +215,6 @@ const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 300,300 };
 const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 300,300 };
 
 
+const int INITIAL_SIZES[2][2] ={ {32,48}, {66,18}};       //ballon , conveyor
+
+const int ANIMATION_SIZES[2][2] = { {90,73}, {66,18}};

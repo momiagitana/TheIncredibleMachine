@@ -24,6 +24,7 @@ public:
     void fixLastChange(Type_t);
     void backToStartingPlace();
     void setPosition(sf::Vector2f loc);
+    void animation(){}
 
 private:
 	int m_whichSize = 1; //from 1 to 5

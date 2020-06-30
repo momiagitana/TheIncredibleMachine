@@ -25,11 +25,14 @@ public:
 	virtual void drawSmall (sf::RenderTexture&);
 
 	sf::Sprite getSprite() const { return m_sprite; } //fix ask if correct
-	void nextIntRect();
+	void nextIntRect(int x = 0, int y =0);
 	void prevIntRect();
+	bool endOfAnimation(){return m_endAnimation;}
+	void setEndAnimation(bool status){m_endAnimation = status;}
 
 private:
 
 	sf::Sprite m_sprite;
+	bool m_endAnimation = false;
 
 };

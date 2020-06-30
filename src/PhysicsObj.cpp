@@ -16,7 +16,9 @@ PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, bool dynami
     bodyDef.position.Set(position.x * MPP, position.y * MPP);
 
     m_body = world.CreateBody(&bodyDef);
+    
     auto size = ResourceManager::instance().getTexture(type)->getSize();
+    // auto size = sf::Vector2f(INITIAL_SIZES[type][0],INITIAL_SIZES[type][1]);
 
     if (objPhysicsInfo._shape == RECT)
     {

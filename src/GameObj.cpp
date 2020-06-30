@@ -43,6 +43,11 @@ void GameObj::updateBodySize()
 	m_phyObj.setSize(BaseImg::getSize());
 }
 
+void GameObj::setBodySize(sf::Vector2f size)
+{
+	m_phyObj.setSize(size);
+}
+
 void GameObj::rotateBody(int whichAngle)
 {
 	m_phyObj.setAngle(whichAngle);
@@ -83,3 +88,4 @@ bool GameObj::pixelPerfectColides(GameObj& other) const
 	
 	return false;
 }
+

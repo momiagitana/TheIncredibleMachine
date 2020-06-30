@@ -6,6 +6,7 @@ BaseImg::BaseImg(sf::Vector2f center, Type_t objTexture)
 	sf::Texture *texture = ResourceManager::instance().getTexture(objTexture);
 	m_sprite.setTexture(*texture);
 	m_sprite.setOrigin(texture->getSize().x / 2, texture->getSize().y / 2);
+	//m_sprite.setOrigin(initialSizes[objTexture][objTexture]/ 2, initialSizes[objTexture][objTexture%200 + 1] / 2);
 	setPosition(center);
 }
 
@@ -77,12 +78,32 @@ void BaseImg::drawSmall (sf::RenderTexture& tinyBoard)
 	m_sprite.setPosition(pos);
 }
 
-void BaseImg::nextIntRect()
+void BaseImg::nextIntRect(int x, int y)
 {
 	sf::IntRect newRect = m_sprite.getTextureRect();
-	if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
-		newRect.left += newRect.width;
 
+	if(x == 0 && y == 0) //fix
+	{
+		if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
+			newRect.left += newRect.width;
+	}
+	else
+	{
+		if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
+		{
+			newRect.left += newRect.width;
+			newRect.width = x;
+			newRect.height = y;
+
+		}
+		else
+		{
+			setEndAnimation(true);
+
+		}
+		
+	}
+	
 	setIntRect(newRect);
 }
 

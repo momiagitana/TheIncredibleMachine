@@ -140,7 +140,7 @@ void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
 
 Type_t FileHandler::strToEnum(const std::string& str)
 {
-	if (str == "balloon") 			return balloon;
+	if 		(str == "balloon") 		return balloon;
 	else if (str == "basketBall") 	return basketBall;
 	else if (str == "baseBall") 	return baseBall;
 	else if (str == "bowlingBall") 	return bowlingBall;
@@ -149,6 +149,9 @@ Type_t FileHandler::strToEnum(const std::string& str)
 	else if (str == "mouseEngine")	return mouseEngine;
 	else if (str == "belt")			return belt;
 	else if (str == "trampoline")	return trampoline;
+	else if (str == "pipe")         return pipe;
+	else if (str == "fancyWall")    return fancyWall;
+	//else if (str == "scissors")     return scissors;
 	return none;
 
 }
@@ -164,6 +167,8 @@ std::string FileHandler::enumToStr(Type_t obj)
 	else if (obj == mouseEngine )	return "mouseEngine";
 	else if (obj == belt )			return "belt";
 	else if (obj == trampoline ) 	return "trampoline";
+	else if (obj == pipe )			return "pipe";
+	else if (obj == fancyWall ) 	return "fancywall";
 }//add obj fix
 
 

@@ -6,6 +6,8 @@ class Conveyor : public Connectable
 {
 public:
 	Conveyor (ObjInfo info, bool movable, b2World &world);
+
+	//void draw (sf::RenderWindow&);
 	
 private:
 	static bool m_registerit;

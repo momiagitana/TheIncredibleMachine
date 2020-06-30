@@ -48,7 +48,7 @@ namespace
     {
 
 
-        std::cout << "BasketBall and Wall collision!" << std::endl;
+        // std::cout << "BasketBall and Wall collision!" << std::endl;
     }
 
     void wallBasket(GameObj& object1, GameObj& object2)
@@ -59,7 +59,7 @@ namespace
 
     void balloonWall(GameObj& object1, GameObj& object2)
     {
-        std::cout << "balloon and Wall collision!" << std::endl;
+        // std::cout << "balloon and Wall collision!" << std::endl;
     }
     void wallBalloon(GameObj& object1, GameObj& object2)
     {
@@ -69,7 +69,7 @@ namespace
 
     void basketBalloon(GameObj& object1, GameObj& object2)
     {
-        std::cout << "balloon and Wall basketBall!" << std::endl;
+        // std::cout << "balloon and Wall basketBall!" << std::endl;
     }
     void balloonBasket(GameObj& object1, GameObj& object2)
     {
@@ -79,7 +79,7 @@ namespace
 
     void wallBaseball(GameObj& object1, GameObj& object2)
     {
-        std::cout<<"wall and baseball collided"<<std::endl;
+        // std::cout<<"wall and baseball collided"<<std::endl;
     }
     void baseballWall(GameObj& object1, GameObj& object2)
     {
@@ -89,29 +89,32 @@ namespace
 
     void balloonBaseball(GameObj& object1, GameObj& object2)
     {
-        std::cout << "balloonn and baseball collision!" << std::endl;
+        object1.setStatus(true);//fix
+        
+        // std::cout << "balloonn and baseball collision!" << std::endl;
     }
     void baseballBalloon(GameObj& object1, GameObj& object2)
     {
+        
         balloonBaseball(object2,object1);
     }
 
         
     void baseballBaseball(GameObj& object1, GameObj& object2)
     {
-       std::cout << "baseball and baseball collision!" << std::endl;
+    //    std::cout << "baseball and baseball collision!" << std::endl;
     }
 
 
     void balloonBalloon(GameObj& object1, GameObj& object2)
     {
-       std::cout << "balloonn and balloonn collision!" << std::endl;
+    //    std::cout << "balloonn and balloonn collision!" << std::endl;
     }
 
 
     void basketBasket(GameObj& object1, GameObj& object2)
     {
-        std::cout << "basketBall and basketBall collision!" << std::endl;
+        // std::cout << "basketBall and basketBall collision!" << std::endl;
     }
 
     void conveyorBalloon(GameObj& object1, GameObj& object2)
@@ -128,7 +131,7 @@ namespace
 
             object2.applyForce(force);
         }
-        std::cout << "conveyor and balloon collision!" << std::endl;
+        // std::cout << "conveyor and balloon collision!" << std::endl;
     }
     void balloonConveyor(GameObj& object1, GameObj& object2)
     {
@@ -150,7 +153,7 @@ namespace
 
             object2.applyForce(force);
         }
-        std::cout << "conveyor and balloon collision!" << std::endl;
+        // std::cout << "conveyor and balloon collision!" << std::endl;
     }
     void basketConveyor(GameObj& object1, GameObj& object2)
     {
@@ -173,7 +176,7 @@ namespace
             object2.applyForce(force);
         }
 
-        std::cout << "conveyor and balloon collision!" << std::endl;
+        // std::cout << "conveyor and balloon collision!" << std::endl;
     }
     void baseConveyor(GameObj& object1, GameObj& object2)
     {
@@ -204,7 +207,7 @@ namespace
             object2.applyForce(force);
         }
 
-        std::cout << "trampoline and Basketball collision!" << std::endl;
+        // std::cout << "trampoline and Basketball collision!" << std::endl;
     }
     void ballTramp(GameObj& object1, GameObj& object2)
     {

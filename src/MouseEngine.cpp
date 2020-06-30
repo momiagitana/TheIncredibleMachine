@@ -3,7 +3,8 @@
 MouseEngine::MouseEngine(ObjInfo info, bool movable, b2World &world)
     :Connectable(info, movable, world, 0)//fix pass data on info
 {
-
+    setIntRect(sf::IntRect(0,0,48,32));//fix
+    updateBodySize();
 }
 
 MouseEngine::~MouseEngine()

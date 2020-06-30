@@ -84,6 +84,10 @@ ResourceManager::ResourceManager()
 	loadTexture("build/balloonButton.png", Type_t::balloonButton);
 	loadTexture("build/mouseEngine.png", Type_t::mouseEngine);
 	loadTexture("build/trampoline.png", Type_t::trampoline);
+	loadTexture("build/fancyWall.png",Type_t::fancyWall);
+	loadTexture("build/pipeWall.png" ,Type_t::pipe);
+
+	//loadTexture("build/balloonPoppin2.0",Type_t::balloonPopping);
 
 	loadTexture("build/basketButton.png", Type_t::basketButton);
 	loadTexture("build/baseButton.png", Type_t::baseButton);
@@ -95,6 +99,9 @@ ResourceManager::ResourceManager()
 	loadTexture("build/mouseEngineButton.png", Type_t::mouseEngineButton);
 	loadTexture("build/beltButton.png", Type_t::beltButton);
 	loadTexture("build/trampolineButton.png", Type_t::trampolineButton);
+	loadTexture("build/fancyWallButton.png", Type_t::fancywallButton);
+	loadTexture("build/pipeWallButton.png",Type_t::pipeButton);
+	loadTexture("buils/scissorsButton.png", Type_t::scissors);
 
 	loadTexture("build/engineConectButton.png", Type_t::connectButton);
 
