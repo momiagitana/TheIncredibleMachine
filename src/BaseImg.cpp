@@ -19,7 +19,7 @@ sf::FloatRect BaseImg::getGlobalBounds() const
 	return m_sprite.getGlobalBounds();
 }
 
-void BaseImg::draw(sf::RenderWindow& window) const
+void BaseImg::draw(sf::RenderWindow& window)
 {
 	window.draw(m_sprite);
 }
@@ -77,12 +77,29 @@ void BaseImg::drawSmall (sf::RenderTexture& tinyBoard)
 	m_sprite.setPosition(pos);
 }
 
-void BaseImg::nextIntRect()
+void BaseImg::nextIntRect(int x, int y)
 {
 	sf::IntRect newRect = m_sprite.getTextureRect();
-	if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
-		newRect.left += newRect.width;
 
+	if(x == 0 && y == 0) //fix
+	{
+		if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
+			newRect.left += newRect.width;
+	}
+	else
+	{
+		if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
+		{
+			newRect.left += newRect.width;
+			newRect.width = x;
+			newRect.height = y;
+		}
+		else
+		{
+			setEndAnimation(true);
+		}		
+	}
+	
 	setIntRect(newRect);
 }
 

@@ -13,7 +13,7 @@ public:
 	void decrease();
 	bool isEmpty() const;
 	void setPosition(sf::Vector2f pos);
-	void draw(sf::RenderWindow&) const;
+	void draw(sf::RenderWindow&);
 	
 private:
 	void setString();

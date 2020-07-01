@@ -18,7 +18,7 @@ public:
    
     bool mouseOnMe(sf::Vector2f loc);
     Type_t handleClick(sf::Vector2f loc);
-    void draw(sf::RenderWindow&) const;
+    void draw(sf::RenderWindow&);
     void setTexture();
     ObjInfo getInfo()const; //fix const
     void fixLastChange(Type_t);

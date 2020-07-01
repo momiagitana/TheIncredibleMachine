@@ -32,5 +32,31 @@ Type_t Connectable::handleClick(sf::Vector2f loc)
 void Connectable::backToStartingPlace()
 {
     GameObj::backToStartingPlace();
-    m_status = false;
+    setStatus(false);//fix OFF
+}
+
+void Connectable::draw(sf::RenderWindow& window)
+{
+    if(endOfAnimation())
+    {
+        auto size = BaseImg::getSize();
+        BaseImg::setIntRect(sf::IntRect(0,0,size.x,size.y));//fix
+        setEndAnimation(false);
+    }
+    else if(isOn())
+	    animation();
+
+	BaseImg::draw(window);		
+}
+
+void Connectable::animation()
+{
+    auto size = BaseImg::getSize();
+
+	if(getClock().getElapsedTime().asSeconds() > 0.4)
+	{
+		BaseImg::nextIntRect(size.x ,size.y);
+		getClock().restart();	
+	}
+	 
 }

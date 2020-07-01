@@ -47,7 +47,7 @@ void ToolbarButton::setPosition(sf::Vector2f pos)
 	m_text.setPosition(sf::Vector2f(pos.x - 10, pos.y + getSize().y/2));//fix NUM_DIFF and -10 set origin center
 }
 
-void ToolbarButton::draw(sf::RenderWindow& w) const
+void ToolbarButton::draw(sf::RenderWindow& w)
 {
 	BaseImg::draw(w);
 	w.draw(m_text);

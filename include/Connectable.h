@@ -17,17 +17,20 @@ public:
     sf::Vector2f getConnectionButtonPos() const { return m_connection.getLocation(); }
     
     bool isConected()   const { return m_conected; }
-    bool isOn()         const { return m_status; }
+
 
     void setConected(bool conected) { m_conected = conected; }
-    void setStatus(bool status)     { m_status = status; }
+
+    void draw(sf::RenderWindow& window);
+
+    void animation();
+
 
 private:
 
     static bool m_registerit;
 
     bool m_conected = false; 
-    bool m_status = false; //fix ON OFF
 
     Button m_connection;
 

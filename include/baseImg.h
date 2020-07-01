@@ -11,7 +11,7 @@ public:
 
 	BaseImg(sf::Vector2f, Type_t);
 	virtual sf::FloatRect getGlobalBounds() const;
-	virtual void draw(sf::RenderWindow&) const;
+	virtual void draw(sf::RenderWindow&); //fix check if able to const
 
 	sf::Vector2f getLocation() const;
 	void setRotation(float);
@@ -25,15 +25,19 @@ public:
 	virtual void drawSmall (sf::RenderTexture&);
 
 	sf::Sprite getSprite() const { return m_sprite; } //fix ask if correct
-	void nextIntRect();
+	void nextIntRect(int x = 0, int y = 0);
 	void prevIntRect();
 
 	//fix check if used
 	void setTextureRect(sf::IntRect intrect);
 	const sf::IntRect& getTextureRect() const;
 
+	bool endOfAnimation() { return m_endAnimation; } 
+	void setEndAnimation(bool status) { m_endAnimation = status; }
+
 private:
 
 	sf::Sprite m_sprite;
 
+	bool m_endAnimation = false;
 };

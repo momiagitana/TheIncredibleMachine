@@ -123,7 +123,7 @@ Type_t Resizable::handleClick(sf::Vector2f loc)
     return GameObj::handleClick(loc);
 }
 
-void Resizable::draw(sf::RenderWindow& win) const
+void Resizable::draw(sf::RenderWindow& win)
 {
     BaseImg::draw(win);
 

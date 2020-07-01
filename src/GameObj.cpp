@@ -83,3 +83,8 @@ bool GameObj::pixelPerfectColides(GameObj& other) const
 	
 	return false;
 }
+
+void GameObj::setBodySize(sf::Vector2f size)
+{
+	m_phyObj.setSize(size);
+}
