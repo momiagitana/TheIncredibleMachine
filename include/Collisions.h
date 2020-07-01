@@ -121,8 +121,8 @@ namespace
         if(conv.isOn())
         {
             b2Vec2 force;
-            force.x = 0.0125;
-            force.y = 0.0;
+            force.x = 0.0125f;
+            force.y = 0.0f;
 
             force.x *= object1.aboveOrBelow(object2);
 

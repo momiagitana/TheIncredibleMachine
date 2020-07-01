@@ -1,8 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-const int MENU_BUTTONS_INT_RECT[7][2] = { {24,23}, {21, 35}, {18, 31}, {110,28},{30,30},{37,37},{25,24} };
-const int MENU_BUTTONS_LOC[7][2] = { {210, 200}, {150, 200}, {100,200}, {200, 150}, {100,150},{50,150},{100,150} };
+const int MENU_BUTTONS_INT_RECT[8][2] = { {24,23}, {21, 35}, {18, 31}, {21, 15},{21, 16},{30,30},{37,37},{25,24} };
+const int MENU_BUTTONS_LOC[8][2] = { {210, 205}, {160, 205}, {100,205},{105, 112},{105, 128} , {185,165},{115,165},{185,165} };
+
+const int SOUND_X = 172;
+const int SOUND_Y = 120;
+
 
 const int CHOSE_LEVEL_BUTTONS_INT_RECT[3][2] = { {48, 18}, {21, 15}, {21, 16} };
 const int CHOSE_LEVEL_BUTTONS_LOC[3][2] = { {200, 150}, {140, 145}, {141,165} };
@@ -38,12 +42,13 @@ enum Type_t
 	arrowLButton,
 	menuBackground,
 	frame,
-
+	sound,
 	//menu buttons
 	exitButton,
 	startButton,
 	reset,
-	sound,
+	upSound,
+	downSound,
 	choseLevel,
 	build,
 	save,
@@ -66,9 +71,6 @@ enum Type_t
 	replayButton,
 	advanceButton,
 	onePixel,
-
-	up,
-	down,
 
 	connectButton,
 

@@ -11,12 +11,14 @@ OverallController::OverallController(b2World& world, MyListener& listener)//fix 
 	m_levels(FileHandler(ResourceManager::instance().getLevelPath(), true).readLevels()), //fix true->OPEN
 	m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine", sf::Style::Default),
 	m_background(sf::Vector2f(MENU_X, MENU_Y), menuBackground),
+	m_sound(sf::Vector2f(SOUND_X, SOUND_Y),sound),
 	m_choseLevelMenu(sf::Vector2f(MENU_X, MENU_Y), choseLevelMenu),
 	m_levelController(m_levels[m_numOfLevel], world, m_window, listener)//fix
 	
 {
 	m_window.setFramerateLimit(60);
 	m_smallBoard.create(TINY_BOARD_W, TINY_BOARD_H);
+	m_sound.setIntRect(sf::IntRect(440,0,110, 28));
 
 	for (int i = exitButton; i < endMenuButtons; i++)
 		m_menuButtons.push_back(ClickButton(sf::Vector2f(0, 0), Type_t(i), sf::Vector2i(getIntRectOfMenuIcon(i-exitButton).width,getIntRectOfMenuIcon(i-exitButton).height)));
@@ -182,9 +184,16 @@ void OverallController::menuMode(sf::Vector2f loc)
 		closeWindow();
 		return;
 	}
-	case sound:
+	case upSound:
 	{
 		volumeUp();
+		m_sound.nextIntRect();
+		return;
+	}
+	case downSound:
+	{
+		volumeDown();
+		m_sound.prevIntRect();
 		return;
 	}
 	case reset:
@@ -295,6 +304,7 @@ void OverallController::drawMenu(sf::RenderWindow& window)
 			continue;
 		button.draw(window);
 	}
+	m_sound.draw(window);
 }
 
 void OverallController::drawChoseLevel(sf::RenderWindow& window)
@@ -320,6 +330,12 @@ void OverallController::setButtons()
 
 void OverallController::volumeUp()
 {
+	ResourceManager::instance().volUp();
+}
+
+void OverallController::volumeDown()
+{
+	ResourceManager::instance().volDown();
 }
 
 void OverallController::closeWindow()
