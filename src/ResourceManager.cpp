@@ -106,7 +106,7 @@ ResourceManager::ResourceManager()
 	loadTexture("build/brick.png", Type_t::brickWall);
 	loadTexture("build/balloonButton.png", Type_t::balloonButton);
 	loadTexture("build/mouseEngine.png", Type_t::mouseEngine);
-	loadTexture("build/trampoline.png", Type_t::trampoline);
+	loadTexture("build/trampolineOPT1.png", Type_t::trampoline);
 	loadTexture("build/scissors.png", Type_t::scissors); 
 
 	loadTexture("build/basketButton.png", Type_t::basketButton);
