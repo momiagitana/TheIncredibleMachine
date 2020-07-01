@@ -14,6 +14,7 @@
 #include "BaseBall.h"
 #include "Balloon.h"
 #include "BasketBall.h"
+#include "BowlingBall.h"
 #include "BrickWall.h"
 #include "Conveyor.h"
 #include "MouseEngine.h"
@@ -56,7 +57,6 @@ namespace
         basketWall(object2,object1);
     }
 
-
     void balloonWall(GameObj& object1, GameObj& object2)
     {
         std::cout << "balloon and Wall collision!" << std::endl;
@@ -86,7 +86,6 @@ namespace
         wallBaseball(object2,object1);
     }
 
-
     void balloonBaseball(GameObj& object1, GameObj& object2)
     {
         std::cout << "balloonn and baseball collision!" << std::endl;
@@ -101,7 +100,6 @@ namespace
     {
        std::cout << "baseball and baseball collision!" << std::endl;
     }
-
 
     void balloonBalloon(GameObj& object1, GameObj& object2)
     {

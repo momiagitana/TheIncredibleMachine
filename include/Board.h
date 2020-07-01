@@ -9,6 +9,7 @@
 #include "Balloon.h"
 #include "BaseBall.h"
 #include "BasketBall.h"
+#include "BowlingBall.h"
 #include "BrickWall.h"
 #include "Collisions.h"
 #include "FileHandler.h"
