@@ -13,6 +13,7 @@
 #include "LevelController.h"
 #include "Level.h"
 #include "MyListener.h"
+#include "ClickButton.h"
 
 
 class OverallController
@@ -29,6 +30,7 @@ private:
 	void drawChoseLevel(sf::RenderWindow& window);
 	void setButtons();
 	void volumeUp();
+	void volumeDown();
 	void closeWindow();
 	void setLevel();
 	Type_t getSelection(sf::Vector2f loc) const;
@@ -51,6 +53,7 @@ private:
 	b2World& m_world;
 	BaseImg m_background;
 	BaseImg m_choseLevelMenu;
+	BaseImg m_sound;
 	sf::Text m_levelGoal;
 	sf::Text m_levelName;
 	sf::Text m_levelNo;
