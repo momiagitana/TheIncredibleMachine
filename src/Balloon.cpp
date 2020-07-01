@@ -16,7 +16,7 @@ void Balloon::draw(sf::RenderWindow& window)
 {
     if(endOfAnimation())
     {
-        setGravityScale(0.1);
+        setGravityScale(0.2);
         setBodySize(sf::Vector2f(10,10));//fix
     }
 	else if(isOn())
