@@ -139,11 +139,13 @@ namespace
     {
         if(object1.isBelow(object2))
         {
+            //object1.setStatus(true);
+
             b2Vec2 force;
             force.x = 0.0;
             force.y = 0.125;
-
             object2.applyForce(force);
+            object1.setStatus(true);
         }
 
         std::cout << "trampoline and Basketball collision!" << std::endl;
