@@ -37,7 +37,7 @@ std::string& ResourceManager::getLevelPath()
 ResourceManager::ResourceManager()
 {
 	//---------- textures -------windows---
-	/*loadTexture("balloon.png", Type_t::balloon);
+	loadTexture("balloon.png", Type_t::balloon);
 	loadTexture("basketBall.png", Type_t::basketBall);
 	loadTexture("baseBall.png", Type_t::baseBall);
 	loadTexture("bowlingBall.png", Type_t::bowlingBall);
@@ -85,11 +85,12 @@ ResourceManager::ResourceManager()
 	loadTexture("menuBackground.png", Type_t::menuBackground);
 	loadTexture("frame.png", Type_t::frame);
 	loadTexture("chooseLevelButton.png", Type_t::choseLevel);
-	loadTexture("1px.png", Type_t::onePixel);*/
-
+	loadTexture("1px.png", Type_t::onePixel);
+	loadTexture("numbers.png", Type_t::numbers);
+	loadTexture("score.png", Type_t::score);
 
 	//textures for mac----------
-	loadTexture("build/balloon.png", Type_t::balloon);
+	/*loadTexture("build/balloon.png", Type_t::balloon);
 	loadTexture("build/basketBall.png", Type_t::basketBall);
 	loadTexture("build/baseBall.png", Type_t::baseBall);
 	loadTexture("build/bowlingBall.png", Type_t::bowlingBall);
@@ -142,27 +143,27 @@ ResourceManager::ResourceManager()
 
 
 	loadTexture("build/1px.png", Type_t::onePixel);
-
+*/
 
 
 	////---------- font ---win------
-	//   loadFont("kongtext.ttf", Font::kongtext);
-	//   loadFont("Courier New.ttf", Font::CourierNew);
-	loadFont("build/kongtext.ttf", Font::kongtext);
-	loadFont("build/Courier New.ttf", Font::CourierNew);
+	   loadFont("kongtext.ttf", Font::kongtext);
+	   loadFont("Courier New.ttf", Font::CourierNew);
+	/*loadFont("build/kongtext.ttf", Font::kongtext);
+	loadFont("build/Courier New.ttf", Font::CourierNew);*/
 
 
 	////---------- sound ----------
-	//   loadSound("menu.ogg", Sound::menu);
-	//  loadSound("background.ogg", Sound::background);
+	   loadSound("menu.ogg", Sound::menu);
+	  loadSound("background.ogg", Sound::background);
+	  loadSound("build.ogg", Sound::build);
+	/*loadSound("build/menu.ogg", Sound::menu);
+	loadSound("build/background.ogg", Sound::background);*/
+	//loadSound("build/build.ogg", Sound::build);
 
-	loadSound("build/menu.ogg", Sound::menu);
-	loadSound("build/background.ogg", Sound::background);
-	loadSound("build/build.ogg", Sound::build);
 
-
-	//m_path = "levels.txt";
-	m_path = "build/levels.txt";
+	m_path = "levels.txt";
+	//m_path = "build/levels.txt";
 
 	setSounds();
 }

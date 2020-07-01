@@ -52,6 +52,7 @@ private:
 	conditionsActs m_actConditions;
 
 	bool m_mouseOnToolBr = false;
+	void setText(sf::Text&);
 	bool tryRunning();
 	bool checkIfLevelFinished() const;
 	void grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc);

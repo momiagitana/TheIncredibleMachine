@@ -263,15 +263,17 @@ void LevelController::drawStatic(bool running)
 
 bool LevelController::replaySolution() //fix urgent
 {
-	BaseImg nextLevelMesseage(sf::Vector2f(400,300),Type_t::puzzleComplete);
-	Button replay(sf::Vector2f(350,350),Type_t::replayButton);
-	Button advance(sf::Vector2f(460,350),Type_t::advanceButton);
-	
+	BaseImg nextLevelMesseage((PUZZLE_COMPLETE),Type_t::puzzleComplete);
+	Button replay(REPLAY_BUTTON,Type_t::replayButton);
+	Button advance(ADVANCE_BUTTON,Type_t::advanceButton);
+	sf::Text levelScore;
+	setText(levelScore);
 	sf::Event evnt;
 
 	nextLevelMesseage.draw(m_window);
 	advance.draw(m_window);
 	replay.draw(m_window);
+	m_window.draw(levelScore);
 	m_window.display();
 
 	while (m_window.isOpen())
@@ -303,6 +305,16 @@ bool LevelController::replaySolution() //fix urgent
 	return true;
 }
 
+
+void LevelController::setText(sf::Text& levelScore)
+{
+	levelScore.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
+	levelScore.setString(std::to_string(m_score.get()));
+	levelScore.setPosition(LEVEL_SCORE_TEXT_LOC);
+	levelScore.setColor(sf::Color::Black);
+	levelScore.setCharacterSize(CHARATER_SIZE);
+	levelScore.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
+}
 
 bool LevelController::tryRunning()
 {

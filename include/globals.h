@@ -224,7 +224,12 @@ const float MPP = 0.015625f;
 const unsigned CHARATER_SIZE = 13;
 const float CHARATER_OUTLINE_THICKNESS = 0.20; 
 
+const sf::Vector2f PUZZLE_COMPLETE{ FRAME_X, FRAME_Y };
+const sf::Vector2f REPLAY_BUTTON{ PUZZLE_COMPLETE .x - 50,PUZZLE_COMPLETE .y+40};
+const sf::Vector2f ADVANCE_BUTTON{ PUZZLE_COMPLETE.x+50,REPLAY_BUTTON .y};
+
 const sf::Vector2f LEVEL_GOAL_TEXT_LOC{ 70,270 };
+const sf::Vector2f LEVEL_SCORE_TEXT_LOC{ FRAME_X-10,FRAME_Y+15 };
 
 const sf::Vector2f LEVEL_NO_TEXT_LOC_MENU{ 95,36 };
 const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,36 };
