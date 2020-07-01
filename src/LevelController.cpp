@@ -49,7 +49,7 @@ bool LevelController::run()
 					std::cout << m_score.get() << std::endl;
 					return false; //fix
 				}
-				else
+				else if (event.mouseButton.button == sf::Mouse::Button::Left)
 					leftClick(event);
 				break;
 			}

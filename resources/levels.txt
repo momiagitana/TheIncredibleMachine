@@ -1,6 +1,6 @@
-TUTORIAL LEARN ABOUT WALLS AND BALLOONS
+TUTORIAL WALLS
 -
-"You need to tie the basketball to the basket"
+YOU NEED TO GET THE BALLOON OUT FROM THE RIGHT TOP CORNER
 -
 balloon 123.000000 300.000000 -1 -1 -1
 brickWall 558.000000 80.000000 5 2 0
@@ -38,36 +38,14 @@ brickWall 173.000000 317.000000 1 1 0
 brickWall 318.000000 314.000000 1 3 0
 -
 brickWall 5
-balloon 1
-scissors 1
-pipeWall 2
 -
-34 100 100 530 8
+0 38 12 530 8
 -
 -
 
-Level Editor
+TUTORIAL ENGINES
 -
-"Creat a new level"
--
--
-basketBall -1
-brickWall -1
-mouseEngine -1
-belt -1
-conveyor -1
-balloon -1
-baseBall -1
-trampoline -1
-scissors -1
--
-0 0 0 530 8
--
--
-
-Zalman Mom
--
-"You need to tie the bowlingtball to the basket"
+YOU NEED TO GET THE BALLS IN THE BOXES (USE THE ENGINES!)
 -
 brickWall 73.000000 157.000000 1 0 -1
 mouseEngine 73.000000 133.000000 -1 -1 -1
@@ -88,15 +66,57 @@ brickWall 322.000000 108.000008 5 2 -1
 baseBall 64.000000 213.000000 -1 -1 -1
 baseBall 286.000000 218.000000 -1 -1 -1
 brickWall 257.000000 108.000008 5 2 -1
+basketBall 74.000000 92.000000 -1 -1 -1
+mouseEngine 290.000000 131.000000 -1 -1 -1
+conveyor 412.000000 96.000000 -1 -1 -1
+basketBall 413.000000 24.000000 -1 -1 -1
+mouseEngine 342.000000 200.000000 -1 -1 -1
+brickWall 495.000000 128.000000 2 0 -1
+brickWall 455.000000 111.000000 1 2 -1
+brickWall 495.000000 36.000000 2 0 -1
+brickWall 536.000000 80.000000 5 2 -1
+basketBall 296.000000 82.000000 -1 -1 -1
 -
-basketBall -1
-brickWall -1
-mouseEngine -1
-belt -1
-conveyor -1
-balloon -1
-baseBall -1
-trampoline -1
+belt 3
+mouseEngine 1
+-
+0 0 0 0 0
+-
+-
+
+TUTORIAL TRAMPOLINE
+-
+GET THE BALL IN BETWEEN THE PIPES
+-
+baseBall 89.000000 250.000015 -1 -1 -1
+brickWall 64.000000 269.000000 1 0 -1
+trampoline 108.000000 320.000000 -1 -1 -1
+trampoline 212.000000 283.000000 -1 -1 -1
+trampoline 334.000000 242.000000 -1 -1 -1
+trampoline 458.000000 196.000000 -1 -1 -1
+pipeWall 515.000000 251.000000 3 2 -1
+pipeWall 552.000000 248.000000 3 2 -1
+pipeWall 535.000000 299.000000 1 0 -1
+-
+trampoline 3
+-
+0 0 0 0 0
+-
+-
+
+EXPLODE BALLOON
+-
+GET THE BALLOON TO EXPLODE! (USE THE SCISSORS)
+-
+balloon 296.000000 326.000000 -1 -1 -1
+mouseEngine 72.000000 161.000000 -1 -1 -1
+basketBall 72.000000 106.000000 -1 -1 -1
+scissors 393.000000 121.999992 -1 -1 -1
+-
+belt 1
+basketBall 1
+brickWall 1
+conveyor 1
 -
 0 0 0 0 0
 -
