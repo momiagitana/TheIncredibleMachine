@@ -17,7 +17,7 @@ const unsigned obj_size = 40;//fix check if needed
 
 const int DELTA_ENGINE_CONECT[2][2] = {{13,-6}, {13,0}}; //1 mouse engine, fix change name, 2conveyor
 
-const int NUM_OF_OBJECTS = 9; // update when adding an object 
+const int NUM_OF_OBJECTS = 11; // update when adding an object 
 
 enum Type_t
 {
@@ -28,6 +28,8 @@ enum Type_t
 	bowlingBall,
 	conveyor,
 	brickWall,
+	pipeWall,
+	fancyWall,
 	mouseEngine,
 	trampoline,
 	scissors,
@@ -83,6 +85,8 @@ enum Type_t
 	bowlingButton,
 	conveyorButton,
 	brickWallButton,
+	pipeWallButton,
+	fancyWallButton,
 	mouseEngineButton,
 	trampolineButton,
 	scissorsButton,
@@ -121,9 +125,11 @@ struct PhysicsInfo
                                                   {CIRCLE, 0.1f, 0.1f, 0.7f},    //bowlingBall
                                                   {RECT,   0.5f, 0.4f, 0.7f},    //conveyor
                                                   {RECT,   0.5f, 0.4f, 0.7f},   //brickWall
+												  {RECT,   0.5f, 0.4f, 0.7f},   //pipeWall
+												  {RECT,   0.5f, 0.4f, 0.7f},   //fancyWall
 												  {RECT,   0.5f, 0.4f, 0.7f},   //mouseEngine
 												  {RECT,   0.5f, 0.4f, 0.7f},   //trampoline
-												  {RECT,   0.5f, 0.4f, 0.7f}};   //trampoline
+												  {RECT,   0.5f, 0.4f, 0.7f}};   //trampoline 
 
 	// m_fixtureDef.friction = 1;
     // m_fixtureDef.restitution = 0.4f;
