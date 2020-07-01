@@ -5,7 +5,7 @@ configure_file ("baseBall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("conveyor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("brick.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("mouseEngine.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("trampoline.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("trampolineOPT1.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("scissors.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
