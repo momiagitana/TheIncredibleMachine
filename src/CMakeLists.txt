@@ -28,5 +28,6 @@
 										  "CollisionsSFML.cpp"
 										  "Score.cpp"
 										  "ClickButton.cpp"
+										  "Scissors.cpp"
 										  )										  
 

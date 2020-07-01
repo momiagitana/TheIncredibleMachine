@@ -84,9 +84,9 @@ void PhysicsObj::setSize(sf::Vector2f size)
         m_fixtureDef.shape = &circleShape;
     }
 
-    m_fixtureDef.friction = 1;
-    m_fixtureDef.restitution = 0.4f;
-    m_fixtureDef.density = 0.7f;
+    m_fixtureDef.friction = objPhysicsInfo._friction;
+    m_fixtureDef.restitution = objPhysicsInfo._restitution;
+    m_fixtureDef.density = objPhysicsInfo._density;
     m_fixture = m_body->CreateFixture(&m_fixtureDef);
 
 }
