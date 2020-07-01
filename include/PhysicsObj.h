@@ -12,10 +12,11 @@ private:
     b2Body*         m_body;
     b2FixtureDef    m_fixtureDef;
     b2Fixture*      m_fixture;
+    Type_t          m_type;
 
 public:
 
-    PhysicsObj(b2World &, const sf::Vector2f&, bool , Type_t);
+    PhysicsObj(b2World &, const sf::Vector2f&, bool, Type_t);
     ~PhysicsObj();
 
     b2Vec2 getPosition() const { return  m_body->GetPosition(); }

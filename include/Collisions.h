@@ -69,7 +69,7 @@ namespace
 
     void basketBalloon(GameObj& object1, GameObj& object2)
     {
-        std::cout << "balloon and Wall basketBall!" << std::endl;
+        object2.setStatus(true);
     }
     void balloonBasket(GameObj& object1, GameObj& object2)
     {

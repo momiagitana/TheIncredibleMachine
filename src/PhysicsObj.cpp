@@ -2,6 +2,7 @@
 
 
 PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, bool dynamic, Type_t type)
+    :m_type(type)
 {
     auto objPhysicsInfo = physicsInfo[int(type)];
     b2BodyDef bodyDef;
@@ -66,11 +67,23 @@ void PhysicsObj::setGravityScale(float scale)
 
 void PhysicsObj::setSize(sf::Vector2f size)
 {
-    m_body->DestroyFixture(m_fixture);
 
+    auto objPhysicsInfo = physicsInfo[int(m_type)];
+    m_body->DestroyFixture(m_fixture);
     b2PolygonShape polygonShape;
-    polygonShape.SetAsBox( size.x/2 * MPP, size.y/2 * MPP);
-    m_fixtureDef.shape = &polygonShape;
+    b2CircleShape circleShape;
+
+    if (objPhysicsInfo._shape == RECT)
+    {
+        polygonShape.SetAsBox(size.x / 2 * MPP, size.y / 2 * MPP);
+        m_fixtureDef.shape = &polygonShape;
+    }
+    else if (objPhysicsInfo._shape == CIRCLE)
+    {
+        circleShape.m_radius = size.x / 2 * MPP;
+        m_fixtureDef.shape = &circleShape;
+    }
+
     m_fixtureDef.friction = 1;
     m_fixtureDef.restitution = 0.4f;
     m_fixtureDef.density = 0.7f;
