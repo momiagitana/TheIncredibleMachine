@@ -306,13 +306,23 @@ bool LevelController::replaySolution() //fix urgent
 
 bool LevelController::tryRunning()
 {
+	int counter = 0;
 	m_score.stop();
 	m_board.hideObjButtons();
 	while (m_window.isOpen())
 	{
-
-		if (checkIfLevelFinished())
-			return true;
+	
+		if(counter == 50)
+		{
+			if (checkIfLevelFinished())
+				return true;
+			counter =0;
+		}
+		else
+		{
+			counter ++;
+		}
+		
 
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 
