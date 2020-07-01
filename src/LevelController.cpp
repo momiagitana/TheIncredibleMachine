@@ -199,8 +199,9 @@ void LevelController::createOnHandObj(sf::Vector2f loc)
 {
 	ObjInfo info;
 
-	if(m_selected == brickWall)
+	if(m_selected == brickWall || m_selected  == pipeWall || m_selected == fancyWall)
 		info = wallInitTransforms;
+		//also for pipe and fancy
 
 	info._typ = m_selected;
 	info._loc = loc;

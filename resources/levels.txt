@@ -40,6 +40,7 @@ brickWall 318.000000 314.000000 1 3 0
 brickWall 5
 balloon 1
 scissors 1
+pipeWall 2
 -
 34 100 100 530 8
 -

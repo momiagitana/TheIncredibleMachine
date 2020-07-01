@@ -29,5 +29,7 @@
 										  "Score.cpp"
 										  "ClickButton.cpp"
 										  "Scissors.cpp"
+										  "FancyWall.cpp"
+										  "PipeWall.cpp"
 										  )										  
 
