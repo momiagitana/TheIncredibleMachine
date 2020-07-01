@@ -14,6 +14,7 @@
 #include "BaseBall.h"
 #include "Balloon.h"
 #include "BasketBall.h"
+#include "BowlingBall.h"
 #include "BrickWall.h"
 #include "Conveyor.h"
 #include "MouseEngine.h"

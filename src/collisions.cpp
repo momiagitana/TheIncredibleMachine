@@ -11,6 +11,9 @@ HitMap Collisions::initializeCollisionMap()
     map[Key(typeid(Balloon), typeid(Conveyor))]   = &balloonConveyor;
     map[Key(typeid(Conveyor), typeid(Balloon))]   = &conveyorBalloon;
 
+    map[Key(typeid(BowlingBall), typeid(Conveyor))]   = &basketConveyor;
+    map[Key(typeid(Conveyor), typeid(BowlingBall))]   = &conveyorBasket;
+
     map[Key(typeid(BasketBall), typeid(Conveyor))]   = &basketConveyor;
     map[Key(typeid(Conveyor), typeid(BasketBall))]   = &conveyorBasket;
 
@@ -29,6 +32,8 @@ HitMap Collisions::initializeCollisionMap()
     map[Key(typeid(Trampoline), typeid(BaseBall))]   = &trampBall;
     map[Key(typeid(BaseBall), typeid(Trampoline))]   = &ballTramp;
 
+    map[Key(typeid(Trampoline), typeid(BowlingBall))]   = &trampBall;
+    map[Key(typeid(BowlingBall), typeid(Trampoline))]   = &ballTramp;
 
     map[Key(typeid(Balloon), typeid(Scissors))]   = &balloonScissors;
     map[Key(typeid(Scissors), typeid(Balloon))]   = &scissorsBalloon;

@@ -120,7 +120,7 @@ struct PhysicsInfo
  const PhysicsInfo physicsInfo[NUM_OF_OBJECTS] = {{CIRCLE, 0.1f, 0.4f, 0.7f},    //balloon
                                                   {CIRCLE, 0.5f, 0.775f, 0.2f},  //basketBall
                                                   {CIRCLE, 0.8f, 0.4f, 0.25f},  	 //baseBall
-                                                  {CIRCLE, 0.1f, 0.1f, 0.7f},    //bowlingBall
+                                                  {CIRCLE, 0.1f, 0.4f, 0.8f},    //bowlingBall
                                                   {RECT,   0.5f, 0.4f, 0.7f},    //conveyor
                                                   {RECT,   0.5f, 0.4f, 0.7f},   //brickWall
 												  {RECT,   0.5f, 0.4f, 0.7f},   //mouseEngine
@@ -230,7 +230,12 @@ const float MPP = 0.015625f;
 const unsigned CHARATER_SIZE = 13;
 const float CHARATER_OUTLINE_THICKNESS = 0.20; 
 
+const sf::Vector2f PUZZLE_COMPLETE{ FRAME_X, FRAME_Y };
+const sf::Vector2f REPLAY_BUTTON{ PUZZLE_COMPLETE .x - 50,PUZZLE_COMPLETE .y+40};
+const sf::Vector2f ADVANCE_BUTTON{ PUZZLE_COMPLETE.x+50,REPLAY_BUTTON .y};
+
 const sf::Vector2f LEVEL_GOAL_TEXT_LOC{ 70,270 };
+const sf::Vector2f LEVEL_SCORE_TEXT_LOC{ FRAME_X-10,FRAME_Y+15 };
 
 const sf::Vector2f LEVEL_NO_TEXT_LOC_MENU{ 95,36 };
 const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,36 };

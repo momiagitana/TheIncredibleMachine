@@ -93,7 +93,7 @@ ResourceManager::ResourceManager()
 	// loadTexture("score.png", Type_t::score);
 
 
-	// loadTexture("1px.png", Type_t::onePixel);
+	//loadTexture("1px.png", Type_t::onePixel);
 
 	
 
@@ -155,7 +155,6 @@ ResourceManager::ResourceManager()
 
 
 	loadTexture("build/1px.png", Type_t::onePixel);
-
 
 
 	////---------- font ---win------

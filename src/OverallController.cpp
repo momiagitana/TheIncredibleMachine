@@ -211,6 +211,7 @@ void OverallController::menuMode(sf::Vector2f loc)
 		if (m_choseMode == 2)
 		{
 			m_choseMode = 0;
+			setLevel();
 			return;
 		}
 		m_choseMode = 2;

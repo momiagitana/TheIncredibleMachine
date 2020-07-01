@@ -7,6 +7,7 @@
 										  "Ball.cpp"
 										  "BaseBall.cpp"
 										  "BasketBall.cpp"
+										  "BowlingBall.cpp"
 										  "BrickWall.cpp"
 										  "Conveyor.cpp"
 										  "Resizable.cpp"
