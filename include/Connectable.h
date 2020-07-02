@@ -7,19 +7,18 @@
 class Connectable : public GameObj
 {
 public:
-    Connectable(ObjInfo info, bool movable, b2World &world, int);
+    Connectable(const ObjInfo, const bool, b2World &, const int);
     ~Connectable();
 
     void backToStartingPlace(); //fix override
-    Type_t handleClick(sf::Vector2f); //fix override
-    void setPosition(sf::Vector2f);//override
+    Type_t handleClick(const sf::Vector2f); //fix override
+    void setPosition(const sf::Vector2f);//override
 
     sf::Vector2f getConnectionButtonPos() const { return m_connection.getLocation(); }
     
     bool isConected()   const { return m_conected; }
 
-
-    void setConected(bool conected) { m_conected = conected; }
+    void setConected(const bool conected) { m_conected = conected; }
 
     void draw(sf::RenderWindow& window);
 

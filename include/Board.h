@@ -27,47 +27,45 @@ class Board
 {
 public:
 
-	Board(const boardObjects&, b2World& world);
-	void setBoard(const boardObjects & objects, b2World& world);
-	void draw(sf::RenderWindow& window, bool);//fix const?
-	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
-	bool tryToAdd(std::shared_ptr<GameObj>, Type_t);
-	std::shared_ptr<GameObj> handleClick(sf::Vector2f mouseLoc, Type_t&);
+	Board(const boardObjects&, b2World& );
+	void setBoard(const boardObjects& , b2World&);
+	void draw(sf::RenderWindow&, const bool);//fix const?
+	void drawTinyBoard (sf::RenderTexture&) const;
+	bool tryToAdd(const std::shared_ptr<GameObj>, const Type_t); 
+	std::shared_ptr<GameObj> handleClick(const sf::Vector2f, Type_t&);
 	void resetObjectsPositions();
 
-	bool clickedOnMe(sf::Vector2f mouseLoc) const;
-	bool checkCollison(GameObj& obj2, GameObj& obj1);
-	bool collides(GameObj& current);
-	bool isItemInLoc(conditionToWinLoc) const;
+	bool clickedOnMe(const sf::Vector2f) const;
+	bool checkCollison(const GameObj& obj2, const GameObj& obj1) const;
+	bool collides(const GameObj&) const;
+	bool isItemInLoc(const conditionToWinLoc) const;
 
-	void saveLevelToFile();
-	void wakeEmAllUp();
+	void saveLevelToFile() const;
+	void wakeEmAllUp(); //need to delete func????
 
-	void checkMouseOver(sf::Vector2f loc ,std::shared_ptr<GameObj> mouseImg);
+	void checkMouseOver(const sf::Vector2f ,const std::shared_ptr<GameObj>);
 	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
 
 
-	GameObj* getObjWithId(const int);
+	GameObj* getObjWithId(const int) const;
 
-	Collisions getCollisionObj() { return m_collision;	}
+	Collisions getCollisionObj() const { return m_collision;}
 
-	bool tryConnecting(sf::Vector2f mouseLoc);
+	bool tryConnecting(const sf::Vector2f);
 	bool doneConnecting();
 	void resetConnections() { m_connections.reset(); }
 	void deleteConnection(Connectable* obj) { m_connections.deleteConnection(obj); }
 	Connectable* isConnectedAndConnectable(GameObj* obj) const { return m_connections.isConnectedAndConnectable(obj); }
-	void setMousePos(sf::Vector2f mouseLoc, std::shared_ptr<GameObj> mouseImg);
+	void setMousePos(const sf::Vector2f, const std::shared_ptr<GameObj>);
 
 private:
 
-
 	Collisions m_collision; //fix see where to put it
 
-
 	void updateImgLocs();
-	void setEveryoneElseFalse(int);
+	void setEveryoneElseFalse(const int);
 	std::vector< ObjInfo> getObjInfo() const;
-	std::shared_ptr<GameObj> findConnectable(sf::Vector2f mouseLoc); 
+	std::shared_ptr<GameObj> findConnectable(const sf::Vector2f) const; 
 
 	std::vector <std::shared_ptr<GameObj>> m_objects;
 	Connections m_connections;

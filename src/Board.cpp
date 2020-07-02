@@ -18,7 +18,7 @@ void Board::setBoard(const boardObjects& objects, b2World& world)
 
 }
 
-GameObj* Board::getObjWithId(const int obj)
+GameObj* Board::getObjWithId(const int obj) const
 {
 	for (auto& i : m_objects)
 	{
@@ -27,7 +27,7 @@ GameObj* Board::getObjWithId(const int obj)
 	}
 }
 
-void Board::draw(sf::RenderWindow& window, bool running)
+void Board::draw(sf::RenderWindow& window, const bool running)
 {
 	window.draw(m_background);
 	if (running)
@@ -47,7 +47,7 @@ void Board::updateImgLocs()
 	m_connections.checkConnections();
 }
 
-bool Board::tryToAdd(std::shared_ptr<GameObj> current, Type_t selected) //fix take selected if non used
+bool Board::tryToAdd(const std::shared_ptr<GameObj> current, const Type_t selected) //fix take selected if non used
 {
 	if (current && !collides(*current.get()))
 	{
@@ -59,7 +59,7 @@ bool Board::tryToAdd(std::shared_ptr<GameObj> current, Type_t selected) //fix ta
 }
 
 
-bool Board::collides(GameObj& current)
+bool Board::collides(const GameObj& current) const
 {
 	for (auto& i : m_objects)
 	{
@@ -71,7 +71,7 @@ bool Board::collides(GameObj& current)
 	return false;
 }
 
-bool Board::checkCollison(GameObj& obj2, GameObj& obj1)
+bool Board::checkCollison(const GameObj& obj2, const GameObj& obj1) const
 {
 	if(obj1.pixelPerfectColides(obj2))
 		return true;
@@ -79,7 +79,7 @@ bool Board::checkCollison(GameObj& obj2, GameObj& obj1)
 	return false;
 }
 
-std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc, Type_t& selected)
+std::shared_ptr<GameObj> Board::handleClick(const sf::Vector2f mouseLoc, Type_t& selected)
 {
 	std::shared_ptr<GameObj> obj = nullptr;
 	Resizable* resizableObj = nullptr;
@@ -120,7 +120,7 @@ std::shared_ptr<GameObj> Board::handleClick(sf::Vector2f mouseLoc, Type_t& selec
 	return obj;
 }
 
-std::shared_ptr<GameObj> Board::findConnectable(sf::Vector2f mouseLoc)
+std::shared_ptr<GameObj> Board::findConnectable(const sf::Vector2f mouseLoc) const
 {
 
 	for (auto i = 0; i < m_objects.size(); i++)
@@ -137,7 +137,7 @@ void Board::resetObjectsPositions()
 		obj->backToStartingPlace();
 }
 
-bool Board::isItemInLoc(conditionToWinLoc cond) const
+bool Board::isItemInLoc(const conditionToWinLoc cond) const
 {
 	sf::RectangleShape rect(cond.second.first);
 	rect.setPosition(cond.second.second);
@@ -150,7 +150,7 @@ bool Board::isItemInLoc(conditionToWinLoc cond) const
 	return false;
 }
 
-void Board::saveLevelToFile()
+void Board::saveLevelToFile() const
 {
 	auto file = FileHandler(ResourceManager::instance().getLevelPath(), false);//fix SAVE
 	file.saveNewLevel(getObjInfo());
@@ -165,7 +165,7 @@ std::vector<ObjInfo> Board::getObjInfo() const
 	return info;
 }
 
-void Board::checkMouseOver(sf::Vector2f loc, std::shared_ptr<GameObj>  mouseImg)
+void Board::checkMouseOver(const sf::Vector2f loc, const std::shared_ptr<GameObj>  mouseImg)
 {
 	bool paintRed = false;
 
@@ -197,14 +197,14 @@ void Board::checkMouseOver(sf::Vector2f loc, std::shared_ptr<GameObj>  mouseImg)
 
 }
 
-void Board::setEveryoneElseFalse(int except)
+void Board::setEveryoneElseFalse(const int except)
 {
 	for (auto& obj : m_objects)
 		if (obj->getID() != except)
 			obj->setMouse(false);
 }
 
-bool Board::clickedOnMe(sf::Vector2f loc) const
+bool Board::clickedOnMe(const sf::Vector2f loc) const
 {
 	if (m_background.getGlobalBounds().contains(loc))
 		return true;
@@ -223,7 +223,7 @@ void Board::drawTinyBoard(sf::RenderTexture& tinyBoard) const
 	tinyBoard.display();
 }
 
-bool Board::tryConnecting(sf::Vector2f mouseLoc)
+bool Board::tryConnecting(const sf::Vector2f mouseLoc)
 {
 	std::shared_ptr<GameObj> obj = findConnectable(mouseLoc);
 
@@ -240,7 +240,7 @@ bool Board::doneConnecting()
 }
 
 
-void Board::setMousePos(sf::Vector2f mouseLoc, std::shared_ptr<GameObj> mouseImg)
+void Board::setMousePos(const sf::Vector2f mouseLoc, const std::shared_ptr<GameObj> mouseImg)
 {
 	checkMouseOver(mouseLoc, mouseImg);
 

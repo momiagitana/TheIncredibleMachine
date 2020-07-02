@@ -4,7 +4,7 @@
 const std::string END_PART = "-" ;
 const int NUM_OF_PARTS = 6;
 
-FileHandler::FileHandler(const std::string& fileName, bool read)
+FileHandler::FileHandler(const std::string& fileName, const bool read)
 {
 	if(read)
 		m_file.open(fileName);
@@ -98,7 +98,7 @@ Level FileHandler::getlevel()
 	return currLevel;
 }
 
-std::vector<Level> FileHandler::readLevels()
+std::vector<Level> FileHandler::readLevels() 
 {
 	std::vector<Level> levels;
 
@@ -134,7 +134,7 @@ void FileHandler::saveNewLevel(const std::vector<ObjInfo>& objects)
 	m_file << "\n";
 }
 
-Type_t FileHandler::strToEnum(const std::string& str)
+Type_t FileHandler::strToEnum(const std::string& str) const
 {
 	if (str == "balloon") 			return balloon;
 	else if (str == "basketBall") 	return basketBall;
@@ -146,13 +146,13 @@ Type_t FileHandler::strToEnum(const std::string& str)
 	else if (str == "belt")			return belt;
 	else if (str == "trampoline")	return trampoline;
 	else if (str == "scissors")		return scissors;
-	else if (str == "pipeWall")			return pipeWall;
+	else if (str == "pipeWall")		return pipeWall;
 	else if (str == "fancyWall")	return fancyWall;
 	return none;
 
 }
 
-std::string FileHandler::enumToStr(Type_t obj)
+std::string FileHandler::enumToStr(Type_t obj) const
 {
 	if (obj == balloon ) 			return "balloon";
 	else if (obj == basketBall ) 	return "basketBall";

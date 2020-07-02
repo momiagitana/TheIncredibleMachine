@@ -8,23 +8,23 @@
 class Resizable : public GameObj
 {
 public:
-	Resizable(ObjInfo info,  bool movable, b2World &world, Type_t);
+	Resizable(const ObjInfo info, const bool, b2World &, const Type_t);
     virtual ~Resizable(){}
 	
     int getWhichSize() const { return m_whichSize; }
     int getAngle() const { return m_whichAngle; }
     int getIfFliped() const { return m_isFliped; }
 
-    void setWhichSize(int size) { m_whichSize = size; }
+    void setWhichSize(const int size) { m_whichSize = size; }
    
-    bool mouseOnMe(sf::Vector2f loc);
-    Type_t handleClick(sf::Vector2f loc);
+    bool mouseOnMe(const sf::Vector2f )const;
+    Type_t handleClick(const sf::Vector2f );
     void draw(sf::RenderWindow&);
     void setTexture();
-    ObjInfo getInfo()const; //fix const
-    void fixLastChange(Type_t);
+    ObjInfo getInfo() const; //fix const
+    void fixLastChange(const Type_t);
     void backToStartingPlace();
-    void setPosition(sf::Vector2f loc);
+    void setPosition(const sf::Vector2f);
 
 private:
 	int m_whichSize = 1; //from 1 to 5

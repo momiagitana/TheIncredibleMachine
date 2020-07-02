@@ -8,11 +8,11 @@ class ToolbarButton : public Button
 {
 public:
 
-	ToolbarButton(sf::Vector2f,Type_t,int);
+	ToolbarButton(const sf::Vector2f,Type_t, const int);
 	void increase();
 	void decrease();
 	bool isEmpty() const;
-	void setPosition(sf::Vector2f pos);
+	void setPosition(const sf::Vector2f);
 	void draw(sf::RenderWindow&);
 	
 private:

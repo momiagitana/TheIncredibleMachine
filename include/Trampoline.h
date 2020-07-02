@@ -6,7 +6,7 @@
 class Trampoline : public GameObj
 {
 public:
-	Trampoline(ObjInfo info, bool movable, b2World &world);//fix const& objInfo
+	Trampoline(const ObjInfo info, const bool movable, b2World &world);//fix const& objInfo
 	void draw(sf::RenderWindow& window);
 	void animation();
 

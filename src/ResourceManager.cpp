@@ -9,20 +9,20 @@ ResourceManager& ResourceManager::instance()
 }
 
 
-sf::Texture* ResourceManager::getTexture(Type_t name)
+sf::Texture* ResourceManager::getTexture(const Type_t name)
 {
 	return &(m_textures[name]);
 }
 
 
 
-sf::Font& ResourceManager::getFont(Font name)
+sf::Font& ResourceManager::getFont(const Font name)
 {
 	return m_fonts[name];
 }
 
 
-sf::SoundBuffer& ResourceManager::getSound(Sound name)
+sf::SoundBuffer& ResourceManager::getSound(const Sound name)
 {
 	return m_soundBuff[name];
 }
@@ -186,21 +186,21 @@ ResourceManager::ResourceManager()
 	setSounds();
 }
 
-void ResourceManager::loadTexture(std::string path, Type_t name)
+void ResourceManager::loadTexture(const std::string path, const Type_t name)
 {
 	sf::Texture temp;
 	temp.loadFromFile(path);
 	m_textures[name] = temp;
 }
 
-void ResourceManager::loadFont(std::string path, Font name)
+void ResourceManager::loadFont(const std::string path, const Font name)
 {
 	sf::Font temp;
 	temp.loadFromFile(path);
 	m_fonts[name] = temp;
 }
 
-void ResourceManager::loadSound(std::string path, Sound name)
+void ResourceManager::loadSound(const std::string path, const Sound name)
 {
 	sf::SoundBuffer temp;
 	temp.loadFromFile(path);
@@ -229,7 +229,7 @@ void ResourceManager::playSong()
 	m_sounds[int(m_playing)].play();
 }
 
-void ResourceManager::setSong(int song)
+void ResourceManager::setSong(const int song)
 {
 	m_playing = (Sound)song;
 	playSong();

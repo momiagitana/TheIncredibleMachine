@@ -5,7 +5,7 @@ Level::Level()
 {
 }
 
-Level::Level(bool buildLevel)
+Level::Level(const bool buildLevel)
 {
 	for (int i = balloon; i < play; ++i)
 	{
@@ -14,22 +14,22 @@ Level::Level(bool buildLevel)
 	addCondLoc(0, sf::Vector2f(0,0), sf::Vector2f(0,0));//fix
 }
 
-void Level::addBoardObj(ObjInfo obj)
+void Level::addBoardObj(const ObjInfo obj)
 {
 	m_initial.push_back(obj);
 }
 
-void Level::addToolbarObj (Type_t obj, int amount)
+void Level::addToolbarObj (const Type_t obj, const int amount)
 {
 	m_toolbar.push_back(std::pair(obj, amount));
 }
 
-void Level::addCondLoc (int id, sf::Vector2f loc, sf::Vector2f size)
+void Level::addCondLoc (const int id, const sf::Vector2f loc, const sf::Vector2f size)
 {
 	m_locConditons.push_back(std::pair(id,std::pair(loc, size)));
 }
 
-void Level::addCondAct (int id)
+void Level::addCondAct (const int id)
 {
 	m_actConditions.push_back(id);
 }

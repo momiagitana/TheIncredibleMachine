@@ -13,15 +13,15 @@ class Toolbar
 {
 	
 public:
-	Toolbar(toolbarObjects);
-	bool clickedOnMe(sf::Vector2f ) const;
-	Type_t handleClick(sf::Vector2f );
-	void addOrIncrease(Type_t obj, int amount = 1);
+	Toolbar(const toolbarObjects);
+	bool clickedOnMe(const sf::Vector2f ) const;
+	Type_t handleClick(const sf::Vector2f );
+	void addOrIncrease(const Type_t, const int amount = 1);
 	void deleteObj(const Type_t&);
 	void draw(sf::RenderWindow&);
 
 private:
-	void add(Type_t, int);
+	void add(const Type_t, const int);
 	void updateLocs();
 	void setBar();
 

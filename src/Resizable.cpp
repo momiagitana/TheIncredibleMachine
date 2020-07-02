@@ -1,7 +1,7 @@
 #include "Resizable.h"
 
 
-Resizable::Resizable(ObjInfo info, bool movable, b2World &world, Type_t type)
+Resizable::Resizable(const ObjInfo info, const bool movable, b2World &world, const Type_t type)
     :GameObj(info._loc, false, movable, world, type), m_whichAngle(info._angle), m_whichSize(info._size)
 {
     setTexture();
@@ -83,7 +83,7 @@ void Resizable::resetButtonsPos()
         m_buttons[i].setPosition(sf::Vector2f(left + space * (i), y));
 }
 
-bool Resizable::mouseOnMe(sf::Vector2f loc)
+bool Resizable::mouseOnMe(const sf::Vector2f loc)const
 {
     for(auto& button : m_buttons)
         if(button.mouseOnMe(loc))
@@ -95,7 +95,7 @@ bool Resizable::mouseOnMe(sf::Vector2f loc)
     return Button::mouseOnMe(loc);
 }
 
-Type_t Resizable::handleClick(sf::Vector2f loc)
+Type_t Resizable::handleClick(const sf::Vector2f loc)
 {
     Type_t clicked = none;
     if(GameObj::getMouseOverMe())//could be protected

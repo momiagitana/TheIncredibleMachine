@@ -6,7 +6,7 @@
 class BrickWall : public Resizable
 {
 public:
-	BrickWall (ObjInfo info, bool movable, b2World &world);
+	BrickWall (const ObjInfo info, const bool movable, b2World &world);
 	
 private:
 	static bool m_registerit;

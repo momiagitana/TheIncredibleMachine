@@ -73,7 +73,7 @@ void OverallController::run()
 }
 
 
-void OverallController::handleClick(sf::Vector2f loc)
+void OverallController::handleClick(const sf::Vector2f loc)
 {
 
 	if (m_choseMode == 1)//fix
@@ -85,7 +85,7 @@ void OverallController::handleClick(sf::Vector2f loc)
 
 }
 
-void OverallController::chooseLevelMode(sf::Vector2f loc)
+void OverallController::chooseLevelMode(const sf::Vector2f loc)
 {
 
 	switch (getSelection(loc))
@@ -159,7 +159,7 @@ void OverallController::setText()
 
 
 
-void OverallController::menuMode(sf::Vector2f loc)
+void OverallController::menuMode(const sf::Vector2f loc)
 {
 	switch (getSelection(loc))
 	{
@@ -240,7 +240,7 @@ void OverallController::saveLevelToFile()
 	m_levelController.saveNewLevel();
 }
 
-void OverallController::handleMouseMove(sf::Vector2f mouseLoc) //fix
+void OverallController::handleMouseMove(const sf::Vector2f mouseLoc) //fix
 {
 	if(m_choseMode != 1)
 		for (auto i = 0; i < m_menuButtons.size() ; i++)//check 
@@ -252,7 +252,7 @@ void OverallController::handleMouseMove(sf::Vector2f mouseLoc) //fix
 
 }
 
-Type_t OverallController::getSelection(sf::Vector2f loc) const
+Type_t OverallController::getSelection(const sf::Vector2f loc) const
 {
 	if (m_choseMode == 1)//chose level
 	{
@@ -350,12 +350,12 @@ void OverallController::setLevel()
 	m_levelController.drawTinyBoard(m_smallBoard);
 }
 
-sf::IntRect getIntRectOfMenuIcon(int i)
+sf::IntRect getIntRectOfMenuIcon(const int i)
 {
 	return sf::IntRect(sf::Vector2i(0, 0), sf::Vector2i(MENU_BUTTONS_INT_RECT[i][0], MENU_BUTTONS_INT_RECT[i][1]));
 }
 
-sf::IntRect getIntRectOfChoseLevelIcon(int i)
+sf::IntRect getIntRectOfChoseLevelIcon(const int i)
 {
 	return sf::IntRect(sf::Vector2i(0, 0), sf::Vector2i(CHOSE_LEVEL_BUTTONS_INT_RECT[i][0], CHOSE_LEVEL_BUTTONS_INT_RECT[i][1]));
 }

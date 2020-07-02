@@ -29,10 +29,10 @@ public:
 	};
 	//make the static event so we wont load the textures multiple times
 	static ResourceManager& instance();
-	sf::Texture* getTexture(Type_t name);
-	sf::Font& getFont(Font name);
+	sf::Texture* getTexture(const Type_t);
+	sf::Font& getFont(const Font);
 	std::string& getLevelPath();
-	void setSong(int song);
+	void setSong(const int);
 	void volUp();
 	void volDown();
 
@@ -40,12 +40,11 @@ public:
 
 private:
 
-
 	ResourceManager(); //private ctor for singleton
-	void loadTexture(std::string path, Type_t name);
-	void loadFont(std::string path, Font name);
-	void loadSound(std::string path, Sound name);
-	sf::SoundBuffer& getSound(Sound name);
+	void loadTexture(const std::string, const Type_t);
+	void loadFont(const std::string, const Font);
+	void loadSound(const std::string, const Sound);
+	sf::SoundBuffer& getSound(const Sound);
 	void setSounds();
 	void stopAllSongs();
 	void playSong();

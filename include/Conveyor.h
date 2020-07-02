@@ -5,7 +5,7 @@
 class Conveyor : public Connectable
 {
 public:
-	Conveyor (ObjInfo info, bool movable, b2World &world);
+	Conveyor (const ObjInfo info, const bool movable, b2World &world);
 	
 private:
 	static bool m_registerit;

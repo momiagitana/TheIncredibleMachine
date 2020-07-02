@@ -20,13 +20,13 @@ class Level
 {
 public:
 	Level(); 
-	Level(bool);
+	Level(const bool);
 
-	void addBoardObj(ObjInfo);
-	void addToolbarObj(Type_t, int);
+	void addBoardObj(const ObjInfo);
+	void addToolbarObj(const Type_t, const int);
 
-	void addCondLoc (int, sf::Vector2f, sf::Vector2f);
-	void addCondAct (int);
+	void addCondLoc (const int, const sf::Vector2f, const sf::Vector2f);
+	void addCondAct (const int);
 
 	void addName(const std::string&);
 	void addLevelGoal(const std::string&);

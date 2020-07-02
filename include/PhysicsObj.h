@@ -16,16 +16,16 @@ private:
 
 public:
 
-    PhysicsObj(b2World &, const sf::Vector2f&, bool, Type_t);
+    PhysicsObj(b2World &, const sf::Vector2f&, const bool, const Type_t);
     ~PhysicsObj();
 
     b2Vec2 getPosition() const { return  m_body->GetPosition(); }
     float getAngle() const { return m_body->GetAngle();}
-    void setAngle(int whichAngle);
-    void setPosition(sf::Vector2f);
-    void setGravityScale(float);
-    void setSize(sf::Vector2f);
+    void setAngle(const int);
+    void setPosition(const sf::Vector2f);
+    void setGravityScale(const float);
+    void setSize(const sf::Vector2f);
     void applyForce(const b2Vec2&);
-    int randomNumber(int min, int max);
+    int randomNumber(const int min, const int max);
     void setID(const int);
 };

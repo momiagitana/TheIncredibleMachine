@@ -10,7 +10,7 @@ Connections::~Connections()
 {
 }
 
-bool Connections::tryConnecting (std::shared_ptr<GameObj> obj)
+bool Connections::tryConnecting (const std::shared_ptr<GameObj> obj)
 {
     if (Connectable* toAdd = canConnect(obj.get()))//fix check that if null doestn enter
     {
@@ -74,7 +74,7 @@ void Connections::checkConnections()
     }
 }
 
-bool Connections::isOn(Connectable* connectable) const
+bool Connections::isOn(const Connectable* connectable) const
 {
     return connectable->isOn();
 }
@@ -84,7 +84,7 @@ void Connections::turnOn(Connectable* connectable)
     connectable->setStatus(true);//fix ON
 }
 
-void Connections::setConnectedStatus(Connectable* connectable, bool status)
+void Connections::setConnectedStatus(Connectable* connectable, const bool status)
 {
     connectable->setConected(status);
 }
@@ -114,7 +114,7 @@ sf::Vector2f Connections::calculateNormal(const sf::Vertex& pointA, const sf::Ve
     return vertex;
 }
 
-void Connections::drawBelt(std::pair<Connectable*, Connectable*> each, sf::RenderWindow& window) const
+void Connections::drawBelt(const std::pair<Connectable*, const Connectable*> each, sf::RenderWindow& window) const
 {
     sf::Vector2f centerA;
     sf::Vector2f centerB;
@@ -176,7 +176,7 @@ void Connections::reset()
     m_second = nullptr; //not really necessary
 }
 
-void Connections::setMousePos(sf::Vector2f mouseLoc)
+void Connections::setMousePos(const sf::Vector2f mouseLoc)
 {
     m_mousePos = mouseLoc;
 }

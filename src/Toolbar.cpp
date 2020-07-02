@@ -2,7 +2,7 @@
 
 
 
-Toolbar::Toolbar(toolbarObjects objs)
+Toolbar::Toolbar(const toolbarObjects objs)
 	:m_play(std::make_unique<Button>(sf::Vector2f(TB_OBJ_X, PLAY_Y), Type_t::play)),
 	 m_arrowLButton(std::make_unique<ClickButton>(sf::Vector2f(L_ARR_X, ARROWS_Y), Type_t::arrowLButton, sf::Vector2i(29,26))),
 	 m_arrowRButton(std::make_unique<ClickButton>(sf::Vector2f(R_ARR_X, ARROWS_Y), Type_t::arrowRButton, sf::Vector2i(30,26)))//fix
@@ -14,7 +14,7 @@ Toolbar::Toolbar(toolbarObjects objs)
 }
 
 
-bool Toolbar::clickedOnMe(sf::Vector2f loc) const
+bool Toolbar::clickedOnMe(const sf::Vector2f loc) const
 {
 	if (m_play->getGlobalBounds().contains(loc) 
 		|| m_arrowLButton->mouseOnMe(loc) 
@@ -27,7 +27,7 @@ bool Toolbar::clickedOnMe(sf::Vector2f loc) const
 }
 
 
-Type_t Toolbar::handleClick(sf::Vector2f loc)
+Type_t Toolbar::handleClick(const sf::Vector2f loc)
 {
 	Type_t type = none;
 
@@ -66,7 +66,7 @@ Type_t Toolbar::handleClick(sf::Vector2f loc)
 
 }
 
-void Toolbar::addOrIncrease(Type_t objType, int amount)
+void Toolbar::addOrIncrease(const Type_t objType, const int amount)
 {
 
 	bool found = false;
@@ -83,7 +83,7 @@ void Toolbar::addOrIncrease(Type_t objType, int amount)
 	
 }
 
-void Toolbar::add(Type_t obj, int amount)
+void Toolbar::add(const Type_t obj, const int amount)
 {
 	m_toolbar.push_back(ToolbarButton(sf::Vector2f(0,0), Type_t(obj+100), amount));
 	updateLocs();

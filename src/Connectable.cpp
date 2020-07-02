@@ -1,7 +1,7 @@
 #include "Connectable.h"
 
 
-Connectable::Connectable(ObjInfo info, bool movable, b2World &world, int typeOfEngine)//fix pass int on ObjInfo
+Connectable::Connectable(const ObjInfo info, const bool movable, b2World &world, const int typeOfEngine)//fix pass int on ObjInfo
     :GameObj(info._loc, STATIC, movable, world, info._typ),
     m_connection((sf::Vector2f(info._loc.x, info._loc.y)), connectButton)
 {
@@ -13,14 +13,14 @@ Connectable::~Connectable()
 {
 }
 
-void Connectable::setPosition(sf::Vector2f loc)
+void Connectable::setPosition(const sf::Vector2f loc)
 {
     GameObj::setPosition(loc);
     m_connection.setPosition(sf::Vector2f(loc.x + m_buttonDelta.x, loc.y + m_buttonDelta.y));
 }
 
 
-Type_t Connectable::handleClick(sf::Vector2f loc)
+Type_t Connectable::handleClick(const sf::Vector2f loc)
 {
     if(m_connection.mouseOnMe(loc))
         return m_connection.getType();

@@ -60,13 +60,9 @@ HitFunctionPtr Collisions::lookup(const std::type_index& class1, const std::type
 void Collisions::processCollision(GameObj& object1, GameObj& object2)
 {
     auto phf = lookup(typeid(object1), typeid(object2));
-
-    std::cout<<typeid(object1).name()<<std::endl;
-    std::cout<<typeid(object2).name()<<std::endl;
-
+    
     if (!phf)
     {
-        std::cout<<"there is no func for these objects"<<std::endl;
         return;
     }
 
