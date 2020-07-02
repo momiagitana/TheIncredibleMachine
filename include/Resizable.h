@@ -9,6 +9,7 @@ class Resizable : public GameObj
 {
 public:
 	Resizable(ObjInfo info,  bool movable, b2World &world, Type_t);
+    virtual ~Resizable(){}
 	
     int getWhichSize() const { return m_whichSize; }
     int getAngle() const { return m_whichAngle; }

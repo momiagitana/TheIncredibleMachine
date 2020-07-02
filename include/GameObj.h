@@ -15,7 +15,6 @@ public:
 
 	virtual ~GameObj(){}
 
-
 	virtual void backToStartingPlace();
 
 	void setGravityScale(float);

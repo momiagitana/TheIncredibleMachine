@@ -10,6 +10,7 @@ class BaseImg
 public:
 
 	BaseImg(sf::Vector2f, Type_t);
+	virtual ~BaseImg(){}
 	virtual sf::FloatRect getGlobalBounds() const;
 	virtual void draw(sf::RenderWindow&); //fix check if able to const
 
