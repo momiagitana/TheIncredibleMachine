@@ -5,13 +5,13 @@ Level::Level()
 {
 }
 
-Level::Level(const bool buildLevel)
+Level::Level(const bool)
 {
-	for (int i = balloon; i < play; ++i)
+for (int i = balloon; i < play; ++i)
 	{
-		addToolbarObj(Type_t(i), -1);
+		addToolbarObj(Type_t(i), -1);//fix INFINITE
 	}
-	addCondLoc(0, sf::Vector2f(0,0), sf::Vector2f(0,0));//fix
+	addCondLoc(-1, sf::Vector2f(0,0), sf::Vector2f(0,0));//adding impossible condition so level doesnt finishf
 }
 
 void Level::addBoardObj(const ObjInfo obj)

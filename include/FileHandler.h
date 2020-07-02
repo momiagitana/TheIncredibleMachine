@@ -1,11 +1,11 @@
 #pragma once
 
+
 #include <fstream>
-#include <SFML/Graphics.hpp>
+#include <sstream>
 #include <string>
 #include "globals.h"
 #include "Level.h"
-#include <sstream>
 
 class FileHandler
 {

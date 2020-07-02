@@ -1,20 +1,10 @@
 #pragma once
-#include <box2d/box2d.h>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <iostream>
-#include<string>
-#include<memory>
-#include "ResourceManager.h"
-#include "Button.h"
+
 #include "Board.h"
-#include "globals.h"
 #include "FileHandler.h"
 #include "LevelController.h"
 #include "Level.h"
-#include "MyListener.h"
 #include "ClickButton.h"
-
 
 class OverallController
 {
@@ -60,7 +50,7 @@ private:
 	int m_numOfLevel = 0;
 	LevelController m_levelController;
 	sf::RenderTexture m_smallBoard;
-	int m_mode = 0;//fix
+	int m_mode = MENU;
 };
 sf::IntRect getIntRectOfMenuIcon(const int i);
 sf::IntRect getIntRectOfChoseLevelIcon(const int i);

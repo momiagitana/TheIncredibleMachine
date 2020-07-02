@@ -1,9 +1,6 @@
 #pragma once
 #include "baseImg.h"
-#include "ResourceManager.h"
-#include <SFML/Graphics.hpp>
-#include <sstream>
-using std::ostringstream;
+
 
 class Button : public BaseImg
 {

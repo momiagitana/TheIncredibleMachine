@@ -1,9 +1,7 @@
 #pragma once
 #include "ClickButton.h"
 #include "ToolbarButton.h"
-#include <SFML/Graphics.hpp>
-#include <iostream>
-using std::cout;
+
 
 using toolbarPair = std::pair<Type_t, int>;
 using toolbarObjects = std::vector<toolbarPair>;
@@ -32,7 +30,6 @@ private:
 	std::shared_ptr<Button> m_play;
 	std::shared_ptr<ClickButton> m_arrowRButton;
 	std::shared_ptr<ClickButton> m_arrowLButton;
-	
 
 };
 

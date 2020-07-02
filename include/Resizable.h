@@ -1,9 +1,6 @@
 #pragma once
 #include "GameObj.h"
-#include "ResourceManager.h"
-#include "Button.h"
 #include "globals.h"
-
 
 class Resizable : public GameObj
 {
@@ -11,9 +8,9 @@ public:
 	Resizable(const ObjInfo info, const bool, b2World &, const Type_t);
     virtual ~Resizable(){}
 	
-    int getWhichSize() const { return m_whichSize; }
-    int getAngle() const { return m_whichAngle; }
-    int getIfFliped() const { return m_isFliped; }
+    int getWhichSize() const    { return m_whichSize; }
+    int getAngle() const        { return m_whichAngle; }
+    int getIfFliped() const     { return m_isFliped; }
 
     void setWhichSize(const int size) { m_whichSize = size; }
    

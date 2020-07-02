@@ -1,9 +1,7 @@
 #pragma once
 
 #include "GameObj.h"
-#include "ResourceManager.h"
 #include "Factory.h" //fix needs to add to base class
-#include "globals.h"
 
 const double BALLOON_GRAVITY = 0.2;
 const int    BALLOON_WIDTH = 90;

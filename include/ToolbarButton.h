@@ -1,8 +1,6 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <sstream>
 #include "Button.h"
-using std::ostringstream;
+
 
 class ToolbarButton : public Button
 {
@@ -17,8 +15,6 @@ public:
 	
 private:
 	void setString();
-
 	int m_amount;
-
 	sf::Text m_text;
 };

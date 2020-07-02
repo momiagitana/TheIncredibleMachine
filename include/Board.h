@@ -1,24 +1,18 @@
 #pragma once
-#include <vector>
-#include <fstream>
-#include <memory>
-#include <SFML/Graphics.hpp>
-#include "globals.h"
-#include "GameObj.h"
+
 #include "Level.h"
 #include "Balloon.h"
 #include "BaseBall.h"
-#include "BasketBall.h"
+#include "Basketball.h"
 #include "BowlingBall.h"
 #include "BrickWall.h"
 #include "Collisions.h"
 #include "FileHandler.h"
-#include "Conveyor.h"//fix all these
+#include "Conveyor.h"
 #include "MouseEngine.h"
 #include "Connections.h"
 #include "Connectable.h"
 
-//#include "BowlingBall.h"
 
 
 using conditionToWinLoc = std::pair<int, std::pair<sf::Vector2f, sf::Vector2f>>; 

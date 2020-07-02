@@ -1,7 +1,5 @@
 #pragma once
-#include "GameObj.h"
 #include "Connectable.h"
-
 
 class Connections
 {

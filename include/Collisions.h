@@ -1,19 +1,13 @@
 #pragma once
 
-#include <iostream>
 #include <map>
-#include <string>
 #include <typeinfo>
 #include <typeindex>
-#include <vector>
-#include <memory>
-#include <algorithm>
-#include <exception>
 
 #include "GameObj.h"
 #include "BaseBall.h"
 #include "Balloon.h"
-#include "BasketBall.h"
+#include "Basketball.h"
 #include "BowlingBall.h"
 #include "BrickWall.h"
 #include "Conveyor.h"
@@ -28,24 +22,17 @@ using HitMap = std::map<Key, HitFunctionPtr>;
 
 class Collisions
 {
-
 public:
 
     Collisions();
 
     void processCollision(GameObj& object1, GameObj& object2);
-  
     HitFunctionPtr lookup(const std::type_index& class1, const std::type_index& class2);
-
     HitMap initializeCollisionMap();
-
-    int aboveOrBelow(GameObj& object1, GameObj& object2);
- 
 };
 
 namespace
 {
-
     void scissorsBalloon(GameObj& object1, GameObj& object2)
     {
         if(object1.getGlobalBounds().left > object2.getGlobalBounds().left+object2.getGlobalBounds().width/2)
@@ -97,7 +84,6 @@ namespace
     {
         conveyorBasket(object2, object1);
     }
-
 
     void conveyorBase(GameObj& object1, GameObj& object2)
     {

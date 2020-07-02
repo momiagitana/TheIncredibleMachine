@@ -1,7 +1,6 @@
 #pragma once
 #include "GameObj.h"
-#include "ResourceManager.h"
-#include "Factory.h"//fix needs to add to base class
+#include "Factory.h"
 
 class Scissors : public GameObj
 {

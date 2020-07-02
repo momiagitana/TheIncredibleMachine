@@ -1,14 +1,7 @@
 #pragma once
 
-#include <iostream>
-#include <memory>
 #include <map>
-#include <vector>
-
-#include "globals.h"
-#include "baseImg.h"
 #include "GameObj.h"
-
 
 using funcPtr = std::shared_ptr<GameObj>(*)(const ObjInfo, const bool, b2World &);//zalman fix angle size objinfo
 

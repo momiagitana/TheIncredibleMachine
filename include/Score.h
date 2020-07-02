@@ -1,12 +1,10 @@
 #pragma once
 #include "globals.h"
-#include "ResourceManager.h"
 #include "baseImg.h"
 
 class Score
 {
 public:
-	Score() = default;
 	Score(const int);
 	void set(int);
 	int get() const;

@@ -1,10 +1,8 @@
 #pragma once
-
-#include <SFML/Graphics.hpp>
-
 #include "Button.h"
 #include "PhysicsObj.h"
 #include "CollisionsSFML.h"
+
 
 static int ID = 0;
 
@@ -13,7 +11,6 @@ class GameObj : public Button
 public:
 
 	GameObj(const sf::Vector2f&, const bool, const bool, b2World &, const Type_t);
-
 	virtual ~GameObj(){}
 
 	virtual void backToStartingPlace();

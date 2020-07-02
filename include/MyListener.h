@@ -1,8 +1,6 @@
 #pragma once
-#include <box2d/box2d.h>
-#include <iostream>
-#include "Board.h"
 
+#include "Board.h"
 
 class MyListener : public b2ContactListener
 {

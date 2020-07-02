@@ -1,8 +1,6 @@
 #pragma once
 
 #include "GameObj.h"
-#include "Factory.h"//fix needs to add to base class
-
 
 class Connectable : public GameObj
 {
@@ -16,12 +14,10 @@ public:
 
     sf::Vector2f getConnectionButtonPos() const { return m_connection.getLocation(); }
     
-    bool isConected()   const { return m_conected; }
+    bool isConected() const                  { return m_conected; }
+    void setConected(const bool conected)    { m_conected = conected; }
 
-    void setConected(const bool conected) { m_conected = conected; }
-
-    void draw(sf::RenderWindow& window);
-
+    void draw(sf::RenderWindow& window); //fix override
     void animation();
 
 

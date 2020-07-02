@@ -1,9 +1,7 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include <globals.h>
 #include "ResourceManager.h"
-
 
 class BaseImg
 {
@@ -12,7 +10,7 @@ public:
 	BaseImg(const sf::Vector2f, const Type_t);
 	virtual ~BaseImg(){}
 	virtual sf::FloatRect getGlobalBounds() const;
-	virtual void draw(sf::RenderWindow&); //fix check if able to const
+	virtual void draw(sf::RenderWindow&);
 
 	sf::Vector2f getLocation() const;
 	void setRotation(const float);
@@ -25,7 +23,7 @@ public:
 	void setScale(const float);
 	virtual void drawSmall(sf::RenderTexture&);
 
-	sf::Sprite getSprite() const { return m_sprite; } //fix ask if correct
+	const sf::Sprite& getSprite() const { return m_sprite; }
 	void nextIntRect(const int x = 0, const int y = 0);
 	void prevIntRect();
 

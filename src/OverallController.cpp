@@ -198,13 +198,11 @@ void OverallController::menuMode(const sf::Vector2f loc)
 	case upSound:
 	{
 		volumeUp();
-		m_sound.nextIntRect();
 		return;
 	}
 	case downSound:
 	{
 		volumeDown();
-		m_sound.prevIntRect();
 		return;
 	}
 	case reset:
@@ -238,7 +236,7 @@ void OverallController::menuMode(const sf::Vector2f loc)
 
 void OverallController::loadBuildMode()
 {
-	Level newLevel(true);//fix to const change level
+	Level newLevel(BUILD);//fix to const change level
 	m_levelController.loadNewLevel(newLevel);
 	m_levelController.drawTinyBoard(m_smallBoard);
 }
@@ -308,8 +306,8 @@ void OverallController::drawMenu(sf::RenderWindow& window)
 	m_background.draw(window);
 	for (auto& button : m_menuButtons)
 	{
-		if ((button.getType() == choseLevel && m_mode == 2) ||
-			(button.getType() == save && m_mode == 0))
+		if ((button.getType() == choseLevel && m_mode == BUILD) ||
+			(button.getType() == save && m_mode == MENU))
 			continue;
 		button.draw(window);
 	}
@@ -340,11 +338,14 @@ void OverallController::setButtons()
 void OverallController::volumeUp()
 {
 	ResourceManager::instance().volUp();
+	m_sound.nextIntRect();
+
 }
 
 void OverallController::volumeDown()
 {
 	ResourceManager::instance().volDown();
+	m_sound.prevIntRect();
 }
 
 void OverallController::closeWindow()

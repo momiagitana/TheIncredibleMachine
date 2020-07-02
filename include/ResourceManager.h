@@ -1,8 +1,3 @@
-/*
-this is a singleton static class for holding the textures,sounds and fonts and
-makes sure they wont be loaded more then once
-*/
-
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -27,6 +22,7 @@ public:
 		menu,
 		build
 	};
+
 	//make the static event so we wont load the textures multiple times
 	static ResourceManager& instance();
 	sf::Texture* getTexture(const Type_t);

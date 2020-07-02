@@ -1,13 +1,11 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <vector>
+
 #include "Board.h"
 #include "Level.h"
 #include "Toolbar.h"
 #include "MyListener.h"
 #include "Score.h"
-//#include "globals.h"
+
 
 class LevelController
 {

@@ -1,6 +1,6 @@
 #pragma once
 #include"Resizable.h"
-#include "Factory.h"//fix needs to add to base class
+#include "Factory.h"
 
 
 class BrickWall : public Resizable
