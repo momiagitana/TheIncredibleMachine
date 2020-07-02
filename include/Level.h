@@ -31,14 +31,14 @@ public:
 	void addName(const std::string&);
 	void addLevelGoal(const std::string&);
 
-	std::string getLevelName() const { return m_name; }
-	std::string getLevelGoal() const { return m_levelGoal; }
+	const std::string& getLevelName() const { return m_name; }
+	const std::string& getLevelGoal() const { return m_levelGoal; }
 
-	boardObjects   getBoardObjs() const { return m_initial; }
-	toolbarObjects getToolbarObjs() const {return m_toolbar; }
+	const boardObjects&   getBoardObjs() const { return m_initial; }
+	const toolbarObjects& getToolbarObjs() const {return m_toolbar; }
 
-	conditionsLocs getLocConditions() const { return m_locConditons; }
-	conditionsActs getActConditions() const { return m_actConditions; }
+	const conditionsLocs& getLocConditions() const { return m_locConditons; }
+	const conditionsActs& getActConditions() const { return m_actConditions; }
 
 private:
 

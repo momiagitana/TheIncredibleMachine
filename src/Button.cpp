@@ -16,7 +16,7 @@ bool Button::mouseOnMe(const sf::Vector2f loc)const
 
 	return false;
 }
-Type_t Button::handleClick( const sf::Vector2f loc) const
+Type_t Button::handleClick( const sf::Vector2f loc)
 {
 	if(mouseOnMe(loc))
 		return getType();
