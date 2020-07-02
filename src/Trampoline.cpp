@@ -35,3 +35,10 @@ void Trampoline::animation()
 	}	
 	 
 }
+
+void Trampoline::setStatus(const bool status)
+{
+    GameObj::setStatus(status);
+    if(status)
+        ResourceManager::instance().playSFXtramp();
+}

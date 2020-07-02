@@ -74,10 +74,7 @@ int GameObj::aboveOrBelow(const GameObj& other) const
 
 bool GameObj::isBelow(const GameObj& other) const
 {
-	// auto globalBoundsOfOther = other.getGlobalBounds();
-	// auto otherBottom = globalBoundsOfOther.top+globalBoundsOfOther.height;
-
-	if (this->getGlobalBounds().top <= other.getLocation().y);
+	if (this->getGlobalBounds().top > other.getLocation().y)
 		return true;
 
 	return false;

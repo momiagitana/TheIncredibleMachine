@@ -212,7 +212,7 @@ const int SC_SEP = 8;
 const int SC_N_INITIAL = WINDOW_WIDTH/2 - SC_N_W*2;
 
 const int SC_X =  WINDOW_WIDTH/2;
-const int SC_Y = 401;
+const int SC_Y = 404;
 
 const int SC_INS_RECT_Y = 198;
 const int SC_INS_RECT_X = 0;

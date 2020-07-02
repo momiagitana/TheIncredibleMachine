@@ -13,13 +13,13 @@ public:
 
 	LevelController(const Level&, b2World& world, sf::RenderWindow&, MyListener& );
 
-	bool run(const int whichMod);
+	bool run(const int);
 
 	bool clickOnToolbar(const sf::Vector2f )const;
 	bool clickOnBoard(const sf::Vector2f)const;
 	void createMouseImg(const sf::Vector2f);
 	void updateMouseLoc(const sf::Vector2f);
-	void loadNewLevel(const Level&);
+	void loadNewLevel(const Level&, const bool);
 
 	void whereAmI(const sf::Vector2f);
 	void clearMouse();

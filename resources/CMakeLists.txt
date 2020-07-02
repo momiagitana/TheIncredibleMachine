@@ -44,6 +44,9 @@ configure_file ("save.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("menu.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("background.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("build.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("balloon.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("engine.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("trampoline.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)

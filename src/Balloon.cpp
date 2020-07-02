@@ -26,6 +26,13 @@ void Balloon::draw(sf::RenderWindow& window)
 		
 }
 
+void Balloon::setStatus(const bool status)
+{
+    GameObj::setStatus(status);
+    if(status)
+        ResourceManager::instance().playSFXballoon();
+}
+
 void Balloon::animation()
 {
 	if(getClock().getElapsedTime().asSeconds() > ANIMATION_TIME)

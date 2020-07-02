@@ -8,7 +8,7 @@ ToolbarButton::ToolbarButton(const sf::Vector2f center, const Type_t objType, co
 	setScale(BUTTON_SCALE);
 	m_text.setFont(ResourceManager::instance().getFont(ResourceManager::Font::kongtext));
 	m_text.setCharacterSize(10);//fix
-	m_text.setColor(sf::Color::Black);
+	m_text.setFillColor(sf::Color::Black);
 	setString();
 }
 

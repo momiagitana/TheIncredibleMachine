@@ -1,6 +1,6 @@
 TUTORIAL WALLS
 -
-YOU NEED TO GET THE BALLOON OUT FROM THE RIGHT TOP CORNER
+"you need to get the balloon out from the top right corner"
 -
 balloon 123.000000 300.000000 -1 -1 -1
 brickWall 558.000000 80.000000 5 2 0
@@ -45,7 +45,7 @@ brickWall 5
 
 TUTORIAL ENGINES
 -
-YOU NEED TO GET THE BALLS IN THE BOXES (USE THE ENGINES!)
+"you need to get the balls in the boxes (tip: use the engines)"
 -
 baseBall 64.000000 213.000000 -1 -1 -1
 baseBall 286.000000 218.000000 -1 -1 -1
@@ -69,26 +69,25 @@ brickWall 322.000000 108.000008 5 2 -1
 brickWall 257.000000 108.000008 5 2 -1
 basketBall 74.000000 92.000000 -1 -1 -1
 mouseEngine 290.000000 131.000000 -1 -1 -1
-conveyor 412.000000 96.000000 -1 -1 -1
 mouseEngine 342.000000 200.000000 -1 -1 -1
 brickWall 495.000000 128.000000 2 0 -1
 brickWall 455.000000 111.000000 1 2 -1
 brickWall 495.000000 36.000000 2 0 -1
 brickWall 536.000000 80.000000 5 2 -1
-basketBall 296.000000 82.000000 -1 -1 -1
 -
 belt 3
-mouseEngine 1
+conveyor 1
+basketBall 1
 -
 0 45 15 100 275
 1 45 15 325 275
-2 35 20 460 90
+2 35 20 500 120
 -
 -
 
 TUTORIAL TRAMPOLINE
 -
-GET THE BALL IN BETWEEN THE PIPES
+"get the ball to in between the pipes"
 -
 baseBall 89.000000 250.000015 -1 -1 -1
 brickWall 64.000000 269.000000 1 0 -1
@@ -97,7 +96,7 @@ trampoline 212.000000 283.000000 -1 -1 -1
 trampoline 334.000000 242.000000 -1 -1 -1
 trampoline 458.000000 196.000000 -1 -1 -1
 pipeWall 515.000000 251.000000 3 2 -1
-pipeWall 552.000000 248.000000 3 2 -1
+pipeWall 552.000000 251.000000 3 2 -1
 pipeWall 535.000000 299.000000 1 0 -1
 -
 trampoline 3
@@ -106,9 +105,9 @@ trampoline 3
 -
 -
 
-EXPLODE BALLOON
+TUTORIAL BALLOON
 -
-GET THE BALLOON TO EXPLODE! (USE THE SCISSORS)
+"get the balloon to explode!"
 -
 balloon 296.000000 326.000000 -1 -1 -1
 mouseEngine 72.000000 161.000000 -1 -1 -1
@@ -120,6 +119,46 @@ basketBall 1
 brickWall 1
 conveyor 1
 -
-0 0 0 0 0
 -
+0
+-
+
+UP THE HILL
+-
+"make the mice sweat!"
+-
+mouseEngine 479.000000 211.000000 -1 -1 -1
+mouseEngine 42.000000 310.000000 -1 -1 -1
+baseBall 69.000000 249.000000 -1 -1 -1
+fancyWall 172.000000 305.000000 1 3 -1
+fancyWall 372.000000 246.000000 5 3 -1
+-
+conveyor 2
+mouseEngine 1
+belt 2
+-
+-
+0
+-
+
+ITZHAK'S NIGHTMARE
+-
+"get both balloons to explode, this one is kinda hard, good luck!"
+-
+balloon 481.000000 335.000000 -1 -1 -1
+balloon 480.000000 288.000000 -1 -1 -1
+mouseEngine 61.000000 152.000000 -1 -1 -1
+baseBall 192.000000 177.000000 -1 -1 -1
+conveyor 209.000000 194.000000 -1 -1 -1
+mouseEngine 99.000000 184.000000 -1 -1 -1
+scissors 535.000000 101.000000 -1 -1 -1
+scissors 535.000000 50.000000 -1 -1 -1
+-
+conveyor 1
+basketBall 1
+belt 2
+baseBall 1
+-
+-
+0
 -

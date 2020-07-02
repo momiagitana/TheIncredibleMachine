@@ -133,17 +133,18 @@ void OverallController::setText()
 {
 	m_levelGoal.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
 	m_levelGoal.setPosition(LEVEL_GOAL_TEXT_LOC);
-	m_levelGoal.setColor(sf::Color::Black);
+	m_levelGoal.setFillColor(sf::Color::Black);
 	m_levelGoal.setCharacterSize(CHARATER_SIZE);
 	m_levelGoal.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
 
+
 	m_levelName.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
-	m_levelName.setColor(sf::Color::Black);
+	m_levelName.setFillColor(sf::Color::Black);
 	m_levelName.setCharacterSize(CHARATER_SIZE);
 	m_levelName.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
 
 	m_levelNo.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
-	m_levelNo.setColor(sf::Color::Black);
+	m_levelNo.setFillColor(sf::Color::Black);
 	m_levelNo.setCharacterSize(CHARATER_SIZE);
 	m_levelNo.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
 
@@ -177,7 +178,7 @@ void OverallController::menuMode(const sf::Vector2f loc)
 		bool won = m_levelController.run(m_mode);
 		if (m_mode == MENU && won)
 		{
-			m_numOfLevel = m_numOfLevel + 1 % m_levels.size();
+			m_numOfLevel = (m_numOfLevel + 1) % m_levels.size();
 			setLevel();
 		}
 		ResourceManager::instance().setSong((int)ResourceManager::Sound::menu);
@@ -231,7 +232,7 @@ void OverallController::menuMode(const sf::Vector2f loc)
 void OverallController::loadBuildMode()
 {
 	Level newLevel(BUILD);//fix to const change level
-	m_levelController.loadNewLevel(newLevel);
+	m_levelController.loadNewLevel(newLevel, STATIC);
 	m_levelController.drawTinyBoard(m_smallBoard);
 }
 
@@ -358,7 +359,7 @@ void OverallController::setLevel()
 		loadBuildMode();
 	else
 	{		
-		m_levelController.loadNewLevel(m_levels[m_numOfLevel]);
+		m_levelController.loadNewLevel(m_levels[m_numOfLevel], DYNAMIC);
 		m_levelController.drawTinyBoard(m_smallBoard);
 	}
 }

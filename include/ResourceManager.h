@@ -20,7 +20,10 @@ public:
 	{
 		background,
 		menu,
-		build
+		build,
+		engine,
+		trampoline,
+		balloon
 	};
 
 	//make the static event so we wont load the textures multiple times
@@ -31,7 +34,10 @@ public:
 	void setSong(const int);
 	void volUp();
 	void volDown();
-
+	void playSFXtramp();
+	void playSFXballoon();
+	void playSFXengine();
+	void stopSFXengine();
 
 
 private:

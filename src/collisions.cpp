@@ -26,6 +26,9 @@ HitMap Collisions::initializeCollisionMap()
     map[Key(typeid(MouseEngine), typeid(BasketBall))]   = &engineBall;
     map[Key(typeid(BasketBall), typeid(MouseEngine))]   = &ballEngine;
 
+    map[Key(typeid(MouseEngine), typeid(BowlingBall))]   = &engineBall;
+    map[Key(typeid(BowlingBall), typeid(MouseEngine))]   = &ballEngine;
+
     map[Key(typeid(Trampoline), typeid(BasketBall))]   = &trampBall;
     map[Key(typeid(BasketBall), typeid(Trampoline))]   = &ballTramp;
 
@@ -37,8 +40,6 @@ HitMap Collisions::initializeCollisionMap()
 
     map[Key(typeid(Balloon), typeid(Scissors))]   = &balloonScissors;
     map[Key(typeid(Scissors), typeid(Balloon))]   = &scissorsBalloon;
-
-      
 
     return map;
 }

@@ -41,7 +41,7 @@ public:
 
 	bool isOn() const { return m_status; }
 
-	void setStatus(const bool status) { m_status = status; }
+	virtual void setStatus(const bool status) { m_status = status; }
 
 	void setBodySize(const sf::Vector2f size);
 

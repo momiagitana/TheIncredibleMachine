@@ -1,12 +1,8 @@
 #include "Score.h"
-#include <iostream>
-using std::cout;
-int speed = 20;
 
 
-
-Score::Score(const int)
-	:m_score(9999), m_background(sf::Vector2f(SC_X, SC_Y), Type_t::score)
+Score::Score(const int, const bool dynamic)
+	:m_score(9999), m_background(sf::Vector2f(SC_X, SC_Y), Type_t::score), m_dynamic(dynamic)
 {
 	for (int i = NUM_OF_NUMBERS_TEX - 1; i >= 0; i--)
 	{
@@ -38,34 +34,6 @@ void Score::set(int score)
 
 int Score::get() const
 {
-	// int numberTop = 0;
-	// int found = 0;
-	// int pSum = 0;
-	// int mod = 0;
-	// int power = 3;
-
-
-	// for (auto number = NUM_OF_NUMBERS_TEX - 1; number >= 0; number--)
-	// {
-	// 	numberTop = m_numbers.at(number).getTextureRect().top;
-
-	// 	for (int top = 0; top < SCORE_PIX_LOC_SIZE - 1; top++)
-	// 	{
-	// 		if (numberTop >= SCORE_PIX_LOC[0][top] && numberTop < SCORE_PIX_LOC[0][top + 1])
-	// 		{
-	// 			found = top;
-	// 			found++;
-	// 			break;
-	// 		}
-	// 	}
-
-	// 	mod = (pow(10, power));
-	// 	power--;
-	// 	found *= mod;
-	// 	found += pSum;
-	// 	pSum = found;
-	// }
-
 	int sum = 0;
 	for (int i = m_numbers.size() - 1; i >= 0; i--)
 	{
@@ -80,7 +48,8 @@ int Score::get() const
 
 void Score::play()
 {
-	m_play = true;
+	if(m_dynamic)
+		m_play = true;
 }
 
 void Score::stop()
@@ -90,6 +59,12 @@ void Score::stop()
 
 void Score::draw(sf::RenderWindow& window)
 {
+
+	sf::RectangleShape black(sf::Vector2f(WINDOW_WIDTH,100));
+	black.setPosition(0, 366);
+	black.setFillColor(sf::Color::Black);
+
+	window.draw(black);
 	m_background.draw(window);
 
 	if (m_play)

@@ -9,6 +9,8 @@ public:
 	void draw(sf::RenderWindow& window);
 	void animation();
 
+	void setStatus(const bool status); //fix override
+
 private:
 	static bool m_registerit;
 };

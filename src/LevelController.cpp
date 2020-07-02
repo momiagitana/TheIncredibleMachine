@@ -7,25 +7,27 @@ LevelController::LevelController(const Level& lvl, b2World& world, sf::RenderWin
 	:m_board(lvl.getBoardObjs(), world), m_window(win), m_world(world), m_toolbar(lvl.getToolbarObjs()),
 	m_locConditons(lvl.getLocConditions()), m_actConditions(lvl.getActConditions()),
 	m_mouseImg(sf::Vector2f(-100.f, -100.f), baseBall),
-	m_frame(sf::Vector2f(FRAME_X, FRAME_Y), frame), m_score(9999)
+	m_frame(sf::Vector2f(FRAME_X, FRAME_Y), frame), m_score(INIT_SCORE, DYNAMIC)
 
 {
 	listener.setBoardReference(m_board);
 }
 
-void LevelController::loadNewLevel(const Level& level)
+void LevelController::loadNewLevel(const Level& level, const bool dynamicScore)
 {
 	m_finished = false;
 	m_board = Board(level.getBoardObjs(), m_world);
 	m_toolbar = Toolbar(level.getToolbarObjs());
 	m_locConditons = level.getLocConditions();
 	m_actConditions = level.getActConditions();
+	m_score.setDynamic(dynamicScore);
+	m_score.set(INIT_SCORE);
 }
 
-bool LevelController::run(const int whichMod )
+bool LevelController::run(const int whichMod ) //fix
 {
-	if(whichMod == 0)//fix
-		m_score.play();
+
+	m_score.play();
 
 
 	while (m_window.isOpen() && !m_finished)
@@ -308,7 +310,7 @@ void LevelController::setText(sf::Text& levelScore)
 	levelScore.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
 	levelScore.setString("Score: " + std::to_string(m_score.get()));
 	levelScore.setPosition(LEVEL_SCORE_TEXT_LOC);
-	levelScore.setColor(sf::Color::Black);
+	levelScore.setFillColor(sf::Color::Black);
 	levelScore.setCharacterSize(CHARATER_SIZE);
 	levelScore.setOutlineThickness(CHARATER_OUTLINE_THICKNESS);
 }
