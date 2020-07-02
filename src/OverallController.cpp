@@ -169,7 +169,7 @@ void OverallController::menuMode(const sf::Vector2f loc)
 			ResourceManager::instance().setSong((int)ResourceManager::Sound::background);
 		else if (m_choseMode == 2)
 			ResourceManager::instance().setSong((int)ResourceManager::Sound::build);
-		bool won = m_levelController.run();
+		bool won = m_levelController.run(m_choseMode);
 		if (m_choseMode == 0 && won)
 		{
 			m_numOfLevel = m_numOfLevel + 1 % m_levels.size();

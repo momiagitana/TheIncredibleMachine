@@ -22,9 +22,10 @@ void LevelController::loadNewLevel(const Level& level)
 	m_actConditions = level.getActConditions();
 }
 
-bool LevelController::run()
+bool LevelController::run(const int whichMod )
 {
-	m_score.play();
+	if(whichMod == 0)//fix
+		m_score.play();
 
 
 	while (m_window.isOpen() && !m_finished)
@@ -46,7 +47,6 @@ bool LevelController::run()
 				if (event.mouseButton.button == sf::Mouse::Button::Right)
 				{
 					m_score.stop();
-					std::cout << m_score.get() << std::endl; //need to delete???
 					return false; //fix
 				}
 				else if (event.mouseButton.button == sf::Mouse::Button::Left)
