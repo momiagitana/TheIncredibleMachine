@@ -12,43 +12,43 @@ class GameObj : public Button
 {
 public:
 
-	GameObj(const sf::Vector2f&, const bool, bool, b2World &, Type_t);
+	GameObj(const sf::Vector2f&, const bool, const bool, b2World &, const Type_t);
 
 	virtual ~GameObj(){}
 
 	virtual void backToStartingPlace();
 
-	void setGravityScale(float);
+	void setGravityScale(const float);
 	int getID() const { return m_ID; }
 	bool isMovable() const { return m_movable; }
 	void updateBodySize();
 	virtual ObjInfo getInfo() const; 
-	void rotateBody(int);
+	void rotateBody(const int);
 	void updateLoc();
 
 	//for collisions
-	int aboveOrBelow(GameObj& other) const;
-	bool isBelow(GameObj& other) const;
+	int aboveOrBelow(const GameObj& other) const;
+	bool isBelow(const GameObj& other) const;
 
 	void wakeUp();
 
-	void setMouse(bool onMe) { m_mouseOnMe = onMe; } 
+	void setMouse(const bool onMe) { m_mouseOnMe = onMe; } 
 	bool getMouseOverMe() const { return m_mouseOnMe; }
 
-	virtual void setPosition(sf::Vector2f);
+	virtual void setPosition(const sf::Vector2f);
 	virtual void setInitialLoc();
 
 	void applyForce(const b2Vec2& force) { m_phyObj.applyForce(force); }
 
-	bool pixelPerfectColides(GameObj&) const;
+	bool pixelPerfectColides(const GameObj&) const;
 
 	bool isOn() const { return m_status; }
 
-	void setStatus(bool status) { m_status = status; }
+	void setStatus(const bool status) { m_status = status; }
 
-	void setBodySize(sf::Vector2f size);
+	void setBodySize(const sf::Vector2f size);
 
-	sf::Clock getClock(){return m_clock;}
+	sf::Clock getClock() const{return m_clock;}
 
 	void setIdZero();
 

@@ -6,7 +6,7 @@
 class BowlingBall : public Ball
 {
 public:
-	BowlingBall(ObjInfo info, bool movable, b2World& world);
+	BowlingBall(const ObjInfo info, const bool movable, b2World& world);
 
 private:
 	static bool m_registerit;

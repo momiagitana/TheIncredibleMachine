@@ -1,7 +1,7 @@
 #include "baseImg.h"
 #include <iostream>
 
-BaseImg::BaseImg(sf::Vector2f center, Type_t objTexture)
+BaseImg::BaseImg(const sf::Vector2f center, const Type_t objTexture)
 {
 	sf::Texture *texture = ResourceManager::instance().getTexture(objTexture);
 	m_sprite.setTexture(*texture);
@@ -9,7 +9,7 @@ BaseImg::BaseImg(sf::Vector2f center, Type_t objTexture)
 	setPosition(center);
 }
 
-void BaseImg::setRotation(float angle)
+void BaseImg::setRotation(const float angle)
 {
 	m_sprite.setRotation((angle * 180) / 3.14);
 }
@@ -29,20 +29,19 @@ sf::Vector2f BaseImg::getLocation() const
 	return m_sprite.getPosition();
 }
 
-void BaseImg::setColor(sf::Color color)
+void BaseImg::setColor(const sf::Color color)
 {
 	m_sprite.setColor(color);
 }
 
-void BaseImg::setSize(sf::Vector2u size)
+void BaseImg::setSize(const sf::Vector2u size)
 {
 	m_sprite.scale((size.x / m_sprite.getGlobalBounds().width), (size.y / m_sprite.getGlobalBounds().height));
 }
 
-void BaseImg::setPosition(sf::Vector2f loc)
+void BaseImg::setPosition(const sf::Vector2f loc)
 {
 	m_sprite.setPosition(loc);
-	//std::cout << loc.x << " " << loc.y << std::endl;
 }
 
 sf::Vector2f BaseImg::getSize() const
@@ -50,18 +49,18 @@ sf::Vector2f BaseImg::getSize() const
 	return sf::Vector2f(m_sprite.getTextureRect().width, m_sprite.getTextureRect().height);
 }
 
-void BaseImg::setIntRect(sf::IntRect newRect)
+void BaseImg::setIntRect(const sf::IntRect newRect)
 {
 	m_sprite.setTextureRect(newRect);
 	m_sprite.setOrigin(getSize().x / 2, getSize().y / 2);
 }
 
-void BaseImg::setOrigin(float x, float y)
+void BaseImg::setOrigin(const float x, const float y)
 {
 	m_sprite.setOrigin(x,y);
 }
 
-void BaseImg::setScale(float scale)
+void BaseImg::setScale(const float scale)
 {
 	m_sprite.setScale(sf::Vector2f(scale, scale));
 }
@@ -77,7 +76,7 @@ void BaseImg::drawSmall (sf::RenderTexture& tinyBoard)
 	m_sprite.setPosition(pos);
 }
 
-void BaseImg::nextIntRect(int x, int y)
+void BaseImg::nextIntRect(const int x, const int y)
 {
 	sf::IntRect newRect = m_sprite.getTextureRect();
 
@@ -99,7 +98,6 @@ void BaseImg::nextIntRect(int x, int y)
 			setEndAnimation(true);
 		}		
 	}
-	
 	setIntRect(newRect);
 }
 
@@ -112,7 +110,7 @@ void BaseImg::prevIntRect()
 	setIntRect(newRect);
 }
 
-void BaseImg::setTextureRect(sf::IntRect intrect) //fix check if used
+void BaseImg::setTextureRect(const sf::IntRect intrect) //fix check if used
 {
 	m_sprite.setTextureRect(intrect);
 }

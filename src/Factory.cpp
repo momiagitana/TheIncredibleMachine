@@ -5,8 +5,7 @@ ObjFactory::ObjFactory()
 }
 
 
-std::shared_ptr<GameObj> ObjFactory::create(ObjInfo info, bool movable, b2World &world) //fix const &
-  
+std::shared_ptr<GameObj> ObjFactory::create(const ObjInfo info, const bool movable, b2World &world) //fix const &
 {
 	auto it = ObjFactory::getMap().find(info._typ);
 	if (it == ObjFactory::getMap().end())
@@ -15,7 +14,7 @@ std::shared_ptr<GameObj> ObjFactory::create(ObjInfo info, bool movable, b2World 
 	return it->second(info,movable,world);
 }
 
-bool ObjFactory::registerit(const Type_t& name, funcPtr f) 
+bool ObjFactory::registerit(const Type_t& name, const funcPtr f) 
 {
 	ObjFactory::getMap().emplace(name, f);
 	return true;

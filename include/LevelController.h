@@ -17,22 +17,22 @@ public:
 
 	bool run();
 
-	bool clickOnToolbar(const sf::Vector2f );
-	bool clickOnBoard(const sf::Vector2f);
-	void createMouseImg(const sf::Vector2f loc);
+	bool clickOnToolbar(const sf::Vector2f )const;
+	bool clickOnBoard(const sf::Vector2f)const;
+	void createMouseImg(const sf::Vector2f);
 	void updateMouseLoc(const sf::Vector2f);
 	void loadNewLevel(const Level&);
 
-	void whereAmI(sf::Vector2f);
+	void whereAmI(const sf::Vector2f);
 	void clearMouse();
 
 	bool replaySolution();
 
-	void drawAll(bool); //fix const?
-	void drawStatic(bool running);
+	void drawAll(const bool); //fix const?
+	void drawStatic(const bool running);
 	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
-	void dealWithToolbar(sf::Vector2f mouseLoc);
-	void dealWithBoard(sf::Vector2f mouseLoc);
+	void dealWithToolbar(const sf::Vector2f mouseLoc);
+	void dealWithBoard(const sf::Vector2f mouseLoc);
 	void saveNewLevel();
 private:
 	Score m_score;
@@ -55,11 +55,11 @@ private:
 	void setText(sf::Text&);
 	bool tryRunning();
 	bool checkIfLevelFinished() const;
-	void grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc);
-	void createOnHandObj(sf::Vector2f loc);
-	void setSelected(Type_t type, sf::Vector2f mouseLoc);
-	void leftClick(sf::Event);
-	void handleBoardClick(sf::Vector2f);
-	void handleToolbarClick(sf::Vector2f);
+	void grabFromBoard(const std::shared_ptr<GameObj>, const sf::Vector2f);
+	void createOnHandObj(const sf::Vector2f);
+	void setSelected(const Type_t, const sf::Vector2f);
+	void leftClick(const sf::Event);
+	void handleBoardClick(const sf::Vector2f);
+	void handleToolbarClick(const sf::Vector2f);
 	void returnConnectableToToolbar();
 };

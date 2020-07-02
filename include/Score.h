@@ -8,11 +8,11 @@ class Score
 public:
 	Score() = default;
 	Score(const int);
-	void set(int score);
+	void set(int);
 	int get() const;
 	void play();
 	void stop();
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderWindow&);
 	void updateClock();
 
 private:

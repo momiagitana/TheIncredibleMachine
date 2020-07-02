@@ -4,13 +4,12 @@
 
 class ClickButton : public Button
 {
-private:
-    bool m_mouseOnMe = false;
-
 public:
-    ClickButton(const sf::Vector2f& center, Type_t obj, sf::Vector2i intRectSize);
+    ClickButton(const sf::Vector2f& , const Type_t, const sf::Vector2i);
     ~ClickButton();
 
-    bool mouseOnMe(sf::Vector2f loc);//fix override
+    bool mouseOnMe(const sf::Vector2f);//fix override
+private:
+    bool m_mouseOnMe = false;
 };
 

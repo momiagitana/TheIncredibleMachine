@@ -5,7 +5,7 @@
 class BaseBall : public Ball
 {
 public:
-	BaseBall (ObjInfo info, bool movable, b2World &world);
+	BaseBall (const ObjInfo info, const bool movable, b2World &world);
 	
 
 private:

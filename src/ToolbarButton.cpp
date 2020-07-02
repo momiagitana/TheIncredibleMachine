@@ -1,6 +1,6 @@
 #include "ToolbarButton.h"
 
-ToolbarButton::ToolbarButton(sf::Vector2f center, Type_t objType, int amount)
+ToolbarButton::ToolbarButton(const sf::Vector2f center, const Type_t objType, const int amount)
 	:m_amount(amount),
 	Button(center, objType)
 {
@@ -41,7 +41,7 @@ bool ToolbarButton::isEmpty() const
 	return (m_amount == 0);
 }
 
-void ToolbarButton::setPosition(sf::Vector2f pos)
+void ToolbarButton::setPosition(const sf::Vector2f pos)
 {
 	BaseImg::setPosition(pos);
 	m_text.setPosition(sf::Vector2f(pos.x - 10, pos.y + getSize().y/2));//fix NUM_DIFF and -10 set origin center

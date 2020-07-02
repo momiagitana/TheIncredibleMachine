@@ -5,7 +5,7 @@
 class Ball : public GameObj
 {
 public:
-	Ball(const sf::Vector2f&, bool , b2World &, Type_t);
+	Ball(const sf::Vector2f&,const bool , b2World &,const Type_t);
 	virtual ~Ball(){}
 private:
 

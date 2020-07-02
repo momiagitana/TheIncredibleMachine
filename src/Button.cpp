@@ -3,20 +3,20 @@
 #include "ResourceManager.h"
 
 
-Button::Button(const sf::Vector2f& center, Type_t obj)
+Button::Button(const sf::Vector2f& center, const Type_t obj)
 	:BaseImg(center, obj),
 	m_type(obj)
 {
 }
 
-bool Button::mouseOnMe(sf::Vector2f loc)
+bool Button::mouseOnMe(const sf::Vector2f loc)const
 {
 	if (getGlobalBounds().contains(loc))
 		return true;
 
 	return false;
 }
-Type_t Button::handleClick(sf::Vector2f loc)
+Type_t Button::handleClick( const sf::Vector2f loc) const
 {
 	if(mouseOnMe(loc))
 		return getType();

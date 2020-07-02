@@ -6,7 +6,7 @@
 class FancyWall : public Resizable
 {
 public:
-	FancyWall (ObjInfo info, bool movable, b2World &world);
+	FancyWall (const ObjInfo info, const bool movable, b2World &world);
 	
 private:
 	static bool m_registerit;

@@ -1,7 +1,7 @@
 #include <PhysicsObj.h>
 
 
-PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, bool dynamic, Type_t type)
+PhysicsObj::PhysicsObj(b2World &world, const sf::Vector2f& position, const bool dynamic, const Type_t type)
     :m_type(type)
 {
     auto objPhysicsInfo = physicsInfo[int(type)];
@@ -48,7 +48,7 @@ void PhysicsObj::setID(const int ID)
     m_body->SetUserData((void*)ID);
 }
 
-void PhysicsObj::setPosition(sf::Vector2f pos)
+void PhysicsObj::setPosition(const sf::Vector2f pos)
 {
     auto angle = m_body->GetAngle();
     if(m_body->GetType() == b2BodyType::b2_dynamicBody)
@@ -60,12 +60,12 @@ void PhysicsObj::setPosition(sf::Vector2f pos)
     m_body->SetAwake(true);
 }
 
-void PhysicsObj::setGravityScale(float scale)
+void PhysicsObj::setGravityScale(const float scale)
 {
     m_body->SetGravityScale(scale);
 }
 
-void PhysicsObj::setSize(sf::Vector2f size)
+void PhysicsObj::setSize(const sf::Vector2f size)
 {
 
     auto objPhysicsInfo = physicsInfo[int(m_type)];
@@ -91,7 +91,7 @@ void PhysicsObj::setSize(sf::Vector2f size)
 
 }
 
-void PhysicsObj::setAngle(int whichAngle)
+void PhysicsObj::setAngle(const int whichAngle)
 {
     m_body->SetTransform( m_body->GetPosition(), whichAngle*45*DEG_TO_RAD);
 }

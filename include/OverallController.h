@@ -25,22 +25,22 @@ public:
 	
 private:
 
-	void draw(sf::RenderWindow& window);
-	void drawMenu(sf::RenderWindow& window);
-	void drawChoseLevel(sf::RenderWindow& window);
+	void draw(sf::RenderWindow&);
+	void drawMenu(sf::RenderWindow&);
+	void drawChoseLevel(sf::RenderWindow&);
 	void setButtons();
 	void volumeUp();
 	void volumeDown();
 	void closeWindow();
 	void setLevel();
-	Type_t getSelection(sf::Vector2f loc) const;
-	void handleClick(sf::Vector2f loc);
-	void handleMouseMove(sf::Vector2f mouseLoc);
-	void menuMode(sf::Vector2f loc);
+	Type_t getSelection(const sf::Vector2f) const;
+	void handleClick(const sf::Vector2f);
+	void handleMouseMove(const sf::Vector2f);
+	void menuMode(const sf::Vector2f);
 	void createLevel();
 	void saveLevelToFile();
-	void chooseLevelMode(sf::Vector2f loc);
-	void drawTexts(sf::RenderWindow& window);
+	void chooseLevelMode(const sf::Vector2f);
+	void drawTexts(sf::RenderWindow&);
 	void setMenuTexts();
 	void setChoseLevelTexts();
 	void setText();
@@ -62,5 +62,5 @@ private:
 	sf::RenderTexture m_smallBoard;
 	int m_choseMode = 0;//fix
 };
-sf::IntRect getIntRectOfMenuIcon(int i);
-sf::IntRect getIntRectOfChoseLevelIcon(int i);
+sf::IntRect getIntRectOfMenuIcon(const int i);
+sf::IntRect getIntRectOfChoseLevelIcon(const int i);

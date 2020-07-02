@@ -249,4 +249,4 @@ const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,36 };
 const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 125,85.5 };
 const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 100,204 };
 
-
+const double ANIMATION_TIME = 0.5;

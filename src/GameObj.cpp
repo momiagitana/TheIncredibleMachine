@@ -1,6 +1,6 @@
 #include "GameObj.h"
 
-GameObj::GameObj(const sf::Vector2f& center, const bool dynamic, bool movable, b2World &world, Type_t type)
+GameObj::GameObj(const sf::Vector2f& center, const bool dynamic, const bool movable, b2World &world, const Type_t type)
 	:Button(center, type), m_phyObj(world, center, dynamic, type), m_movable(movable), m_initialLoc(center)
 {
 	m_ID = ID;
@@ -34,13 +34,13 @@ void GameObj::setInitialLoc()
 	m_initialLoc = getLocation();
 }
 
-void GameObj::setPosition(sf::Vector2f loc)
+void GameObj::setPosition(const sf::Vector2f loc)
 {
 	m_phyObj.setPosition(loc);
 	updateLoc();
 }
 
-void GameObj::setGravityScale(float scale)
+void GameObj::setGravityScale(const float scale)
 {
 	m_phyObj.setGravityScale(scale);
 }
@@ -50,7 +50,7 @@ void GameObj::updateBodySize()
 	m_phyObj.setSize(BaseImg::getSize());
 }
 
-void GameObj::rotateBody(int whichAngle)
+void GameObj::rotateBody(const int whichAngle)
 {
 	m_phyObj.setAngle(whichAngle);
 	BaseImg::setRotation(m_phyObj.getAngle());
@@ -64,7 +64,7 @@ ObjInfo GameObj::getInfo() const
 	return info;
 }
 
-int GameObj::aboveOrBelow(GameObj& other) const
+int GameObj::aboveOrBelow(const GameObj& other) const
 {
 	if(this->getLocation().y > other.getLocation().y)
 		return 1;
@@ -72,7 +72,7 @@ int GameObj::aboveOrBelow(GameObj& other) const
 	return -1;
 }
 
-bool GameObj::isBelow(GameObj& other) const
+bool GameObj::isBelow(const GameObj& other) const
 {
 	// auto globalBoundsOfOther = other.getGlobalBounds();
 	// auto otherBottom = globalBoundsOfOther.top+globalBoundsOfOther.height;
@@ -83,7 +83,7 @@ bool GameObj::isBelow(GameObj& other) const
 	return false;
 }
 
-bool GameObj::pixelPerfectColides(GameObj& other) const
+bool GameObj::pixelPerfectColides(const GameObj& other) const
 {
 	if(Collision::PixelPerfectTest(this->getSprite(), other.getSprite()))
 		return true;
@@ -91,7 +91,7 @@ bool GameObj::pixelPerfectColides(GameObj& other) const
 	return false;
 }
 
-void GameObj::setBodySize(sf::Vector2f size)
+void GameObj::setBodySize(const sf::Vector2f size)
 {
 	m_phyObj.setSize(size);
 }

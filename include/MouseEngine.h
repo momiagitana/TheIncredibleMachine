@@ -7,7 +7,7 @@
 class MouseEngine : public Connectable
 {
 public:
-    MouseEngine(ObjInfo info, bool movable, b2World &world);
+    MouseEngine(const ObjInfo info, const bool movable, b2World &world);
     ~MouseEngine();
 
 

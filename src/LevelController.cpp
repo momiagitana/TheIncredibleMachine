@@ -46,7 +46,7 @@ bool LevelController::run()
 				if (event.mouseButton.button == sf::Mouse::Button::Right)
 				{
 					m_score.stop();
-					std::cout << m_score.get() << std::endl;
+					std::cout << m_score.get() << std::endl; //need to delete???
 					return false; //fix
 				}
 				else if (event.mouseButton.button == sf::Mouse::Button::Left)
@@ -79,10 +79,8 @@ bool LevelController::run()
 }
 
 
-void LevelController::leftClick(sf::Event event)
+void LevelController::leftClick(const sf::Event event)
 {				
-	
-
 	auto mouseLoc = m_window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
 	
 	if (clickOnToolbar(mouseLoc))
@@ -96,7 +94,7 @@ void LevelController::leftClick(sf::Event event)
 	}
 
 }
-void LevelController::handleBoardClick(sf::Vector2f mouseLoc)
+void LevelController::handleBoardClick(const sf::Vector2f mouseLoc)
 {
 	if (m_selected != none)
 	{
@@ -122,7 +120,7 @@ void LevelController::handleBoardClick(sf::Vector2f mouseLoc)
 		grabFromBoard(m_board.handleClick(mouseLoc, m_selected), mouseLoc);//fix second argument
 }
 
-void LevelController::handleToolbarClick(sf::Vector2f mouseLoc)
+void LevelController::handleToolbarClick(const sf::Vector2f mouseLoc)
 {
 	if(m_selected == none)
 	{
@@ -159,14 +157,14 @@ void LevelController::returnConnectableToToolbar()
 	}
 }
 
-void LevelController::setSelected(Type_t type, sf::Vector2f mouseLoc)
+void LevelController::setSelected(const Type_t type, const sf::Vector2f mouseLoc)
 {
 	m_selected = type;
 	createOnHandObj(mouseLoc);
 	createMouseImg (mouseLoc);
 }
 
-void LevelController::whereAmI(sf::Vector2f mouseLoc)
+void LevelController::whereAmI(const sf::Vector2f mouseLoc) 
 {
 	if(clickOnToolbar(mouseLoc)) //maybe use set funcs and check if need both ifs
 		m_mouseOnToolBr = true;
@@ -174,7 +172,7 @@ void LevelController::whereAmI(sf::Vector2f mouseLoc)
 		m_mouseOnToolBr = false;
 }
 
-void LevelController::grabFromBoard(std::shared_ptr<GameObj> obj, sf::Vector2f loc)
+void LevelController::grabFromBoard(const std::shared_ptr<GameObj> obj, const sf::Vector2f loc)
 {
 	if(m_selected != belt)
 	{
@@ -195,7 +193,7 @@ void LevelController::clearMouse()
 	m_mouseObj = nullptr;
 }
 
-void LevelController::createOnHandObj(sf::Vector2f loc)
+void LevelController::createOnHandObj(const sf::Vector2f loc)
 {
 	ObjInfo info;
 
@@ -225,17 +223,17 @@ void LevelController::updateMouseLoc(const sf::Vector2f loc)
 
 }
 
-bool LevelController::clickOnToolbar(sf::Vector2f mouseLoc)
+bool LevelController::clickOnToolbar(const sf::Vector2f mouseLoc)const
 {
 	return m_toolbar.clickedOnMe(mouseLoc);
 }
 
-bool LevelController::clickOnBoard(sf::Vector2f mouseLoc)
+bool LevelController::clickOnBoard(const sf::Vector2f mouseLoc)const
 {
 	return m_board.clickedOnMe(mouseLoc);
 }
 
-void LevelController::drawAll(bool running)
+void LevelController::drawAll(const bool running)
 {
 	m_window.clear();
 	drawStatic(running);
@@ -254,7 +252,7 @@ void LevelController::drawAll(bool running)
 	m_window.display();
 }
 
-void LevelController::drawStatic(bool running)
+void LevelController::drawStatic(const bool running)
 {
 	m_board.draw(m_window, running);
 	m_frame.draw(m_window);

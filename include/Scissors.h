@@ -6,7 +6,7 @@
 class Scissors : public GameObj
 {
 public:
-	Scissors(ObjInfo info, bool movable, b2World &world);
+	Scissors(const ObjInfo, const bool, b2World &);
 private:
 
     static bool m_registerit ;

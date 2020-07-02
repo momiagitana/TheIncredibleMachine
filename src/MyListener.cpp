@@ -1,12 +1,12 @@
 #include"MyListener.h"
 
 
-void MyListener::BeginContact(b2Contact* contact)
+void MyListener::BeginContact(const b2Contact* contact)
 {
 
 }
 
-void MyListener::EndContact(b2Contact* contact)
+void MyListener::EndContact(const b2Contact* contact)
 {
 
 }

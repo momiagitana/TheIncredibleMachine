@@ -9,32 +9,32 @@ class BaseImg
 {
 public:
 
-	BaseImg(sf::Vector2f, Type_t);
+	BaseImg(const sf::Vector2f, const Type_t);
 	virtual ~BaseImg(){}
 	virtual sf::FloatRect getGlobalBounds() const;
 	virtual void draw(sf::RenderWindow&); //fix check if able to const
 
 	sf::Vector2f getLocation() const;
-	void setRotation(float);
-	void setColor(sf::Color);
-	void setSize(sf::Vector2u);
-	void setPosition(sf::Vector2f loc);
+	void setRotation(const float);
+	void setColor(const sf::Color);
+	void setSize(const sf::Vector2u);
+	void setPosition(const sf::Vector2f);
 	sf::Vector2f getSize() const;
-	void setIntRect(sf::IntRect);
-	void setOrigin(float, float);
-	void setScale(float);
-	virtual void drawSmall (sf::RenderTexture&);
+	void setIntRect(const sf::IntRect);
+	void setOrigin(const float, const float);
+	void setScale(const float);
+	virtual void drawSmall(sf::RenderTexture&);
 
 	sf::Sprite getSprite() const { return m_sprite; } //fix ask if correct
-	void nextIntRect(int x = 0, int y = 0);
+	void nextIntRect(const int x = 0, const int y = 0);
 	void prevIntRect();
 
 	//fix check if used
-	void setTextureRect(sf::IntRect intrect);
+	void setTextureRect(const sf::IntRect);
 	const sf::IntRect& getTextureRect() const;
 
 	bool endOfAnimation() { return m_endAnimation; } 
-	void setEndAnimation(bool status) { m_endAnimation = status; }
+	void setEndAnimation(const bool status) { m_endAnimation = status; }
 
 private:
 

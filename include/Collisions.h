@@ -71,7 +71,6 @@ namespace
 
             object2.applyForce(force);
         }
-        std::cout << "conveyor and balloon collision!" << std::endl;
     }
     void balloonConveyor(GameObj& object1, GameObj& object2)
     {
@@ -93,7 +92,6 @@ namespace
 
             object2.applyForce(force);
         }
-        std::cout << "conveyor and balloon collision!" << std::endl;
     }
     void basketConveyor(GameObj& object1, GameObj& object2)
     {
@@ -115,8 +113,6 @@ namespace
 
             object2.applyForce(force);
         }
-
-        std::cout << "conveyor and balloon collision!" << std::endl;
     }
     void baseConveyor(GameObj& object1, GameObj& object2)
     {
@@ -140,16 +136,12 @@ namespace
     {
         if(object1.isBelow(object2))
         {
-            //object1.setStatus(true);
-
             b2Vec2 force;
             force.x = 0.0;
             force.y = 0.125;
             object2.applyForce(force);
             object1.setStatus(true);
         }
-
-        std::cout << "trampoline and Basketball collision!" << std::endl;
     }
     void ballTramp(GameObj& object1, GameObj& object2)
     {
