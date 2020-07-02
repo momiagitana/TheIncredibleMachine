@@ -10,6 +10,7 @@ class Button : public BaseImg
 public:
 
 	Button(const sf::Vector2f& center,Type_t obj);
+	virtual ~Button(){}
 
 	Type_t getType()const;
 
