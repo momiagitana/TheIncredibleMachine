@@ -65,15 +65,13 @@ bool LevelController::run()
 
 	while(replaySolution() && m_finished)
 	{
-		tryRunning();
 		m_board.resetObjectsPositions();
+		tryRunning();
 	}
 
 	if (m_finished)
-	{
 		m_score.stop();
-		
-	}
+	
   	return m_finished;
 
 }

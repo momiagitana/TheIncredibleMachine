@@ -233,8 +233,8 @@ const int BUTTON_OBJ_SIZE = (TB_H-(SPACING*(BUTTONS_IN_PAGE+1)))/BUTTONS_IN_PAGE
 const float PPM = 64.f;
 const float MPP = 0.015625f;
 
-const unsigned CHARATER_SIZE = 13;
-const float CHARATER_OUTLINE_THICKNESS = 0.20; 
+const unsigned CHARATER_SIZE = 11;
+const float CHARATER_OUTLINE_THICKNESS = 0.1; 
 
 const sf::Vector2f PUZZLE_COMPLETE{ FRAME_X, FRAME_Y };
 const sf::Vector2f REPLAY_BUTTON{ PUZZLE_COMPLETE .x - 50,PUZZLE_COMPLETE .y+40};
