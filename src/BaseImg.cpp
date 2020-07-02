@@ -5,13 +5,13 @@ BaseImg::BaseImg(const sf::Vector2f center, const Type_t objTexture)
 {
 	sf::Texture *texture = ResourceManager::instance().getTexture(objTexture);
 	m_sprite.setTexture(*texture);
-	m_sprite.setOrigin(texture->getSize().x / 2, texture->getSize().y / 2);
+	m_sprite.setOrigin(float(texture->getSize().x / 2), float(texture->getSize().y / 2));
 	setPosition(center);
 }
 
 void BaseImg::setRotation(const float angle)
 {
-	m_sprite.setRotation((angle * 180) / 3.14);
+	m_sprite.setRotation(float((angle * 180) / 3.14));
 }
 
 sf::FloatRect BaseImg::getGlobalBounds() const
@@ -46,7 +46,7 @@ void BaseImg::setPosition(const sf::Vector2f loc)
 
 sf::Vector2f BaseImg::getSize() const
 {
-	return sf::Vector2f(m_sprite.getTextureRect().width, m_sprite.getTextureRect().height);
+	return sf::Vector2f(float(m_sprite.getTextureRect().width),float( m_sprite.getTextureRect().height));
 }
 
 void BaseImg::setIntRect(const sf::IntRect newRect)
@@ -82,12 +82,12 @@ void BaseImg::nextIntRect(const int x, const int y)
 
 	if(x == 0 && y == 0) //fix
 	{
-		if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
+		if(unsigned(newRect.left + newRect.width) < m_sprite.getTexture()->getSize().x)
 			newRect.left += newRect.width;
 	}
 	else
 	{
-		if(newRect.left + newRect.width < m_sprite.getTexture()->getSize().x)
+		if(unsigned(newRect.left + newRect.width) < m_sprite.getTexture()->getSize().x)
 		{
 			newRect.left += newRect.width;
 			newRect.width = x;

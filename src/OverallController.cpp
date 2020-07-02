@@ -18,12 +18,7 @@ OverallController::OverallController(b2World& world, MyListener& listener)//fix 
 {
 	m_window.setFramerateLimit(60);
 	m_smallBoard.create(TINY_BOARD_W, TINY_BOARD_H);
-	m_sound.setIntRect(sf::IntRect(440,0,110, 28));
-
-	for (int i = exitButton; i < endMenuButtons; i++)
-		m_menuButtons.push_back(ClickButton(sf::Vector2f(0, 0), Type_t(i), sf::Vector2i(getIntRectOfMenuIcon(i-exitButton).width,getIntRectOfMenuIcon(i-exitButton).height)));
-	for (int i = playButton; i < endChoseLevelButtons; i++)
-		m_choseLevelButtons.push_back(ClickButton(sf::Vector2f(0, 0), Type_t(i), sf::Vector2i(getIntRectOfChoseLevelIcon(i-playButton).width,getIntRectOfChoseLevelIcon(i-playButton).height)));
+	m_sound.setIntRect(sf::IntRect(440,0,110, 28));// fix to const globals
 
 	setButtons();
 	setLevel();
@@ -104,7 +99,7 @@ void OverallController::chooseLevelMode(const sf::Vector2f loc)
 	case downButton:
 	{
 		if (--m_numOfLevel == -1)
-			m_numOfLevel = m_levels.size() - 1;// try to fix with modulo
+			m_numOfLevel = int(m_levels.size() - 1);// try to fix with modulo
 		setLevel();
 		return;
 	}
@@ -120,7 +115,6 @@ void OverallController::drawTexts(sf::RenderWindow& window)
 	window.draw(m_levelGoal);
 	window.draw(m_levelName);
 	window.draw(m_levelNo);
-	
 }
 
 void OverallController::setMenuTexts()
@@ -323,6 +317,11 @@ void OverallController::drawChoseLevel(sf::RenderWindow& window)
 
 void OverallController::setButtons()
 {
+	for (int i = exitButton; i < endMenuButtons; i++)
+		m_menuButtons.push_back(ClickButton(sf::Vector2f(0, 0), Type_t(i), sf::Vector2i(getIntRectOfMenuIcon(i - exitButton).width, getIntRectOfMenuIcon(i - exitButton).height)));
+	for (int i = playButton; i < endChoseLevelButtons; i++)
+		m_choseLevelButtons.push_back(ClickButton(sf::Vector2f(0, 0), Type_t(i), sf::Vector2i(getIntRectOfChoseLevelIcon(i - playButton).width, getIntRectOfChoseLevelIcon(i - playButton).height)));
+
 	for (auto i = 0; i < m_menuButtons.size(); i++)
 	{
 		//m_menuButtons[i].setIntRect(getIntRectOfMenuIcon(i));
