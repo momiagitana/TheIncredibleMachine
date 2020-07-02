@@ -72,7 +72,7 @@ bool LevelController::run()
 	if (m_finished)
 	{
 		m_score.stop();
-		std::cout << m_score.get() << std::endl;
+		
 	}
   	return m_finished;
 
@@ -284,7 +284,7 @@ bool LevelController::replaySolution() //fix urgent
 			{
 			case sf::Event::Closed:
 				m_window.close();
-				break;
+				return false;
 
 			case sf::Event::MouseButtonReleased:
 				auto mouseLoc = m_window.mapPixelToCoords({ evnt.mouseButton.x, evnt.mouseButton.y });
@@ -308,7 +308,7 @@ bool LevelController::replaySolution() //fix urgent
 void LevelController::setText(sf::Text& levelScore)
 {
 	levelScore.setFont(ResourceManager::instance().getFont(ResourceManager::Font::CourierNew));
-	levelScore.setString(std::to_string(m_score.get()));
+	levelScore.setString("Score: " + std::to_string(m_score.get()));
 	levelScore.setPosition(LEVEL_SCORE_TEXT_LOC);
 	levelScore.setColor(sf::Color::Black);
 	levelScore.setCharacterSize(CHARATER_SIZE);
