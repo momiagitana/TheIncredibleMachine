@@ -155,6 +155,16 @@ bool Board::isItemInLoc(const conditionToWinLoc cond) const
 	return false;
 }
 
+bool Board::isItemOn(const conditionToWinAct cond) const
+{
+	for (auto& obj : m_objects)
+		if (obj->getID() == cond)
+			if(obj->isOn())
+				return true;
+	
+	return false; 
+}
+
 void Board::saveLevelToFile() const
 {
 	auto file = FileHandler(ResourceManager::instance().getLevelPath(), false);//fix SAVE
