@@ -121,10 +121,11 @@ struct PhysicsInfo
  const bool RECT = false;
 
 
+
  const PhysicsInfo physicsInfo[NUM_OF_OBJECTS] = {{CIRCLE, 0.1f, 0.4f, 0.7f},    //balloon
                                                   {CIRCLE, 0.5f, 0.775f, 0.2f},  //basketBall
-                                                  {CIRCLE, 0.8f, 0.4f, 0.25f},  	 //baseBall
-                                                  {CIRCLE, 0.1f, 0.4f, 0.8f},    //bowlingBall
+                                                  {CIRCLE, 0.8f, 0.4f, 0.25f},  //baseBall
+                                                  {CIRCLE, 0.5f, 0.2f, 0.2f},    //bowlingBall
                                                   {RECT,   0.5f, 0.4f, 0.7f},    //conveyor
                                                   {RECT,   0.5f, 0.4f, 0.7f},   //brickWall
 												  {RECT,   0.5f, 0.4f, 0.7f},   //pipeWall
@@ -199,7 +200,6 @@ const float BOARDS_RATIO_X = TINY_BOARD_W / BOARD_W ;
 const float BOARDS_RATIO_Y = TINY_BOARD_H / BOARD_H ;
 
 
-//fix 
 const int PUZZLE_COMPLETE_X = 400;
 const int PUZZLE_COMPLETE_Y = 300;
 const int REPLAY_BUTTON_X = 350;
@@ -223,7 +223,7 @@ const int NUM_OF_NUMBERS_TEX = 4;
 
 const int NUM_DELTA_Y_FROM_SCORE = 12;
 
-const int INS_SCORE = 9999;
+const int INIT_SCORE = 9999;
 
 const int BUTTONS_IN_PAGE = 5;
 const int SPACING = 25;
@@ -250,3 +250,8 @@ const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 125,85.5 };
 const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 100,204 };
 
 const double ANIMATION_TIME = 0.5;
+
+
+const int MENU = 0;
+const int CHOOSE_LEVEL = 1;
+const int BUILD = 2;
