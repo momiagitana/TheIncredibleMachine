@@ -374,6 +374,13 @@ bool LevelController::checkIfLevelFinished() const
 		if (!m_board.isItemInLoc(m_locConditons[i]))
 			return false;
 	}
+
+	for(auto x = 0 ; x < m_actConditions.size(); x++)
+	{
+		if(!m_board.isItemOn(m_actConditions[x]))
+			return false;
+	}
+
 	return true;
 }
 

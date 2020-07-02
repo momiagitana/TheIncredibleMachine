@@ -33,6 +33,7 @@ public:
 	bool checkCollison(const GameObj& obj2, const GameObj& obj1) const;
 	bool collides(const GameObj&) const;
 	bool isItemInLoc(const conditionToWinLoc) const;
+	bool isItemOn(const conditionToWinAct cond) const;
 
 	void saveLevelToFile() const;
 	void wakeEmAllUp(); //need to delete func????
