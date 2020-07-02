@@ -3,10 +3,17 @@
 GameObj::GameObj(const sf::Vector2f& center, const bool dynamic, bool movable, b2World &world, Type_t type)
 	:Button(center, type), m_phyObj(world, center, dynamic, type), m_movable(movable), m_initialLoc(center)
 {
-	static int ID = 0;
 	m_ID = ID;
 	ID ++;
 	updateLoc();
+	m_phyObj.setID(m_ID);
+}
+
+void GameObj::setIdZero()
+{
+	ID = 0;
+	m_ID = ID;
+	ID++;
 	m_phyObj.setID(m_ID);
 }
 

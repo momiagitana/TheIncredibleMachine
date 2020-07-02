@@ -13,7 +13,7 @@ const int CHOSE_LEVEL_BUTTONS_LOC[3][2] = { {200, 150}, {140, 145}, {141,165} };
 
 const int TOOLBAR_BUTTONS_LOC[2][2] = {{21, 15}, {21,16}};
 
-const int SCORE_PIX_LOC[10][2] = {(0,21), (0,42), (0,63), (0,84), (0,105) , (0,126) , (0,147), (0 , 168) , (0,189) ,(0,210)}; //fix make function
+//const int SCORE_PIX_LOC[10][2] = {(0,21), (0,42), (0,63), (0,84), (0,105) , (0,126) , (0,147), (0 , 168) , (0,189) ,(0,210)}; //fix make function
 const int SCORE_PIX_LOC_SIZE = 10;
 const int SC_N_H = 21;
 

@@ -325,7 +325,7 @@ bool LevelController::tryRunning()
 	while (m_window.isOpen())
 	{
 	
-		if(counter == 50)
+		if(counter == 1)//fix adjust or take
 		{
 			if (checkIfLevelFinished())
 				return true;

@@ -6,6 +6,7 @@
 #include "PhysicsObj.h"
 #include "CollisionsSFML.h"
 
+static int ID = 0;
 
 class GameObj : public Button
 {
@@ -49,6 +50,8 @@ public:
 	void setBodySize(sf::Vector2f size);
 
 	sf::Clock getClock(){return m_clock;}
+
+	void setIdZero();
 
 private:
 
