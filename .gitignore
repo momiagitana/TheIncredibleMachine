@@ -4,3 +4,4 @@ build/*
 /out/build/x64-Debug
 /out/build/x64-Debug (default)
 newLevel.txt
+.DS_Store
