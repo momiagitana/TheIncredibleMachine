@@ -13,7 +13,7 @@ public:
 
 	LevelController(const Level&, b2World& world, sf::RenderWindow&, MyListener& );
 
-	bool run();
+	bool run(const int whichMod);
 
 	bool clickOnToolbar(const sf::Vector2f )const;
 	bool clickOnBoard(const sf::Vector2f)const;

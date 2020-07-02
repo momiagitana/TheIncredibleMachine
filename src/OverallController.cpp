@@ -176,12 +176,12 @@ void OverallController::menuMode(const sf::Vector2f loc)
 	{
 	case startButton:
 	{
-		if (m_mode == 0)
+		if (m_mode == MENU)
 			ResourceManager::instance().setSong((int)ResourceManager::Sound::background);
-		else if (m_mode == 2)
+		else if (m_mode == BUILD)
 			ResourceManager::instance().setSong((int)ResourceManager::Sound::build);
-		bool won = m_levelController.run();
-		if (m_mode == 0 && won)
+		bool won = m_levelController.run(m_mode);
+		if (m_mode == MENU && won)
 		{
 			m_numOfLevel = m_numOfLevel + 1 % m_levels.size();
 			setLevel();
