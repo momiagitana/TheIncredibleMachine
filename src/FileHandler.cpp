@@ -1,4 +1,5 @@
 #include <iostream>
+#include<exception>
 #include "FileHandler.h"
 
 const std::string END_PART = "-" ;
@@ -6,11 +7,14 @@ const int NUM_OF_PARTS = 6;
 
 FileHandler::FileHandler(const std::string& fileName, bool read)
 {
-	if(read)
-		m_file.open(fileName);
+		if (read)
+			m_file.open(fileName);
 
-	else //open for append 
-		m_file.open("newLevel.txt", std::ios::in | std::ios::out | std::ios::app);
+		else //open for append 
+			m_file.open("newLevel.txt", std::ios::in | std::ios::out | std::ios::app);
+
+		if (m_file.fail())
+			throw std::ios_base::failure("can not open file\n");
 }
 
 FileHandler::~FileHandler()
@@ -30,9 +34,16 @@ ObjInfo FileHandler::buildObjInfo(std::stringstream& lineBuffer)
 	obj._typ = strToEnum(objTyp);
 	obj._loc = sf::Vector2f(std::stof(x_loc), std::stof(y_loc));
 	obj._angle = std::stoi(angle);
-	obj._size = std::stoi(size);
-	obj._fliped = std::stoi(fliped);
+	if (obj._angle < (-1) || obj._angle > 3)
+		throw std::invalid_argument("worng input value for angle. angle can be between -1 and 3\n");
 
+	obj._size = std::stoi(size);
+	if (obj._size < (-1) || obj._angle > 5)
+		throw std::invalid_argument("worng input value for size. size can be between -1 and 5\n");
+
+	obj._fliped = std::stoi(fliped);
+	if (obj._fliped < (-1) || obj._fliped > 1)
+		throw std::invalid_argument("worng input value for fliped. fliped can be between -1 and 1\n");
 	return obj;
 }
 
@@ -78,7 +89,6 @@ Level FileHandler::getlevel()
 			buffer >> objTyp >> objAmount;
 			currLevel.addToolbarObj(strToEnum(objTyp), std::stoi(objAmount));
 			break;
-			
 		}
 		case 5:
 		{
@@ -146,8 +156,10 @@ Type_t FileHandler::strToEnum(const std::string& str)
 	else if (str == "belt")			return belt;
 	else if (str == "trampoline")	return trampoline;
 	else if (str == "scissors")		return scissors;
-	else if (str == "pipeWall")			return pipeWall;
+	else if (str == "pipeWall")		return pipeWall;
 	else if (str == "fancyWall")	return fancyWall;
+	std::string error{ "the The object " + str + " does not exist,go to the readme to check which object can be added" };
+	throw std::invalid_argument(error);
 	return none;
 
 }

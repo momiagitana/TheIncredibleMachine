@@ -149,7 +149,7 @@ void Connections::drawBelt(std::pair<Connectable*, Connectable*> each, sf::Rende
 
 void Connections::unplug(Connectable* toUnplug)
 {
-    Connectable* other;
+    Connectable* other  = nullptr;
     auto i = 0;
     for (; i < m_connections.size() ; i++)
     {

@@ -150,7 +150,7 @@ const bool STATIC = false;
 const bool MOVABLE = true;
 const bool UNMOVABLE = false;
 
-const float DEG_TO_RAD = 0.0174533;
+const float DEG_TO_RAD = 0.0174533f;
 
 //images
 const int WINDOW_WIDTH = 640;
@@ -234,7 +234,7 @@ const float PPM = 64.f;
 const float MPP = 0.015625f;
 
 const unsigned CHARATER_SIZE = 13;
-const float CHARATER_OUTLINE_THICKNESS = 0.20; 
+const float CHARATER_OUTLINE_THICKNESS = 0.20f; 
 
 const sf::Vector2f PUZZLE_COMPLETE{ FRAME_X, FRAME_Y };
 const sf::Vector2f REPLAY_BUTTON{ PUZZLE_COMPLETE .x - 50,PUZZLE_COMPLETE .y+40};
@@ -247,6 +247,6 @@ const sf::Vector2f LEVEL_NO_TEXT_LOC_MENU{ 95,36 };
 const sf::Vector2f LEVEL_NAME_TEXT_LOC_MENU{ 200,36 };
 
 const sf::Vector2f LEVEL_NO_TEXT_LOC_CHOSE_LEVEL{ 125,85.5 };
-const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 100,204 };
+const sf::Vector2f LEVEL_NAME_TEXT_LOC_CHOSE_LEVEL{ 80,204 };
 
 
