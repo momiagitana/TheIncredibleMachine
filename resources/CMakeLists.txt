@@ -48,8 +48,6 @@ configure_file ("build.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("play.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("exitButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("startButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("frame.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("1px.png" ${CMAKE_BINARY_DIR} COPYONLY)
