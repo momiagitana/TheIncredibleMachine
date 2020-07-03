@@ -12,7 +12,7 @@ Connections::~Connections()
 
 bool Connections::tryConnecting (const std::shared_ptr<GameObj> obj)
 {
-    if (Connectable* toAdd = canConnect(obj.get()))//fix check that if null doestn enter
+    if (Connectable* toAdd = canConnect(obj.get()))
     {
         if (m_first == nullptr)
             m_first = toAdd;
@@ -29,7 +29,7 @@ bool Connections::tryConnecting (const std::shared_ptr<GameObj> obj)
 
 }
 
-Connectable* Connections::isConnectedAndConnectable(GameObj* obj) const //fix kefel code
+Connectable* Connections::isConnectedAndConnectable(GameObj* obj) const
 {
     if (Connectable* connectable = dynamic_cast<Connectable*>(obj))
         if(connectable->isConected())
@@ -40,7 +40,7 @@ Connectable* Connections::isConnectedAndConnectable(GameObj* obj) const //fix ke
 
 Connectable* Connections::canConnect(GameObj* obj) const
 {
-    if(obj != m_first)//fix set connected as soon as is m_first
+    if(obj != m_first)//set connected as soon as is m_first
         if (Connectable* connectable = dynamic_cast<Connectable*>(obj))
             if(!connectable->isConected())
                 return connectable;
@@ -50,12 +50,12 @@ Connectable* Connections::canConnect(GameObj* obj) const
 
 bool Connections::doneConnecting()
 {
-    if (m_first != nullptr && m_second != nullptr) //fix
+    if (m_first != nullptr && m_second)
     {
         m_connections.push_back(std::make_pair(m_first, m_second));
 
         setConnectedStatus(m_first, true);
-        setConnectedStatus(m_second, true);//fix conected
+        setConnectedStatus(m_second, true);
 
         m_first = m_second = nullptr;
         return true;
@@ -81,7 +81,7 @@ bool Connections::isOn(const Connectable* connectable) const
 
 void Connections::turnOn(Connectable* connectable)
 {
-    connectable->setStatus(true);//fix ON
+    connectable->setStatus(ON);
 }
 
 void Connections::setConnectedStatus(Connectable* connectable, const bool status)
@@ -94,7 +94,7 @@ void Connections::draw(sf::RenderWindow& window) const
     for (auto &each: m_connections)
         drawBelt(each, window);
 
-    if (m_first != nullptr)//fix
+    if (m_first)
         drawMovingBelt(window);
 }
 
@@ -196,7 +196,7 @@ void Connections::deleteConnection(Connectable* obj)
 {
     Connectable* other;
     auto i = 0;
-    for (; i < m_connections.size() ; i++) //fix code repeated
+    for (; i < m_connections.size() ; i++)
     {
         if (m_connections[i].first == obj)
         {

@@ -21,7 +21,7 @@ public:
 	Level(); 
 	Level(const bool);
 
-	void addBoardObj(const ObjInfo);
+	void addBoardObj(const ObjInfo&);
 	void addToolbarObj(const Type_t, const int);
 
 	void addCondLoc (const int, const sf::Vector2f, const sf::Vector2f);

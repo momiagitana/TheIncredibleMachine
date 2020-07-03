@@ -14,14 +14,16 @@ private:
     void setConnectedStatus(Connectable*, const bool);
     void drawBelt(const std::pair<const Connectable*, const Connectable*>, sf::RenderWindow&) const;
     void drawMovingBelt(sf::RenderWindow &) const;
+    bool isOn(const Connectable*) const;
+    sf::Vector2f calculateNormal(const sf::Vertex&, const sf::Vertex&)  const;
 
 public:
     Connections();
     ~Connections();
 
-    bool isOn(const Connectable*) const; //fix private?
     void turnOn(Connectable*); 
 
+    Connectable* isConnectedAndConnectable(GameObj*) const;
     bool tryConnecting (const std::shared_ptr<GameObj>);
     bool doneConnecting();
     void checkConnections();
@@ -30,6 +32,4 @@ public:
     void reset();
     void setMousePos(const sf::Vector2f);
     void deleteConnection(Connectable* obj);
-    sf::Vector2f calculateNormal(const sf::Vertex&, const sf::Vertex&)  const;
-    Connectable* isConnectedAndConnectable(GameObj*) const;
 };

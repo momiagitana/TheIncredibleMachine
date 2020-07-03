@@ -23,9 +23,9 @@ public:
 
 	Board(const boardObjects&, b2World& );
 	void setBoard(const boardObjects& , b2World&);
-	void draw(sf::RenderWindow&, const bool);//fix const?
+	void draw(sf::RenderWindow&, const bool);
 	void drawTinyBoard (sf::RenderTexture&) const;
-	bool tryToAdd(const std::shared_ptr<GameObj>, const Type_t); 
+	bool tryToAdd(const std::shared_ptr<GameObj>); 
 	std::shared_ptr<GameObj> handleClick(const sf::Vector2f, Type_t&);
 	void resetObjectsPositions();
 
@@ -36,11 +36,9 @@ public:
 	bool isItemOn(const conditionToWinAct cond) const;
 
 	void saveLevelToFile() const;
-	void wakeEmAllUp(); //need to delete func????
 
 	void checkMouseOver(const sf::Vector2f ,const std::shared_ptr<GameObj>);
-	void hideObjButtons() {setEveryoneElseFalse(-1);}//change for //NO_ONE
-
+	void hideObjButtons() { setEveryoneElseFalse(NO_ONE); }
 
 	GameObj* getObjWithId(const int) const;
 
@@ -55,7 +53,6 @@ public:
 
 private:
 
-	Collisions m_collision; //fix see where to put it
 
 	void updateImgLocs();
 	void setEveryoneElseFalse(const int);
@@ -65,5 +62,6 @@ private:
 	std::vector <std::shared_ptr<GameObj>> m_objects;
 	Connections m_connections;
 	sf::RectangleShape m_background;
+	Collisions m_collision; 
 
 };

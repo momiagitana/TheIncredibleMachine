@@ -1,7 +1,7 @@
 #include "Resizable.h"
 
 
-Resizable::Resizable(const ObjInfo info, const bool movable, b2World &world, const Type_t type)
+Resizable::Resizable(const ObjInfo& info, const bool movable, b2World &world, const Type_t type)
     :GameObj(info._loc, false, movable, world, type), m_whichAngle(info._angle), m_whichSize(info._size)
 {
     setTexture();
@@ -24,17 +24,17 @@ void Resizable::setTexture()
 
 void Resizable::makeItBigger()
 {
-    if(++m_whichSize == 6)//fix
-        m_whichSize = 1;
+    if(++m_whichSize == (BIGGEST_SIZE +1))
+        m_whichSize = SMALLEST_SIZE;
     setTexture();
-    resetButtonsPos(); //fix move to setTexture
+    resetButtonsPos();
 }
 
 void Resizable::makeItSmaller()
 {
     
-    if(--m_whichSize == 0)
-        m_whichSize = 5;//fix
+    if(--m_whichSize == (SMALLEST_SIZE-1))
+        m_whichSize = BIGGEST_SIZE;
     setTexture();
     resetButtonsPos();
 
@@ -65,8 +65,8 @@ ObjInfo Resizable::getInfo() const
 
 void Resizable::setButtons()
 {
-    m_buttons.push_back(Button(sf::Vector2f(0, 0), Type_t::rotateButton));//fix
-    m_buttons.push_back(Button(sf::Vector2f(0, 0), Type_t::resizeButton));//fix
+    m_buttons.push_back(Button(sf::Vector2f(0, 0), Type_t::rotateButton));
+    m_buttons.push_back(Button(sf::Vector2f(0, 0), Type_t::resizeButton));
     resetButtonsPos();
 }
 
@@ -75,7 +75,7 @@ void Resizable::resetButtonsPos()
     auto space = 0;
     auto globalBounds = BaseImg::getGlobalBounds();
     auto left = globalBounds.left;
-    auto y = globalBounds.top + globalBounds.height + 4;//fix BUTTON_SIZE/2
+    auto y = globalBounds.top + globalBounds.height + 4;
     if (m_buttons.size() > 1)
         space = globalBounds.width/(m_buttons.size()-1);
 
@@ -83,7 +83,7 @@ void Resizable::resetButtonsPos()
         m_buttons[i].setPosition(sf::Vector2f(left + space * (i), y));
 }
 
-bool Resizable::mouseOnMe(const sf::Vector2f loc)const
+bool Resizable::mouseOnMe(const sf::Vector2f loc)
 {
     for(auto& button : m_buttons)
         if(button.mouseOnMe(loc))

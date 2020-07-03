@@ -1,11 +1,11 @@
 #pragma once
 #include"Ball.h"
-#include "Factory.h"//fix needs to add to base class
+#include "Factory.h"
 
 class BaseBall : public Ball
 {
 public:
-	BaseBall (const ObjInfo info, const bool movable, b2World &world);
+	BaseBall (const ObjInfo& info, const bool movable, b2World &world);
 	
 
 private:

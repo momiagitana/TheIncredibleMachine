@@ -13,7 +13,7 @@ public:
 
 	LevelController(const Level&, b2World& world, sf::RenderWindow&, MyListener& );
 
-	bool run(const int);
+	bool run();
 
 	bool clickOnToolbar(const sf::Vector2f )const;
 	bool clickOnBoard(const sf::Vector2f)const;
@@ -26,7 +26,7 @@ public:
 
 	bool replaySolution();
 
-	void drawAll(const bool); //fix const?
+	void drawAll(const bool);
 	void drawStatic(const bool running);
 	void drawTinyBoard (sf::RenderTexture& tinyBoard) const;
 	void dealWithToolbar(const sf::Vector2f mouseLoc);

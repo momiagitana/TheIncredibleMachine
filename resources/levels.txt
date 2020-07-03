@@ -1,6 +1,6 @@
 TUTORIAL WALLS
 -
-"you need to get the balloon out from the top right corner"
+you need to get the balloon out from the top right corner
 -
 balloon 123.000000 300.000000 -1 -1 -1
 brickWall 558.000000 80.000000 5 2 0
@@ -45,7 +45,7 @@ brickWall 5
 
 TUTORIAL ENGINES
 -
-"you need to get the balls in the boxes (tip: use the engines)"
+you need to get the balls in the boxes (tip: use the engines)
 -
 baseBall 64.000000 213.000000 -1 -1 -1
 baseBall 286.000000 218.000000 -1 -1 -1
@@ -87,7 +87,7 @@ basketBall 1
 
 TUTORIAL TRAMPOLINE
 -
-"get the ball to in between the pipes"
+get the ball to in between the pipes
 -
 baseBall 89.000000 250.000015 -1 -1 -1
 brickWall 64.000000 269.000000 1 0 -1
@@ -107,7 +107,7 @@ trampoline 3
 
 TUTORIAL BALLOON
 -
-"get the balloon to explode!"
+get the balloon to explode!
 -
 balloon 296.000000 326.000000 -1 -1 -1
 mouseEngine 72.000000 161.000000 -1 -1 -1
@@ -125,7 +125,7 @@ conveyor 1
 
 UP THE HILL
 -
-"make the mice sweat!"
+make the mice sweat!
 -
 mouseEngine 479.000000 211.000000 -1 -1 -1
 mouseEngine 42.000000 310.000000 -1 -1 -1
@@ -143,7 +143,7 @@ belt 2
 
 ITZHAK'S NIGHTMARE
 -
-"get both balloons to explode, this one is kinda hard, good luck!"
+get both balloons to explode, this one is kinda hard, good luck!
 -
 balloon 481.000000 335.000000 -1 -1 -1
 balloon 480.000000 288.000000 -1 -1 -1
@@ -161,4 +161,5 @@ baseBall 1
 -
 -
 0
+1
 -

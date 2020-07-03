@@ -9,12 +9,12 @@ Level::Level(const bool)
 {
 for (int i = balloon; i < play; ++i)
 	{
-		addToolbarObj(Type_t(i), -1);//fix INFINITE
+		addToolbarObj(Type_t(i), INFINITE_AMOUNT);
 	}
 	addCondLoc(-1, sf::Vector2f(0,0), sf::Vector2f(0,0));//adding impossible condition so level doesnt finishf
 }
 
-void Level::addBoardObj(const ObjInfo obj)
+void Level::addBoardObj(const ObjInfo& obj)
 {
 	m_initial.push_back(obj);
 }

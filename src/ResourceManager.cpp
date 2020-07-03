@@ -195,7 +195,7 @@ void ResourceManager::loadSound(const std::string path, const Sound name)
 
 void ResourceManager::setSounds()
 {
-	for(int i = 0; i < 6; i++) //fix 5 -> num of sounds
+	for(int i = 0; i < NUM_OF_SOUNDS; i++)
 	{
 		m_sounds.push_back(sf::Sound(getSound(Sound(i))));
 		m_sounds[i].setVolume(m_volume);
@@ -246,15 +246,15 @@ void ResourceManager::setSong(const int song)
 
 void ResourceManager::volUp()
 {
-	if(m_volume+14 <100)
-		m_volume += 14;
+	if(m_volume+ VOL_STEP <VOL_MAX)
+		m_volume += VOL_STEP;
 	setVolume();
 }
 
 void ResourceManager::volDown()
 {
-	if(m_volume-14 >= 0)
-		m_volume -= 14;
+	if(m_volume-VOL_STEP >= VOL_MIN)
+		m_volume -= VOL_STEP;
 	setVolume();
 }
 

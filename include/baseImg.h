@@ -23,20 +23,18 @@ public:
 	void setScale(const float);
 	virtual void drawSmall(sf::RenderTexture&);
 
-	const sf::Sprite& getSprite() const { return m_sprite; }
 	void nextIntRect(const int x = 0, const int y = 0);
 	void prevIntRect();
 
-	//fix check if used
 	void setTextureRect(const sf::IntRect);
 	const sf::IntRect& getTextureRect() const;
 
-	bool endOfAnimation() { return m_endAnimation; } 
+	bool endOfAnimation() const { return m_endAnimation; } 
 	void setEndAnimation(const bool status) { m_endAnimation = status; }
 
+	const sf::Sprite& getSprite() const { return m_sprite; }
+
 private:
-
 	sf::Sprite m_sprite;
-
 	bool m_endAnimation = false;
 };

@@ -60,5 +60,5 @@ private:
 
 	std::vector <sf::Sound> m_sounds;
 	Sound m_playing;
-	int m_volume = 56; //fix medium vol
+	int m_volume = MEDIUM_VOL;
 };

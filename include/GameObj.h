@@ -3,7 +3,6 @@
 #include "PhysicsObj.h"
 #include "CollisionsSFML.h"
 
-
 static int ID = 0;
 
 class GameObj : public Button
@@ -58,6 +57,6 @@ private:
 	bool m_mouseOnMe = false;
 
 	sf::Clock m_clock;
-	bool m_status = false; //fix ON OFF
+	bool m_status = OFF;
 	
 };

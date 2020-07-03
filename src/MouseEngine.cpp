@@ -1,9 +1,11 @@
 #include "MouseEngine.h"
+const int WIDTH = 48;
+const int HEIGHT = 32;
 
-MouseEngine::MouseEngine(const ObjInfo info, const bool movable, b2World &world)
-    :Connectable(info, movable, world, 0)//fix pass data on info
+MouseEngine::MouseEngine(const ObjInfo& info, const bool movable, b2World &world)
+    :Connectable(info, movable, world)
 {
-    setIntRect(sf::IntRect(0,0,48,32));//fix
+    setIntRect(sf::IntRect(0,0,WIDTH,HEIGHT));
     updateBodySize();
 }
 
@@ -11,7 +13,7 @@ MouseEngine::~MouseEngine()
 {
 }
 
-bool MouseEngine::m_registerit = ObjFactory::registerit(mouseEngine, [](const ObjInfo info, const bool movable, b2World &world)->std::shared_ptr<GameObj> { return std::make_shared<MouseEngine>(info,movable,world); });
+bool MouseEngine::m_registerit = ObjFactory::registerit(mouseEngine, [](const ObjInfo& info, const bool movable, b2World &world)->std::shared_ptr<GameObj> { return std::make_shared<MouseEngine>(info,movable,world); });
 
 
 

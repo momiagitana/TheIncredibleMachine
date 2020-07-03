@@ -9,7 +9,7 @@ Button::Button(const sf::Vector2f& center, const Type_t obj)
 {
 }
 
-bool Button::mouseOnMe(const sf::Vector2f loc)const
+bool Button::mouseOnMe(const sf::Vector2f loc)
 {
 	if (getGlobalBounds().contains(loc))
 		return true;
@@ -27,7 +27,7 @@ Type_t Button::handleClick( const sf::Vector2f loc)
 
 Type_t Button::getType() const
 {
-	return Type_t(m_type%100);//fix global 
+	return Type_t(m_type % BUTTON_DELTA_TYPE);
 }
 
 

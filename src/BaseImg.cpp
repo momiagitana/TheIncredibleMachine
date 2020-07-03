@@ -80,7 +80,7 @@ void BaseImg::nextIntRect(const int x, const int y)
 {
 	sf::IntRect newRect = m_sprite.getTextureRect();
 
-	if(x == 0 && y == 0) //fix
+	if(x == 0 && y == 0) //no arguments passed
 	{
 		if(unsigned(newRect.left + newRect.width) < m_sprite.getTexture()->getSize().x)
 			newRect.left += newRect.width;
@@ -94,9 +94,7 @@ void BaseImg::nextIntRect(const int x, const int y)
 			newRect.height = y;
 		}
 		else
-		{
-			setEndAnimation(true);
-		}		
+			setEndAnimation(true);	
 	}
 	setIntRect(newRect);
 }
@@ -110,7 +108,7 @@ void BaseImg::prevIntRect()
 	setIntRect(newRect);
 }
 
-void BaseImg::setTextureRect(const sf::IntRect intrect) //fix check if used
+void BaseImg::setTextureRect(const sf::IntRect intrect)
 {
 	m_sprite.setTextureRect(intrect);
 }

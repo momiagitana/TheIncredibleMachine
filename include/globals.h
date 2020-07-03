@@ -21,6 +21,7 @@ const int DELTA_ENGINE_CONECT[2][2] = {{13,-6}, {13,0}}; //1 mouse engine, fix c
 
 const int NUM_OF_OBJECTS = 11; // update when adding an object 
 
+const int BUTTON_DELTA_TYPE = 100;
 enum Type_t
 {
 	//objects
@@ -79,7 +80,7 @@ enum Type_t
 	numbers,
 	score,
 	
-	balloonButton = 100,
+	balloonButton = BUTTON_DELTA_TYPE,
 	basketButton,
 	baseButton,
 	bowlingButton,
@@ -253,3 +254,37 @@ const double ANIMATION_TIME = 0.5;
 const int MENU = 0;
 const int CHOOSE_LEVEL = 1;
 const int BUILD = 2;
+
+const bool ON = true;
+const bool OFF = false;
+
+
+const int SMALLEST_SIZE = 	1;
+const int BIGGEST_SIZE = 	5;
+const int FIRST_ANGLE = 	0;
+const int LAST_ANGLE = 		3;
+const int NOT_RELEVANT=		-1; //future updates will include fliping
+
+
+const int MEDIUM_VOL = 	56;
+const int VOL_STEP = 	14;
+const int VOL_MAX = 	100;
+const int VOL_MIN = 	0;
+
+const int NO_ONE = -1;
+
+const bool SAVE = false;
+const bool OPEN = true;
+
+const int INFINITE_AMOUNT = -1;
+
+const bool RUNNING = true;
+const bool NOT_RUNNING = false;
+
+
+const int MID_VOL_X = 440;
+const int VOL_Y_RECT = 0;
+const int VOL_WIDTH = 110;
+const int VOL_HEIGHT = 28;
+
+const int NUM_OF_SOUNDS = 6;

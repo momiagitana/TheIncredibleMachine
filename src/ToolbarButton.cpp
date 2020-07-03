@@ -20,7 +20,7 @@ void ToolbarButton::setString()
 
 void ToolbarButton::increase()
 {
-	if(m_amount != -1)
+	if(m_amount != INFINITE_AMOUNT)
 	{
 		m_amount++;
 		setString();
@@ -29,7 +29,7 @@ void ToolbarButton::increase()
 
 void ToolbarButton::decrease()
 {
-	if (m_amount != -1)//fix
+	if (m_amount != INFINITE_AMOUNT)
 	{
 		m_amount--;
 		setString();

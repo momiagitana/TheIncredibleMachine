@@ -24,15 +24,13 @@ void LevelController::loadNewLevel(const Level& level, const bool dynamicScore)
 	m_score.set(INIT_SCORE);
 }
 
-bool LevelController::run(const int whichMod ) //fix
+bool LevelController::run()
 {
-
 	m_score.play();
-
 
 	while (m_window.isOpen() && !m_finished)
 	{
-		drawAll(false);//NOT_RUNNING fiX
+		drawAll(NOT_RUNNING);
 		
 		sf::Event event;
 
@@ -49,7 +47,7 @@ bool LevelController::run(const int whichMod ) //fix
 				if (event.mouseButton.button == sf::Mouse::Button::Right)
 				{
 					m_score.stop();
-					return false; //fix
+					return false;//level finished without win
 				}
 				else if (event.mouseButton.button == sf::Mouse::Button::Left)
 					leftClick(event);
@@ -113,11 +111,11 @@ void LevelController::handleBoardClick(const sf::Vector2f mouseLoc)
 			
 		}
 
-		else if(m_board.tryToAdd(m_mouseObj, m_selected)) //fix check if needs m_selected //returns true if managed added obj
+		else if(m_board.tryToAdd(m_mouseObj))//returns true if managed added obj
 			clearMouse();
 	}
 	else //if(m_selected == none)
-		grabFromBoard(m_board.handleClick(mouseLoc, m_selected), mouseLoc);//fix second argument
+		grabFromBoard(m_board.handleClick(mouseLoc, m_selected), mouseLoc);
 }
 
 void LevelController::handleToolbarClick(const sf::Vector2f mouseLoc)
@@ -125,7 +123,7 @@ void LevelController::handleToolbarClick(const sf::Vector2f mouseLoc)
 	if(m_selected == none)
 	{
 		setSelected(m_toolbar.handleClick(mouseLoc),mouseLoc);
-		if (m_selected == play)//needs to be inside the if ontop??
+		if (m_selected == play)
 		{
 			if (tryRunning())//apply gravitiy check if game was won
 				m_finished = true;//leave the while and next level
@@ -209,7 +207,7 @@ void LevelController::createOnHandObj(const sf::Vector2f loc)
 
 void LevelController::createMouseImg(const sf::Vector2f loc)
 {
-	m_mouseImg = BaseImg(loc, Type_t(m_selected+100));//fix
+	m_mouseImg = BaseImg(loc, Type_t(m_selected + BUTTON_DELTA_TYPE));
 }
 
 void LevelController::updateMouseLoc(const sf::Vector2f loc)
@@ -260,7 +258,7 @@ void LevelController::drawStatic(const bool running)
 	m_score.draw(m_window);
 }
 
-bool LevelController::replaySolution() //fix urgent
+bool LevelController::replaySolution()
 {
 	BaseImg nextLevelMesseage((PUZZLE_COMPLETE),Type_t::puzzleComplete);
 	Button replay(REPLAY_BUTTON,Type_t::replayButton);
@@ -287,7 +285,7 @@ bool LevelController::replaySolution() //fix urgent
 				return false;
 
 			case sf::Event::MouseButtonReleased:
-				auto mouseLoc = m_window.mapPixelToCoords({ evnt.mouseButton.x, evnt.mouseButton.y });
+				auto mouseLoc = m_window.mapPixelToCoords({evnt.mouseButton.x, evnt.mouseButton.y});
 
 				if (advance.mouseOnMe(mouseLoc))
 				{
@@ -317,27 +315,18 @@ void LevelController::setText(sf::Text& levelScore)
 
 bool LevelController::tryRunning()
 {
-	int counter = 0;
+
 	m_score.stop();
 	m_board.hideObjButtons();
 	while (m_window.isOpen())
 	{
-	
-		if(counter == 1)//fix adjust or take
-		{
-			if (checkIfLevelFinished())
-				return true;
-			counter =0;
-		}
-		else
-		{
-			counter ++;
-		}
-		
+
+		if (checkIfLevelFinished())
+			return true;
 
 		m_world.Step(TIMESTEP, VELITER, POSITER);
 
-		drawAll(true);//fix RUNNING
+		drawAll(RUNNING);
 		
 		b2Body* body = m_world.GetBodyList();
 		while(body)

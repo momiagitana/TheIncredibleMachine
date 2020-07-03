@@ -6,19 +6,19 @@
 
 
 
-OverallController::OverallController(b2World& world, MyListener& listener)//fix change name to menu
+OverallController::OverallController(b2World& world, MyListener& listener)
 	:m_world(world),
-	m_levels(FileHandler(ResourceManager::instance().getLevelPath(), true).readLevels()), //fix true->OPEN
+	m_levels(FileHandler(ResourceManager::instance().getLevelPath(), OPEN).readLevels()),
 	m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "IncredibleMachine", sf::Style::Default),
 	m_background(sf::Vector2f(MENU_X, MENU_Y), menuBackground),
 	m_sound(sf::Vector2f(SOUND_X, SOUND_Y),sound),
 	m_choseLevelMenu(sf::Vector2f(MENU_X, MENU_Y), choseLevelMenu),
-	m_levelController(m_levels[m_numOfLevel], world, m_window, listener)//fix
+	m_levelController(m_levels[m_numOfLevel], world, m_window, listener)
 	
 {
 	m_window.setFramerateLimit(60);
 	m_smallBoard.create(TINY_BOARD_W, TINY_BOARD_H);
-	m_sound.setIntRect(sf::IntRect(440,0,110, 28));// fix to const globals
+	m_sound.setIntRect(sf::IntRect(MID_VOL_X, VOL_Y_RECT, VOL_WIDTH, VOL_HEIGHT));// fix to const globals
 
 	setButtons();
 	setLevel();
@@ -71,7 +71,7 @@ void OverallController::run()
 void OverallController::handleClick(const sf::Vector2f loc)
 {
 
-	if (m_mode == 1)//fix
+	if (m_mode == CHOOSE_LEVEL)
 	{
 		chooseLevelMode(loc);
 	}
@@ -175,7 +175,7 @@ void OverallController::menuMode(const sf::Vector2f loc)
 			ResourceManager::instance().setSong((int)ResourceManager::Sound::background);
 		else if (m_mode == BUILD)
 			ResourceManager::instance().setSong((int)ResourceManager::Sound::build);
-		bool won = m_levelController.run(m_mode);
+		bool won = m_levelController.run();
 		if (m_mode == MENU && won)
 		{
 			m_numOfLevel = (m_numOfLevel + 1) % m_levels.size();
@@ -207,7 +207,7 @@ void OverallController::menuMode(const sf::Vector2f loc)
 	}
 	case choseLevel:
 	{
-		m_mode = 1;//fix
+		m_mode = CHOOSE_LEVEL;
 		return;
 	}
 	case build:
@@ -231,7 +231,7 @@ void OverallController::menuMode(const sf::Vector2f loc)
 
 void OverallController::loadBuildMode()
 {
-	Level newLevel(BUILD);//fix to const change level
+	Level newLevel(BUILD);
 	m_levelController.loadNewLevel(newLevel, STATIC);
 	m_levelController.drawTinyBoard(m_smallBoard);
 }
@@ -241,10 +241,10 @@ void OverallController::saveLevelToFile()
 	m_levelController.saveNewLevel();
 }
 
-void OverallController::handleMouseMove(const sf::Vector2f mouseLoc) //fix
+void OverallController::handleMouseMove(const sf::Vector2f mouseLoc)
 {
-	if(m_mode != 1)
-		for (auto i = 0; i < m_menuButtons.size() ; i++)//check 
+	if(m_mode != CHOOSE_LEVEL)
+		for (auto i = 0; i < m_menuButtons.size() ; i++)
 			m_menuButtons[i].mouseOnMe(mouseLoc);
 	
 	else
@@ -265,8 +265,8 @@ Type_t OverallController::getSelection(const sf::Vector2f loc) const
 	{
 		for (auto button : m_menuButtons)
 		{
-			if ((button.getType() == choseLevel && m_mode == 2) ||
-				(button.getType() == save && m_mode == 0))
+			if ((button.getType() == choseLevel && m_mode == BUILD) ||
+				(button.getType() == save && m_mode == MENU))
 				continue;
 			if (button.mouseOnMe(loc))
 				return button.getType();
@@ -283,7 +283,7 @@ void OverallController::draw(sf::RenderWindow& window)
 	m_window.draw(tinyBoard);
 
 
-	if (m_mode == CHOOSE_LEVEL)//chose level
+	if (m_mode == CHOOSE_LEVEL)
 	{
 		setChoseLevelTexts();
 		drawChoseLevel(window);

@@ -1,14 +1,14 @@
 #include "Board.h"
 #include <vector>
 
-using boardObjects = std::vector<ObjInfo>;// changed
+using boardObjects = std::vector<ObjInfo>;
 
 Board::Board(const boardObjects& objects, b2World& world)
 	:m_background(sf::Vector2f(BOARD_W, BOARD_H))
 {
 	setBoard(objects, world);
-	m_background.setPosition(sf::Vector2f(8, 8));//fix constants
-	m_background.setFillColor(sf::Color(18, 160, 159));
+	m_background.setPosition(sf::Vector2f(FRAME_SIZE, FRAME_SIZE));
+	m_background.setFillColor(sf::Color(18, 160, 159)); //background color
 }
 
 void Board::setBoard(const boardObjects& objects, b2World& world)
@@ -30,6 +30,7 @@ GameObj* Board::getObjWithId(const int obj) const
 		if (i->getID() == obj)
 			return i.get();
 	}
+	return nullptr;//never gets here
 }
 
 void Board::draw(sf::RenderWindow& window, const bool running)
@@ -52,7 +53,7 @@ void Board::updateImgLocs()
 	m_connections.checkConnections();
 }
 
-bool Board::tryToAdd(const std::shared_ptr<GameObj> current, const Type_t selected) //fix take selected if non used
+bool Board::tryToAdd(const std::shared_ptr<GameObj> current)
 {
 	if (current && !collides(*current.get()))
 	{
@@ -167,7 +168,7 @@ bool Board::isItemOn(const conditionToWinAct cond) const
 
 void Board::saveLevelToFile() const
 {
-	auto file = FileHandler(ResourceManager::instance().getLevelPath(), false);//fix SAVE
+	auto file = FileHandler(ResourceManager::instance().getLevelPath(), SAVE);
 	file.saveNewLevel(getObjInfo());
 }
 
@@ -242,7 +243,7 @@ bool Board::tryConnecting(const sf::Vector2f mouseLoc)
 {
 	std::shared_ptr<GameObj> obj = findConnectable(mouseLoc);
 
-	if (obj.get() != nullptr)//fix
+	if (obj.get())
 		return (m_connections.tryConnecting(obj));
 
 	m_connections.reset();
@@ -260,12 +261,4 @@ void Board::setMousePos(const sf::Vector2f mouseLoc, const std::shared_ptr<GameO
 	checkMouseOver(mouseLoc, mouseImg);
 
 	m_connections.setMousePos(mouseLoc);
-}
-
-void Board::wakeEmAllUp()//fix urgent delete if not using
-{
-	// for(auto& obj: m_objects)
-	// {
-	// 	//obj->wakeUp();
-	// }
 }

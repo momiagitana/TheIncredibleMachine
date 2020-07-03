@@ -108,7 +108,7 @@ ToolbarButton:
 
 globals:
 - a class with global consts of all kinds used for all kinds of things, mostly every class includes it.
-  its a bit messy, we will take care of it in future releases, note that some numbers can be changed changing the behaviour of the game,
+  note that some numbers can be changed changing the behaviour of the game,
   change values at your own risk (some changes could make the game crash or even explode your computer)
 
 GameObj:
