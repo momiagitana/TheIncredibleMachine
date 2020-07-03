@@ -4,11 +4,11 @@ THE INCREDIBLE MACHINE:
 Student's details:
 ------------------
 
-David Alfia     ID: 201576196
-Ariel Gabel     ID: 204905210
-Zalman Rabin    ID: 336180005
-Itzhak Vaknin   ID: 305655060
-Ariel Zingman   ID: 342524808
+David Alfia  
+Ariel Gabel  
+Zalman Rabin 
+Itzhak Vaknin
+Ariel Zingman
 
 
 General details about the project:
