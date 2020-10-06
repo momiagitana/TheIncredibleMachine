@@ -21,7 +21,7 @@ The user interface is made with SFML, the imagery is based on the original game 
 and the music and sounds were mosly made originaly for this game except for some sound effects found online.
 For the physics we used the Box2D library.
 
-The menu is pritty straight forward, the play button takes you to the game, the exit button closes the game,
+The menu is pretty straightforward, the play button takes you to the game, the exit button closes the game,
 the bomb clears the objects that were already set up by the user and the score, letting the user start the current level again.
 The puzzle button takes you to the choose level screen where you can scroll thru the levels and choose the one you want to play.
 The only button that is not so straight forward is the wranch, it will take you to the build level mode, once on it you can 
